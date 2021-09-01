@@ -82,6 +82,7 @@ public class ConnectionUtil {
                 myStmt=myConn.prepareStatement(sql);
                 myStmt.setString(1,email);
             }
+
             myRS=myStmt.executeQuery();
             while (myRS.next()) {
                 System.out.println("This is works");
