@@ -65,7 +65,6 @@ public class ServletDwmpc extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String theCommand = request.getParameter("command");
-            System.out.println(theCommand);
 
             if (theCommand == null) {
 
@@ -95,9 +94,9 @@ public class ServletDwmpc extends HttpServlet {
         String action="Login";
         byte[] salt = getSalt();
         String securePassword = get_SHA_512_SecurePassword(Password, salt);
-        List<user> userlg = connectionUtil.loginUser(Email, securePassword);
+        List<user> userlg = connectionUtil.loginUser(Email, securePassword,action);
         HttpSession session=request.getSession();
-        session.setAttribute("User", userlg);
+        session.setAttribute("User_Info", userlg);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
     }
@@ -124,11 +123,12 @@ public class ServletDwmpc extends HttpServlet {
         user userReg=new user(0,firstName,lastName,email,UserType,securePassword,omang,contacting,location);
         String msg=connectionUtil.registerUser(userReg);
         HttpSession session=request.getSession();
+        String action="Registration";
 
 
         if(msg.equals("Successful")){
-            List<user> userlg = connectionUtil.loginUser(email, securePassword);
-            session.setAttribute("User", userlg);
+            List<user> userlg = connectionUtil.loginUser(email, securePassword,action);
+            session.setAttribute("User_Info", userlg);
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         }else {

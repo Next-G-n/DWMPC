@@ -66,19 +66,30 @@ public class ConnectionUtil {
 
     }
 
-    public List<user> loginUser(String email, String password) throws Exception{
+    public List<user> loginUser(String email, String password,String action) throws Exception{
         List<user> login=new ArrayList<>();
         Connection myConn=null;
         PreparedStatement myStmt=null;
         ResultSet myRS=null;
         try {
             myConn=dataSource.getConnection();
-            String sql="select * from user where Email=? and Password=?";
+            String sql;
+            if(action.equals("getOfficerInfo")){
+                sql="select * from log_in where not UserType='Client'";
+                System.out.println("this code look ok");
+            }else {
+                sql="select * from user where Email=? and Password=?";
+
+            }
             myStmt=myConn.prepareStatement(sql);
-            myStmt.setString(1,email);
-            myStmt.setString(2,password);
+            if(action.equals("Login")){
+                myStmt.setString(1,email);
+                myStmt.setString(2,password);
+            }
             myRS=myStmt.executeQuery();
+            System.out.println("This is "+myRS);
             while (myRS.next()) {
+                System.out.println("ok then whats wrong");
                 int id=myRS.getInt("User Id");
                 String userType=myRS.getString("User Type");
                 String firstName=myRS.getString("First Name");
@@ -87,6 +98,8 @@ public class ConnectionUtil {
                 int omang=myRS.getInt("Omang");
                 int contact=myRS.getInt("Contact");
                 String location=myRS.getString("Location");
+                System.out.println("thiis test");
+                System.out.println(email);
                 user login2=new user(id,firstName,lastName,email,userType,password,omang,contact,location);
                 login.add(login2);
             }
