@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +55,7 @@
 			<div class="mobile-only-brand pull-left">
 				<div class="nav-header pull-left">
 					<div class="logo-wrap">
-						<a href="index.html">
+						<a href="${pageContext.request.contextPath}/ltr/index.jsp">
 							<img class="brand-img" src="../img/logo2.png" alt="brand"/>
 						</a>
 					</div>
@@ -88,7 +90,7 @@
 											</a>
 										</li>
 										<li>
-											<a href="inbox.html" class="connection-item">
+											<a href="inbox.jsp" class="connection-item">
 											<i class="zmdi zmdi-email-open txt-success"></i>
 											<span class="block">e-mail</span>
 											</a>
@@ -138,7 +140,7 @@
 										<hr class="light-grey-hr ma-0"/>
 										<ul>
 											<li>
-												<a href="index.html">Analytical</a>
+												<a href="${pageContext.request.contextPath}/ltr/index.jsp">Analytical</a>
 											</li>
 											<li>
 												<a href="index2.html">Demographic</a>
@@ -328,7 +330,7 @@
 								<a href="#"><i class="zmdi zmdi-card"></i><span>my balance</span></a>
 							</li>
 							<li>
-								<a href="inbox.html"><i class="zmdi zmdi-email"></i><span>Inbox</span></a>
+								<a href="inbox.jsp"><i class="zmdi zmdi-email"></i><span>Inbox</span></a>
 							</li>
 							<li>
 								<a href="#"><i class="zmdi zmdi-settings"></i><span>Settings</span></a>
@@ -370,7 +372,7 @@
 					<a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="dashboard_dr" class="collapse collapse-level-1">
 						<li>
-							<a href="index.html">Analytical</a>
+							<a href="${pageContext.request.contextPath}/ltr/index.jsp">Analytical</a>
 						</li>
 						<li>
 							<a href="index2.html">Demographic</a>
@@ -434,7 +436,7 @@
 							<a href="javascript:void(0);" data-toggle="collapse" data-target="#email_dr">Email<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 							<ul id="email_dr" class="collapse collapse-level-2">
 								<li>
-									<a href="inbox.html">inbox</a>
+									<a href="inbox.jsp">inbox</a>
 								</li>
 								<li>
 									<a href="inbox-detail.html">detail email</a>
@@ -1205,7 +1207,7 @@
 									</table>
 
 									<button type="button" onclick="toggleModal() " data-target="#Company-information-modal" data-toggle="modal"  style="float: right" class="btn btn-primary btn-anim btn-rounded"><i class="fa fa-pencil"></i><span class="btn-text">Edit</span></button>
-									<button type="button" onclick="location.href='companyForm.html';" data-target="#Company-information-modal" data-toggle="modal"  style="float: right; margin-right: 5px" class="btn btn-primary btn-anim btn-rounded"><i class="fa  fa-building-o"></i><span class="btn-text">Add New Company</span></button>
+									<button type="button" onclick="location.href='companyForm.jsp';" data-target="#Company-information-modal" data-toggle="modal"  style="float: right; margin-right: 5px" class="btn btn-primary btn-anim btn-rounded"><i class="fa  fa-building-o"></i><span class="btn-text">Add New Company</span></button>
 								</div>
 							</div>
 						</div>

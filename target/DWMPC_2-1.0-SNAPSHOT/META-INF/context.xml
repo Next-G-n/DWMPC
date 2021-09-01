@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource name="jdbc/Dwmpc_azureSA" auth="Container"
+              type="javax.sql.DataSource" maxActive="20"  maxIdle="5" maxWait="10000"
+              username="shatty@dwmpc01" password="Lorato@9/10"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://dwmpc01.mysql.database.azure.com:3306/dwmpc1.0?user&amp;serverTimezone=UTC"/>
+
+</Context>
