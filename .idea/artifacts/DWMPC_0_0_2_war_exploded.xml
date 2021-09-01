@@ -6,7 +6,6 @@
         <exploded>true</exploded>
         <module>DWMPC_0.0.2</module>
         <packaging>war</packaging>
-        <unpackNestedArchives>false</unpackNestedArchives>
       </options>
     </properties>
     <root id="root">
