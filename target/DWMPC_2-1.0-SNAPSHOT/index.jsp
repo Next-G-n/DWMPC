@@ -1,4 +1,4 @@
-<%--@elvariable id="User" type="com.dwmpc.model.bean.company_Information"--%>
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -16,8 +16,8 @@
 
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="ltr/favicon.ico">
-	<link rel="icon" href="ltr/icon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" href="icon.ico" type="image/x-icon">
 	
 	<!-- Data table CSS -->
 	<link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
@@ -36,7 +36,7 @@
 
 
     <!-- Custom CSS -->
-	<link href="ltr/dist/css/style.css" rel="stylesheet" type="text/css">
+	<link href="dist/css/style.css" rel="stylesheet" type="text/css">
 	<style>
 		#example_paginate, #example_info{
 			display: none;
@@ -373,7 +373,7 @@
 					<a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text"></span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 				</li>
 				<li>
-					<a href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">${User.Email}</span></div><div class="pull-right"><span class="label label-green">hot</span></div><div class="clearfix"></div></a>
+					<a href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">${User_Info[0].email}</span></div><div class="pull-right"><span class="label label-green">hot</span></div><div class="clearfix"></div></a>
 				</li>
 				<li>
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Apps </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>

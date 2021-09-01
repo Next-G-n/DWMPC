@@ -177,4 +177,5 @@ public class company_Information {
                 ", Company_Status='" + Company_Status + '\'' +
                 '}';
     }
+
 }
