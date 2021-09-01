@@ -75,21 +75,16 @@ public class ConnectionUtil {
             myConn=dataSource.getConnection();
             String sql;
             if(action.equals("getOfficerInfo")){
-                sql="select * from log_in where not UserType='Client'";
-                System.out.println("this code look ok");
+                sql="select * from user where not UserType='Client'";
+                myStmt=myConn.prepareStatement(sql);
             }else {
-                sql="select * from user where Email=? and Password=?";
-
-            }
-            myStmt=myConn.prepareStatement(sql);
-            if(action.equals("Login")){
+                sql="select * from user where Email=?";
+                myStmt=myConn.prepareStatement(sql);
                 myStmt.setString(1,email);
-                myStmt.setString(2,password);
             }
             myRS=myStmt.executeQuery();
-            System.out.println("This is "+myRS);
             while (myRS.next()) {
-                System.out.println("ok then whats wrong");
+                System.out.println("This is works");
                 int id=myRS.getInt("User Id");
                 String userType=myRS.getString("User Type");
                 String firstName=myRS.getString("First Name");
@@ -98,8 +93,6 @@ public class ConnectionUtil {
                 int omang=myRS.getInt("Omang");
                 int contact=myRS.getInt("Contact");
                 String location=myRS.getString("Location");
-                System.out.println("thiis test");
-                System.out.println(email);
                 user login2=new user(id,firstName,lastName,email,userType,password,omang,contact,location);
                 login.add(login2);
             }
