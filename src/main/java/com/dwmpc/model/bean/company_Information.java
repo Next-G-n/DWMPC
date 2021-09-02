@@ -10,18 +10,17 @@ public class company_Information {
     String Street_Address;
     String Street_Address2;
     String Region_Town_Village;
+    String Region;
     String Plot_Number;
     String Ward;
-    int Telephone;
-    int Fax_Number;
-    int Phone_Number;
-    Date Date;
+    String Telephone;
+    String Fax_Number;
+    String Phone_Number;
+    String Company_Status;
     String Date_Unix;
     String Company_License_Status;
-    String Company_Status;
-    Date Delete_Date;
 
-    public company_Information(int company_Id, int user_Id, String company_Name, String email, String street_Address, String street_Address2, String region_Town_Village, String plot_Number, String ward, int telephone, int fax_Number, int phone_Number, java.util.Date date, String date_Unix, String company_License_Status, String company_Status, java.util.Date delete_Date) {
+    public company_Information(int company_Id, int user_Id, String company_Name, String email, String street_Address, String street_Address2, String region_Town_Village, String region, String plot_Number, String ward, String telephone, String fax_Number, String phone_Number, String company_Status, String date_Unix, String company_License_Status) {
         Company_Id = company_Id;
         User_Id = user_Id;
         Company_Name = company_Name;
@@ -29,16 +28,15 @@ public class company_Information {
         Street_Address = street_Address;
         Street_Address2 = street_Address2;
         Region_Town_Village = region_Town_Village;
+        Region = region;
         Plot_Number = plot_Number;
         Ward = ward;
         Telephone = telephone;
         Fax_Number = fax_Number;
         Phone_Number = phone_Number;
-        Date = date;
+        Company_Status = company_Status;
         Date_Unix = date_Unix;
         Company_License_Status = company_License_Status;
-        Company_Status = company_Status;
-        Delete_Date = delete_Date;
     }
 
     public int getCompany_Id() {
@@ -97,6 +95,14 @@ public class company_Information {
         Region_Town_Village = region_Town_Village;
     }
 
+    public String getRegion() {
+        return Region;
+    }
+
+    public void setRegion(String region) {
+        Region = region;
+    }
+
     public String getPlot_Number() {
         return Plot_Number;
     }
@@ -113,36 +119,36 @@ public class company_Information {
         Ward = ward;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return Telephone;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         Telephone = telephone;
     }
 
-    public int getFax_Number() {
+    public String getFax_Number() {
         return Fax_Number;
     }
 
-    public void setFax_Number(int fax_Number) {
+    public void setFax_Number(String fax_Number) {
         Fax_Number = fax_Number;
     }
 
-    public int getPhone_Number() {
+    public String getPhone_Number() {
         return Phone_Number;
     }
 
-    public void setPhone_Number(int phone_Number) {
+    public void setPhone_Number(String phone_Number) {
         Phone_Number = phone_Number;
     }
 
-    public java.util.Date getDate() {
-        return Date;
+    public String getCompany_Status() {
+        return Company_Status;
     }
 
-    public void setDate(java.util.Date date) {
-        Date = date;
+    public void setCompany_Status(String company_Status) {
+        Company_Status = company_Status;
     }
 
     public String getDate_Unix() {
@@ -161,22 +167,6 @@ public class company_Information {
         Company_License_Status = company_License_Status;
     }
 
-    public String getCompany_Status() {
-        return Company_Status;
-    }
-
-    public void setCompany_Status(String company_Status) {
-        Company_Status = company_Status;
-    }
-
-    public java.util.Date getDelete_Date() {
-        return Delete_Date;
-    }
-
-    public void setDelete_Date(java.util.Date delete_Date) {
-        Delete_Date = delete_Date;
-    }
-
     @Override
     public String toString() {
         return "company_Information{" +
@@ -187,17 +177,15 @@ public class company_Information {
                 ", Street_Address='" + Street_Address + '\'' +
                 ", Street_Address2='" + Street_Address2 + '\'' +
                 ", Region_Town_Village='" + Region_Town_Village + '\'' +
+                ", Region='" + Region + '\'' +
                 ", Plot_Number='" + Plot_Number + '\'' +
                 ", Ward='" + Ward + '\'' +
                 ", Telephone=" + Telephone +
                 ", Fax_Number=" + Fax_Number +
                 ", Phone_Number=" + Phone_Number +
-                ", Date=" + Date +
+                ", Company_Status='" + Company_Status + '\'' +
                 ", Date_Unix='" + Date_Unix + '\'' +
                 ", Company_License_Status='" + Company_License_Status + '\'' +
-                ", Company_Status='" + Company_Status + '\'' +
-                ", Delete_Date=" + Delete_Date +
                 '}';
     }
-
 }

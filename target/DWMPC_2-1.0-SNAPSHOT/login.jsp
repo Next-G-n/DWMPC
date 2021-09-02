@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>Zapily I Fast build Admin dashboard for any platform</title>
+		<title>DWMPC || Login</title>
 		<meta name="description" content="Zapily is a Dashboard & Admin Site Responsive Template by hencework." />
 		<meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Zapily Admin, Zapilyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
 		<meta name="author" content="hencework"/>
@@ -51,7 +51,7 @@
 								<div class="row">
 									<div class="col-sm-12 col-xs-12">
 										<div class="mb-30">
-											<h3 class="text-center txt-dark mb-10">Sign in</h3>
+											<h3 class="text-center txt-dark mb-10">Sign in Login We</h3>
 											<h6 class="text-center nonecase-font txt-grey">Enter your details below</h6>
 										</div>	
 

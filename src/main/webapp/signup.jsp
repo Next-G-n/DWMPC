@@ -66,7 +66,7 @@
 														<fieldset>
 															<div class="row">
 																<div class="col-sm-12">
-																	<div class="form-wrap">
+																	<div class="form-wrap" >
 																		<input class="inputs" type="hidden" name="command" value="Registering_User">
 																		<input class="inputs" type="hidden" name="User_Type" value="Client">
 																		<div class="form-group">
@@ -277,7 +277,8 @@
 		
 		</div>
 		<!-- /#wrapper -->
-		
+
+
 		<!-- JavaScript -->
 		
 		<!-- jQuery -->
