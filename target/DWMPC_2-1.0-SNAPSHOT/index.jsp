@@ -60,7 +60,7 @@
 							<img class="brand-img" src="img/logo2.png" alt="brand"/>
 						</a>
 					</div>
-				</div>	
+				</div>
 				<a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block ml-20 pull-left" href="javascript:void(0);"><i class="zmdi zmdi-menu"></i></a>
 				<a id="toggle_mobile_search" data-toggle="collapse" data-target="#search_form" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-search"></i></a>
 				<a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-more"></i></a>
@@ -121,7 +121,7 @@
 											</a>
 										</li>
 									</ul>
-								</div>	
+								</div>
 							</li>
 							<li>
 								<div class="app-box-bottom-wrap">
@@ -167,7 +167,7 @@
 										<a href="javascript:void(0);">
 											<div class="pull-left">
 												<i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span>
-											</div>	
+											</div>
 											<div class="pull-right"><span class="label label-green">hot</span>
 											</div>
 											<div class="clearfix"></div>
@@ -220,11 +220,11 @@
 											<a href="#">
 												<img src="img/chair2.jpg" alt="chair">
 												<span>square chair</span>
-											</a>								
+											</a>
 										</div>
 									</li>
 								</ul>
-							</li>	
+							</li>
 						</ul>
 					</li>
 					<li class="dropdown alert-drp">
@@ -252,7 +252,7 @@
 												<div class="clearfix"></div>
 												<p class="truncate">Your customer subscribed for the basic plan. The customer will pay $25 per month.</p>
 											</div>
-										</a>	
+										</a>
 									</div>
 									<hr class="light-grey-hr ma-0"/>
 									<div class="sl-item">
@@ -266,7 +266,7 @@
 												<div class="clearfix"></div>
 												<p class="truncate">Some technical error occurred needs to be resolved.</p>
 											</div>
-										</a>	
+										</a>
 									</div>
 									<hr class="light-grey-hr ma-0"/>
 									<div class="sl-item">
@@ -280,7 +280,7 @@
 												<div class="clearfix"></div>
 												<p class="truncate"> The last payment for your G Suite Basic subscription failed.</p>
 											</div>
-										</a>	
+										</a>
 									</div>
 									<hr class="light-grey-hr ma-0"/>
 									<div class="sl-item">
@@ -294,7 +294,7 @@
 												<div class="clearfix"></div>
 												<p class="truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
 											</div>
-										</a>	
+										</a>
 									</div>
 									<hr class="light-grey-hr ma-0"/>
 									<div class="sl-item">
@@ -308,7 +308,7 @@
 												<div class="clearfix"></div>
 												<p class="truncate">consectetur, adipisci velit.</p>
 											</div>
-										</a>	
+										</a>
 									</div>
 								</div>
 							</li>
@@ -349,7 +349,7 @@
 									<li>
 										<a href="#"><i class="zmdi zmdi-minus-circle-outline text-danger"></i><span>offline</span></a>
 									</li>
-								</ul>	
+								</ul>
 							</li>
 							<li class="divider"></li>
 							<li>
@@ -358,10 +358,10 @@
 						</ul>
 					</li>
 				</ul>
-			</div>	
+			</div>
 		</nav>
 		<!-- /Top Menu Items -->
-		
+
 		<!-- Left Sidebar Menu -->
 		<div class="fixed-sidebar-left">
 			<ul class="nav navbar-nav side-nav nicescroll-bar">
@@ -370,59 +370,20 @@
 					<i class="zmdi zmdi-more"></i>
 				</li>
 				<li>
-					<a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text"></span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>${User_Info[0].first_name} ${User_Info[0].last_name} <span class="right-nav-text"></span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 				</li>
 				<li>
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">${User_Info[0].email}</span></div><div class="pull-right"><span class="label label-green">hot</span></div><div class="clearfix"></div></a>
 				</li>
 				<li>
-					<a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Apps </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-					<ul id="app_dr" class="collapse collapse-level-1">
-						<li>
-							<a href="chats.html">chats</a>
-						</li>
-						<li>
-							<a href="calendar.html">calendar</a>
-						</li>
-						<li>
-							<a href="weather.html">weather</a>
-						</li>
-						<li>
-							<a href="javascript:void(0);" data-toggle="collapse" data-target="#email_dr">Email<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-							<ul id="email_dr" class="collapse collapse-level-2">
-								<li>
-									<a href="inbox.jsp">inbox</a>
-								</li>
-								<li>
-									<a href="inbox-detail.html">detail email</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="javascript:void(0);" data-toggle="collapse" data-target="#contact_dr">Contacts<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-							<ul id="contact_dr" class="collapse collapse-level-2">
-								<li>
-									<a href="contact-list.html">list</a>
-								</li>
-								<li>
-									<a href="contact-card.html">cards</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="file-manager.html">File Manager</a>
-						</li>
-						<li>
-							<a href="todo-tasklist.html">To Do/Tasklist</a>
-						</li>
-					</ul>
+					<a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">${User_Info[0].omang} </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 				</li>
 				<li>
-					<a href="widgets.html"><div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">widgets</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+					<a href="widgets.html"><div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">${User_Info[0].contact}</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
 				</li>
 				<li><hr class="light-grey-hr mb-10"/></li>
 				<li class="navigation-header">
-					<span>component</span> 
+					<span>component</span>
 					<i class="zmdi zmdi-more"></i>
 				</li>
 				<li>
@@ -589,7 +550,7 @@
 				</li>
 				<li><hr class="light-grey-hr mb-10"/></li>
 				<li class="navigation-header">
-					<span>featured</span> 
+					<span>featured</span>
 					<i class="zmdi zmdi-more"></i>
 				</li>
 				<li>
@@ -676,7 +637,7 @@
 			</ul>
 		</div>
 		<!-- /Left Sidebar Menu -->
-		
+
 		<!-- Right Sidebar Menu -->
 		<div class="fixed-sidebar-right">
 			<ul class="right-sidebar">
@@ -694,7 +655,7 @@
 										<div class="add-friend">
 											<a href="javascript:void(0)" class="inline-block txt-grey">
 												<i class="zmdi zmdi-more"></i>
-											</a>	
+											</a>
 											<span class="inline-block txt-dark">users</span>
 											<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
 											<div class="clearfix"></div>
@@ -823,7 +784,7 @@
 												<div class="goto-back">
 													<a  id="goto_back" href="javascript:void(0)" class="inline-block txt-grey">
 														<i class="zmdi zmdi-chevron-left"></i>
-													</a>	
+													</a>
 													<span class="inline-block txt-dark">ryan</span>
 													<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-more"></i></a>
 													<div class="clearfix"></div>
@@ -843,7 +804,7 @@
 																		</div>
 																	</div>
 																	<div class="clearfix"></div>
-																</div>	
+																</div>
 															</li>
 															<li class="self mb-10">
 																<div class="self-msg-wrap">
@@ -853,7 +814,7 @@
 																		</div>
 																	</div>
 																	<div class="clearfix"></div>
-																</div>	
+																</div>
 															</li>
 															<li class="self">
 																<div class="self-msg-wrap">
@@ -863,19 +824,19 @@
 																		</div>
 																	</div>
 																	<div class="clearfix"></div>
-																</div>	
+																</div>
 															</li>
 															<li class="friend">
 																<div class="friend-msg-wrap">
 																	<img class="user-img img-circle block pull-left" src="img/user.png" alt="user"/>
-																	<div class="msg pull-left"> 
+																	<div class="msg pull-left">
 																		<p>Not too bad.</p>
 																		<div class="msg-per-detail  text-right">
 																			<span class="msg-time txt-grey">2:35 pm</span>
 																		</div>
 																	</div>
 																	<div class="clearfix"></div>
-																</div>	
+																</div>
 															</li>
 														</ul>
 													</div>
@@ -904,13 +865,13 @@
 									</div>
 								</div>
 							</div>
-								
+
 							<div id="messages_tab" class="tab-pane fade" role="tabpanel">
 								<div class="message-box-wrap">
 									<div class="msg-search">
 										<a href="javascript:void(0)" class="inline-block txt-grey">
 											<i class="zmdi zmdi-more"></i>
-										</a>	
+										</a>
 										<span class="inline-block txt-dark">messages</span>
 										<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-search"></i></a>
 										<div class="clearfix"></div>
@@ -1024,7 +985,7 @@
 									<div class="add-todo">
 										<a href="javascript:void(0)" class="inline-block txt-grey">
 											<i class="zmdi zmdi-more"></i>
-										</a>	
+										</a>
 										<span class="inline-block txt-dark">todo list</span>
 										<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
 										<div class="clearfix"></div>
@@ -1097,7 +1058,7 @@
 			</ul>
 		</div>
 		<!-- /Right Sidebar Menu -->
-		
+
 		
 
         <!-- Main Content -->
@@ -1110,14 +1071,20 @@
 						<div class=" panel panel-warning card-view" role="tabpanel">
 							<div class="panel-heading">
 								<div class="pull-left">
-									<h6 class="panel-title txt-light">Company Information</h6>
+									<c:if test="${Company_info!=null}">
+										<h6 class="panel-title txt-light">${Company_info[0].company_Name} : Company Information</h6>
+									</c:if>
+									<c:if test="${Company_info==null}">
+										<h6 class="panel-title txt-light">Company Information</h6>
+									</c:if>
+
 								</div>
 								<div class="clearfix"></div>
 							</div>
 							<div  class="panel-wrapper collapse in">
 								<div  class="panel-body  pagination-lg">
 
-
+                                    <c:if test="${Company_info!=null}">
 									<table class="table table-bordered m-0">
 										<thead>
 										<tr>
@@ -1128,43 +1095,50 @@
 										<tbody>
 										<tr>
 											<td><code>Region</code> </td>
-											<td class="Region">Southern District</td>
+											<td class="Region">${Company_info[0].region}</td>
 										</tr>
 
 										<tr>
 											<td><code>Email</code></td>
-											<td class="Email">WasteCorp@gov.ac.bw</td>
+											<td class="Email">${Company_info[0].email}</td>
 										</tr>
 										<tr>
 											<td><code>Street Address</code> </td>
-											<td class="Street-Address">P O box 20912</td>
+											<td class="Street-Address">${Company_info[0].street_Address}</td>
 										</tr>
+										<c:if test='${Company_info[0].street_Address2!=""}'>
 										<tr>
-											<td><code>Street Address 2</code> </td>
-											<td class="Street-Address2"></td>
+											<td><code>2nd Street Address</code> </td>
+											<td class="Street-Address2">${Company_info[0].street_Address2}</td>
 										</tr>
+										</c:if>
 
 										<tr>
 											<td><code>Company Status</code></td>
-											<td class="Company-status">Local Government Institution</td>
+											<td class="Company-status">${Company_info[0].company_Status}</td>
 										</tr>
 										<tr>
 											<td><code>Location</code></td>
-											<td class="Location">Kanye, 155278, Plot Mofati</td>
+											<td class="Location">${Company_info[0].region_Town_Village}, ${Company_info[0].ward}, ${Company_info[0].plot_Number}</td>
 										</tr>
 										<tr>
 											<td><code>Contact</code> </td>
-											<td class="Contact">+267 75 763 535,+267 757 3535</td>
+											<td class="Contact">${Company_info[0].telephone},${Company_info[0].phone_Number}</td>
 										</tr>
 
 										<tr>
 											<td><code>Fax</code></td>
-											<td class="Fax">+267 348 7658</td>
+											<td class="Fax">${Company_info[0].fax_Number}</td>
 										</tr>
 										</tbody>
 									</table>
-
+									</c:if>
+									<c:if test="${Company_info==null}">
+										<p>No Company Registered</p>
+									</c:if>
+									<c:if test="${Company_info!=null}">
 									<button type="button" onclick="toggleModal() " data-target="#Company-information-modal" data-toggle="modal"  style="float: right" class="btn btn-primary btn-anim btn-rounded"><i class="fa fa-pencil"></i><span class="btn-text">Edit</span></button>
+									</c:if>
 									<button type="button" onclick="location.href='companyForm.jsp';"  style="float: right; margin-right: 5px" class="btn btn-primary btn-anim btn-rounded"><i class="fa  fa-building-o"></i><span class="btn-text">Add New Company</span></button>
 							</div>
 
@@ -1178,233 +1152,236 @@
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-									<h5 class="modal-title">Editing Company Information for </h5>
-								</div><form>
+									<h5 class="modal-title">Editing Company Information for ${Company_info[0].company_Name}</h5>
+								</div><form method="post" action="ServletDwmpc">
 								<div class="modal-body">
 
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-6 col-xs-12">
-                                                <label for="Company-name" class="control-label mb-10">Company Name (required):</label>
-                                                <input type="text" class="form-control" id="Company-name" required>
-                                            </div>
-                                            <div class="span1"></div>
-                                            <div class="col-md-6 col-xs-12">
-                                                <label class="control-label mb-10">Status of applicant(required):</label>
-                                                <select id="Company-status" class="selectpicker" data-style="form-control btn-default btn-outline">
-                                                    <option value="Company">Company</option>
-                                                    <option value="Non-Governmental Organisation">Non-Governmental Organisation</option>
-                                                    <option value="Local Government Institution">Local Government Institution</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-6 col-xs-12">
-                                                <label class="control-label mb-10" for="Street-address">Street Address (required):</label>
-                                                <input id="Street-Address" type="text" name="Street_Address" class="form-control required" value="" required/>
+									<input class="inputs" type="hidden" name="command" value="Company Registration">
+									<input class="inputs" type="hidden" name="action" value="Editing">
+									<input class="inputs" type="hidden" name="Statues" value="Pending">
+									<input class="inputs" type="hidden" name="User_id" value="${User_Info[0].user_Id}">
+									<input class="inputs" type="hidden" name="company_Id" value="${Company_info[0].company_Id}">
 
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-12">
+												<label for="Company-name" class="control-label mb-10">Company Name (required):</label>
+												<input type="text" class="form-control" name="Company name" id="Company-name" value="${Company_info[0].company_Name}" required>
                                             </div>
                                             <div class="span1"></div>
                                             <div class="col-md-6 col-xs-12">
+												<label class="control-label mb-10" for="Status">Status of applicant(required):</label>
+												<select class="selectpicker" id="Status" name="StatusA" data-style="form-control btn-default btn-outline">
+													<option value="Company">Company</option>
+													<option value="Non-Governmental Organisation">Non-Governmental Organisation</option>
+													<option value="Local Government Institution">Local Government Institution</option>
+												</select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-12">
+												<label class="control-label mb-10" for="Street-address">Street Address (required):</label>
+												<input id="Street-address" type="text" name="Street_Address" class="form-control required" value="" required/>
+                                            </div>
+                                            <div class="span1"></div>
+                                            <div class="col-md-6 col-xs-12">
+												<label class="control-label mb-10" for="Street-address2">Street Address 2 (Optional):</label>
+												<input id="Street-address2" type="text" name="Street_Address2" class="form-control" value=""/>
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-6 col-xs-12">
+												<label class="control-label mb-10" for="Region">Region (required):</label>
+												<input id="Region" type="text" name="Region"  class="form-control required" value="" required/>
+											</div>
+											<div class="span1"></div>
+											<div class="col-md-6 col-xs-12">
+												<label class="control-label mb-10" for="City">City/Town/Village (required):</label>
+												<input id="City" type="text" name="City" list="location_suggestions" class="form-control required" value="" required/>
+												<datalist id="location_suggestions">
 
-                                                <label class="control-label mb-10" for="Street-address2">Street Address 2 (Optional):</label>
-                                                <input id="Street-Address2" type="text" name="Street_Address2" class="form-control" value=""/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-6 col-xs-12">
-                                                <label class="control-label mb-10" for="Region">Region (required):</label>
-                                                <input id="Region" type="text" name="Region"  class="form-control required" value="" required/>
-                                            </div>
-                                            <div class="span1"></div>
-                                            <div class="col-md-6 col-xs-12">
-                                                <label class="control-label mb-10" for="City">City/Town/Village (required):</label>
-                                                <input id="City" type="text" name="City" list="location_suggestions" class="form-control required" value="" required/>
-                                                <datalist id="location_suggestions">
-
-                                                    <option value="Phiring">
-                                                    <option value="Phologolo">
-                                                    <option value="Boitshoko">
-                                                    <option value="Selemela ">
-                                                    <option value="Madirelo ">
-                                                    <option value="Tutume">
-                                                    <option value="Sebina">
-                                                    <option value="Phuduhudu  ">
-                                                    <option value="Inalegolo  ">
-                                                    <option value="Hukuntsi  ">
-                                                    <option value="Tshane  ">
-                                                    <option value="Kang  ">
-                                                    <option value="kgale View">
-                                                    <option value="Maleshe  ">
-                                                    <option value="Maralaleng  ">
-                                                    <option value="Kokotsha  ">
-                                                    <option value="Maubelo  ">
-                                                    <option value="Khwawa  ">
-                                                    <option value="Draaihoek  ">
-                                                    <option value="Bray  ">
-                                                    <option value="Bokspits  ">
-                                                    <option value="Vaalhoek  ">
-                                                    <option value="Gachibana  ">
-                                                    <option value="Bogogobo  ">
-                                                    <option value="Tsabong  ">
-                                                    <option value="Middlepits  ">
-                                                    <option value="Kolonkwane  ">
-                                                    <option value="Werda  ">
-                                                    <option value="Qabo  ">
-                                                    <option value="Qabo  ">
-                                                    <option value="Kacgae  ">
-                                                    <option value="New Xanagas">
-                                                    <option value="Groote Laagte">
-                                                    <option value="Ncojane  ">
-                                                    <option value="Makunda">
-                                                    <option value="Charles Hil">
-                                                    <option value="West Hanahai">
-                                                    <option value=" Chobokwane">
-                                                    <option value="Karakobis">
-                                                    <option value="Tsootsha">
-                                                    <option value="Dekar">
-                                                    <option value="Ghanzi">
-                                                    <option value="Morutsha  ">
-                                                    <option value="Katamaga">
-                                                    <option value="Daonara">
-                                                    <option value="Xaxaba">
-                                                    <option value="Pandamatenga">
-                                                    <option value="Satau">
-                                                    <option value="Pakarungu ">
-                                                    <option value="Muchinje">
-                                                    <option value="Mabele">
-                                                    <option value="Lesoma  ">
-                                                    <option value="Lesoma  ">
-                                                    <option value="Kazungala  ">
-                                                    <option value="Kasane  ">
-                                                    <option value="Kachikau  ">
-                                                    <option value="Kajaja  ">
-                                                    <option value="Etsha 1  ">
-                                                    <option value="Eretsha  ">
-                                                    <option value="Mogomotho  ">
-                                                    <option value="Xhauga  ">
-                                                    <option value="Samochema  ">
-                                                    <option value="Sekondomboro  ">
-                                                    <option value="Tobere  ">
-                                                    <option value="Mohembo East  ">
-                                                    <option value="Xaxa  ">
-                                                    <option value="Gumare  ">
-                                                    <option value="Tubu  ">
-                                                    <option value="Gani  ">
-                                                    <option value="Nokaneng  ">
-                                                    <option value="Mohembo West">
-                                                    <option value="Etsha 13  ">
-                                                    <option value="Nxaunxau  ">
-                                                    <option value="Shakawe  ">
-                                                    <option value="Nxamasere  ">
-                                                    <option value="Sepopa  ">
-                                                    <option value="Ikoga  ">
-                                                    <option value="Kauxwhi  ">
-                                                    <option value="Etsha 6  ">
-                                                    <option value="Xakao  ">
-                                                    <option value="Qangwa  ">
-                                                    <option value="Mokgacha  ">
-                                                    <option value="Gonutsuga  ">
-                                                    <option value="Beetsha  ">
-                                                    <option value="Seronga  ">
-                                                    <option value="Ngarange  ">
-                                                    <option value="Bobonong">
-                                                    <option value="Chadibe">
-                                                    <option value="Gweta">
-                                                    <option value="Letlhakane">
-                                                    <option value="Maunatlala">
-                                                    <option value="Mathangwane">
-                                                    <option value="Mandunyane">
-                                                    <option value="Mahalapye">
-                                                    <option value="Mmadinare">
-                                                    <option value="Mopipi">
-                                                    <option value="Nata">
-                                                    <option value="Orapa">
-                                                    <option value="Palapye">
-                                                    <option value="Rakops">
-                                                    <option value="Selibe Phikwe">
-                                                    <option value="Serowe">
-                                                    <option value="Shoshong">
-                                                    <option value="Charles Hills">
-                                                    <option value="Tshabong">
-                                                    <option value="Kang">
-                                                    <option value="Hukuntsi">
-                                                    <option value="Bokaa">
-                                                    <option value="Mochudi">
-                                                    <option value="Letlhakeng">
-                                                    <option value="Gabane">
-                                                    <option value="Mmankgodi">
-                                                    <option value="Mmopane">
-                                                    <option value="Mogoditshane">
-                                                    <option value="Molepolole">
-                                                    <option value="Thamaga">
-                                                    <option value="Gaborone">
-                                                    <option value="Masunga">
-                                                    <option value="Tati Siding">
-                                                    <option value="Etsha">
-                                                    <option value="Kasane">
-                                                    <option value="Maun">
-                                                    <option value="Okavango Delta">
-                                                    <option value="Shakawe">
-                                                    <option value="Gaborone">
-                                                    <option value="Lobatse">
-                                                    <option value="Otse">
-                                                    <option value="Tlokweng">
-                                                    <option value="Jwaneng">
-                                                    <option value="Kanye">
-                                                    <option value="Moshupa">
-                                                </datalist>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-6 col-xs-12">
-                                                <label class="control-label mb-10" for="Plot_Number">Plot Number (required):</label>
-                                                <input id="Plot_Number" type="text" name="Plot_Number" class="form-control required" value="" required/>
-                                            </div>
-                                            <div class="span1"></div>
-                                            <div class="col-md-6 col-xs-12">
-                                                <label class="control-label mb-10" for="Ward">Ward (required):</label>
-                                                <input id="Ward" type="text" name="Ward" class="form-control required" value="" required/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-6 col-xs-12">
-                                                <label class="control-label mb-10" for="Telephone">Telephone (required):</label>
-                                                <input id="Telephone" type="text" data-mask="+267 999 9999" name="telephone" class="form-control required" value="" required/>
-                                            </div>
-                                            <div class="span1"></div>
-                                            <div class="col-md-6 col-xs-12">
-                                                <label class="control-label mb-10" for="Fax">Fax (required):</label>
-                                                <input id="Fax" type="text" data-mask="+267 999 9999" name="fax" class="form-control required" value="" required/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-6 col-xs-12">
-                                                <label class="control-label mb-10" for="Email">Company Email (required):</label>
-                                                <input id="Email" type="email" name="Company_Email" class="form-control required" value="" required />
-                                            </div>
-                                            <div class="span1"></div>
-                                            <div class="col-md-6 col-xs-12">
-                                                <label class="control-label mb-10" for="phoneNumber">Phone Number (required):</label>
-                                                <input id="phoneNumber" data-mask="+267 99 999 999"  type="tel" name="Phone_Number"  class="form-control required" value="" required/>
-                                            </div>
-                                        </div>
-                                    </div>
-
+													<option value="Phiring">
+													<option value="Phologolo">
+													<option value="Boitshoko">
+													<option value="Selemela ">
+													<option value="Madirelo ">
+													<option value="Tutume">
+													<option value="Sebina">
+													<option value="Phuduhudu  ">
+													<option value="Inalegolo  ">
+													<option value="Hukuntsi  ">
+													<option value="Tshane  ">
+													<option value="Kang  ">
+													<option value="kgale View">
+													<option value="Maleshe  ">
+													<option value="Maralaleng  ">
+													<option value="Kokotsha  ">
+													<option value="Maubelo  ">
+													<option value="Khwawa  ">
+													<option value="Draaihoek  ">
+													<option value="Bray  ">
+													<option value="Bokspits  ">
+													<option value="Vaalhoek  ">
+													<option value="Gachibana  ">
+													<option value="Bogogobo  ">
+													<option value="Tsabong  ">
+													<option value="Middlepits  ">
+													<option value="Kolonkwane  ">
+													<option value="Werda  ">
+													<option value="Qabo  ">
+													<option value="Qabo  ">
+													<option value="Kacgae  ">
+													<option value="New Xanagas">
+													<option value="Groote Laagte">
+													<option value="Ncojane  ">
+													<option value="Makunda">
+													<option value="Charles Hil">
+													<option value="West Hanahai">
+													<option value=" Chobokwane">
+													<option value="Karakobis">
+													<option value="Tsootsha">
+													<option value="Dekar">
+													<option value="Ghanzi">
+													<option value="Morutsha  ">
+													<option value="Katamaga">
+													<option value="Daonara">
+													<option value="Xaxaba">
+													<option value="Pandamatenga">
+													<option value="Satau">
+													<option value="Pakarungu ">
+													<option value="Muchinje">
+													<option value="Mabele">
+													<option value="Lesoma  ">
+													<option value="Lesoma  ">
+													<option value="Kazungala  ">
+													<option value="Kasane  ">
+													<option value="Kachikau  ">
+													<option value="Kajaja  ">
+													<option value="Etsha 1  ">
+													<option value="Eretsha  ">
+													<option value="Mogomotho  ">
+													<option value="Xhauga  ">
+													<option value="Samochema  ">
+													<option value="Sekondomboro  ">
+													<option value="Tobere  ">
+													<option value="Mohembo East  ">
+													<option value="Xaxa  ">
+													<option value="Gumare  ">
+													<option value="Tubu  ">
+													<option value="Gani  ">
+													<option value="Nokaneng  ">
+													<option value="Mohembo West">
+													<option value="Etsha 13  ">
+													<option value="Nxaunxau  ">
+													<option value="Shakawe  ">
+													<option value="Nxamasere  ">
+													<option value="Sepopa  ">
+													<option value="Ikoga  ">
+													<option value="Kauxwhi  ">
+													<option value="Etsha 6  ">
+													<option value="Xakao  ">
+													<option value="Qangwa  ">
+													<option value="Mokgacha  ">
+													<option value="Gonutsuga  ">
+													<option value="Beetsha  ">
+													<option value="Seronga  ">
+													<option value="Ngarange  ">
+													<option value="Bobonong">
+													<option value="Chadibe">
+													<option value="Gweta">
+													<option value="Letlhakane">
+													<option value="Maunatlala">
+													<option value="Mathangwane">
+													<option value="Mandunyane">
+													<option value="Mahalapye">
+													<option value="Mmadinare">
+													<option value="Mopipi">
+													<option value="Nata">
+													<option value="Orapa">
+													<option value="Palapye">
+													<option value="Rakops">
+													<option value="Selibe Phikwe">
+													<option value="Serowe">
+													<option value="Shoshong">
+													<option value="Charles Hills">
+													<option value="Tshabong">
+													<option value="Kang">
+													<option value="Hukuntsi">
+													<option value="Bokaa">
+													<option value="Mochudi">
+													<option value="Letlhakeng">
+													<option value="Gabane">
+													<option value="Mmankgodi">
+													<option value="Mmopane">
+													<option value="Mogoditshane">
+													<option value="Molepolole">
+													<option value="Thamaga">
+													<option value="Gaborone">
+													<option value="Masunga">
+													<option value="Tati Siding">
+													<option value="Etsha">
+													<option value="Kasane">
+													<option value="Maun">
+													<option value="Okavango Delta">
+													<option value="Shakawe">
+													<option value="Gaborone">
+													<option value="Lobatse">
+													<option value="Otse">
+													<option value="Tlokweng">
+													<option value="Jwaneng">
+													<option value="Kanye">
+													<option value="Moshupa">
+												</datalist>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-6 col-xs-12">
+												<label class="control-label mb-10" for="Plot_Number">Plot Number (required):</label>
+												<input id="Plot_Number" type="text" name="Plot_Number" class="form-control required" value="" required/>
+											</div>
+											<div class="span1"></div>
+											<div class="col-md-6 col-xs-12">
+												<label class="control-label mb-10" for="Ward">Ward (required):</label>
+												<input id="Ward" type="text" name="Ward" class="form-control required" value="" required/>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-6 col-xs-12">
+												<label class="control-label mb-10" for="telephone">Telephone (required):</label>
+												<input id="telephone"  type="text" data-mask="+267 999 9999" name="telephone" class="form-control required" value="" required/>
+											</div>
+											<div class="span1"></div>
+											<div class="col-md-6 col-xs-12">
+												<label class="control-label mb-10" for="fax">Fax (required):</label>
+												<input id="fax" type="text" data-mask="+267 999 9999" name="fax" class="form-control required" value="" required/>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-md-6 col-xs-12">
+												<label class="control-label mb-10" for="Company_Email">Company Email (required):</label>
+												<input id="Company_Email" type="email" name="Company_Email" class="form-control required" value="" required />
+											</div>
+											<div class="span1"></div>
+											<div class="col-md-6 col-xs-12">
+												<label class="control-label mb-10" for="phoneNumber">Phone Number (required):</label>
+												<input id="phoneNumber" data-mask="+267 99 999 999"  type="tel" name="Phone_Number"  class="form-control required" value="" required/>
+											</div>
+										</div>
+									</div>
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
-									<button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Save Changes</span></button>
+									<button type="submit" onclick="SubmitForm()"   class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Save Changes</span></button>
 								</div>
 							</form>
 							</div>
@@ -1500,30 +1477,35 @@
 
                     <script>
                         function toggleModal() {
+
                             const Region = document.getElementsByClassName('Region')[0].innerHTML;
                             const Email = document.getElementsByClassName('Email')[0].innerHTML;
                             const Street_Address = document.getElementsByClassName('Street-Address')[0].innerHTML;
+							<c:if test='${Company_info[0].street_Address2!=""}'>
                             const Street_Address2 = document.getElementsByClassName('Street-Address2')[0].innerHTML;
+							</c:if>
                             const Company_status = document.getElementsByClassName('Company-status')[0].innerHTML;
                             const Location = document.getElementsByClassName('Location')[0].innerHTML;
                             const Contact = document.getElementsByClassName('Contact')[0].innerHTML;
                             const Fax = document.getElementsByClassName('Fax')[0].innerHTML;
 
-                            const Contact2=Contact.replace("+267 ","");
+                            //const Contact2=Contact.replace("+267 ","");
 
 
                             document.getElementById('Region').value = Region;
-                            document.getElementById('Email').value = Email;
-                            document.getElementById('Street-Address').value = Street_Address;
-                            document.getElementById('Street-Address2').value = Street_Address2;
-                            document.getElementById('Company-status').value = Company_status;
+                            document.getElementById('Company_Email').value = Email;
+                            document.getElementById('Street-address').value = Street_Address;
+                            <c:if test='${Company_info[0].street_Address2!=""}'>
+                            document.getElementById('Street-address2').value = Street_Address2;
+							</c:if>
+                            document.getElementById('Status').value = Company_status;
                             $("#Company-status").selectpicker("refresh");
                             document.getElementById('Plot_Number').value = Location.split(",")[1];
                             document.getElementById('Ward').value = Location.split(",")[2];
                             document.getElementById('City').value = Location.split(",")[0];
-                            document.getElementById('Telephone').value =  Contact2.split(",")[1];
-                            document.getElementById('phoneNumber').value = Contact2.split(",")[0];
-                            document.getElementById('Fax').value = Fax.replace("+267 ","");
+                            document.getElementById('telephone').value =  Contact.split(",")[1];
+                            document.getElementById('phoneNumber').value = Contact.split(",")[0];
+                            document.getElementById('fax').value = Fax;
                         }
                         function removeValue(){
                             document.getElementById('Region').value = "";
@@ -1549,7 +1531,7 @@
 			<footer class="footer container-fluid pl-30 pr-30">
 				<div class="row">
 					<div class="col-sm-12">
-						<p>2021 &copy; Created by Next-gen</p>
+						<p>2021 &copy; Created by Next-gen testss</p>
 					</div>
 				</div>
 			</footer>
@@ -1584,10 +1566,10 @@
 
 	<script src="vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
 	<script src="vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
-	<script src="ltr/dist/js/export-table-data.js"></script>
+	<script src="dist/js/export-table-data.js"></script>
 	
 	<!-- Slimscroll JavaScript -->
-	<script src="ltr/dist/js/jquery.slimscroll.js"></script>
+	<script src="dist/js/jquery.slimscroll.js"></script>
 	
 	<!-- EChartJS JavaScript -->
 	<script src="vendors/bower_components/echarts/dist/echarts-en.min.js"></script>
@@ -1602,7 +1584,7 @@
 	<script src="vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
 	
 	<!-- Fancy Dropdown JS -->
-	<script src="ltr/dist/js/dropdown-bootstrap-extended.js"></script>
+	<script src="dist/js/dropdown-bootstrap-extended.js"></script>
 	
 	<!-- Sparkline JavaScript -->
 	<script src="vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
@@ -1614,7 +1596,7 @@
 	<script src="vendors/bower_components/moment/min/moment.min.js"></script>
 	<script src="vendors/jquery-ui.min.js"></script>
 	<script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-	<script src="ltr/dist/js/fullcalendar-data.js"></script>
+	<script src="dist/js/fullcalendar-data.js"></script>
 	
 	<!-- Switchery JavaScript -->
 	<script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
@@ -1623,8 +1605,8 @@
 	<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 	
 	<!-- Init JavaScript -->
-	<script src="ltr/dist/js/init.js"></script>
-	<script src="ltr/dist/js/dashboard4-data.js"></script>
+	<script src="dist/js/init.js"></script>
+	<script src="dist/js/dashboard4-data.js"></script>
 
 
 

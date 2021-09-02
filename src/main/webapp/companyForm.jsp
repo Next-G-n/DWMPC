@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1201,10 +1203,14 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-wrap">
-                                            <form data-toggle="validator" role="form">
+                                            <form data-toggle="validator" method="post" action="ServletDwmpc" role="form">
+                                                <input class="inputs" type="hidden" name="command" value="Company Registration">
+                                                <input class="inputs" type="hidden" name="action" value="Registration">
+                                                <input class="inputs" type="hidden" name="Status" value="Pending">
+                                                <input class="inputs" type="hidden" name="User_id" value="${User_Info[0].user_Id}">
                                                 <div class="form-group">
                                                     <label for="Company-name" class="control-label mb-10">Company Name (required):</label>
-                                                    <input type="text" class="form-control" id="Company-name" required>
+                                                    <input type="text" class="form-control" name="Company name" id="Company-name" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label mb-10" for="Street-address">Street Address (required):</label>
@@ -1219,11 +1225,11 @@
                                                         </div>
                                                         <div class="span1"></div>
                                                         <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10">Status of applicant(required):</label>
-                                                            <select class="selectpicker" data-style="form-control btn-default btn-outline">
-                                                                <option>Company</option>
-                                                                <option>Non-Governmental Organisation</option>
-                                                                <option>Local Government Institution</option>
+                                                            <label class="control-label mb-10" for="Status">Status of applicant(required):</label>
+                                                            <select class="selectpicker" id="Status" name="StatusA" data-style="form-control btn-default btn-outline">
+                                                                <option value="Company">Company</option>
+                                                                <option value="Non-Governmental Organisation">Non-Governmental Organisation</option>
+                                                                <option value="Local Government Institution">Local Government Institution</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -1392,7 +1398,7 @@
                                                     <div class="row">
                                                         <div class="col-md-6 col-xs-12">
                                                             <label class="control-label mb-10" for="telephone">Telephone (required):</label>
-                                                            <input id="telephone" type="text" data-mask="+267 999 9999" name="telephone" class="form-control required" value="" required/>
+                                                            <input id="telephone"  type="text" data-mask="+267 999 9999" name="telephone" class="form-control required" value="" required/>
                                                         </div>
                                                         <div class="span1"></div>
                                                         <div class="col-md-6 col-xs-12">
@@ -1424,6 +1430,31 @@
                             </div>
                         </div>
 
+
+                        <script>
+                                $('#test').click(function(event){
+                                    event.preventDefault();
+                                    alert("great")
+                                    var	command = $('#command').val();
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "ServletDwmpc",
+                                        data: { command:command },
+                                        dataType: "json",
+                                        success: function(result){
+                                        }
+                                    });
+                                });
+                                function SendIT(){
+                                    alert("test")
+                                    var	command = $('#command').val();
+                                    var ht=new XMLHttpRequest();
+                                    ht.open("Post","ServletDwmpc",true);
+                                    ht.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                                    ht.send(command);
+                                }
+
+                        </script>
 
                     </div>
                 </div>

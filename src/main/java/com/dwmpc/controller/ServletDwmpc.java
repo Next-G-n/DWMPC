@@ -2,6 +2,7 @@ package com.dwmpc.controller;
 import javax.servlet.annotation.MultipartConfig;
 
 import com.dwmpc.model.DAO.ConnectionUtil;
+import com.dwmpc.model.bean.company_Information;
 import com.dwmpc.model.bean.user;
 
 import javax.annotation.Resource;
@@ -11,6 +12,7 @@ import javax.servlet.annotation.*;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.sql.Timestamp;
 import java.util.List;
 
 import java.security.MessageDigest;
@@ -18,6 +20,7 @@ import java.security.NoSuchAlgorithmException;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 @WebServlet(name = "ServletDwmpc", value = "/ServletDwmpc")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 14, // 10 MB
@@ -77,6 +80,9 @@ public class ServletDwmpc extends HttpServlet {
                 case "Login":
                     Login(request,response);
                     break;
+                case "Company Registration":
+                    registerCompany(request,response);
+                    break;
             }
             // listStudents(request, response);
         }
@@ -87,6 +93,51 @@ public class ServletDwmpc extends HttpServlet {
         }
     }
 
+    private void registerCompany(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpSession session=request.getSession();
+        String action=request.getParameter("action");
+
+        int id= Integer.parseInt(request.getParameter("User_id"));
+        String companyName=request.getParameter("Company name");
+        String Com_email=request.getParameter("Company_Email");
+        String Street_address=request.getParameter("Street_Address");
+        String street_address_line1=request.getParameter("Street_Address2");
+        String City_Town_Village=request.getParameter("City");
+        String region=request.getParameter("Region");
+        String plot_number=request.getParameter("Plot_Number");
+        String ward=request.getParameter("Ward");
+        String telephone=request.getParameter("telephone");
+        String fax=request.getParameter("fax");
+        String phone_number=request.getParameter("Phone_Number");
+        String Status=request.getParameter("StatusA");
+        String Company_License_Status=request.getParameter("Status");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String ApplicationDate= String.valueOf(timestamp.getTime());
+
+        int companyId;
+        if(action.equals("Registration")){
+            companyId=0;
+        }else{
+            companyId= Integer.parseInt(request.getParameter("company_Id"));
+        }
+
+
+        company_Information registerCompany=new company_Information(companyId,id,companyName,Com_email,
+                Street_address,street_address_line1,City_Town_Village,region,plot_number,
+                ward,telephone,fax,phone_number,Status,ApplicationDate,Company_License_Status);
+
+        connectionUtil.registerCompany(registerCompany,action);
+
+        List<company_Information> CompanyInfo=connectionUtil.getCompanyDetail(id);
+        session.removeAttribute("Company_info");
+        session.setAttribute("Company_info", CompanyInfo);
+
+
+        //request.getRequestDispatcher("index.jsp").forward(request, response);
+        response.sendRedirect("index.jsp");
+
+    }
+
     private void Login(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String Email = request.getParameter("email");
         String Password = request.getParameter("password");
@@ -94,11 +145,20 @@ public class ServletDwmpc extends HttpServlet {
         String action="Login";
         byte[] salt = getSalt();
         String securePassword = get_SHA_512_SecurePassword(Password, salt);
+
         List<user> userlg = connectionUtil.loginUser(Email, securePassword,action);
         HttpSession session=request.getSession();
         session.setAttribute("User_Info", userlg);
-       // RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-       // dispatcher.forward(request, response);
+        int user_id=userlg.get(0).getUser_Id();
+
+        List<company_Information> CompanyInfo=connectionUtil.getCompanyDetail(user_id);
+
+
+        if(!CompanyInfo.isEmpty()){
+            session.setAttribute("Company_info", CompanyInfo);
+        }
+
+
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
@@ -130,13 +190,15 @@ public class ServletDwmpc extends HttpServlet {
         if(msg.equals("Successful")){
             List<user> userlg = connectionUtil.loginUser(email, securePassword,action);
             session.setAttribute("User_Info", userlg);
+            List<company_Information> CompanyInfo=connectionUtil.getCompanyDetail(userlg.get(0).getUser_Id());
+            if(CompanyInfo.get(0).getCompany_Name()!=null){
+                session.setAttribute("Company_info", CompanyInfo);
+            }
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         }else {
             session.setAttribute("ErrorEmail",userReg);
             this.getServletContext().getRequestDispatcher("/SignIn_and_signUp.jsp").forward(request, response);
-
-
         }
     }
 
