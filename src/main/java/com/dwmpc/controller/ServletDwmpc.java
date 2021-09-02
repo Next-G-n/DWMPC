@@ -97,8 +97,9 @@ public class ServletDwmpc extends HttpServlet {
         List<user> userlg = connectionUtil.loginUser(Email, securePassword,action);
         HttpSession session=request.getSession();
         session.setAttribute("User_Info", userlg);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request, response);
+       // RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+       // dispatcher.forward(request, response);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     private void User_Registration(HttpServletRequest request, HttpServletResponse response) throws Exception {
