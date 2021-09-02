@@ -60,7 +60,7 @@
 							<img class="brand-img" src="img/logo2.png" alt="brand"/>
 						</a>
 					</div>
-				</div>	
+				</div>
 				<a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block ml-20 pull-left" href="javascript:void(0);"><i class="zmdi zmdi-menu"></i></a>
 				<a id="toggle_mobile_search" data-toggle="collapse" data-target="#search_form" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-search"></i></a>
 				<a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-more"></i></a>
@@ -121,7 +121,7 @@
 											</a>
 										</li>
 									</ul>
-								</div>	
+								</div>
 							</li>
 							<li>
 								<div class="app-box-bottom-wrap">
@@ -167,7 +167,7 @@
 										<a href="javascript:void(0);">
 											<div class="pull-left">
 												<i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span>
-											</div>	
+											</div>
 											<div class="pull-right"><span class="label label-green">hot</span>
 											</div>
 											<div class="clearfix"></div>
@@ -220,11 +220,11 @@
 											<a href="#">
 												<img src="img/chair2.jpg" alt="chair">
 												<span>square chair</span>
-											</a>								
+											</a>
 										</div>
 									</li>
 								</ul>
-							</li>	
+							</li>
 						</ul>
 					</li>
 					<li class="dropdown alert-drp">
@@ -252,7 +252,7 @@
 												<div class="clearfix"></div>
 												<p class="truncate">Your customer subscribed for the basic plan. The customer will pay $25 per month.</p>
 											</div>
-										</a>	
+										</a>
 									</div>
 									<hr class="light-grey-hr ma-0"/>
 									<div class="sl-item">
@@ -266,7 +266,7 @@
 												<div class="clearfix"></div>
 												<p class="truncate">Some technical error occurred needs to be resolved.</p>
 											</div>
-										</a>	
+										</a>
 									</div>
 									<hr class="light-grey-hr ma-0"/>
 									<div class="sl-item">
@@ -280,7 +280,7 @@
 												<div class="clearfix"></div>
 												<p class="truncate"> The last payment for your G Suite Basic subscription failed.</p>
 											</div>
-										</a>	
+										</a>
 									</div>
 									<hr class="light-grey-hr ma-0"/>
 									<div class="sl-item">
@@ -294,7 +294,7 @@
 												<div class="clearfix"></div>
 												<p class="truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
 											</div>
-										</a>	
+										</a>
 									</div>
 									<hr class="light-grey-hr ma-0"/>
 									<div class="sl-item">
@@ -308,7 +308,7 @@
 												<div class="clearfix"></div>
 												<p class="truncate">consectetur, adipisci velit.</p>
 											</div>
-										</a>	
+										</a>
 									</div>
 								</div>
 							</li>
@@ -349,7 +349,7 @@
 									<li>
 										<a href="#"><i class="zmdi zmdi-minus-circle-outline text-danger"></i><span>offline</span></a>
 									</li>
-								</ul>	
+								</ul>
 							</li>
 							<li class="divider"></li>
 							<li>
@@ -358,10 +358,10 @@
 						</ul>
 					</li>
 				</ul>
-			</div>	
+			</div>
 		</nav>
 		<!-- /Top Menu Items -->
-		
+
 		<!-- Left Sidebar Menu -->
 		<div class="fixed-sidebar-left">
 			<ul class="nav navbar-nav side-nav nicescroll-bar">
@@ -370,59 +370,20 @@
 					<i class="zmdi zmdi-more"></i>
 				</li>
 				<li>
-					<a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text"></span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>${User_Info[0].first_name} ${User_Info[0].last_name} <span class="right-nav-text"></span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 				</li>
 				<li>
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">${User_Info[0].email}</span></div><div class="pull-right"><span class="label label-green">hot</span></div><div class="clearfix"></div></a>
 				</li>
 				<li>
-					<a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Apps </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-					<ul id="app_dr" class="collapse collapse-level-1">
-						<li>
-							<a href="chats.html">chats</a>
-						</li>
-						<li>
-							<a href="calendar.html">calendar</a>
-						</li>
-						<li>
-							<a href="weather.html">weather</a>
-						</li>
-						<li>
-							<a href="javascript:void(0);" data-toggle="collapse" data-target="#email_dr">Email<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-							<ul id="email_dr" class="collapse collapse-level-2">
-								<li>
-									<a href="inbox.jsp">inbox</a>
-								</li>
-								<li>
-									<a href="inbox-detail.html">detail email</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="javascript:void(0);" data-toggle="collapse" data-target="#contact_dr">Contacts<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-							<ul id="contact_dr" class="collapse collapse-level-2">
-								<li>
-									<a href="contact-list.html">list</a>
-								</li>
-								<li>
-									<a href="contact-card.html">cards</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="file-manager.html">File Manager</a>
-						</li>
-						<li>
-							<a href="todo-tasklist.html">To Do/Tasklist</a>
-						</li>
-					</ul>
+					<a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">${User_Info[0].omang} </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 				</li>
 				<li>
-					<a href="widgets.html"><div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">widgets</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+					<a href="widgets.html"><div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">${User_Info[0].contact}</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
 				</li>
 				<li><hr class="light-grey-hr mb-10"/></li>
 				<li class="navigation-header">
-					<span>component</span> 
+					<span>component</span>
 					<i class="zmdi zmdi-more"></i>
 				</li>
 				<li>
@@ -589,7 +550,7 @@
 				</li>
 				<li><hr class="light-grey-hr mb-10"/></li>
 				<li class="navigation-header">
-					<span>featured</span> 
+					<span>featured</span>
 					<i class="zmdi zmdi-more"></i>
 				</li>
 				<li>
@@ -676,7 +637,7 @@
 			</ul>
 		</div>
 		<!-- /Left Sidebar Menu -->
-		
+
 		<!-- Right Sidebar Menu -->
 		<div class="fixed-sidebar-right">
 			<ul class="right-sidebar">
@@ -694,7 +655,7 @@
 										<div class="add-friend">
 											<a href="javascript:void(0)" class="inline-block txt-grey">
 												<i class="zmdi zmdi-more"></i>
-											</a>	
+											</a>
 											<span class="inline-block txt-dark">users</span>
 											<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
 											<div class="clearfix"></div>
@@ -823,7 +784,7 @@
 												<div class="goto-back">
 													<a  id="goto_back" href="javascript:void(0)" class="inline-block txt-grey">
 														<i class="zmdi zmdi-chevron-left"></i>
-													</a>	
+													</a>
 													<span class="inline-block txt-dark">ryan</span>
 													<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-more"></i></a>
 													<div class="clearfix"></div>
@@ -843,7 +804,7 @@
 																		</div>
 																	</div>
 																	<div class="clearfix"></div>
-																</div>	
+																</div>
 															</li>
 															<li class="self mb-10">
 																<div class="self-msg-wrap">
@@ -853,7 +814,7 @@
 																		</div>
 																	</div>
 																	<div class="clearfix"></div>
-																</div>	
+																</div>
 															</li>
 															<li class="self">
 																<div class="self-msg-wrap">
@@ -863,19 +824,19 @@
 																		</div>
 																	</div>
 																	<div class="clearfix"></div>
-																</div>	
+																</div>
 															</li>
 															<li class="friend">
 																<div class="friend-msg-wrap">
 																	<img class="user-img img-circle block pull-left" src="img/user.png" alt="user"/>
-																	<div class="msg pull-left"> 
+																	<div class="msg pull-left">
 																		<p>Not too bad.</p>
 																		<div class="msg-per-detail  text-right">
 																			<span class="msg-time txt-grey">2:35 pm</span>
 																		</div>
 																	</div>
 																	<div class="clearfix"></div>
-																</div>	
+																</div>
 															</li>
 														</ul>
 													</div>
@@ -904,13 +865,13 @@
 									</div>
 								</div>
 							</div>
-								
+
 							<div id="messages_tab" class="tab-pane fade" role="tabpanel">
 								<div class="message-box-wrap">
 									<div class="msg-search">
 										<a href="javascript:void(0)" class="inline-block txt-grey">
 											<i class="zmdi zmdi-more"></i>
-										</a>	
+										</a>
 										<span class="inline-block txt-dark">messages</span>
 										<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-search"></i></a>
 										<div class="clearfix"></div>
@@ -1024,7 +985,7 @@
 									<div class="add-todo">
 										<a href="javascript:void(0)" class="inline-block txt-grey">
 											<i class="zmdi zmdi-more"></i>
-										</a>	
+										</a>
 										<span class="inline-block txt-dark">todo list</span>
 										<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
 										<div class="clearfix"></div>
@@ -1097,7 +1058,7 @@
 			</ul>
 		</div>
 		<!-- /Right Sidebar Menu -->
-		
+
 		
 
         <!-- Main Content -->
@@ -1117,7 +1078,7 @@
 							<div  class="panel-wrapper collapse in">
 								<div  class="panel-body  pagination-lg">
 
-
+                                    <c:if test="${Company_info!=null}">
 									<table class="table table-bordered m-0">
 										<thead>
 										<tr>
@@ -1163,7 +1124,10 @@
 										</tr>
 										</tbody>
 									</table>
-
+									</c:if>
+									<c:if test="${Company_info==null}">
+										<p>No Company Registered</p>
+									</c:if>
 									<button type="button" onclick="toggleModal() " data-target="#Company-information-modal" data-toggle="modal"  style="float: right" class="btn btn-primary btn-anim btn-rounded"><i class="fa fa-pencil"></i><span class="btn-text">Edit</span></button>
 									<button type="button" onclick="location.href='companyForm.jsp';"  style="float: right; margin-right: 5px" class="btn btn-primary btn-anim btn-rounded"><i class="fa  fa-building-o"></i><span class="btn-text">Add New Company</span></button>
 							</div>
@@ -1549,7 +1513,7 @@
 			<footer class="footer container-fluid pl-30 pr-30">
 				<div class="row">
 					<div class="col-sm-12">
-						<p>2021 &copy; Created by Next-gen</p>
+						<p>2021 &copy; Created by Next-gen testss</p>
 					</div>
 				</div>
 			</footer>
@@ -1584,10 +1548,10 @@
 
 	<script src="vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
 	<script src="vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
-	<script src="ltr/dist/js/export-table-data.js"></script>
+	<script src="dist/js/export-table-data.js"></script>
 	
 	<!-- Slimscroll JavaScript -->
-	<script src="ltr/dist/js/jquery.slimscroll.js"></script>
+	<script src="dist/js/jquery.slimscroll.js"></script>
 	
 	<!-- EChartJS JavaScript -->
 	<script src="vendors/bower_components/echarts/dist/echarts-en.min.js"></script>
@@ -1602,7 +1566,7 @@
 	<script src="vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
 	
 	<!-- Fancy Dropdown JS -->
-	<script src="ltr/dist/js/dropdown-bootstrap-extended.js"></script>
+	<script src="dist/js/dropdown-bootstrap-extended.js"></script>
 	
 	<!-- Sparkline JavaScript -->
 	<script src="vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
@@ -1614,7 +1578,7 @@
 	<script src="vendors/bower_components/moment/min/moment.min.js"></script>
 	<script src="vendors/jquery-ui.min.js"></script>
 	<script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-	<script src="ltr/dist/js/fullcalendar-data.js"></script>
+	<script src="dist/js/fullcalendar-data.js"></script>
 	
 	<!-- Switchery JavaScript -->
 	<script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
@@ -1623,8 +1587,8 @@
 	<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 	
 	<!-- Init JavaScript -->
-	<script src="ltr/dist/js/init.js"></script>
-	<script src="ltr/dist/js/dashboard4-data.js"></script>
+	<script src="dist/js/init.js"></script>
+	<script src="dist/js/dashboard4-data.js"></script>
 
 
 
