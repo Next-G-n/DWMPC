@@ -1,3 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1211,6 +1214,7 @@
                                         <thead>
                                         <tr>
                                             <th data-name="id" data-breakpoints="xs" data-type="number">ID</th>
+                                            <th data-name="Employee_Id" class="hidden"></th>
                                             <th data-name="firstName">First Name</th>
                                             <th data-name="lastName">Last Name</th>
                                             <th data-name="jobTitle" data-breakpoints="xs">Job Title</th>
@@ -1228,41 +1232,45 @@
                                     <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
 
                                         <div class="modal-dialog" role="document">
-                                            <form class="modal-content form-horizontal" id="editor">
+                                            <form class="modal-content form-horizontal" id="editor" name='ajaxform' action="ServletDwmpc" method="post">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                     <h5 class="modal-title" id="editor-title">Add Row</h5>
                                                 </div>
                                                 <div class="modal-body">
                                                     <input type="number" id="id" name="id" class="hidden"/>
+                                                    <input type="hidden" id="command" name="command" class="hidden" value="RegisteringEmployee"/>action
+                                                    <input type="hidden" id="action" name="action" value=""/>
+                                                    <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
+                                                    <input type="hidden" id="Employee_Id" name="Employee Id" class="hidden" value=""/>
                                                     <div class="form-group required">
                                                         <label for="firstName" class="col-sm-3 control-label">First Name</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+                                                            <input type="text" class="form-control" id="firstName" name="First Name" placeholder="First Name" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group required">
                                                         <label for="lastName" class="col-sm-3 control-label">Last Name</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+                                                            <input type="text" class="form-control" id="lastName" name="Last Name" placeholder="Last Name" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="jobTitle" class="col-sm-3 control-label">Job Title</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Job Title">
+                                                            <input type="text" class="form-control" id="jobTitle" name="Position/job Title" placeholder="Job Title">
                                                         </div>
                                                     </div>
                                                     <div class="form-group required">
                                                         <label for="Qualification" class="col-sm-3 control-label">Qualification</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="Qualification" name="startedOn" placeholder="Qualification" required>
+                                                            <input type="text" class="form-control" id="Qualification" name="Qualification" placeholder="Qualification" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="Training" class="col-sm-3 control-label">Training in waste Management</label>
                                                         <div class="col-sm-9">
-                                                            <select class="selectpicker" id= "Training" data-style="form-control btn-default btn-outline">
+                                                            <select class="selectpicker" id= "Training" name="training" data-style="form-control btn-default btn-outline">
                                                                 <option value="Yes">Yes</option>
                                                                 <option value="No">No</option>
                                                             </select>
@@ -1284,6 +1292,29 @@
                 </div>
             </div>
             <!-- /Row -->
+
+            <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+            <script type="text/javascript">
+
+                var form = $('#editor');
+                form.submit(function () {
+
+                    $.ajax({
+                        type: form.attr('method'),
+                        url: form.attr('action'),
+                        data: form.serialize(),
+                        success: function (data) {
+                            var result=data;
+                            $('#content').html(result);
+                            alert("submission succesful");
+
+                        }
+                    });
+
+                    return false;
+                }); </script>
+
 
             <!-- Footer -->
             <footer class="footer container-fluid pl-30 pr-30">

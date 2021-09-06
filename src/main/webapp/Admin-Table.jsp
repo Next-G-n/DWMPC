@@ -1203,6 +1203,7 @@
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
                                 <div class="table-wrap mt-40">
+
                                     <div class="table-responsive">
 
                                         <table  id="example"  data-paging="true" class="table table-hover display  pb-30">
@@ -1313,6 +1314,7 @@
 
 
                                     </div>
+
                                     <div id="Officer-Registration-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                                         <div class="modal-dialog">
                                             <div class="modal-content">

@@ -3,6 +3,7 @@ import javax.servlet.annotation.MultipartConfig;
 
 import com.dwmpc.model.DAO.ConnectionUtil;
 import com.dwmpc.model.bean.company_Information;
+import com.dwmpc.model.bean.company_personnel;
 import com.dwmpc.model.bean.user;
 
 import javax.annotation.Resource;
@@ -83,6 +84,10 @@ public class ServletDwmpc extends HttpServlet {
                 case "Company Registration":
                     registerCompany(request,response);
                     break;
+                case "RegisteringEmployee":
+                    registerEmployee(request,response);
+                    break;
+
             }
             // listStudents(request, response);
         }
@@ -92,6 +97,31 @@ public class ServletDwmpc extends HttpServlet {
 
         }
     }
+
+    private void registerEmployee(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String action = request.getParameter("command");
+        String Company_id = request.getParameter("Company Id");
+        String firstName = request.getParameter("First Name");
+        String lastName = request.getParameter("Last Name");
+        String position = request.getParameter("Position/job Title");
+        String qualification = request.getParameter("Qualification");
+        String training = request.getParameter("training");
+        String Employee_Status="UpToDate";
+        System.out.println(" this is :"+Company_id);
+        int Employee_Id;
+        if(action.equals("EditingEmployee")){
+            Employee_Id = Integer.parseInt(request.getParameter("Employee Id"));
+        }else{
+            Employee_Id=0;
+        }
+        int yes= Integer.parseInt(Company_id);
+
+        company_personnel companyPersonnel = new company_personnel(Employee_Id,yes,firstName, lastName, position, qualification, training,Employee_Status);
+        connectionUtil.EmployeeRegistration(companyPersonnel,action);
+
+    }
+
+
 
     private void registerCompany(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session=request.getSession();
@@ -117,6 +147,7 @@ public class ServletDwmpc extends HttpServlet {
         int companyId;
         if(action.equals("Registration")){
             companyId=0;
+            session.setAttribute("Successful_Registration_Alert","CompanyRegistration");
         }else{
             companyId= Integer.parseInt(request.getParameter("company_Id"));
         }
@@ -126,11 +157,15 @@ public class ServletDwmpc extends HttpServlet {
                 Street_address,street_address_line1,City_Town_Village,region,plot_number,
                 ward,telephone,fax,phone_number,Status,ApplicationDate,Company_License_Status);
 
-        connectionUtil.registerCompany(registerCompany,action);
+        company_Information getCurrentCompanyID=connectionUtil.registerCompany(registerCompany,action);
 
-        List<company_Information> CompanyInfo=connectionUtil.getCompanyDetail(id);
+        List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(id);
+        session.setAttribute("All_companies", CompanyInfo);
+
+
         session.removeAttribute("Company_info");
-        session.setAttribute("Company_info", CompanyInfo);
+        session.setAttribute("Company_info", getCurrentCompanyID);
+
 
 
         //request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -151,11 +186,13 @@ public class ServletDwmpc extends HttpServlet {
         session.setAttribute("User_Info", userlg);
         int user_id=userlg.get(0).getUser_Id();
 
-        List<company_Information> CompanyInfo=connectionUtil.getCompanyDetail(user_id);
+        List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(user_id);
 
 
         if(!CompanyInfo.isEmpty()){
-            session.setAttribute("Company_info", CompanyInfo);
+            session.setAttribute("All_companies", CompanyInfo);
+            company_Information FirstCompanyDetails=connectionUtil.getCompanyDetails(CompanyInfo.get(0).getCompany_Id());
+            session.setAttribute("Company_info", FirstCompanyDetails);
         }
 
 
@@ -190,9 +227,11 @@ public class ServletDwmpc extends HttpServlet {
         if(msg.equals("Successful")){
             List<user> userlg = connectionUtil.loginUser(email, securePassword,action);
             session.setAttribute("User_Info", userlg);
-            List<company_Information> CompanyInfo=connectionUtil.getCompanyDetail(userlg.get(0).getUser_Id());
+            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(userlg.get(0).getUser_Id());
             if(CompanyInfo.get(0).getCompany_Name()!=null){
-                session.setAttribute("Company_info", CompanyInfo);
+                session.setAttribute("All_companies", CompanyInfo);
+                company_Information FirstCompanyDetails=connectionUtil.getCompanyDetails(CompanyInfo.get(0).getCompany_Id());
+                session.setAttribute("Company_info", FirstCompanyDetails);
             }
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
