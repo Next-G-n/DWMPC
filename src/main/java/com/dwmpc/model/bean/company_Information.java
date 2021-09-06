@@ -20,6 +20,12 @@ public class company_Information {
     String Date_Unix;
     String Company_License_Status;
 
+    public company_Information(int company_Id, int user_Id, String company_Name) {
+        Company_Id = company_Id;
+        User_Id = user_Id;
+        Company_Name = company_Name;
+    }
+
     public company_Information(int company_Id, int user_Id, String company_Name, String email, String street_Address, String street_Address2, String region_Town_Village, String region, String plot_Number, String ward, String telephone, String fax_Number, String phone_Number, String company_Status, String date_Unix, String company_License_Status) {
         Company_Id = company_Id;
         User_Id = user_Id;

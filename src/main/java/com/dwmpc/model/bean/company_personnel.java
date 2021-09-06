@@ -11,11 +11,9 @@ public class company_personnel {
     String Qualification;
     String Trained_In_Waste_Management;
     String Employee_Status;
-    Date Date;
-    String Date_Unix;
-    Date Delete_Date;
+    String Delete_Date;
 
-    public company_personnel(int company_Personnel_Id, int company_Id, String first_Name, String last_Name, String job_Title, String qualification, String trained_In_Waste_Management, String employee_Status, java.util.Date date, String date_Unix, java.util.Date delete_Date) {
+    public company_personnel(int company_Personnel_Id, int company_Id, String first_Name, String last_Name, String job_Title, String qualification, String trained_In_Waste_Management, String employee_Status) {
         Company_Personnel_Id = company_Personnel_Id;
         Company_Id = company_Id;
         First_Name = first_Name;
@@ -24,9 +22,6 @@ public class company_personnel {
         Qualification = qualification;
         Trained_In_Waste_Management = trained_In_Waste_Management;
         Employee_Status = employee_Status;
-        Date = date;
-        Date_Unix = date_Unix;
-        Delete_Date = delete_Date;
     }
 
     public int getCompany_Personnel_Id() {
@@ -93,27 +88,13 @@ public class company_personnel {
         Employee_Status = employee_Status;
     }
 
-    public java.util.Date getDate() {
-        return Date;
-    }
+  
 
-    public void setDate(java.util.Date date) {
-        Date = date;
-    }
-
-    public String getDate_Unix() {
-        return Date_Unix;
-    }
-
-    public void setDate_Unix(String date_Unix) {
-        Date_Unix = date_Unix;
-    }
-
-    public java.util.Date getDelete_Date() {
+    public String getDelete_Date() {
         return Delete_Date;
     }
 
-    public void setDelete_Date(java.util.Date delete_Date) {
+    public void setDelete_Date(String delete_Date) {
         Delete_Date = delete_Date;
     }
 
@@ -128,8 +109,7 @@ public class company_personnel {
                 ", Qualification='" + Qualification + '\'' +
                 ", Trained_In_Waste_Management='" + Trained_In_Waste_Management + '\'' +
                 ", Employee_Status='" + Employee_Status + '\'' +
-                ", Date=" + Date +
-                ", Date_Unix='" + Date_Unix + '\'' +
+
                 ", Delete_Date=" + Delete_Date +
                 '}';
     }

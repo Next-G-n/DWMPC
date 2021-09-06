@@ -22,7 +22,7 @@ $(function() {
 	    swal({   
 			title: "Here's a message!",   
             text: "Lorem ipsum dolor sit amet",
-			confirmButtonColor: "#2196F3",   
+			confirmButtonColor: "#2196F3",
         });
 		return false;
     });
@@ -30,13 +30,31 @@ $(function() {
     //Success Message
 	$('#sa-success').on('click',function(e){
         swal({   
-			title: "good job!",   
+			title: "You Have Successful Registered a Company!",
              type: "success", 
-			text: "Lorem ipsum dolor sit amet",
-			confirmButtonColor: "#8BC34A",   
+			text: "Please Register All The Company's Employees",
+			confirmButtonColor: "#8BC34A",
+            confirmButtonText: "Go Employee Page",
+        },function (){
+            window.open('Employees.jsp', '_parent');
         });
 		return false;
     });
+        //Successful Registered Company Now Register Employees
+        $('#Plz_Reg_Empolyees').on('click',function(e){
+            swal({
+                title: "You Have Successful Registered a Company!",
+                type: "success",
+                text: "Please Register All The Company's Employees",
+                showCancelButton: true,
+                confirmButtonColor: "#8BC34A",
+                confirmButtonText: "Go and Register Employee",
+                closeOnConfirm: false
+            },function (){
+                window.open('Employees.jsp', '_parent');
+            });
+            return false;
+        });
 
     //Warning Message
     $('#sa-warning,.sa-warning').on('click',function(e){

@@ -14,6 +14,9 @@
 	<!-- jquery-steps css -->
 	<link rel="stylesheet" href="vendors/bower_components/jquery.steps/demo/css/jquery.steps.css">
 
+	<!--alerts CSS -->
+	<link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="favicon.ico">
@@ -1072,7 +1075,7 @@
 							<div class="panel-heading">
 								<div class="pull-left">
 									<c:if test="${Company_info!=null}">
-										<h6 class="panel-title txt-light">${Company_info[0].company_Name} : Company Information</h6>
+										<h6 class="panel-title txt-light">${Company_info.company_Name} : Company Information</h6>
 									</c:if>
 									<c:if test="${Company_info==null}">
 										<h6 class="panel-title txt-light">Company Information</h6>
@@ -1095,40 +1098,40 @@
 										<tbody>
 										<tr>
 											<td><code>Region</code> </td>
-											<td class="Region">${Company_info[0].region}</td>
+											<td class="Region">${Company_info.region}</td>
 										</tr>
 
 										<tr>
 											<td><code>Email</code></td>
-											<td class="Email">${Company_info[0].email}</td>
+											<td class="Email">${Company_info.email}</td>
 										</tr>
 										<tr>
 											<td><code>Street Address</code> </td>
-											<td class="Street-Address">${Company_info[0].street_Address}</td>
+											<td class="Street-Address">${Company_info.street_Address}</td>
 										</tr>
-										<c:if test='${Company_info[0].street_Address2!=""}'>
+										<c:if test='${Company_info.street_Address2!=""}'>
 										<tr>
 											<td><code>2nd Street Address</code> </td>
-											<td class="Street-Address2">${Company_info[0].street_Address2}</td>
+											<td class="Street-Address2">${Company_info.street_Address2}</td>
 										</tr>
 										</c:if>
 
 										<tr>
 											<td><code>Company Status</code></td>
-											<td class="Company-status">${Company_info[0].company_Status}</td>
+											<td class="Company-status">${Company_info.company_Status}</td>
 										</tr>
 										<tr>
 											<td><code>Location</code></td>
-											<td class="Location">${Company_info[0].region_Town_Village}, ${Company_info[0].ward}, ${Company_info[0].plot_Number}</td>
+											<td class="Location">${Company_info.region_Town_Village}, ${Company_info.ward}, ${Company_info.plot_Number}</td>
 										</tr>
 										<tr>
 											<td><code>Contact</code> </td>
-											<td class="Contact">${Company_info[0].telephone},${Company_info[0].phone_Number}</td>
+											<td class="Contact">${Company_info.telephone},${Company_info.phone_Number}</td>
 										</tr>
 
 										<tr>
 											<td><code>Fax</code></td>
-											<td class="Fax">${Company_info[0].fax_Number}</td>
+											<td class="Fax">${Company_info.fax_Number}</td>
 										</tr>
 										</tbody>
 									</table>
@@ -1152,7 +1155,7 @@
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-									<h5 class="modal-title">Editing Company Information for ${Company_info[0].company_Name}</h5>
+									<h5 class="modal-title">Editing Company Information for ${Company_info.company_Name}</h5>
 								</div><form method="post" action="ServletDwmpc">
 								<div class="modal-body">
 
@@ -1160,13 +1163,13 @@
 									<input class="inputs" type="hidden" name="action" value="Editing">
 									<input class="inputs" type="hidden" name="Statues" value="Pending">
 									<input class="inputs" type="hidden" name="User_id" value="${User_Info[0].user_Id}">
-									<input class="inputs" type="hidden" name="company_Id" value="${Company_info[0].company_Id}">
+									<input class="inputs" type="hidden" name="company_Id" value="${Company_info.company_Id}">
 
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-6 col-xs-12">
 												<label for="Company-name" class="control-label mb-10">Company Name (required):</label>
-												<input type="text" class="form-control" name="Company name" id="Company-name" value="${Company_info[0].company_Name}" required>
+												<input type="text" class="form-control" name="Company name" id="Company-name" value="${Company_info.company_Name}" required>
                                             </div>
                                             <div class="span1"></div>
                                             <div class="col-md-6 col-xs-12">
@@ -1388,7 +1391,7 @@
 						</div>
 					</div>
 
-
+					<button  type="button"  alt="alert"  class="img-responsive model_img Company_Alert_Succes" id="Plz_Reg_Empolyees" onclick="">test Good</button>
 					<div id="Company_info2"  class="tab-pane fade in active col-lg-3 col-md-6 col-sm-12 col-xs-12">
 						<div class="panel panel-default card-view pa-0">
 							<div class="panel-wrapper collapse in">
@@ -1481,7 +1484,7 @@
                             const Region = document.getElementsByClassName('Region')[0].innerHTML;
                             const Email = document.getElementsByClassName('Email')[0].innerHTML;
                             const Street_Address = document.getElementsByClassName('Street-Address')[0].innerHTML;
-							<c:if test='${Company_info[0].street_Address2!=""}'>
+							<c:if test='${Company_info.street_Address2!=""}'>
                             const Street_Address2 = document.getElementsByClassName('Street-Address2')[0].innerHTML;
 							</c:if>
                             const Company_status = document.getElementsByClassName('Company-status')[0].innerHTML;
@@ -1495,7 +1498,7 @@
                             document.getElementById('Region').value = Region;
                             document.getElementById('Company_Email').value = Email;
                             document.getElementById('Street-address').value = Street_Address;
-                            <c:if test='${Company_info[0].street_Address2!=""}'>
+                            <c:if test='${Company_info.street_Address2!=""}'>
                             document.getElementById('Street-address2').value = Street_Address2;
 							</c:if>
                             document.getElementById('Status').value = Company_status;
@@ -1507,6 +1510,11 @@
                             document.getElementById('phoneNumber').value = Contact.split(",")[0];
                             document.getElementById('fax').value = Fax;
                         }
+						<c:if test="${Successful_Registration_Alert.equals('CompanyRegistration')}">
+						alert("this is true")
+						document.getElementById("Plz_Reg_Empolyees").click();
+						alert("this is true")
+						</c:if>
                         function removeValue(){
                             document.getElementById('Region').value = "";
                             document.getElementById('Email').value = "";
@@ -1607,6 +1615,11 @@
 	<!-- Init JavaScript -->
 	<script src="dist/js/init.js"></script>
 	<script src="dist/js/dashboard4-data.js"></script>
+
+	<!-- Sweet-Alert  -->
+	<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="dist/js/sweetalert-data.js"></script>
+
 
 
 

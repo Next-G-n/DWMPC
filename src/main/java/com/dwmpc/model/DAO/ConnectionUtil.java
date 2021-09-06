@@ -1,6 +1,7 @@
 package com.dwmpc.model.DAO;
 
 import com.dwmpc.model.bean.company_Information;
+import com.dwmpc.model.bean.company_personnel;
 import com.dwmpc.model.bean.user;
 
 import javax.sql.DataSource;
@@ -70,6 +71,8 @@ public class ConnectionUtil {
 
     }
 
+
+
     public List<user> loginUser(String email, String password,String action) throws Exception{
         List<user> login=new ArrayList<>();
         Connection myConn=null;
@@ -109,8 +112,9 @@ public class ConnectionUtil {
 
     }
 
-    public void registerCompany(company_Information registerCompany, String action) throws Exception{
+    public company_Information registerCompany(company_Information registerCompany, String action) throws Exception{
 
+        company_Information viewRegisteredCompany=null;
         Connection myConn=null;
         PreparedStatement myStmt=null;
         ResultSet myRS=null;
@@ -142,7 +146,7 @@ public class ConnectionUtil {
                 myStmt.setString(13, registerCompany.getDate_Unix());
                 myStmt.setString(14, registerCompany.getCompany_License_Status());
                 myStmt.setString(15,registerCompany.getCompany_Status());
-                myStmt.setString(16,"Update" );
+                myStmt.setString(16,"UpToDate" );
             }else {
                 sql2="Update `dwmpc1.0`.`company_information` set  `Company Name`='"+registerCompany.getCompany_Name()+"'," +
                         " `Company Email`='"+registerCompany.getEmail()+"', " +
@@ -158,15 +162,28 @@ public class ConnectionUtil {
 
 
             myStmt.execute();
+            int user_id=registerCompany.getUser_Id();
+            String sql3="select * from `dwmpc1.0`.`company_information` where `Company Id`=LAST_INSERT_ID()";
+
+            myStmt=myConn.prepareStatement(sql3);
+            myRS=myStmt.executeQuery();
+            while(myRS.next()){
+                int id=myRS.getInt("Company Id");
+                String companyName=myRS.getString("Company Name");
+                viewRegisteredCompany=getCompanyDetails(id);
+                System.out.println(" This is the company Id :"+id);
+            }
+            ;
             //Run the getCompanyInfo
 
 
         }finally {
-            close(myConn,myStmt,null);
+            close(myConn,myStmt,myRS);
         }
+        return viewRegisteredCompany;
     }
 
-    public List<company_Information> getCompanyDetail(int userId) throws Exception {
+    public List<company_Information> getAllCompanies(int userId) throws Exception {
             List<company_Information> getCompanyDetail = new ArrayList<>();
             Connection myConn=null;
             ResultSet myRs=null;
@@ -185,23 +202,8 @@ public class ConnectionUtil {
                     //retrieve data from the result set
                     int id=myRs.getInt("Company Id");
                     String companyName=myRs.getString("Company Name");
-                    String Com_email=myRs.getString("Company Email");
-                    String Street_address=myRs.getString("Street Address");
-                    String street_address_line1=myRs.getString("Street Address2");
-                    String City_Town_Village=myRs.getString("City/Town/Village");
-                    String region=myRs.getString("Region");
-                    String plot_number=myRs.getString("Plot Number");
-                    String ward=myRs.getString("Ward");
-                    String telephone= myRs.getString("Telephone");
-                    String fax= myRs.getString("Fax Number");
-                    String phone_number= myRs.getString("Phone Number");
-                    String date=myRs.getString("Date Unix");
-                    String Status=myRs.getString("Company status");
-                    String Company_Licence_Status=myRs.getString("Company License Status");
 
-                    company_Information registerCompany=new company_Information(id,userId,companyName,Com_email,
-                            Street_address,street_address_line1,City_Town_Village,region,plot_number,
-                            ward,telephone,fax,phone_number,Status,date,Company_Licence_Status);
+                    company_Information registerCompany=new company_Information(id,userId,companyName);
 
                     getCompanyDetail.add(registerCompany);
                 }
@@ -213,4 +215,83 @@ public class ConnectionUtil {
             return getCompanyDetail;
 
     }
+
+    public company_Information getCompanyDetails(int Company_id) throws Exception{
+        company_Information getCompanyDetail=null;
+        Connection myConn=null;
+        ResultSet myRs=null;
+        PreparedStatement myStmt=null;
+
+        try {
+            //get a connectio
+
+            myConn=dataSource.getConnection();
+            String sql ="Select * from company_information where `Company Id`="+Company_id;
+            myStmt=myConn.prepareStatement(sql);
+            myRs=myStmt.executeQuery();
+            while (myRs.next()) {
+    //retrieve data from the result set
+    int id = myRs.getInt("Company Id");
+    String companyName = myRs.getString("Company Name");
+    String Com_email = myRs.getString("Company Email");
+    String Street_address = myRs.getString("Street Address");
+    String street_address_line1 = myRs.getString("Street Address2");
+    String City_Town_Village = myRs.getString("City/Town/Village");
+    String region = myRs.getString("Region");
+    String plot_number = myRs.getString("Plot Number");
+    String ward = myRs.getString("Ward");
+    String telephone = myRs.getString("Telephone");
+    String fax = myRs.getString("Fax Number");
+    String phone_number = myRs.getString("Phone Number");
+    String date = myRs.getString("Date Unix");
+    String Status = myRs.getString("Company status");
+    String Company_Licence_Status = myRs.getString("Company License Status");
+
+    getCompanyDetail = new company_Information(id, Company_id, companyName, Com_email,
+            Street_address, street_address_line1, City_Town_Village, region, plot_number,
+            ward, telephone, fax, phone_number, Status, date, Company_Licence_Status);
+}
+
+        }finally {
+
+            close(myConn,myStmt,myRs);
+
+        }
+        return getCompanyDetail;
+
+    }
+
+    public void EmployeeRegistration(company_personnel companyPersonnel, String action) throws Exception{
+        Connection myConn=null;
+        PreparedStatement myStmt=null;
+        try {
+            myConn=dataSource.getConnection();
+            System.out.println("this is the action P :"+action);
+            String sql=null;
+            if(action.equals("RegisteringEmployee")){
+                sql="INSERT INTO `dwmpc1.0`.`company_personnel` (`Company Id`, `First Name`, `Last Name`, `Job Title`, " +
+                        "`Qualification`, `Trained In Waste Management`, `Employee Status`) VALUES (?,?,?,?,?,?,?)";
+            }else{
+                sql="Update company_personnel set" +
+                        " `First Name`='"+companyPersonnel.getFirst_Name()+"'," +
+                        " `Last Name`='"+companyPersonnel.getLast_Name()+"'," +
+                        " `Job Title`='"+companyPersonnel.getJob_Title()+"', `Qualification`='"+companyPersonnel.getQualification()+"', " +
+                        "`Trained In Waste Management`='"+companyPersonnel.getTrained_In_Waste_Management()+"' " +
+                        "where `Company Personnel Id`="+companyPersonnel.getCompany_Personnel_Id();
+            }
+
+            myStmt=myConn.prepareStatement(sql);
+            myStmt.setInt(1,companyPersonnel.getCompany_Id());
+            myStmt.setString(2,companyPersonnel.getFirst_Name());
+            myStmt.setString(3,companyPersonnel.getLast_Name());
+            myStmt.setString(4,companyPersonnel.getJob_Title());
+            myStmt.setString(5,companyPersonnel.getQualification());
+            myStmt.setString(6,companyPersonnel.getTrained_In_Waste_Management());
+            myStmt.setString(7,companyPersonnel.getEmployee_Status());
+            myStmt.execute();
+        }finally {
+            close(myConn,myStmt,null);
+        }
+    }
+
 }

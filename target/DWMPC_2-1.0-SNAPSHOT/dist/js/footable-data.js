@@ -10,6 +10,7 @@ $(function () {
 	var $modal = $('#editor-modal'),
 		$editor = $('#editor'),
 		$editorTitle = $('#editor-title'),
+		$Action = $('#action'),
 		ft = FooTable.init('#footable_2', {
 			editing: {
 				enabled: true,
@@ -17,11 +18,14 @@ $(function () {
 					$modal.removeData('row');
 					$editor[0].reset();
 					$editorTitle.text('Add a New Employee');
+					$Action.val('RegisteringEmployee')
 					$modal.modal('show');
 				},
 				editRow: function(row){
 					var values = row.val();
 					$editor.find('#id').val(values.id);
+					$editor.find('#command').val("EditingEmployee");
+					$editor.find('#firstName').val(values.Employee_Id);
 					$editor.find('#firstName').val(values.firstName);
 					$editor.find('#lastName').val(values.lastName);
 					$editor.find('#jobTitle').val(values.jobTitle);
@@ -40,7 +44,7 @@ $(function () {
 				}
 			}
 		}),
-		uid = 1;
+		uid = 1 ;
 
 	$editor.on('submit', function(e){
 		if (this.checkValidity && !this.checkValidity()) return;
@@ -48,6 +52,7 @@ $(function () {
 		var row = $modal.data('row'),
 			values = {
 				id: $editor.find('#id').val(),
+				Employee_Id: $editor.find('#Employee_Id').val(),
 				firstName: $editor.find('#firstName').val(),
 				lastName: $editor.find('#lastName').val(),
 				jobTitle: $editor.find('#jobTitle').val(),
