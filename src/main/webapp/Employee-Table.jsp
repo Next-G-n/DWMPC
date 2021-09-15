@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: NITRO5
+  Date: 9/7/2021
+  Time: 10:36 AM
+  To change this template use File | Settings | File Templates.
+--%>
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -7,7 +14,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>DWMPC || Company Vehicles</title>
+  <title>DWMPC || Employee Table</title>
   <meta name="description" content="Waste Management System." />
   <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Zapily Admin, Zapilyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
   <meta name="Next-gen" content="hencework"/>
@@ -27,12 +34,12 @@
   <!-- Custom CSS -->
   <link href="dist/css/style.css" rel="stylesheet" type="text/css">
 
-
   <style>
     .dt-buttons{
       display: none;
     }
   </style>
+
 </head>
 
 <body>
@@ -1192,7 +1199,7 @@
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
           <ol class="breadcrumb">
             <li><a href="${pageContext.request.contextPath}/index.jsp">Dashboard</a></li>
-            <li class="active"><span>Company Vehicles</span></li>
+            <li class="active"><span>Employee Table</span></li>
           </ol>
         </div>
         <!-- /Breadcrumb -->
@@ -1215,124 +1222,100 @@
                 <div class="table-wrap mt-40">
                   <div class="table-responsive">
 
-                    <table  id="example"  data-paging="true" class="table table-hover display  pb-30">
+                    <table  id="example"  data-paging="true" class="table table-striped display  pb-30">
                       <thead>
                       <tr>
-                        <th>#</th>
-                        <th >Chase Number</th>
-                        <th>Type of Vehicle</th>
-                        <th>Unleaded Weight</th>
-                        <th>Type of waste</th>
-                        <th>Anual Quantity</th>
-                        <th>Carrier Number</th>
-                        <th>Vehicle Ownership</th>
-                        <th>Status</th>
+                        <th>ID</th>
+                        <th >First Name</th>
+                        <th>Last Name</th>
+                        <th>Job Title</th>
+                        <th>Qualification</th>
+                        <th>Training in waste Management</th>
+                        <th>Contact</th>
                         <th class="text-nowrap">Action</th>
 
 
                       </tr>
                       </thead>
                       <tbody>
-                      <c:set var="countVehicles" value="0" scope="page"/>
-                      <c:forEach var="Vehicles" items="${All_Vehicles}">
-                        <c:set var="countVehicles" value="${countVehicles+1}" scope="page"/>
+                      <c:forEach var="Employee" items="${All_Employee}">
+                        <c:set var="countEmployee" value="${countEmployee+1}" scope="page"/>
 
                         <tr>
-                          <td class="Count">${countVehicles}</td>
-                          <td class="Chassis-Number">${Vehicles.chase_number}</td>
-                          <td class="Vehicle-Type">${Vehicles.vehicle_type}</td>
-                          <td class="Weight">${Vehicles.unladen_Weight}</td>
-                          <td class="Waste-Type">${Vehicles.waste_Type}</td>
-                          <td class="Annual-Quantity">${Vehicles.annual_Quantity}</td>
-                          <td class="Registration-Number">${Vehicles.carrie_number}</td>
-                          <td class="Vehicle-Ownership">${Vehicles.own}</td>
-                          <td><span class="label label-danger">Stage 0</span> </td>
-                          <td class="text-nowrap"><span class="pencil-Edit" id="${countVehicles}" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Vehicle-information-modal"> <a  class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span><span id="${Vehicles.chase_number}" onclick="VehicleAttachments(this.id)"> <a   data-toggle="tooltip" data-original-title="Attachments"> <i class="fa fa-file-pdf-o text-warning"></i> </a> </span></td>
+                          <td class="Employee_Id">${Employee.company_Personnel_Id}</td>
+                          <td class="First_Name">${Employee.first_Name}</td>
+                          <td class="Last_Name">${Employee.last_Name}</td>
+                          <td class="Job_Title">${Employee.job_Title}</td>
+                          <td class="Qualification">${Employee.qualification}</td>
+                          <td class="training">${Employee.trained_In_Waste_Management}</td>
+                          <td class="Contact">${Employee.contact}</td>
+                          <td class="text-nowrap"><span class="pencil-Edit" id="${countEmployee}" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Officer-Registration-modal"> <a  class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span> <a data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a> </td>
                         </tr>
                       </c:forEach>
 
                       </tbody>
                     </table>
 
-                    <form method="post" id="Vehicle_Att" action="ServletDwmpc">
-                      <input type="hidden" name="command" value="VehicleAttachments">
-                      <input type="hidden" id="chassis_No" name="chassis_No" value="">
-                    </form>
-
 
                   </div>
-                  <div id="Vehicle-information-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+
+                  <div id="Officer-Registration-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                          <h5 class="modal-title" id="myLargeModalLabel">Editing Vehicle Information for ${Company_info.company_Name}</h5>
-                        </div><form action="ServletDwmpc" method="post">
-                        <div class="modal-body">
-                          <input type="hidden" id="command" name="command" class="hidden" value="RegisteringVehicle"/>
-                          <input type="hidden" id="action" name="action"  class="hidden" value="EditingVehicle"/>
-                          <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
-
-
-                          <div class="form-group">
-                            <label class="control-label mb-10" for="Chassis-Number">Chassis Number(required):</label>
-                            <input id="Chassis-Number" type="text" name="Chassis_Number" class="form-control" value="" required/>
-                          </div>
-                          <div class="form-group">
-                            <div class="row">
-                              <div class="col-md-6 col-xs-12">
-                                <label class="control-label mb-10" for="Weight">Unladen Weight (required):</label>
-                                <input id="Weight" type="text" name="Unladen_Weight" class="form-control required" value="" required/>
-                              </div>
-                              <div class="span1"></div>
-                              <div class="col-md-6 col-xs-12">
-                                <label class="control-label mb-10" for="Registration-Number"> Vehicle Registration Number(required):</label>
-                                <input id="Registration-Number" type="text" name="Registration_Number" class="form-control" value="" required/>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="row">
-                              <div class="col-md-6 col-xs-12">
-                                <label for="Vehicle-Ownership" class="control-label mb-10"> This Your Vehicle?(required):</label>
-                                <select id="Vehicle-Ownership" class="selectpicker" name="Your_Vehicle" data-style="form-control btn-default btn-outline">
-                                  <option value="Yes, I am the owner">Yes, I am the owner.</option>
-                                  <option value="No, I borrowed it">No, I borrowed it.</option>
-                                </select>
-                              </div>
-                              <div class="span1"></div>
-                              <div class="col-md-6 col-xs-12">
-                                <label for="Waste-Type" class="control-label mb-10"> Type Of Waste Transported(required):</label>
-                                <select id="Waste-Type"  name="Waste_Type" class="selectpicker" data-style="form-control btn-default btn-outline">
-                                  <option value="Bio Waste">Bio Waste</option>
-                                  <option value="Chemical Waste">Chemical Waste</option>
-                                  <option value="Hazardous Waste">Hazardous Waste</option>
-                                  <option value="Clinical Waste">Clinical Waste</option>
-                                  <option value="Domestic Waste">Domestic Waste</option>
-                                </select>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="row">
-                              <div class="col-md-6 col-xs-12">
-                                <label class="control-label mb-10" for="Annual-Quantity">Annual Quantity(required):</label>
-                                <input id="Annual-Quantity" type="text" name="Annual_Quatity" class="form-control required" value="" required/>
-                              </div>
-                              <div class="span1"></div>
-                              <div class="col-md-6 col-xs-12">
-                                <label class="control-label mb-10" for="Vehicle-Type">Vehicle Type (required):</label>
-                                <input id="Vehicle-Type" type="text" name="vehicle_Type" class="form-control required" value="" required/>
-                              </div>
-                            </div>
-                          </div>
-
+                          <h5 class="modal-title" id="myLargeModalLabel">Editing Employee Information for ${Company_info.company_Name}</h5>
                         </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Save Changes</span></button>
-                        </div>
-                      </form>
+                        <form action="ServletDwmpc" method="post">
+                          <div class="modal-body">
+                            <input type="hidden" id="command" name="command" class="hidden" value="RegisteringEmployee"/>
+                            <input type="hidden" id="action" name="action"  class="hidden" value="EditingEmployee"/>
+                            <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
+                            <input type="hidden" id="Employee_Id" name="Employee Id" class="hidden" value=""/>
+
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-md-6 col-xs-12 mt-40">
+                                  <label class="control-label mb-10" for="First_Name"> First Name(required):</label>
+                                  <input type="text" id="First_Name" name="First Name"  class="form-control required"   required/>
+                                </div>
+                                <div class="span1"></div>
+                                <div class="col-md-6 col-xs-12 mt-40">
+                                  <label class="control-label mb-10" for="Last_Name"> Last Name(required):</label>
+                                  <input type="text" id="Last_Name" name="Last Name"  class="form-control required"   required/>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                  <label class="control-label mb-10" for="Job_Title"> Job Title(required):</label>
+                                  <input type="text" class="form-control" id="Job_Title" name="Position/job Title" placeholder="Job Title">
+                                </div>
+                                <div class="span1"></div>
+                                <div class="col-md-6 col-xs-12">
+                                  <label class="control-label mb-10" for="Qualification"> Qualification(required):</label>
+                                  <input type="text" class="form-control" id="Qualification" name="Qualification" placeholder="Qualification" required>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="control-label mb-10" for="Contact">Contact(required):</label>
+                              <input type="text" id="Contact" name="Contact" data-mask="+267 99 999 999" value=""  class="form-control required"  required/>
+                            </div>
+                            <div class="form-group">
+                              <label for="training" class="col-sm-3 control-label">Training in waste Management(required):</label>
+                              <select class="selectpicker" id= "training" name="training" data-style="form-control btn-default btn-outline">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Save Changes</span></button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -1341,36 +1324,28 @@
                     let tableRowElement;
                     function toggleModal(element) {
 
-
                       tableRowElement = element.parentElement.parentElement;
-                      const Chassis_Number = tableRowElement.getElementsByClassName('Chassis-Number')[0].innerHTML;
-                      const Vehicle_Type = tableRowElement.getElementsByClassName('Vehicle-Type')[0].innerHTML;
-                      const Weight = tableRowElement.getElementsByClassName('Weight')[0].innerHTML;
-                      const Waste_Type = tableRowElement.getElementsByClassName('Waste-Type')[0].innerHTML;
-                      const Annual_Quantity = tableRowElement.getElementsByClassName('Annual-Quantity')[0].innerHTML;
-                      const Registration_Number = tableRowElement.getElementsByClassName('Registration-Number')[0].innerHTML;
-                      const Vehicle_Ownership = tableRowElement.getElementsByClassName('Vehicle-Ownership')[0].innerHTML;
 
-                      document.getElementById('Chassis-Number').value = Chassis_Number;
-                      document.getElementById('Vehicle-Type').value = Vehicle_Type;
-                      document.getElementById('Weight').value = Weight;
-                      document.getElementById('Waste-Type').value = Waste_Type;
-                      $("#Waste-Type").selectpicker("refresh");
-                      document.getElementById('Annual-Quantity').value = Annual_Quantity;
-                      document.getElementById('Registration-Number').value = Registration_Number;
-                      document.getElementById('Vehicle-Ownership').value = Vehicle_Ownership;
-                      $("#Vehicle-Ownership").selectpicker("refresh");
+                      const First_Name = tableRowElement.getElementsByClassName('First_Name')[0].innerHTML;
+                      const Last_Name = tableRowElement.getElementsByClassName('Last_Name')[0].innerHTML;
+                      const Job_Title = tableRowElement.getElementsByClassName('Job_Title')[0].innerHTML;
+                      const Qualification = tableRowElement.getElementsByClassName('Qualification')[0].innerHTML;
+                      const training = tableRowElement.getElementsByClassName('training')[0].innerHTML;
+                      const Contact = tableRowElement.getElementsByClassName('Contact')[0].innerHTML;
+                      const Employee_Id = tableRowElement.getElementsByClassName('Employee_Id')[0].innerHTML;
+
+                      document.getElementById('First_Name').value = First_Name;
+                      document.getElementById('Last_Name').value = Last_Name;
+                      document.getElementById('Job_Title').value=Job_Title;
+                      document.getElementById('Qualification').value = Qualification;
+                      document.getElementById('training').value = training;
+                      $("#training").selectpicker("refresh");
+                      document.getElementById('Employee_Id').value = Employee_Id;
+                      document.getElementById('Contact').value = Contact;
 
 
                     }
-                    function VehicleAttachments(chassis_No){
 
-                      document.getElementById("chassis_No").value=chassis_No;
-                      document.getElementById("Vehicle_Att").submit();
-                    }
-                    function test(chassis_No){
-                      alert("worked"+chassis_No)
-                    }
 
                   </script>
 
@@ -1378,7 +1353,7 @@
 
                 </br>
                 <div style="float: right" class="row">
-                  <button type="button" onclick="location.href='Vehicle-Form.jsp';" data-toggle="modal" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Add New Vehicle</span></button>
+                  <button type="button" onclick="location.href='Employee-form.jsp';" data-toggle="modal" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Add New Employee</span></button>
                 </div>
               </div>
 
@@ -1394,7 +1369,7 @@
       <footer class="footer container-fluid pl-30 pr-30">
         <div class="row">
           <div class="col-sm-12">
-            <p>2018 &copy; DWMPC. Created by Next-gen</p>
+            <p>2018 &copy; Zapily. Pampered by Hencework</p>
           </div>
         </div>
       </footer>
@@ -1415,9 +1390,10 @@
 <!-- jQuery -->
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
+
 <!-- Bootstrap Core JavaScript -->
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
+<script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
 <script src="dist/js/modal-data.js"></script>
 
 <!-- Piety JavaScript -->
@@ -1452,6 +1428,8 @@
 <script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>
 
 
+
 </body>
 
 </html>
+

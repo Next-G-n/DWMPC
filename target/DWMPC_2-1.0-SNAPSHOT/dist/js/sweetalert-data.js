@@ -36,22 +36,27 @@ $(function() {
 			confirmButtonColor: "#8BC34A",
             confirmButtonText: "Go Employee Page",
         },function (){
-            window.open('Employees.jsp', '_parent');
+           // window.open('Employees.jsp', '_parent');
+            document.getElementById("Employee_info").submit();
         });
 		return false;
     });
-        //Successful Registered Company Now Register Employees
-        $('#Plz_Reg_Empolyees').on('click',function(e){
+
+
+
+        $('#employee-alert').on('click',function(e){
             swal({
-                title: "You Have Successful Registered a Company!",
-                type: "success",
+                title: "Company Registered Successful!",
                 text: "Please Register All The Company's Employees",
+                type: "success",
                 showCancelButton: true,
-                confirmButtonColor: "#8BC34A",
-                confirmButtonText: "Go and Register Employee",
-                closeOnConfirm: false
-            },function (){
-                window.open('Employees.jsp', '_parent');
+                confirmButtonColor: "#487C5F",
+                confirmButtonText: "Yes, Register Now!",
+                cancelButtonText: "No, Register Later!",
+                closeOnCancel: true
+            }, function(){
+                    //document.getElementById("Employee_info").submit();
+                    window.open('Employee-Table.jsp', '_parent');
             });
             return false;
         });
@@ -73,7 +78,7 @@ $(function() {
     });
 
     //Parameter
-	$('#sa-params').on('click',function(e){
+	$('#sa-paramssss').on('click',function(e){
         swal({   
             title: "Are you sure?",   
             text: "You will not be able to recover this imaginary file!",   

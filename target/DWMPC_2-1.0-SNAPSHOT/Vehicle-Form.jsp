@@ -1181,6 +1181,7 @@
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="${pageContext.request.contextPath}/index.jsp">Dashboard</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Vehicle-Table.jsp">Vehicle Table</a></li>
                         <li class="active"><span>Vehicle Registration Form</span></li>
                     </ol>
                 </div>
@@ -1204,12 +1205,18 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-wrap">
-                                            <form data-toggle="validator" role="form">
+                                            <form data-toggle="validator" role="form" action="ServletDwmpc" method="post" enctype="multipart/form-data">
+
+                                                <input type="hidden" id="command" name="command" class="hidden" value="RegisteringVehicle"/>
+                                                <input type="hidden" id="action" name="action"  class="hidden" value="RegisteringVehicle"/>
+                                                <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
+                                                <input type="hidden" name="CompanyName" class="hidden" value="${Company_info.company_Name}"/>
+
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-md-6 col-xs-12">
                                                             <label class="control-label mb-10" for="Vehicle_Type">Vehicle Type (required):</label>
-                                                            <input id="Vehicle_Type" type="text" name="Vehicle_Type" class="form-control required" value="" required/>
+                                                            <input id="Vehicle_Type" type="text" name="vehicle_Type" class="form-control required" value="" required/>
                                                         </div>
                                                         <div class="span1"></div>
                                                         <div class="col-md-6 col-xs-12">
@@ -1235,7 +1242,7 @@
                                                     <div class="row">
                                                         <div class="col-md-6 col-xs-12">
                                                             <label for="Your_Vehicle" class="control-label mb-10"> This Your Vehicle?(required):</label>
-                                                            <select id="Your_Vehicle" class="selectpicker" data-style="form-control btn-default btn-outline">
+                                                            <select id="Your_Vehicle" name="Your_Vehicle" class="selectpicker" data-style="form-control btn-default btn-outline">
                                                                 <option value="Yes">Yes, I am the owner.</option>
                                                                 <option value="No">No, I borrowed it.</option>
                                                             </select>
@@ -1243,7 +1250,7 @@
                                                         <div class="span1"></div>
                                                         <div class="col-md-6 col-xs-12">
                                                             <label for="Waste_Type" class="control-label mb-10"> Type Of Waste Transported(required):</label>
-                                                            <select id="Waste_Type" class="selectpicker" data-style="form-control btn-default btn-outline">
+                                                            <select id="Waste_Type" name="Waste_Type" class="selectpicker" data-style="form-control btn-default btn-outline">
                                                                 <option value="Bio waste">Bio Waste</option>
                                                                 <option value="Chemical waste">Chemical Waste</option>
                                                                 <option value="Hazardous waste">Hazardous Waste</option>
@@ -1289,127 +1296,127 @@
                                                 <div class="form-group mb-0" style="float: right">
                                                     <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">submit</span></button>
                                                 </div>
+
+                                                <div id="Vehicle-Attachment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                <h5 class="modal-title">Upload All The Following </h5>
+                                                            </div>
+                                                            <div class="modal-body">
+
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 col-xs-12 mt-40">
+                                                                            <label class="control-label mb-10" for="Payment_Receipt"> Payment Receipt(required):</label>
+                                                                            <input type="file" id="Payment_Receipt" name="Payment receipt" class="dropify"  required/>
+                                                                        </div>
+                                                                        <div class="span1"></div>
+                                                                        <div class="col-md-6 col-xs-12 mt-40">
+                                                                            <label class="control-label mb-10" for="BA_Permit"> BA Permit(required):</label>
+                                                                            <input type="file" id="BA_Permit" name="BA permit" class="dropify"  required/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 col-xs-12">
+                                                                            <label class="control-label mb-10" for="Facility"> Facility Licence[For all Recyclers](required):</label>
+                                                                            <input type="file" id="Facility" name="Facility Licence" class="dropify"  required/>
+                                                                        </div>
+                                                                        <div class="span1"></div>
+                                                                        <div class="col-md-6 col-xs-12">
+                                                                            <label class="control-label mb-10" for="Affidavit"> Affidavit for Borrowed Vehicle(required):</label>
+                                                                            <input type="file" id="Affidavit" name="affidavit" class="dropify"  required/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 col-xs-12">
+                                                                            <label class="control-label mb-10" for="PrDP"> PrDP 'H' For Hazardous Waste(required):</label>
+                                                                            <input type="file" id="PrDP" name="PrDP 'H' For Hazardous Waste" class="dropify"  required/>
+                                                                        </div>
+                                                                        <div class="span1"></div>
+                                                                        <div class="col-md-6 col-xs-12">
+                                                                            <label class="control-label mb-10" for="Registration_Book">Motor Vehicle Registration Book(required):</label>
+                                                                            <input type="file" id="Registration_Book" name="Motor_Vehicle_Registration_Book" class="dropify"  required/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Done</span></button>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="Certificate-Attachment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                <h5 class="modal-title">Upload The Following Certificates</h5>
+                                                            </div>
+                                                            <div class="modal-body">
+
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 col-xs-12">
+                                                                            <label class="control-label mb-10" for="Health_and_Safety"> Health and Safety(required):</label>
+                                                                            <input type="file" id="Health_and_Safety" name="Health and Safety" class="dropify"  required/>
+                                                                        </div>
+                                                                        <div class="span1"></div>
+                                                                        <div class="col-md-6 col-xs-12">
+                                                                            <label class="control-label mb-10" for="hazardous_waste">hazardous waste(required):</label>
+                                                                            <input type="file" id="hazardous_waste" name="hazardous waste" class="dropify"  required/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 col-xs-12">
+                                                                            <label class="control-label mb-10" for="FF_FA">Fire Fighting and First Aid(required):</label>
+                                                                            <input type="file" id="FF_FA" name="Fire fighting and First Aid" class="dropify"  required/>
+                                                                        </div>
+                                                                        <div class="span1"></div>
+                                                                        <div class="col-md-6 col-xs-12">
+                                                                            <label class="control-label mb-10" for="Environment">Health and Environment(required):</label>
+                                                                            <input type="file" id="Environment" name="Health and Environment" class="dropify"  required/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 col-xs-12">
+                                                                            <label class="control-label mb-10" for="Roadwortiness"> Certification Of Roadwortiness (required):</label>
+                                                                            <input type="file" id="Roadwortiness" name="Certification_of_roadwortiness" class="dropify"  required/>
+                                                                        </div>
+                                                                        <div class="span1"></div>
+                                                                        <div class="col-md-6 col-xs-12">
+                                                                            <label class="control-label mb-10" for="Cooperation">Certification of Cooperation(required):</label>
+                                                                            <input type="file" id="Cooperation" name="Certification of cooperation" class="dropify"  required/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Done</span></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </form>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="Vehicle-Attachment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        <h5 class="modal-title">Upload All The Following </h5>
-                                    </div><form>
-                                    <div class="modal-body">
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6 col-xs-12 mt-40">
-                                                    <label class="control-label mb-10" for="Payment_Receipt"> Payment Receipt(required):</label>
-                                                    <input type="file" id="Payment_Receipt" name="Payment_Receipt" class="dropify"  required/>
-                                                </div>
-                                                <div class="span1"></div>
-                                                <div class="col-md-6 col-xs-12 mt-40">
-                                                    <label class="control-label mb-10" for="BA_Permit"> BA Permit(required):</label>
-                                                    <input type="file" id="BA_Permit" name="BA_Permit" class="dropify"  required/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6 col-xs-12">
-                                                    <label class="control-label mb-10" for="Facility"> Facility Licence[For all Recyclers](required):</label>
-                                                    <input type="file" id="Facility" name="Facility" class="dropify"  required/>
-                                                </div>
-                                                <div class="span1"></div>
-                                                <div class="col-md-6 col-xs-12">
-                                                    <label class="control-label mb-10" for="Affidavit"> Affidavit for Borrowed Vehicle(required):</label>
-                                                    <input type="file" id="Affidavit" name="Affidavit" class="dropify"  required/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6 col-xs-12">
-                                                    <label class="control-label mb-10" for="PrDP"> PrDP 'H' For Hazardous Waste(required):</label>
-                                                    <input type="file" id="PrDP" name="PrDP" class="dropify"  required/>
-                                                </div>
-                                                <div class="span1"></div>
-                                                <div class="col-md-6 col-xs-12">
-                                                    <label class="control-label mb-10" for="Registration_Book">Motor Vehicle Registration Book(required):</label>
-                                                    <input type="file" id="Registration_Book" name="Registration_Book" class="dropify"  required/>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Done</span></button>
-                                    </div>
-                                </form>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="Certificate-Attachment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        <h5 class="modal-title">Upload The Following Certificates</h5>
-                                    </div><form>
-                                    <div class="modal-body">
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6 col-xs-12">
-                                                    <label class="control-label mb-10" for="Health_and_Safety"> Health and Safety(required):</label>
-                                                    <input type="file" id="Health_and_Safety" name="Health_and_Safety" class="dropify"  required/>
-                                                </div>
-                                                <div class="span1"></div>
-                                                <div class="col-md-6 col-xs-12">
-                                                    <label class="control-label mb-10" for="hazardous_waste">hazardous waste(required):</label>
-                                                    <input type="file" id="hazardous_waste" name="hazardous_waste" class="dropify"  required/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6 col-xs-12">
-                                                    <label class="control-label mb-10" for="FF_FA">Fire Fighting and First Aid(required):</label>
-                                                    <input type="file" id="FF_FA" name="FF_FA" class="dropify"  required/>
-                                                </div>
-                                                <div class="span1"></div>
-                                                <div class="col-md-6 col-xs-12">
-                                                    <label class="control-label mb-10" for="Environment">Health and Environment(required):</label>
-                                                    <input type="file" id="Environment" name="Environment" class="dropify"  required/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-6 col-xs-12">
-                                                    <label class="control-label mb-10" for="Roadwortiness"> Certification Of Roadwortiness (required):</label>
-                                                    <input type="file" id="Roadwortiness" name="Roadwortiness" class="dropify"  required/>
-                                                </div>
-                                                <div class="span1"></div>
-                                                <div class="col-md-6 col-xs-12">
-                                                    <label class="control-label mb-10" for="Cooperation">Certification of Cooperation(required):</label>
-                                                    <input type="file" id="Cooperation" name="Cooperation" class="dropify"  required/>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Done</span></button>
-                                    </div>
-                                </form>
                                 </div>
                             </div>
                         </div>

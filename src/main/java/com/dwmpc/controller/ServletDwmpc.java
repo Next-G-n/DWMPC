@@ -5,13 +5,17 @@ import com.dwmpc.model.DAO.ConnectionUtil;
 import com.dwmpc.model.bean.company_Information;
 import com.dwmpc.model.bean.company_personnel;
 import com.dwmpc.model.bean.user;
+import com.dwmpc.model.bean.vehicle;
 
 import javax.annotation.Resource;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import javax.sql.DataSource;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.security.SecureRandom;
 import java.sql.Timestamp;
 import java.util.List;
@@ -40,6 +44,7 @@ public class ServletDwmpc extends HttpServlet {
     public static int BUFFER_SIZE = 1024 * 100;
     public static final String UPLOAD_DIR = "resources";
     public static String fileName = null;
+    private vehicle getAttachment;
 
     @Override
     public void init() throws ServletException {
@@ -61,7 +66,27 @@ public class ServletDwmpc extends HttpServlet {
     //small and insensitive data
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            String theCommand = request.getParameter("command");
 
+            if (theCommand == null) {
+
+                theCommand = "display_List";
+            }
+            switch (theCommand) {
+                case "downloadVehicleAttachment":
+                    downloadVehicleAttachment(request, response);
+                    break;
+
+
+            }
+            // listStudents(request, response);
+        }
+
+        catch (Exception exc) {
+            exc.printStackTrace();
+
+        }
     }
 
     //large and sensitive data eg password
@@ -87,6 +112,26 @@ public class ServletDwmpc extends HttpServlet {
                 case "RegisteringEmployee":
                     registerEmployee(request,response);
                     break;
+                case "EmployeesDetail":
+                    getEmployees(request,response);
+                    break;
+                case "kill Session":
+
+                    Stop_Session(request,response);
+                    break;
+                case "RegisteringVehicle":
+                    registerVehicle(request,response);
+                    break;
+                case "VehicleDetail":
+                    getVehicle(request,response);
+                    break;
+                case "VehicleAttachments":
+                    getAttachments(request,response);
+                    break;
+                case "downloadVehicleAttachment":
+                    downloadVehicleAttachment(request, response);
+                    break;
+
 
             }
             // listStudents(request, response);
@@ -98,29 +143,438 @@ public class ServletDwmpc extends HttpServlet {
         }
     }
 
+
+    private void downloadAttachment(String subDir, String filename, HttpServletResponse response) throws Exception{
+        if (filename == null || filename.equals("")) {
+            /**
+             * *** Set Response Content Type ****
+             */
+            response.setContentType("text/html");
+
+            /**
+             * *** Print The Response ****
+             */
+            response.getWriter().println("<h3>File " + filename + " Is Not Present .....!</h3>");
+        } else {
+
+
+
+            String applicationPath = getServletContext().getRealPath("");
+            String downloadPath = applicationPath + File.separator + subDir;
+            String filePath = downloadPath + File.separator + filename;
+            System.out.println("fileName:" + filename);
+            System.out.println("filePath :" + filePath);
+            File file = new File(filePath);
+            OutputStream outStream = null;
+            FileInputStream inputStream = null;
+
+            if (file.exists()) {
+
+                /**
+                 * ** Setting The Content Attributes For The Response Object
+                 * ***
+                 */
+                //  String mimeType = "application/octet-stream";
+                // response.setContentType(mimeType);
+
+                /**
+                 * ** Setting The Headers For The Response Object ***
+                 */
+                String headerKey = "Content-Disposition";
+                // String headerValue = String.format("attachment; filename=\"%s\"", file.getName());
+                //response.setHeader(headerKey, headerValue);
+
+                String mimeType2 = "application/pdf";
+                response.setContentType(mimeType2);
+                String headerValue2 = String.format("inline; filename=\"%s\"", file.getName());
+                response.addHeader(headerKey, headerValue2);
+
+                try {
+
+                    /**
+                     * ** Get The Output Stream Of The Response ***
+                     */
+                    outStream = response.getOutputStream();
+                    inputStream = new FileInputStream(file);
+                    byte[] buffer = new byte[BUFFER_SIZE];
+                    int bytesRead = -1;
+
+                    /**
+                     * ** Write Each Byte Of Data Read From The Input Stream
+                     * Write Each Byte Of Data Read From The Input Stream Into
+                     * The Output Stream ***
+                     */
+                    while ((bytesRead = inputStream.read(buffer)) != -1) {
+                        outStream.write(buffer, 0, bytesRead);
+                    }
+                } catch (IOException ioExObj) {
+                    System.out.println("Exception While Performing The I/O Operation?= " + ioExObj.getMessage());
+                } finally {
+                    if (inputStream != null) {
+                        inputStream.close();
+                    }
+
+                    outStream.flush();
+                    if (outStream != null) {
+                        outStream.close();
+                    }
+                }
+            } else {
+
+                /**
+                 * *** Set Response Content Type ****
+                 */
+                response.setContentType("text/html");
+
+                /**
+                 * *** Print The Response ****
+                 */
+                response.getWriter().println("<h3>File " + filename + " Is Not Present .....!</h3>");
+            }
+
+        }
+
+    }
+
+    private void downloadVehicleAttachment(HttpServletRequest request, HttpServletResponse response)throws Exception {
+        String getSomething=request.getParameter("Download");
+        String filename=null;
+        String subDir =null;
+        System.out.println(getSomething);
+        switch (getSomething) {
+            case "Certification_of_roadwortiness":
+                filename = getAttachment.getRoad_Wortiness();
+                subDir = "Documents/Certification of Road worthiness";
+                break;
+            case "Motor_Vehicle_Registration_Book":
+                filename = getAttachment.getBlue_book();
+                subDir = "Documents/Motor Vehicle Registration Book";
+
+                break;
+            case "Affidavit":
+                filename = getAttachment.getAffidavit();
+                subDir = "Documents/Affidavit";
+                break;
+            case "BA_permit":
+                filename = getAttachment.getBA_permit();
+                subDir ="Documents/BA permit";
+                break;
+            case "getPayment_receipt":
+                filename = getAttachment.getPayment_receipt();
+                subDir ="Documents/Payment receipt";
+                break;
+            case "Certification_of_cooperation":
+                filename = getAttachment.getCertification_of_Cooperation();
+                subDir ="Documents/Certification of cooperation";
+                break;
+            case "Facility_Licence_For_all_recyclers":
+                filename = getAttachment.getFacility_Licence();
+                subDir ="Documents/Facility Licence";
+                break;
+            case "PrDP_H_For_Hazardous_Waste":
+                filename = getAttachment.getPrPD();
+                subDir ="Documents/PrDP 'H' For Hazardous Waste";
+                break;
+            case "Certificate_of_training_on_Both_Fire_fighting_and_First_Aid":
+                filename = getAttachment.getFire_fighting_and_first_aid();
+                subDir ="Documents/Fire fighting and First Aid";
+                break;
+            case "Certificate_of_training_on_Safety_Health_and_Environment_Waste":
+                filename = getAttachment.getHealth_and_Environment();
+                subDir ="Documents/Health and Environment";
+                break;
+            case "Certificate_of_training_on_Occupational_Health_and_Safety":
+                filename = getAttachment.getTraining_on_health_and_safety();
+                subDir ="Documents/Health and Safety";
+                break;
+            case "Contingency_plan_Containing_Spill_containment_and_accident_response_plan_for_hazardous_waste":
+                filename = getAttachment.getHazardous_waste();
+                subDir ="Documents/Hazardous Waste";
+                break;
+
+        }
+        downloadAttachment(subDir,filename,response);
+
+
+    }
+
+    private void getAttachments(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        HttpSession session=request.getSession();
+        String chassis_No= request.getParameter("chassis_No");
+        System.out.println("this chassis :"+chassis_No);
+        getAttachment=connectionUtil.getAttachments(chassis_No);
+        session.setAttribute("Attachments",getAttachment);
+        response.sendRedirect("Attachments.jsp");
+    }
+
+    private void getVehicle(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpSession session=request.getSession();
+        int Company_id= Integer.parseInt(request.getParameter("company_id"));
+        List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(Company_id);
+        session.setAttribute("All_Vehicles",getVehicleDetail);
+        response.sendRedirect("Vehicle-Table.jsp");
+    }
+
+    private void registerVehicle(HttpServletRequest request, HttpServletResponse response)throws Exception {
+
+        String action=request.getParameter("action");
+
+        String CompanyName=request.getParameter("CompanyName");
+
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String ApplicationDate= String.valueOf(timestamp.getTime());
+
+        String fileName = null;
+        String fileName2 = null;
+        String fileName3 = null;
+        String fileName4 = null;
+        String fileName5 = null;
+        String fileName6 = null;
+        String fileName8 = null;
+        String fileName9 = null;
+        String fileName10 = null;
+        String fileName11 = null;
+        String fileName12 = null;
+        String fileName14 = null;
+
+
+        if(action.equals("RegisteringVehicle") || action.equals("EditingAttachment")){
+            String folderName12 = "Documents/Motor Vehicle Registration Book";
+            String uploadPath12 = request.getServletContext().getRealPath("") + folderName12;
+            File dir12 = new File(uploadPath12);
+            if (!dir12.exists()) {
+                dir12.mkdirs();
+            }
+            Part Motor_Vehicle_Registration_Book=request.getPart("Motor_Vehicle_Registration_Book");
+            System.out.println("This is problem :"+Motor_Vehicle_Registration_Book);
+            InputStream Motor_Vehicle_Registration_Book1 = Motor_Vehicle_Registration_Book.getInputStream();
+            fileName12=CompanyName+"_Motor Vehicle Registration Book"+ApplicationDate+".pdf";
+            Files.copy(Motor_Vehicle_Registration_Book1, Paths.get(uploadPath12 + File.separator + fileName12), StandardCopyOption.REPLACE_EXISTING);
+
+            String folderName14 = "Documents/Affidavit";
+            String uploadPath14 = request.getServletContext().getRealPath("") + folderName14;
+            File dir14 = new File(uploadPath14);
+            if (!dir14.exists()) {
+                dir14.mkdirs();
+            }
+            Part affidavit=request.getPart("affidavit");
+            InputStream affidavit1 = affidavit.getInputStream();
+            fileName14=CompanyName+"_affidavit"+ApplicationDate+".pdf";
+            Files.copy(affidavit1, Paths.get(uploadPath14 + File.separator + fileName14), StandardCopyOption.REPLACE_EXISTING);
+
+            String folderName = "Documents/BA permit";
+            String uploadPath = request.getServletContext().getRealPath("") + folderName;
+            File dir = new File(uploadPath);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            Part BA_permit=request.getPart("BA permit");
+            InputStream BA_permit1 = BA_permit.getInputStream();
+            fileName=CompanyName+"_BA permit"+ApplicationDate+".pdf";
+            Files.copy(BA_permit1, Paths.get(uploadPath + File.separator + fileName), StandardCopyOption.REPLACE_EXISTING);
+
+            String folderName11 = "Documents/Certification of Road worthiness";
+            String uploadPath11 = request.getServletContext().getRealPath("") + folderName11;
+            File dir11 = new File(uploadPath11);
+            if (!dir11.exists()) {
+                dir11.mkdirs();
+            }
+
+            Part Certification_of_roadwortiness=request.getPart("Certification_of_roadwortiness");
+            System.out.println("This is problem :"+Certification_of_roadwortiness);
+            InputStream Certification_of_roadwortiness1 = Certification_of_roadwortiness.getInputStream();
+            fileName11=CompanyName+"_Certification of Road worthiness"+ApplicationDate+".pdf";
+            Files.copy(Certification_of_roadwortiness1, Paths.get(uploadPath11 + File.separator + fileName11), StandardCopyOption.REPLACE_EXISTING);
+
+
+
+
+            String folderName2 = "Documents/Payment receipt";
+            String uploadPath2 = request.getServletContext().getRealPath("") + folderName2;
+            File dir2 = new File(uploadPath2);
+            if (!dir2.exists()) {
+                dir2.mkdirs();
+            }
+            Part Payment_receipt=request.getPart("Payment receipt");
+            InputStream Payment_receipt1 = Payment_receipt.getInputStream();
+            fileName2=CompanyName+"_Payment receipt"+ApplicationDate+".pdf";
+            Files.copy(Payment_receipt1, Paths.get(uploadPath2 + File.separator + fileName2), StandardCopyOption.REPLACE_EXISTING);
+
+            // fileName="test.pdf";
+
+            String folderName3 = "Documents/Certification of cooperation";
+            String uploadPath3 = request.getServletContext().getRealPath("") + folderName3;
+            File dir3 = new File(uploadPath3);
+            if (!dir3.exists()) {
+                dir3.mkdirs();
+            }
+            Part Certification_of_Cooperation=request.getPart("Certification of cooperation");
+            InputStream Certification_of_Cooperation2 = Certification_of_Cooperation.getInputStream();
+            fileName3=CompanyName+"_Certification of cooperation"+ApplicationDate+".pdf";
+            Files.copy(Certification_of_Cooperation2, Paths.get(uploadPath3 + File.separator + fileName3), StandardCopyOption.REPLACE_EXISTING);
+
+            String folderName4 = "Documents/Facility Licence";
+            String uploadPath4 = request.getServletContext().getRealPath("") + folderName4;
+            File dir4 = new File(uploadPath4);
+            if (!dir4.exists()) {
+                dir4.mkdirs();
+            }
+            Part Facility_Licence=request.getPart("Facility Licence");
+            InputStream Facility_Licence1 = Facility_Licence.getInputStream();
+            fileName4=CompanyName+"_Facility Licence"+ApplicationDate+".pdf";
+            Files.copy(Facility_Licence1, Paths.get(uploadPath4 + File.separator + fileName4), StandardCopyOption.REPLACE_EXISTING);
+
+            String folderName5 = "Documents/PrDP 'H' For Hazardous Waste";
+            String uploadPath5 = request.getServletContext().getRealPath("") + folderName5;
+            File dir5 = new File(uploadPath5);
+            if (!dir5.exists()) {
+                dir5.mkdirs();
+            }
+            Part PrPD=request.getPart("PrDP 'H' For Hazardous Waste");
+            InputStream PrPD1 = PrPD.getInputStream();
+            fileName5=CompanyName+"_PrDP 'H' For Hazardous Waste"+ApplicationDate+".pdf";
+            Files.copy(PrPD1, Paths.get(uploadPath5 + File.separator + fileName5), StandardCopyOption.REPLACE_EXISTING);
+
+            String folderName6 = "Documents/Hazardous Waste";
+            String uploadPath6 = request.getServletContext().getRealPath("") + folderName6;
+            File dir6 = new File(uploadPath6);
+            if (!dir6.exists()) {
+                dir6.mkdirs();
+            }
+            Part hazardous_waste=request.getPart("hazardous waste");
+            InputStream hazardous_waste1 = hazardous_waste.getInputStream();
+            fileName6=CompanyName+"_hazardous waste"+ApplicationDate+".pdf";
+            Files.copy(hazardous_waste1, Paths.get(uploadPath6 + File.separator + fileName6), StandardCopyOption.REPLACE_EXISTING);
+
+
+            String folderName8 = "Documents/Health and Safety";
+            String uploadPath8 = request.getServletContext().getRealPath("") + folderName8;
+            File dir8 = new File(uploadPath8);
+            if (!dir8.exists()) {
+                dir8.mkdirs();
+            }
+            Part training_on_health_and_safety=request.getPart("Health and Safety");
+            InputStream training_on_health_and_safety1 = training_on_health_and_safety.getInputStream();
+            fileName8=CompanyName+"_Health and Safety"+ApplicationDate+".pdf";
+            Files.copy(training_on_health_and_safety1, Paths.get(uploadPath8 + File.separator + fileName8), StandardCopyOption.REPLACE_EXISTING);
+
+            String folderName9 = "Documents/Fire fighting and First Aid";
+            String uploadPath9 = request.getServletContext().getRealPath("") + folderName9;
+            File dir9 = new File(uploadPath9);
+            if (!dir9.exists()) {
+                dir9.mkdirs();
+            }
+            Part Fire_fighting_and_first_aid=request.getPart("Fire fighting and First Aid");
+            InputStream Fire_fighting_and_first_aid1 = Fire_fighting_and_first_aid.getInputStream();
+            fileName9=CompanyName+"_Fire fighting and First Aid"+ApplicationDate+".pdf";
+            Files.copy(Fire_fighting_and_first_aid1, Paths.get(uploadPath9 + File.separator + fileName9), StandardCopyOption.REPLACE_EXISTING);
+
+            String folderName10 = "Documents/Health and Environment";
+            String uploadPath10 = request.getServletContext().getRealPath("") + folderName10;
+            File dir10 = new File(uploadPath10);
+            if (!dir10.exists()) {
+                dir10.mkdirs();
+            }
+            Part Health_and_Environment=request.getPart("Health and Environment");
+            InputStream Health_and_Environment1 = Health_and_Environment.getInputStream();
+            fileName10=CompanyName+"_Health and Environment"+ApplicationDate+".pdf";
+            Files.copy(Health_and_Environment1, Paths.get(uploadPath10 + File.separator + fileName10), StandardCopyOption.REPLACE_EXISTING);
+
+        }
+        int company_id = 0;
+        String chase_id = null;
+        String vehicle_Type = null;
+        String Unladen = null;
+        String Waste_Type = null;
+        String Annual_Quatity = null;
+        String Registration_Number = null;
+        String Own = null;
+
+        if(action.equals("RegisteringVehicle") || action.equals("EditingVehicle")){
+            System.out.println("sdsdsd");
+            company_id= Integer.parseInt(request.getParameter("Company Id"));
+            chase_id=request.getParameter("Chassis_Number");
+            // RegisterCompany registerCompany=connectionUtil.getCompanyDetail(company_id, action, chase_id);
+            vehicle_Type=request.getParameter("vehicle_Type");
+            System.out.println("sdsdsd "+vehicle_Type);
+            //String Chase_no=request.getParameter("Vehicle_Registration_No");
+            Unladen=request.getParameter("Unladen_Weight");
+            Waste_Type=request.getParameter("Waste_Type");
+            Annual_Quatity=request.getParameter("Annual_Quatity");
+            //String type_of_waste_covered=request.getParameter("type_of_waste_covered");
+            Registration_Number=request.getParameter("Registration_Number");
+            Own=request.getParameter("Your_Vehicle");
+
+        }
+
+         vehicle vehicleRegistration= null;
+
+        if (action.equals("RegisteringVehicle")){
+             vehicleRegistration=new vehicle(chase_id,company_id,vehicle_Type,Unladen,Waste_Type,
+                    Annual_Quatity,Waste_Type,Registration_Number,fileName,fileName2,
+                    fileName3,fileName4,fileName5,fileName6,fileName8,
+                    fileName9,fileName10,fileName11,fileName12,fileName14,Own);
+        }else if(action.equals("EditingVehicle")){
+            vehicleRegistration=new vehicle(chase_id,vehicle_Type,Unladen,Waste_Type,
+                    Annual_Quatity,Waste_Type,Registration_Number,Own);
+        }
+
+
+        connectionUtil.registerVehicle(vehicleRegistration,action);
+
+        List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(company_id);
+        HttpSession session = request.getSession();
+        session.setAttribute("All_Vehicles",getVehicleDetail);
+        response.sendRedirect("Vehicle-Table.jsp");
+
+    }
+
+
+    private void Stop_Session(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpSession session = request.getSession();
+        session.removeAttribute("Successful_Registration_Alert");
+        response.sendRedirect("index.jsp");
+    }
+
+    private void getEmployees(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpSession session=request.getSession();
+
+        int Company_id= Integer.parseInt(request.getParameter("company_id"));
+        System.out.println("well  :"+Company_id);
+        List<company_personnel> employees=connectionUtil.getAllEmployees(Company_id);
+        session.setAttribute("All_Employee",employees);
+        response.sendRedirect("Employee-Table.jsp");
+
+    }
+
     private void registerEmployee(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String action = request.getParameter("command");
-        String Company_id = request.getParameter("Company Id");
+        HttpSession session=request.getSession();
+        String action = request.getParameter("action");
+        int Company_id = Integer.parseInt(request.getParameter("Company Id"));
         String firstName = request.getParameter("First Name");
         String lastName = request.getParameter("Last Name");
         String position = request.getParameter("Position/job Title");
         String qualification = request.getParameter("Qualification");
         String training = request.getParameter("training");
+        String Contact = request.getParameter("Contact");
         String Employee_Status="UpToDate";
-        System.out.println(" this is :"+Company_id);
         int Employee_Id;
         if(action.equals("EditingEmployee")){
             Employee_Id = Integer.parseInt(request.getParameter("Employee Id"));
         }else{
             Employee_Id=0;
         }
-        int yes= Integer.parseInt(Company_id);
 
-        company_personnel companyPersonnel = new company_personnel(Employee_Id,yes,firstName, lastName, position, qualification, training,Employee_Status);
+
+        company_personnel companyPersonnel = new company_personnel(Employee_Id,Company_id,firstName, lastName, position, qualification, training,Employee_Status,Contact);
         connectionUtil.EmployeeRegistration(companyPersonnel,action);
 
-    }
 
+        List<company_personnel> employees=connectionUtil.getAllEmployees(Company_id);
+        session.setAttribute("All_Employee",employees);
+        response.sendRedirect("Employee-Table.jsp");
+
+    }
 
 
     private void registerCompany(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -167,6 +621,8 @@ public class ServletDwmpc extends HttpServlet {
         session.setAttribute("Company_info", getCurrentCompanyID);
 
 
+        List<company_personnel> employees=connectionUtil.getAllEmployees(getCurrentCompanyID.getCompany_Id());
+        session.setAttribute("All_Employee",employees);
 
         //request.getRequestDispatcher("index.jsp").forward(request, response);
         response.sendRedirect("index.jsp");

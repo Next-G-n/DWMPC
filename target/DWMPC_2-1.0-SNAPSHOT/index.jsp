@@ -44,6 +44,14 @@
 		#example_paginate, #example_info{
 			display: none;
 		}
+		.pa-01:hover {
+			 cursor: pointer;
+			background-color: #f6f7f6;
+		 }
+		.bg-dark-green:hover{
+			cursor: pointer;
+			background-color: #5a896f;
+		}
 	</style>
 </head>
 
@@ -1068,7 +1076,7 @@
 		<div class="page-wrapper">
 			<div class="container pt-25">
 				<!-- Row -->
-				<div  class=" row">
+				<div   class=" row">
 
 					<div id="Company_info"  class="tab-pane fade in active tab-content col-lg-9 col-md-6 col-sm-12 col-xs-12">
 						<div class=" panel panel-warning card-view" role="tabpanel">
@@ -1084,7 +1092,7 @@
 								</div>
 								<div class="clearfix"></div>
 							</div>
-							<div  class="panel-wrapper collapse in">
+							<div id="refresh-script" class="panel-wrapper collapse in">
 								<div  class="panel-body  pagination-lg">
 
                                     <c:if test="${Company_info!=null}">
@@ -1156,7 +1164,7 @@
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 									<h5 class="modal-title">Editing Company Information for ${Company_info.company_Name}</h5>
-								</div><form method="post" action="ServletDwmpc">
+								</div><form id="Edited" method="post" action="ServletDwmpc">
 								<div class="modal-body">
 
 									<input class="inputs" type="hidden" name="command" value="Company Registration">
@@ -1383,7 +1391,7 @@
 									</div>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-danger btn-rounded" id="close" data-dismiss="modal">Close</button>
 									<button type="submit" onclick="SubmitForm()"   class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Save Changes</span></button>
 								</div>
 							</form>
@@ -1391,9 +1399,10 @@
 						</div>
 					</div>
 
-					<button  type="button"  alt="alert"  class="img-responsive model_img Company_Alert_Succes" id="Plz_Reg_Empolyees" onclick="">test Good</button>
+					<button  type="button"  alt="alert"  class="img-responsive model_img Company_Alert_Succes" style="display: none" id="employee-alert" onclick=""></button>
+
 					<div id="Company_info2"  class="tab-pane fade in active col-lg-3 col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-default card-view pa-0">
+						<div class="panel panel-default card-view pa-01 pa-0" onclick="EmployeeTable();" >
 							<div class="panel-wrapper collapse in">
 								<div class="panel-body pa-0">
 									<div class="sm-data-box">
@@ -1412,7 +1421,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="panel panel-default card-view pa-0">
+						<div class="panel panel-default card-view pa-01 pa-0" onclick="VehicleTable()">
 							<div class="panel-wrapper collapse in">
 								<div class="panel-body pa-0">
 									<div class="sm-data-box">
@@ -1431,7 +1440,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="panel panel-default card-view pa-0 bg-dark-green">
+						<div class="panel panel-default card-view pa-0  bg-dark-green">
 							<div class="panel-wrapper collapse in">
 								<div class="panel-body pa-0">
 									<div class="sm-data-box">
@@ -1458,12 +1467,12 @@
 								<div class="clearfix"></div>
 								<div class="head-overlay"></div>
 							</div>
-							<div class="panel-wrapper collapse in">
-								<div class="panel-body row pa-0">
+							<div class="panel-wrapper collapse  in">
+								<div class="panel-body row pa-01 pa-0">
 									<div class="sm-data-box">
 										<div class="container-fluid">
 											<div class="row">
-												<div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
+												<div class="col-xs-6 text-center pl-0 pr-0  data-wrap-left">
 													<span class="block"><i class="zmdi zmdi-trending-up txt-success font-18 mr-5"></i><span class="weight-500 uppercase-font">growth</span></span>
 													<span class="txt-dark block counter">$<span class="counter-anim">15,678</span></span>
 												</div>
@@ -1478,7 +1487,28 @@
 						</div>
 					</div>
 
-                    <script>
+					<form method="post" id="Employee_info" action="ServletDwmpc">
+						<input type="hidden" name="command" value="EmployeesDetail">
+						<input type="hidden" name="company_id" value="${Company_info.company_Id}">
+					</form>
+					<form method="post" id="Vehicle_info" action="ServletDwmpc">
+						<input type="hidden" name="command" value="VehicleDetail">
+						<input type="hidden" name="company_id" value="${Company_info.company_Id}">
+					</form>
+					<form method="get" id="kill_Session" action="ServletDwmpc">
+						<input type="hidden" name="command" value="kill Session">
+						<input type="hidden" name="action" value="Alert Session">
+						<input type="submit" id="kill_s" style="display: none">
+					</form>
+
+
+                    <script >
+						function EmployeeTable(){
+							document.getElementById("Employee_info").submit();
+						}
+						function VehicleTable(){
+							document.getElementById("Vehicle_info").submit();
+						}
                         function toggleModal() {
 
                             const Region = document.getElementsByClassName('Region')[0].innerHTML;
@@ -1510,10 +1540,10 @@
                             document.getElementById('phoneNumber').value = Contact.split(",")[0];
                             document.getElementById('fax').value = Fax;
                         }
-						<c:if test="${Successful_Registration_Alert.equals('CompanyRegistration')}">
-						alert("this is true")
-						document.getElementById("Plz_Reg_Empolyees").click();
-						alert("this is true")
+						<c:if test="${All_Employee.isEmpty()}">
+						window.onload = function(){
+							document.getElementById('employee-alert').click();
+						}
 						</c:if>
                         function removeValue(){
                             document.getElementById('Region').value = "";
@@ -1530,9 +1560,35 @@
                             document.getElementById('Fax').value = "";
                         }
                     </script>
+
 				</div>
 				<!-- /Row -->
+				<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 
+				<script type="text/javascript">
+
+					var form = $('#');
+					form.submit(function () {
+
+						$.ajax({
+							type: form.attr('method'),
+							url: form.attr('action'),
+							data: form.serialize(),
+							success: function (data) {
+								var result=data;
+								$('#content').html(result);
+								updateDiv();
+							}
+						});
+
+						return false;
+					});
+					function updateDiv()
+					{
+						$( "#refresh-script" ).load(window.location.href + " #refresh-script" );
+
+					}
+				</script>
 			</div>
 
 			<!-- Footer -->
@@ -1556,9 +1612,11 @@
     <!-- jQuery -->
     <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
+	<script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
+	<script src="dist/js/modal-data.js"></script>
 
     <!-- Bootstrap Touchspin JavaScript -->
     <script src="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
