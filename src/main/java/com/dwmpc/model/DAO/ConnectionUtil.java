@@ -3,6 +3,7 @@ package com.dwmpc.model.DAO;
 import com.dwmpc.model.bean.company_Information;
 import com.dwmpc.model.bean.company_personnel;
 import com.dwmpc.model.bean.user;
+import com.dwmpc.model.bean.vehicle;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -148,6 +149,7 @@ public class ConnectionUtil {
                 myStmt.setString(15,registerCompany.getCompany_Status());
                 myStmt.setString(16,"UpToDate" );
             }else {
+                System.out.println("www");
                 sql2="Update `dwmpc1.0`.`company_information` set  `Company Name`='"+registerCompany.getCompany_Name()+"'," +
                         " `Company Email`='"+registerCompany.getEmail()+"', " +
                         " `Street Address`='"+registerCompany.getStreet_Address()+"', " +
@@ -157,13 +159,19 @@ public class ConnectionUtil {
                         "`Telephone`='"+registerCompany.getTelephone()+"', `Fax Number`='"+registerCompany.getFax_Number()+"', " +
                         "`Phone Number`='"+registerCompany.getPhone_Number()+"', `Company Status`='"+registerCompany.getCompany_Status()+"' where `Company Id`="+registerCompany.getCompany_Id();
                 myStmt=myConn.prepareStatement(sql2);
+                System.out.println("eee");
             }
 
 
 
             myStmt.execute();
             int user_id=registerCompany.getUser_Id();
-            String sql3="select * from `dwmpc1.0`.`company_information` where `Company Id`=LAST_INSERT_ID()";
+            String sql3;
+            if(action.equals("Registration")){
+                sql3="select * from `dwmpc1.0`.`company_information` where `Company Id`=LAST_INSERT_ID()";
+            }else {
+                sql3="select * from `dwmpc1.0`.`company_information` where `Company Id`="+registerCompany.getCompany_Id();
+            }
 
             myStmt=myConn.prepareStatement(sql3);
             myRS=myStmt.executeQuery();
@@ -270,28 +278,220 @@ public class ConnectionUtil {
             String sql=null;
             if(action.equals("RegisteringEmployee")){
                 sql="INSERT INTO `dwmpc1.0`.`company_personnel` (`Company Id`, `First Name`, `Last Name`, `Job Title`, " +
-                        "`Qualification`, `Trained In Waste Management`, `Employee Status`) VALUES (?,?,?,?,?,?,?)";
+                        "`Qualification`, `Trained In Waste Management`, `Employee Status`,`Contact`) VALUES (?,?,?,?,?,?,?,?)";
+                myStmt=myConn.prepareStatement(sql);
+                myStmt.setInt(1,companyPersonnel.getCompany_Id());
+                myStmt.setString(2,companyPersonnel.getFirst_Name());
+                myStmt.setString(3,companyPersonnel.getLast_Name());
+                myStmt.setString(4,companyPersonnel.getJob_Title());
+                myStmt.setString(5,companyPersonnel.getQualification());
+                myStmt.setString(6,companyPersonnel.getTrained_In_Waste_Management());
+                myStmt.setString(7,companyPersonnel.getEmployee_Status());
+                myStmt.setString(8,companyPersonnel.getContact());
             }else{
                 sql="Update company_personnel set" +
                         " `First Name`='"+companyPersonnel.getFirst_Name()+"'," +
                         " `Last Name`='"+companyPersonnel.getLast_Name()+"'," +
-                        " `Job Title`='"+companyPersonnel.getJob_Title()+"', `Qualification`='"+companyPersonnel.getQualification()+"', " +
-                        "`Trained In Waste Management`='"+companyPersonnel.getTrained_In_Waste_Management()+"' " +
+                        " `Job Title`='"+companyPersonnel.getJob_Title()+"'," +
+                        " `Qualification`='"+companyPersonnel.getQualification()+"', " +
+                        "`Trained In Waste Management`='"+companyPersonnel.getTrained_In_Waste_Management()+"', " +
+                        "`Contact`='"+companyPersonnel.getContact()+"' " +
                         "where `Company Personnel Id`="+companyPersonnel.getCompany_Personnel_Id();
+                myStmt=myConn.prepareStatement(sql);
             }
 
-            myStmt=myConn.prepareStatement(sql);
-            myStmt.setInt(1,companyPersonnel.getCompany_Id());
-            myStmt.setString(2,companyPersonnel.getFirst_Name());
-            myStmt.setString(3,companyPersonnel.getLast_Name());
-            myStmt.setString(4,companyPersonnel.getJob_Title());
-            myStmt.setString(5,companyPersonnel.getQualification());
-            myStmt.setString(6,companyPersonnel.getTrained_In_Waste_Management());
-            myStmt.setString(7,companyPersonnel.getEmployee_Status());
+
             myStmt.execute();
         }finally {
             close(myConn,myStmt,null);
         }
     }
 
+    public List<company_personnel> getAllEmployees(int company_id) throws Exception {
+        List<company_personnel> getEmployees = new ArrayList<>();
+        Connection myConn=null;
+        ResultSet myRs=null;
+        PreparedStatement myStmt=null;
+        try {
+            myConn=dataSource.getConnection();
+            String sql ="Select * from `company_personnel` where `Company Id`="+company_id;
+            myStmt=myConn.prepareStatement(sql);
+            myRs=myStmt.executeQuery();
+
+            while(myRs.next()) {
+                //retrieve data from the result set
+                String  fname=myRs.getString("First Name");
+                String Sname=myRs.getString("Last Name");
+                String Title=myRs.getString("Job Title");
+                String qualification=myRs.getString("Qualification");
+                String training=myRs.getString("Trained In Waste Management");
+                int personnel_id=myRs.getInt("Company Personnel Id");
+                String Contact=myRs.getString("Contact");
+
+                company_personnel registerCompany=new company_personnel(personnel_id,fname,Sname,Title,qualification,training,Contact);
+
+                getEmployees.add(registerCompany);
+            }
+
+
+        }finally {
+            close(myConn,myStmt,myRs);
+        }
+        return getEmployees;
+    }
+
+    public void registerVehicle(vehicle vehicleRegistration,String action) throws Exception {
+        Connection myConn=null;
+        // Statement myStmt=null;
+        ResultSet myRs=null;
+        PreparedStatement myStmt=null;
+        try {
+            //get a connection
+            myConn=dataSource.getConnection();
+            String sql=null;
+            if(action.equals("EditingVehicle")){
+                sql ="update vehicle set `Chase Number`=?, `Vehicle Type`=?," +
+                        " `Unladen Weight`=?, `Waste Type`=?, `Annual Quantity`=?," +
+                        " `Type Of Waste Covered During Transportation`=?, `Carrier Number`=?" +
+                        " where `Chase Number`=?";
+                myStmt=myConn.prepareStatement(sql);
+                myStmt.setString(1,vehicleRegistration.getChase_number());
+                myStmt.setString(2,vehicleRegistration.getVehicle_type());
+                myStmt.setString(3,vehicleRegistration.getUnladen_Weight());
+                myStmt.setString(4,vehicleRegistration.getWaste_Type());
+                myStmt.setString(5,vehicleRegistration.getAnnual_Quantity());
+                myStmt.setString(6,vehicleRegistration.getType_Of_Waste_covered_during_Transportation());
+                myStmt.setString(7,vehicleRegistration.getCarrie_number());
+                myStmt.setString(8,vehicleRegistration.getChase_number());
+
+            }else if(action.equals("RegisteringVehicle")){
+                sql ="INSERT INTO `dwmpc1.0`.`vehicle` (`Chase Number`, `Company Id`, `Vehicle Type`," +
+                        " `Unladen Weight`, `Waste Type`, `Annual Quantity`, `Type Of Waste Covered During Transportation`," +
+                        " `Carrier Number`, `BA Permit`, `Certification Of Cooperation`, `Payment Receipt`, `Facility Licence`," +
+                        " `Hazardous Waste`, `Training On Health And Safety`, `Fire Fighting And First Aid`, `Health And Environment`, " +
+                        "`Road_Worthiness`, `Blue_Book`, `Affidavit` , `PrDP_att`, `Owner` ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                myStmt=myConn.prepareStatement(sql);
+                myStmt.setString(1,vehicleRegistration.getChase_number());
+                myStmt.setInt(2,vehicleRegistration.getCompany_Id());
+                myStmt.setString(3,vehicleRegistration.getVehicle_type());
+                myStmt.setString(4,vehicleRegistration.getUnladen_Weight());
+                myStmt.setString(5,vehicleRegistration.getWaste_Type());
+                myStmt.setString(6,vehicleRegistration.getAnnual_Quantity());
+                myStmt.setString(7,vehicleRegistration.getType_Of_Waste_covered_during_Transportation());
+                myStmt.setString(8,vehicleRegistration.getCarrie_number());
+
+                myStmt.setString(9,vehicleRegistration.getBA_permit());
+                myStmt.setString(10,vehicleRegistration.getCertification_of_Cooperation());
+                myStmt.setString(11,vehicleRegistration.getPayment_receipt());
+                myStmt.setString(12,vehicleRegistration.getFacility_Licence());
+                myStmt.setString(13,vehicleRegistration.getHazardous_waste());
+                myStmt.setString(14,vehicleRegistration.getTraining_on_health_and_safety());
+
+                myStmt.setString(15,vehicleRegistration.getFire_fighting_and_first_aid());
+                myStmt.setString(16,vehicleRegistration.getHealth_and_Environment());
+                myStmt.setString(17,vehicleRegistration.getRoad_Wortiness());
+                myStmt.setString(18,vehicleRegistration.getBlue_book());
+                myStmt.setString(19,vehicleRegistration.getAffidavit());
+                myStmt.setString(20,vehicleRegistration.getPrPD());
+                myStmt.setString(21,vehicleRegistration.getOwn());
+            }
+
+
+
+            myStmt.execute();
+
+        }finally {
+            // close JDBC objects
+
+            close(myConn,myStmt,myRs);
+
+        }
+    }
+
+    public List<vehicle> getVehicleDetails(int company_id) throws Exception {
+
+        List<vehicle> getVehicleDetail = new ArrayList<>();
+        Connection myConn=null;
+        ResultSet myRs=null;
+        PreparedStatement myStmt=null;
+
+        try {
+            //get a connectio
+
+            myConn=dataSource.getConnection();
+            String sql ="Select * from vehicle where `Company Id`="+company_id;
+            myStmt=myConn.prepareStatement(sql);
+            myRs=myStmt.executeQuery();
+
+            //process result set
+            while(myRs.next()) {
+                //retrieve data from the result set
+                String chase_number=myRs.getString("Chase Number");
+                String Vehicle_Type=myRs.getString("Vehicle Type");
+                String Unladen=myRs.getString("Unladen Weight");
+                String Waste_Type=myRs.getString("Waste Type");
+                String Annual=myRs.getString("Annual Quantity");
+                String Transportation=myRs.getString("Type Of Waste Covered During Transportation");
+                String Carrier_NO=myRs.getString("Carrier Number");
+                String Own=myRs.getString("Owner");
+
+                vehicle setVehicleDetail=new vehicle(chase_number,Vehicle_Type,Unladen,Waste_Type,Annual,Transportation,Carrier_NO,Own);
+
+                getVehicleDetail.add(setVehicleDetail);
+            }
+        }finally {
+
+            close(myConn,myStmt,myRs);
+
+        }
+        return getVehicleDetail;
+
+    }
+
+    public vehicle getAttachments(String chassis_no) throws Exception {
+        vehicle Attachment=null;
+        Connection myConn=null;
+        ResultSet myRs=null;
+        PreparedStatement myStmt=null;
+
+        try {
+            System.out.println("this is Chassis :"+chassis_no+" 11");
+            myConn = dataSource.getConnection();
+            String sql = "Select * from vehicle where `Chase Number`='" +chassis_no+"'";
+            myStmt = myConn.prepareStatement(sql);
+            myRs = myStmt.executeQuery();
+            System.out.println("this is Chassis :"+chassis_no+" 22");
+            while (myRs.next()) {
+                System.out.println("this is Chassis :"+chassis_no+" thhh");
+                String BA_permit=myRs.getString("BA Permit");
+                String Payment_receipt=myRs.getString("Payment Receipt");
+                String Certification_of_Cooperation=myRs.getString("Certification Of Cooperation");
+                String Facility_Licence=myRs.getString("Facility Licence");
+                String PrPD=myRs.getString("PrDP_att");
+                String hazardous_waste=myRs.getString("Hazardous Waste");
+                String training_on_health_and_safety=myRs.getString("Training On Health And Safety");
+                String Fire_fighting_and_first_aid=myRs.getString("Fire Fighting And First Aid");
+                String Health_and_Environment=myRs.getString("Health And Environment");
+                String Road_Worthiness=myRs.getString("Road_Worthiness");
+                String Blue_Book=myRs.getString("Blue_Book");
+                String Affidavit=myRs.getString("Affidavit");
+
+
+
+                Attachment = new vehicle(chassis_no,
+                        BA_permit,Payment_receipt,
+                        Certification_of_Cooperation,Facility_Licence,PrPD,
+                        hazardous_waste,training_on_health_and_safety,
+                        Fire_fighting_and_first_aid,Health_and_Environment,Road_Worthiness,Blue_Book,Affidavit);
+
+
+            }
+        }finally {
+
+            close(myConn,myStmt,myRs);
+
+        }
+        return Attachment;
+
+    }
 }

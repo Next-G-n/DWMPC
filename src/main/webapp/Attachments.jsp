@@ -1,3 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1201,9 +1204,69 @@
               <div class="panel-body">
                 <div class="row">
                   <div class="col-md-12">
+                    <c:url var="tempDownloadRo" value="ServletDwmpc">
+                      <c:param name="command" value="downloadVehicleAttachment"/>
+                      
+                      <c:param name="Download" value="Certification_of_roadwortiness"/>
+                    </c:url>
+                    <c:url var="tempDownloadAff" value="ServletDwmpc">
+                      <c:param name="command" value="downloadVehicleAttachment"/>
+                      
+                      <c:param name="Download" value="Affidavit"/>
+                    </c:url>
+                    <c:url var="tempDownloadBA_permit" value="ServletDwmpc">
+                      <c:param name="command" value="downloadVehicleAttachment"/>
+                      
+                      <c:param name="Download" value="BA_permit"/>
+                    </c:url>
+                    <c:url var="tempDownloadgetPayment_receipt" value="ServletDwmpc">
+                      <c:param name="command" value="downloadVehicleAttachment"/>
+                      
+                      <c:param name="Download" value="getPayment_receipt"/>
+                    </c:url>
+                    <c:url var="tempDownloadCertification_of_cooperation" value="ServletDwmpc">
+                      <c:param name="command" value="downloadVehicleAttachment"/>
+                      
+                      <c:param name="Download" value="Certification_of_cooperation"/>
+                    </c:url>
+                    <c:url var="tempDownloadFacility_Licence_For_all_recyclers" value="ServletDwmpc">
+                      <c:param name="command" value="downloadVehicleAttachment"/>
+                      
+                      <c:param name="Download" value="Facility_Licence_For_all_recyclers"/>
+                    </c:url>
+                    <c:url var="tempDownloadPrDP_H_For_Hazardous_Waste" value="ServletDwmpc">
+                      <c:param name="command" value="downloadVehicleAttachment"/>
+                      
+                      <c:param name="Download" value="PrDP_H_For_Hazardous_Waste"/>
+                    </c:url>
+                    <c:url var="tempDownloadCer" value="ServletDwmpc">
+                      <c:param name="command" value="downloadVehicleAttachment"/>
+                      
+                      <c:param name="Download" value="Certificate_of_training_on_Both_Fire_fighting_and_First_Aid"/>
+                    </c:url>
+                    <c:url var="tempDownloadSafe" value="ServletDwmpc">
+                      <c:param name="command" value="downloadVehicleAttachment"/>
+                      
+                      <c:param name="Download" value="Certificate_of_training_on_Safety_Health_and_Environment_Waste"/>
+                    </c:url>
+                    <c:url var="tempDownloadHeath" value="ServletDwmpc">
+                      <c:param name="command" value="downloadVehicleAttachment"/>
+                      
+                      <c:param name="Download" value="Certificate_of_training_on_Occupational_Health_and_Safety"/>
+                    </c:url>
+                    <c:url var="tempDownloadHazardous" value="ServletDwmpc">
+                      <c:param name="command" value="downloadVehicleAttachment"/>
+                      
+                      <c:param name="Download" value="Contingency_plan_Containing_Spill_containment_and_accident_response_plan_for_hazardous_waste"/>
+                    </c:url>
+                   <c:url var="tempDownloadMo" value="ServletDwmpc">
+                     <c:param name="command" value="downloadVehicleAttachment"/>
+                     
+                     <c:param name="Download" value="Motor_Vehicle_Registration_Book"/>
+                   </c:url>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
                       <div class="file">
-                        <a href="PDP_NSHATHISI.docx">
+                        <a href="${tempDownloadgetPayment_receipt}">
 
                           <div class="icon">
                             <i class="zmdi zmdi-file-text"></i>
@@ -1218,7 +1281,7 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
                       <div class="file">
-                        <a href="#">
+                        <a href="${tempDownloadBA_permit}">
 
                           <div class="icon">
                             <i class="zmdi zmdi-file-text"></i>
@@ -1233,7 +1296,7 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
                       <div class="file">
-                        <a href="#">
+                        <a href="${tempDownloadAff}">
 
                           <div class="icon">
                             <i class="zmdi zmdi-file-text"></i>
@@ -1248,7 +1311,7 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
                       <div class="file">
-                        <a href="#">
+                        <a href="${tempDownloadFacility_Licence_For_all_recyclers}">
 
                           <div class="icon">
                             <i class="zmdi zmdi-file-text"></i>
@@ -1263,7 +1326,7 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
                       <div class="file">
-                        <a href="#">
+                        <a href="${tempDownloadPrDP_H_For_Hazardous_Waste}">
 
                           <div class="icon">
                             <i class="zmdi zmdi-file-text"></i>
@@ -1278,7 +1341,7 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
                       <div class="file">
-                        <a href="#">
+                        <a href="${tempDownloadMo}">
 
                           <div class="icon">
                             <i class="zmdi zmdi-file-text"></i>
@@ -1293,7 +1356,7 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
                       <div class="file">
-                        <a href="#">
+                        <a href="${tempDownloadHeath}">
 
                           <div class="icon">
                             <i class="zmdi zmdi-file-text"></i>
@@ -1308,7 +1371,7 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
                       <div class="file">
-                        <a href="#">
+                        <a href="${tempDownloadHazardous}">
 
                           <div class="icon">
                             <i class="zmdi zmdi-file-text"></i>
@@ -1323,7 +1386,7 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
                       <div class="file">
-                        <a href="#">
+                        <a href="${tempDownloadCer}">
 
                           <div class="icon">
                             <i class="zmdi zmdi-file-text"></i>
@@ -1338,7 +1401,7 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
                       <div class="file">
-                        <a href="#">
+                        <a href="${tempDownloadSafe}">
 
                           <div class="icon">
                             <i class="zmdi zmdi-file-text"></i>
@@ -1353,7 +1416,7 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
                       <div class="file">
-                        <a href="#">
+                        <a href="${tempDownloadRo}}">
 
                           <div class="icon">
                             <i class="zmdi zmdi-file-text"></i>
@@ -1368,7 +1431,7 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
                       <div class="file">
-                        <a href="#">
+                        <a href="${tempDownloadCertification_of_cooperation}">
 
                           <div class="icon">
                             <i class="zmdi zmdi-file-text"></i>
@@ -1381,7 +1444,7 @@
                         </a>
                       </div>
                     </div>
-
+                    
                   </div>
                 </div>
                 <div style="float: right" class="row">

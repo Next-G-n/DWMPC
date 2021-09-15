@@ -1,3 +1,7 @@
+
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +27,12 @@
   <!-- Custom CSS -->
   <link href="dist/css/style.css" rel="stylesheet" type="text/css">
 
+
+  <style>
+    .dt-buttons{
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -39,8 +49,7 @@
       <div class="nav-header pull-left">
         <div class="logo-wrap">
           <a href="${pageContext.request.contextPath}/index.jsp">
-            <img class="brand-img" src="img/logo.png" alt="brand"/>
-            <span class="brand-text">Zapily</span>
+            <img class="brand-img" src="img/logo2.png" alt="brand"/>
           </a>
         </div>
       </div>
@@ -1215,7 +1224,6 @@
                         <th>Unleaded Weight</th>
                         <th>Type of waste</th>
                         <th>Anual Quantity</th>
-                        <th>Type of waste Covered</th>
                         <th>Carrier Number</th>
                         <th>Vehicle Ownership</th>
                         <th>Status</th>
@@ -1225,108 +1233,31 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td class="Chassis-Number">B2223TTS1345Y67ES</td>
-                        <td class="Vehicle-Type">Truck</td>
-                        <td class="Weight">15kg</td>
-                        <td class="Waste-Type">Clinical Waste</td>
-                        <td class="Annual-Quantity">100t</td>
-                        <td class="Waste-Type2">Clinical Waste</td>
-                        <td class="Registration-Number">B123AAS</td>
-                        <td class="Vehicle-Ownership">No, I borrowed it</td>
-                        <td><span class="label label-danger">Stage 3</span> </td>
-                        <td class="text-nowrap"><span class="pencil-Edit" id="1" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Vehicle-information-modal"> <a  class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span> <a href="Attachments.jsp" onclick="alert('test 1,2,3')" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-file-pdf-o text-warning"></i> </a> </td>
+                      <c:set var="countVehicles" value="0" scope="page"/>
+                      <c:forEach var="Vehicles" items="${All_Vehicles}">
+                        <c:set var="countVehicles" value="${countVehicles+1}" scope="page"/>
 
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td class="Chassis-Number">B2223TTS1345Y67ES</td>
-                        <td class="Vehicle-Type">Truck</td>
-                        <td class="Weight">15kg</td>
-                        <td class="Waste-Type">Bio Waste</td>
-                        <td class="Annual-Quantity">100t</td>
-                        <td class="Waste-Type2">Bio waste</td>
-                        <td class="Registration-Number">B123AAS</td>
-                        <td class="Vehicle-Ownership">Yes, I am the owner</td>
-                        <td><span class="label label-danger">Stage 3</span> </td>
-                        <td class="text-nowrap"><span class="pencil-Edit" id="2" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Vehicle-information-modal"> <a href="#" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span> <a href="Attachments.jsp" onclick="alert('test 1,2,3')" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-file-pdf-o text-warning"></i> </a> </td>
-
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td class="Chassis-Number">B2223TTS1345Y67ES</td>
-                        <td class="Vehicle-Type">Truck 33</td>
-                        <td class="Weight">15kg</td>
-                        <td class="Waste-Type">Hazardous Waste</td>
-                        <td class="Annual-Quantity">100t</td>
-                        <td class="Waste-Type2">Hazardous Waste</td>
-                        <td class="Registration-Number">B123AAS</td>
-                        <td class="Vehicle-Ownership">Yes, I am the owner</td>
-                        <td><span class="label label-danger">Stage 3</span> </td>
-                        <td class="text-nowrap"><span class="pencil-Edit" id="3" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Vehicle-information-modal"> <a href="#" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span> <a href="Attachments.jsp" onclick="alert('test 1,2,3')" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-file-pdf-o text-warning"></i> </a> </td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td class="Chassis-Number">B2223TTS1345Y67ES</td>
-                        <td class="Vehicle-Type">Truck</td>
-                        <td class="Weight">15kg</td>
-                        <td class="Waste-Type">Domestic Waste</td>
-                        <td class="Annual-Quantity">100t</td>
-                        <td class="Waste-Type2">Domestic Waste</td>
-                        <td class="Registration-Number">B123AAS</td>
-                        <td class="Vehicle-Ownership">No, I borrowed it</td>
-                        <td><span class="label label-danger">Stage 3</span> </td>
-                        <td class="text-nowrap"><span class="pencil-Edit" id="4" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Vehicle-information-modal"> <a href="#" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span> <a href="Attachments.jsp" onclick="alert('test 1,2,3')" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-file-pdf-o text-warning"></i> </a> </td>
-
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td class="Chassis-Number">B2223TTS1345Y67ES</td>
-                        <td class="Vehicle-Type">Truck</td>
-                        <td class="Weight">15kg</td>
-                        <td class="Waste-Type">Bio Waste</td>
-                        <td class="Annual-Quantity">100t</td>
-                        <td class="Waste-Type2">Bio waste</td>
-                        <td class="Registration-Number">B123AAS</td>
-                        <td class="Vehicle-Ownership">Yes, I am the owner</td>
-                        <td><span class="label label-danger">Stage 3</span> </td>
-                        <td class="text-nowrap"><span class="pencil-Edit" id="5" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Vehicle-information-modal"> <a href="#" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span><a href="Attachments.jsp" onclick="alert('test 1,2,3')" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-file-pdf-o text-warning"></i> </a> </td>
-
-                      <tr>
-                        <td>6</td>
-                        <td class="Chassis-Number">B2223TTS1345Y67ES</td>
-                        <td class="Vehicle-Type">Truck</td>
-                        <td class="Weight">15kg</td>
-                        <td class="Waste-Type">Bio Waste</td>
-                        <td class="Annual-Quantity">100t</td>
-                        <td class="Waste-Type2">Bio waste</td>
-                        <td class="Registration-Number">B123AAS</td>
-                        <td class="Vehicle-Ownership">No, I borrowed it</td>
-                        <td><span class="label label-danger">Stage 3</span> </td>
-                        <td class="text-nowrap"><span class="pencil-Edit" id="6"  data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Vehicle-information-modal"> <a href="#" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span><a href="Attachments.jsp" onclick="alert('test 1,2,3')" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-file-pdf-o text-warning"></i> </a> </td>
-
-
-
-                      </tr>
-
-                      <tr>
-                        <td>7</td>
-                        <td class="Chassis-Number">B2223TTS1345Y67ES</td>
-                        <td class="Vehicle-Type">Truck</td>
-                        <td class="Weight">15kg</td>
-                        <td class="Waste-Type">Clinical Waste</td>
-                        <td class="Annual-Quantity">100t</td>
-                        <td class="Waste-Type2">Clinical Waste</td>
-                        <td class="Registration-Number">B123AAS</td>
-                        <td class="Vehicle-Ownership">Yes, I am the owner</td>
-                        <td><span class="label label-danger">Stage 3</span> </td>
-                        <td class="text-nowrap"><span class="pencil-Edit" id="7" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Vehicle-information-modal"> <a href="#" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span> <a href="Attachments.jsp" onclick="alert('test 1,2,3')" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-file-pdf-o text-warning"></i> </a> </td>
-
-                      </tr>
+                        <tr>
+                          <td class="Count">${countVehicles}</td>
+                          <td class="Chassis-Number">${Vehicles.chase_number}</td>
+                          <td class="Vehicle-Type">${Vehicles.vehicle_type}</td>
+                          <td class="Weight">${Vehicles.unladen_Weight}</td>
+                          <td class="Waste-Type">${Vehicles.waste_Type}</td>
+                          <td class="Annual-Quantity">${Vehicles.annual_Quantity}</td>
+                          <td class="Registration-Number">${Vehicles.carrie_number}</td>
+                          <td class="Vehicle-Ownership">${Vehicles.own}</td>
+                          <td><span class="label label-danger">Stage 0</span> </td>
+                          <td class="text-nowrap"><span class="pencil-Edit" id="${countVehicles}" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Vehicle-information-modal"> <a  class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span><span id="${Vehicles.chase_number}" onclick="VehicleAttachments(this.id)"> <a   data-toggle="tooltip" data-original-title="Attachments"> <i class="fa fa-file-pdf-o text-warning"></i> </a> </span></td>
+                        </tr>
+                      </c:forEach>
 
                       </tbody>
                     </table>
+
+                    <form method="post" id="Vehicle_Att" action="ServletDwmpc">
+                      <input type="hidden" name="command" value="VehicleAttachments">
+                      <input type="hidden" id="chassis_No" name="chassis_No" value="">
+                    </form>
 
 
                   </div>
@@ -1335,22 +1266,17 @@
                       <div class="modal-content">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                          <h5 class="modal-title" id="myLargeModalLabel">Editing Vehicle Information for $Name</h5>
-                        </div><form>
+                          <h5 class="modal-title" id="myLargeModalLabel">Editing Vehicle Information for ${Company_info.company_Name}</h5>
+                        </div><form action="ServletDwmpc" method="post">
                         <div class="modal-body">
+                          <input type="hidden" id="command" name="command" class="hidden" value="RegisteringVehicle"/>
+                          <input type="hidden" id="action" name="action"  class="hidden" value="EditingVehicle"/>
+                          <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
+
 
                           <div class="form-group">
-                            <div class="row">
-                              <div class="col-md-6 col-xs-12">
-                                <label class="control-label mb-10" for="Vehicle-Type">Vehicle Type (required):</label>
-                                <input id="Vehicle-Type" type="text" name="Vehicle_Type" class="form-control required" value="" required/>
-                              </div>
-                              <div class="span1"></div>
-                              <div class="col-md-6 col-xs-12">
-                                <label class="control-label mb-10" for="Chassis-Number">Chassis Number(required):</label>
-                                <input id="Chassis-Number" type="text" name="Chassis_Number" class="form-control" value="" required/>
-                              </div>
-                            </div>
+                            <label class="control-label mb-10" for="Chassis-Number">Chassis Number(required):</label>
+                            <input id="Chassis-Number" type="text" name="Chassis_Number" class="form-control" value="" required/>
                           </div>
                           <div class="form-group">
                             <div class="row">
@@ -1369,7 +1295,7 @@
                             <div class="row">
                               <div class="col-md-6 col-xs-12">
                                 <label for="Vehicle-Ownership" class="control-label mb-10"> This Your Vehicle?(required):</label>
-                                <select id="Vehicle-Ownership" class="selectpicker" data-style="form-control btn-default btn-outline">
+                                <select id="Vehicle-Ownership" class="selectpicker" name="Your_Vehicle" data-style="form-control btn-default btn-outline">
                                   <option value="Yes, I am the owner">Yes, I am the owner.</option>
                                   <option value="No, I borrowed it">No, I borrowed it.</option>
                                 </select>
@@ -1377,7 +1303,7 @@
                               <div class="span1"></div>
                               <div class="col-md-6 col-xs-12">
                                 <label for="Waste-Type" class="control-label mb-10"> Type Of Waste Transported(required):</label>
-                                <select id="Waste-Type" class="selectpicker" data-style="form-control btn-default btn-outline">
+                                <select id="Waste-Type"  name="Waste_Type" class="selectpicker" data-style="form-control btn-default btn-outline">
                                   <option value="Bio Waste">Bio Waste</option>
                                   <option value="Chemical Waste">Chemical Waste</option>
                                   <option value="Hazardous Waste">Hazardous Waste</option>
@@ -1395,8 +1321,8 @@
                               </div>
                               <div class="span1"></div>
                               <div class="col-md-6 col-xs-12">
-                                <label class="control-label mb-10" for="Waste-Type2">Type of Waste Covered During Transportation(required):</label>
-                                <input id="Waste-Type2" type="text" name="Transportation" class="form-control" value="" required/>
+                                <label class="control-label mb-10" for="Vehicle-Type">Vehicle Type (required):</label>
+                                <input id="Vehicle-Type" type="text" name="vehicle_Type" class="form-control required" value="" required/>
                               </div>
                             </div>
                           </div>
@@ -1415,6 +1341,7 @@
                     let tableRowElement;
                     function toggleModal(element) {
 
+
                       tableRowElement = element.parentElement.parentElement;
                       const Chassis_Number = tableRowElement.getElementsByClassName('Chassis-Number')[0].innerHTML;
                       const Vehicle_Type = tableRowElement.getElementsByClassName('Vehicle-Type')[0].innerHTML;
@@ -1422,7 +1349,6 @@
                       const Waste_Type = tableRowElement.getElementsByClassName('Waste-Type')[0].innerHTML;
                       const Annual_Quantity = tableRowElement.getElementsByClassName('Annual-Quantity')[0].innerHTML;
                       const Registration_Number = tableRowElement.getElementsByClassName('Registration-Number')[0].innerHTML;
-                      const Waste_Type2 = tableRowElement.getElementsByClassName('Waste-Type2')[0].innerHTML;
                       const Vehicle_Ownership = tableRowElement.getElementsByClassName('Vehicle-Ownership')[0].innerHTML;
 
                       document.getElementById('Chassis-Number').value = Chassis_Number;
@@ -1432,13 +1358,19 @@
                       $("#Waste-Type").selectpicker("refresh");
                       document.getElementById('Annual-Quantity').value = Annual_Quantity;
                       document.getElementById('Registration-Number').value = Registration_Number;
-                      document.getElementById('Waste-Type2').value = Waste_Type2;
                       document.getElementById('Vehicle-Ownership').value = Vehicle_Ownership;
                       $("#Vehicle-Ownership").selectpicker("refresh");
 
 
                     }
+                    function VehicleAttachments(chassis_No){
 
+                      document.getElementById("chassis_No").value=chassis_No;
+                      document.getElementById("Vehicle_Att").submit();
+                    }
+                    function test(chassis_No){
+                      alert("worked"+chassis_No)
+                    }
 
                   </script>
 
@@ -1446,7 +1378,7 @@
 
                 </br>
                 <div style="float: right" class="row">
-                  <button type="button" onclick="location.href='Vehicle-Form.htm';" data-toggle="modal" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Add New Vehicle</span></button>
+                  <button type="button" onclick="location.href='Vehicle-Form.jsp';" data-toggle="modal" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Add New Vehicle</span></button>
                 </div>
               </div>
 
@@ -1462,7 +1394,7 @@
       <footer class="footer container-fluid pl-30 pr-30">
         <div class="row">
           <div class="col-sm-12">
-            <p>2018 &copy; Zapily. Pampered by Hencework</p>
+            <p>2018 &copy; DWMPC. Created by Next-gen</p>
           </div>
         </div>
       </footer>

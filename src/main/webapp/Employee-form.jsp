@@ -1,12 +1,18 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: NITRO5
+  Date: 9/6/2021
+  Time: 5:36 PM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>DWMPC || Company Employees</title>
+    <title>DWMPC || Employee Registration Form</title>
     <meta name="description" content="Zapily is a Dashboard & Admin Site Responsive Template by hencework." />
     <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Zapily Admin, Zapilyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
     <meta name="author" content="hencework"/>
@@ -14,33 +20,17 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="icon.ico">
     <link rel="icon" href="icon.ico" type="image/x-icon">
+    <!-- vector map CSS -->
+    <link href="vendors/bower_components/jquery-wizard.js/css/wizard.css" rel="stylesheet" type="text/css"/>
 
     <!-- bootstrap-select CSS -->
     <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
 
-
-    <!-- Data table CSS -->
-    <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-
-    <!-- Footable CSS -->
-    <link href="vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet" type="text/css"/>
-
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
 </head>
-<script>
 
-    window.addEventListener('beforeunload', async (event) => {
-        event.preventDefault();
-        event.returnValue = ''; // For chrome
-        alert("thsiii");
-
-        await document.getElementById("Employee_info").submit();
-    });
-</script>
-
-<body onbeforeunload="HandleBackFunctionality()">
-
+<body>
 <!--Preloader-->
 <div class="preloader-it">
     <div class="la-anim-1"></div>
@@ -1197,214 +1187,113 @@
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="${pageContext.request.contextPath}/index.jsp">Dashboard</a></li>
-                        <li class="active"><span>Employees</span></li>
+                        <li><a href="${pageContext.request.contextPath}/Employees.jsp">Employee Table</a></li>
+                        <li class="active"><span>Company Registration Form</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
-
-
-
+                <!-- Row -->
 
             </div>
             <!-- /Title -->
-
-            <!-- Row -->
             <div class="row">
                 <div class="col-sm-12">
                     <div class="panel panel-warning card-view">
                         <div class="panel-heading">
                             <div class="pull-left">
-                                <h6 class="panel-title txt-light">Employees</h6>
+                                <h6 class="panel-title txt-light"><i class="icon-note txt-black"></i>Employee Registration</h6>
                             </div>
                             <div class="clearfix"></div>
                         </div>
 
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
-                                <div class="table-wrap mt-40">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-wrap">
+                                            <form data-toggle="validator" method="post" action="ServletDwmpc" role="form">
+                                                <input type="hidden" id="command" name="command" class="hidden" value="RegisteringEmployee"/>
+                                                <input type="hidden" id="action" name="action"  class="hidden" value="RegisteringEmployee"/>
+                                                <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
+                                                <input type="hidden" id="Employee_Id" name="Employee Id" class="hidden" value=""/>
 
-                                    <div class="table-responsive">
-
-                                        <table  id="example"  data-paging="true"  class="table table-hover display  pb-30">
-                                            <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th >First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Job Title</th>
-                                                <th>Qualification</th>
-                                                <th>Training in waste Management</th>
-                                                <th>Contact</th>
-                                                <th class="text-nowrap">Action</th>
-
-
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <c:set var="countEmployee" value="0" scope="page"/>
-                                            <c:forEach var="Employee" items="${All_Employee}">
-                                                <c:set var="countEmployee" value="${countEmployee+1}" scope="page"/>
-
-                                                <tr>
-                                                    <td class="Count">${countEmployee}</td>
-                                                    <td class="First_Name">${Employee.first_Name}</td>
-                                                    <td class="Last_Name">${Employee.last_Name}</td>
-                                                    <td class="Job_Title">${Employee.job_Title}</td>
-                                                    <td class="Qualification">${Employee.qualification}</td>
-                                                    <td class="training">${Employee.trained_In_Waste_Management}</td>
-                                                    <td class="Contact">${Employee.contact}</td>
-                                                    <td class="text-nowrap"><span class="pencil-Edit" id="${countEmployee}" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Officer-Registration-modal"> <a  class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span> <a href="#"  data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a> </td>
-                                                    <td style="display: none" class="Employee_Id" >${Employee.company_Personnel_Id}</td>
-
-                                                </tr>
-                                            </c:forEach>
-                                            <input type="hidden" id="count_Employees" value="${countEmployee}" />
-                                            </tbody>
-                                        </table>
-
-
-                                    </div>
-
-                                    <div id="Officer-Registration-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    <h5 class="modal-title" id="myLargeModalLabel">Editing Employee Information for <a id="OfficerName">$Name</a></h5>
-                                                </div>
-                                                <form action="ServletDwmpc" method="post">
-                                                <div class="modal-body">
-                                                    <input type="hidden" id="command" name="command" class="hidden" value="RegisteringEmployee"/>
-                                                    <input type="hidden" id="action" name="action"  class="hidden" value="EditingEmployee"/>
-                                                    <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
-                                                    <input type="hidden" id="Employee_Id" name="Employee Id" class="hidden" value=""/>
-
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-md-6 col-xs-12 mt-40">
-                                                                <label class="control-label mb-10" for="First_Name"> First Name(required):</label>
-                                                                <input type="text" id="First_Name" name="First_Name"  class="form-control required"   required/>
-                                                            </div>
-                                                            <div class="span1"></div>
-                                                            <div class="col-md-6 col-xs-12 mt-40">
-                                                                <label class="control-label mb-10" for="Last_Name"> Last Name(required):</label>
-                                                                <input type="text" id="Last_Name" name="Last_Name"  class="form-control required"   required/>
-                                                            </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-xs-12 mt-40">
+                                                            <label class="control-label mb-10" for="First_Name"> First Name(required):</label>
+                                                            <input type="text" id="First_Name" name="First Name"  class="form-control required"   required/>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-md-6 col-xs-12">
-                                                                <label class="control-label mb-10" for="Job_Title"> Job Title(required):</label>
-                                                                <input type="text" class="form-control" id="Job_Title" name="Position/job Title" placeholder="Job Title">
-                                                            </div>
-                                                            <div class="span1"></div>
-                                                            <div class="col-md-6 col-xs-12">
-                                                                <label class="control-label mb-10" for="Qualification"> Qualification(required):</label>
-                                                                <input type="text" class="form-control" id="Qualification" name="Qualification" placeholder="Qualification" required>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-md-6 col-xs-12">
-                                                                <label for="training" class="col-sm-3 control-label">Training in waste Management(required):</label>
-                                                                <select class="selectpicker" id= "training" name="training" data-style="form-control btn-default btn-outline">
-                                                                    <option value="Yes">Yes</option>
-                                                                    <option value="No">No</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="span1"></div>
-                                                            <div class="col-md-6 col-xs-12">
-                                                                <label class="control-label mb-10" for="Contact">Contact(required):</label>
-                                                                <input type="text" id="Contact" name="Contact"  class="form-control required"  required/>
-                                                            </div>
+                                                        <div class="span1"></div>
+                                                        <div class="col-md-6 col-xs-12 mt-40">
+                                                            <label class="control-label mb-10" for="Last_Name"> Last Name(required):</label>
+                                                            <input type="text" id="Last_Name" name="Last Name"  class="form-control required"   required/>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Save Changes</span></button>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-xs-12">
+                                                            <label class="control-label mb-10" for="Job_Title"> Job Title(required):</label>
+                                                            <input type="text" class="form-control required" id="Job_Title" name="Position/job Title" placeholder="Job Title">
+                                                        </div>
+                                                        <div class="span1"></div>
+                                                        <div class="col-md-6 col-xs-12">
+                                                            <label class="control-label mb-10" for="Qualification"> Qualification(required):</label>
+                                                            <input type="text" class="form-control required" id="Qualification" name="Qualification" placeholder="Qualification" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10" for="Contact">Contact(required):</label>
+                                                    <input type="text" id="Contact" name="Contact" data-mask="+267 99 999 999"  class="form-control required"  required/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="training" class="col-sm-3 control-label">Training in waste Management(required):</label>
+                                                    <select class="selectpicker" id= "training" name="training" data-style="form-control btn-default btn-outline">
+                                                        <option value="Yes">Yes</option>
+                                                        <option value="No">No</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group mb-0" style="float: right">
+                                                    <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">submit</span></button>
                                                 </div>
                                             </form>
-                                            </div>
                                         </div>
                                     </div>
-
-                                    <script>
-                                        let tableRowElement;
-                                        function toggleModal(element) {
-
-                                            tableRowElement = element.parentElement.parentElement;
-                                            const First_Name = tableRowElement.getElementsByClassName('First-Name')[0].innerHTML;
-                                            const Last_Name = tableRowElement.getElementsByClassName('Last-Name')[0].innerHTML;
-                                            const Job_Title = tableRowElement.getElementsByClassName('Job_Title')[0].innerHTML;
-                                            const Qualification = tableRowElement.getElementsByClassName('Qualification')[0].innerHTML;
-                                            const training = tableRowElement.getElementsByClassName('training')[0].innerHTML;
-                                            const Contact = tableRowElement.getElementsByClassName('Contact')[0].innerHTML;
-                                            const Employee_Id = tableRowElement.getElementsByClassName('Employee_Id')[0].innerHTML;
-
-
-                                            document.getElementById('First_Name').value = First_Name;
-                                            document.getElementById('Last_Name').value = Last_Name;
-                                            document.getElementById('Job_Title').innerHTML=Job_Title;
-                                            document.getElementById('Qualification').value = Qualification;
-                                            document.getElementById('training').value = training;
-                                            $("#training").selectpicker("refresh");
-                                            document.getElementById('Employee_Id').value = Employee_Id;
-                                            document.getElementById('Contact').value = Contact;
-
-
-                                        }
-
-
-                                    </script>
-
-                                </div>
-
-                                </br>
-                                <div style="float: right" class="row">
-                                    <button type="button" onclick="location.href='Vehicle-Table.jsp';" data-toggle="modal" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Add New Employee</span></button>
                                 </div>
                             </div>
-
                         </div>
+
+
+                        <script>
+                            $('#test').click(function(event){
+                                event.preventDefault();
+                                alert("great")
+                                var	command = $('#command').val();
+                                $.ajax({
+                                    type: "POST",
+                                    url: "ServletDwmpc",
+                                    data: { command:command },
+                                    dataType: "json",
+                                    success: function(result){
+                                    }
+                                });
+                            });
+                            function SendIT(){
+                                alert("test")
+                                var	command = $('#command').val();
+                                var ht=new XMLHttpRequest();
+                                ht.open("Post","ServletDwmpc",true);
+                                ht.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                                ht.send(command);
+                            }
+
+                        </script>
+
                     </div>
                 </div>
             </div>
-            <!-- /Row -->
-
-            <form method="post" id="Employee_info" action="ServletDwmpc" onsubmit="return false">
-                <input type="hidden" name="command" value="EmployeesDetail">
-                <input type="hidden" name="company_id" value="${Company_info.company_Id}">
-            </form>
-
-            <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-
-            <script type="text/javascript">
-
-                var form = $('#editor');
-                form.submit(function () {
-
-                    $.ajax({
-                        type: form.attr('method'),
-                        url: form.attr('action'),
-                        data: form.serialize(),
-                        success: function (data) {
-                            var result=data;
-                            $('#content').html(result);
-
-                        }
-                    });
-
-                    return false;
-                });
-
-
-
-            </script>
-
-
             <!-- Footer -->
             <footer class="footer container-fluid pl-30 pr-30">
                 <div class="row">
@@ -1428,15 +1317,14 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-<script src="dist/js/modal-data.js"></script>
-
-<!-- Piety JavaScript -->
-<script src="vendors/bower_components/peity/jquery.peity.min.js"></script>
-<script src="dist/js/peity-data.js"></script>
+<script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
+<script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="dist/js/jquery.slimscroll.js"></script>
+
+<!-- Fancy Dropdown JS -->
+<script src="dist/js/dropdown-bootstrap-extended.js"></script>
 
 <!-- Owl JavaScript -->
 <script src="vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
@@ -1447,21 +1335,12 @@
 <!-- Init JavaScript -->
 <script src="dist/js/init.js"></script>
 
-<!-- Data table JavaScript -->
-<script src="vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="vendors/bower_components/jszip/dist/jszip.min.js"></script>
-<script src="vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
-<script src="vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
-
-<script src="vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
-<script src="vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
-<script src="dist/js/export-table-data.js"></script>
-
 <!-- Bootstrap Select JavaScript -->
 <script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>
 
+<!-- Sweet-Alert  -->
+<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="dist/js/sweetalert-data.js"></script>
 
 </body>
 

@@ -19,6 +19,10 @@
     <!-- bootstrap-select CSS -->
     <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
 
+    <!--alerts CSS -->
+    <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
+
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
 </head>
@@ -1203,7 +1207,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-wrap">
-                                            <form data-toggle="validator" method="post" action="ServletDwmpc" role="form">
+                                            <form data-toggle="validator" id="" method="post" action="ServletDwmpc" role="form">
                                                 <input class="inputs" type="hidden" name="command" value="Company Registration">
                                                 <input class="inputs" type="hidden" name="action" value="Registration">
                                                 <input class="inputs" type="hidden" name="Status" value="Pending">
@@ -1430,35 +1434,36 @@
                             </div>
                         </div>
 
-
-                        <script>
-                                $('#test').click(function(event){
-                                    event.preventDefault();
-                                    alert("great")
-                                    var	command = $('#command').val();
-                                    $.ajax({
-                                        type: "POST",
-                                        url: "ServletDwmpc",
-                                        data: { command:command },
-                                        dataType: "json",
-                                        success: function(result){
-                                        }
-                                    });
-                                });
-                                function SendIT(){
-                                    alert("test")
-                                    var	command = $('#command').val();
-                                    var ht=new XMLHttpRequest();
-                                    ht.open("Post","ServletDwmpc",true);
-                                    ht.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-                                    ht.send(command);
-                                }
-
-                        </script>
-
                     </div>
                 </div>
             </div>
+            <button  type="button"  alt="alert"  class="img-responsive model_img Company_Alert_Succes" id="employee-alert" style="display: none" onclick=""></button>
+
+            <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+            <script type="text/javascript">
+
+                var form = $('#TheForm');
+                form.submit(function () {
+
+                    $.ajax({
+                        type: form.attr('method'),
+                        url: form.attr('action'),
+                        data: form.serialize(),
+                        success: function (data) {
+                            var result=data;
+                            $('#content').html(result);
+                            document.getElementById("employee-alert").click();
+
+                        }
+                    });
+
+                    return false;
+                });
+
+
+
+            </script>
             <!-- Footer -->
             <footer class="footer container-fluid pl-30 pr-30">
                 <div class="row">
@@ -1488,6 +1493,7 @@
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
 
+
 <!-- Slimscroll JavaScript -->
 <script src="dist/js/jquery.slimscroll.js"></script>
 
@@ -1505,6 +1511,10 @@
 
 <!-- Bootstrap Select JavaScript -->
 <script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>
+
+<!-- Sweet-Alert  -->
+<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="dist/js/sweetalert-data.js"></script>
 
 </body>
 
