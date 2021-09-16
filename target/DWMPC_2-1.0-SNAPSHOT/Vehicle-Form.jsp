@@ -1211,6 +1211,7 @@
                                                 <input type="hidden" id="action" name="action"  class="hidden" value="RegisteringVehicle"/>
                                                 <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
                                                 <input type="hidden" name="CompanyName" class="hidden" value="${Company_info.company_Name}"/>
+                                                <input type="hidden"  name="addAction"  class="hidden" value="Both"/>
 
                                                 <div class="form-group">
                                                     <div class="row">
@@ -1242,7 +1243,7 @@
                                                     <div class="row">
                                                         <div class="col-md-6 col-xs-12">
                                                             <label for="Your_Vehicle" class="control-label mb-10"> This Your Vehicle?(required):</label>
-                                                            <select id="Your_Vehicle" name="Your_Vehicle" class="selectpicker" data-style="form-control btn-default btn-outline">
+                                                            <select id="Your_Vehicle" name="Your_Vehicle" onchange="test2()" class="selectpicker" data-style="form-control btn-default btn-outline">
                                                                 <option value="Yes">Yes, I am the owner.</option>
                                                                 <option value="No">No, I borrowed it.</option>
                                                             </select>
@@ -1322,19 +1323,6 @@
                                                                 <div class="form-group">
                                                                     <div class="row">
                                                                         <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="Facility"> Facility Licence[For all Recyclers](required):</label>
-                                                                            <input type="file" id="Facility" name="Facility Licence" class="dropify"  required/>
-                                                                        </div>
-                                                                        <div class="span1"></div>
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="Affidavit"> Affidavit for Borrowed Vehicle(required):</label>
-                                                                            <input type="file" id="Affidavit" name="affidavit" class="dropify"  required/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 col-xs-12">
                                                                             <label class="control-label mb-10" for="PrDP"> PrDP 'H' For Hazardous Waste(required):</label>
                                                                             <input type="file" id="PrDP" name="PrDP 'H' For Hazardous Waste" class="dropify"  required/>
                                                                         </div>
@@ -1342,6 +1330,20 @@
                                                                         <div class="col-md-6 col-xs-12">
                                                                             <label class="control-label mb-10" for="Registration_Book">Motor Vehicle Registration Book(required):</label>
                                                                             <input type="file" id="Registration_Book" name="Motor_Vehicle_Registration_Book" class="dropify"  required/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 col-xs-12">
+                                                                            <label class="control-label mb-10" for="Facility"> Facility Licence[For all Recyclers](required):</label>
+                                                                            <input type="file" id="Facility" name="Facility Licence" class="dropify"  required/>
+                                                                        </div>
+                                                                        <div class="span1"></div>
+                                                                        <div id="affidavit1" class="col-md-6 col-xs-12" style="display: none">
+                                                                            <label class="control-label mb-10" for="Affidavit"> Affidavit for Borrowed Vehicle(required):</label>
+                                                                            <input type="file" id="Affidavit" name="affidavit" class="dropify"  required/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1415,6 +1417,40 @@
                                                 </div>
 
                                             </form>
+
+                                            <script>
+                                                function test2(){
+
+                                                }
+                                                $('#Your_Vehicle').bind('change', function(event) {
+
+                                                    var i= $('#Your_Vehicle').val();
+
+                                                    if(i==="Yes") // equal to a selection option
+                                                    {
+                                                        alert("Cicked")
+                                                        $('#affidavit1').hide();
+                                                        document.getElementById("affidavit1").style.display = "none";
+                                                    }
+                                                    else if(i==="No")
+                                                    {
+                                                        $('#affidavit1').show(); // show the other one
+                                                        document.getElementById("affidavit1").style.display = "block";
+                                                    }
+                                                });
+                                                $(document).ready(function(){
+                                                    $('#Your_Vehicle').on('change', function(){
+                                                        alert("yyy")
+                                                        var demovalue = $(this).val();
+                                                        if(demovalue ==="Yes"){
+                                                            alert("this Word")
+                                                            $("#affidavit1").hide();
+                                                        }else {
+                                                            $("#affidavit1").show();
+                                                        }
+                                                    });
+                                                });
+                                            </script>
                                         </div>
                                     </div>
                                 </div>
