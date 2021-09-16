@@ -340,7 +340,7 @@ public class ConnectionUtil {
         return getEmployees;
     }
 
-    public void registerVehicle(vehicle vehicleRegistration,String action) throws Exception {
+    public void registerVehicle(vehicle vehicleRegistration,String action,String addAction) throws Exception {
         Connection myConn=null;
         // Statement myStmt=null;
         ResultSet myRs=null;
@@ -394,6 +394,27 @@ public class ConnectionUtil {
                 myStmt.setString(19,vehicleRegistration.getAffidavit());
                 myStmt.setString(20,vehicleRegistration.getPrPD());
                 myStmt.setString(21,vehicleRegistration.getOwn());
+            } else if(action.equals("EditingAttachment")){
+                if(addAction.equals("EditingVehicleAttachment")){
+                    sql ="update vehicle set `Affidavit`=? ,`BA Permit`=?," +
+                            " `Payment Receipt`=?, `Facility Licence`=?," +
+                            " `PrDP_att`=?, `Blue_Book`=?" +
+                            " where `Chase Number`=?";
+                }else{
+                    sql ="update vehicle set `Road_Worthiness`=?, `Certification Of Cooperation`=?," +
+                            " `Hazardous Waste`=?, `Training On Health And Safety`=?,  " +
+                            "  `Fire Fighting And First Aid`=?  `Health And Environment`=?" +
+                            " where `Chase Number`=?";
+                }
+                myStmt=myConn.prepareStatement(sql);
+                myStmt.setString(1,vehicleRegistration.getRoad_Wortiness());
+                myStmt.setString(2,vehicleRegistration.getCertification_of_Cooperation());
+                myStmt.setString(3,vehicleRegistration.getHazardous_waste());
+                myStmt.setString(4,vehicleRegistration.getTraining_on_health_and_safety());
+                myStmt.setString(5,vehicleRegistration.getFire_fighting_and_first_aid());
+                myStmt.setString(6,vehicleRegistration.getHealth_and_Environment());
+                myStmt.setString(7,vehicleRegistration.getChase_number());
+
             }
 
 

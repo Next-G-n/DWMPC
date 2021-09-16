@@ -62,6 +62,19 @@ public class vehicle {
         Own = own;
     }
 
+    public vehicle(String chase_number, String certification_of_Cooperation, String hazardous_waste, String training_on_health_and_safety, String fire_fighting_and_first_aid, String health_and_Environment, String road_Wortiness) {
+        Chase_number = chase_number;
+        Certification_of_Cooperation = certification_of_Cooperation;
+        this.hazardous_waste = hazardous_waste;
+        this.training_on_health_and_safety = training_on_health_and_safety;
+        Fire_fighting_and_first_aid = fire_fighting_and_first_aid;
+        Health_and_Environment = health_and_Environment;
+        Road_Wortiness = road_Wortiness;
+    }
+
+
+
+
     public vehicle(String chase_number, String BA_permit, String payment_receipt, String certification_of_Cooperation, String facility_Licence, String prPD, String hazardous_waste, String training_on_health_and_safety, String fire_fighting_and_first_aid, String health_and_Environment, String road_Wortiness, String blue_book, String affidavit) {
         Chase_number = chase_number;
         this.BA_permit = BA_permit;

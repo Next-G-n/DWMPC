@@ -1266,7 +1266,7 @@
                    </c:url>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
                       <div class="file">
-                        <a href="${tempDownloadgetPayment_receipt}">
+                        <a href="Documents/Payment receipt/${Attachments.payment_receipt}">
 
                           <div class="icon">
                             <i class="zmdi zmdi-file-text"></i>
@@ -1416,7 +1416,7 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
                       <div class="file">
-                        <a href="${tempDownloadRo}}">
+                        <a href="${tempDownloadRo}">
 
                           <div class="icon">
                             <i class="zmdi zmdi-file-text"></i>
@@ -1458,24 +1458,31 @@
       </div>
 
       <div id="Vehicle-Attachment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
+         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h5 class="modal-title">Upload All The Following </h5>
-            </div><form>
+              <h5 class="modal-title">Upload All The Following ${Attachments.chase_number} </h5>
+            </div><form action="ServletDwmpc" method="post" enctype="multipart/form-data">
             <div class="modal-body">
+              <input type="hidden" id="command" name="command" class="hidden" value="RegisteringVehicle"/>
+              <input type="hidden" id="action" name="action"  class="hidden" value="EditingAttachment"/>
+              <input type="hidden" name="Chassis_Number" class="hidden" value="${Attachments.chase_number}"/>
+              <input type="hidden" name="CompanyName" class="hidden" value="${Company_info.company_Name}"/>
+              <input type="hidden"  name="addAction"  class="hidden" value="EditingVehicleAttachment"/>
 
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-6 col-xs-12 mt-40">
                     <label class="control-label mb-10" for="Payment_Receipt"> Payment Receipt(required):</label>
-                    <input type="file" id="Payment_Receipt" name="Payment_Receipt" class="dropify"  required/>
+                    <input type="file" id="Payment_Receipt" name="Payment receipt" class="dropify" value="Documents/Payment receipt/${Attachments.payment_receipt}" />
+                    <input type="hidden" name="Payment receipt1"  value="${Attachments.payment_receipt}" />
                   </div>
                   <div class="span1"></div>
                   <div class="col-md-6 col-xs-12 mt-40">
                     <label class="control-label mb-10" for="BA_Permit"> BA Permit(required):</label>
-                    <input type="file" id="BA_Permit" name="BA_Permit" class="dropify"  required/>
+                    <input type="file" id="BA_Permit" name="BA permit" class="dropify"  value="Documents/BA permit/${Attachments.BA_permit}" />
+                    <input type="hidden" name="BA permit1"  value="${Attachments.BA_permit}" />
                   </div>
                 </div>
               </div>
@@ -1483,12 +1490,14 @@
                 <div class="row">
                   <div class="col-md-6 col-xs-12">
                     <label class="control-label mb-10" for="Facility"> Facility Licence[For all Recyclers](required):</label>
-                    <input type="file" id="Facility" name="Facility" class="dropify"  required/>
+                    <input type="file" id="Facility" name="Facility Licence" class="dropify" value="Documents/Facility Licence/${Attachments.facility_Licence}"  />
+                    <input type="hidden" name="Facility Licence1" value="${Attachments.facility_Licence}"  />
                   </div>
                   <div class="span1"></div>
                   <div class="col-md-6 col-xs-12">
                     <label class="control-label mb-10" for="Affidavit"> Affidavit for Borrowed Vehicle(required):</label>
-                    <input type="file" id="Affidavit" name="Affidavit" class="dropify"  required/>
+                    <input type="file" id="Affidavit" name="affidavit" class="dropify" value="Documents/Affidavit/${Attachments.affidavit}"  />
+                    <input type="hidden" name="affidavit1" value="${Attachments.affidavit}"  />
                   </div>
                 </div>
               </div>
@@ -1496,12 +1505,14 @@
                 <div class="row">
                   <div class="col-md-6 col-xs-12">
                     <label class="control-label mb-10" for="PrDP"> PrDP 'H' For Hazardous Waste(required):</label>
-                    <input type="file" id="PrDP" name="PrDP" class="dropify"  required/>
+                    <input type="file" id="PrDP" name="PrDP 'H' For Hazardous Waste" class="dropify" value="Documents/PrDP 'H' For Hazardous Waste/${Attachments.prPD}" />
+                    <input type="hidden" name="PrDP 'H' For Hazardous Waste1"  value="${Attachments.prPD}" />
                   </div>
                   <div class="span1"></div>
                   <div class="col-md-6 col-xs-12">
                     <label class="control-label mb-10" for="Registration_Book">Motor Vehicle Registration Book(required):</label>
-                    <input type="file" id="Registration_Book" name="Registration_Book" class="dropify"  required/>
+                    <input type="file" id="Registration_Book" name="Motor_Vehicle_Registration_Book" class="dropify" value="Documents/Motor Vehicle Registration Book/${Attachments.blue_book}"  />
+                    <input type="hidden" name="Motor_Vehicle_Registration_Book1" value="${Attachments.blue_book}"  />
                   </div>
                 </div>
               </div>
@@ -1522,19 +1533,24 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               <h5 class="modal-title">Upload The Following Certificates</h5>
-            </div><form>
-            <div class="modal-body">
+            </div><form action="ServletDwmpc" method="post" enctype="multipart/form-data">
 
+            <div class="modal-body">
+              <input type="hidden" name="command" class="hidden" value="RegisteringVehicle"/>
+              <input type="hidden" name="action"  class="hidden" value="EditingAttachment"/>
+              <input type="hidden" name="Chassis_Number" class="hidden" value="${Attachments.chase_number}"/>
+              <input type="hidden" name="CompanyName" class="hidden" value="${Company_info.company_Name}"/>
+              <input type="hidden"  name="addAction"  class="hidden" value="EditingCertificateAttachment"/>
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-6 col-xs-12">
                     <label class="control-label mb-10" for="Health_and_Safety"> Health and Safety(required):</label>
-                    <input type="file" id="Health_and_Safety" name="Health_and_Safety" class="dropify"  required/>
+                    <input type="file" id="Health_and_Safety" name="Health and Safety" class="dropify"  value="Documents/Health and Safety/${Attachments.training_on_health_and_safety}"  />
                   </div>
                   <div class="span1"></div>
                   <div class="col-md-6 col-xs-12">
                     <label class="control-label mb-10" for="hazardous_waste">hazardous waste(required):</label>
-                    <input type="file" id="hazardous_waste" name="hazardous_waste" class="dropify"  required/>
+                    <input type="file" id="hazardous_waste" name="hazardous waste" class="dropify" value="Documents/Hazardous Waste/${Attachments.hazardous_waste}"  />
                   </div>
                 </div>
               </div>
@@ -1542,12 +1558,12 @@
                 <div class="row">
                   <div class="col-md-6 col-xs-12">
                     <label class="control-label mb-10" for="FF_FA">Fire Fighting and First Aid(required):</label>
-                    <input type="file" id="FF_FA" name="FF_FA" class="dropify"  required/>
+                    <input type="file" id="FF_FA" name="Fire fighting and First Aid" class="dropify" value="Documents/Fire fighting and First Aid/${Attachments.fire_fighting_and_first_aid}"  />
                   </div>
                   <div class="span1"></div>
                   <div class="col-md-6 col-xs-12">
                     <label class="control-label mb-10" for="Environment">Health and Environment(required):</label>
-                    <input type="file" id="Environment" name="Environment" class="dropify"  required/>
+                    <input type="file" id="Environment" name="Health and Environment" class="dropify" value="Documents/Health and Environment/${Attachments.health_and_Environment}"  />
                   </div>
                 </div>
               </div>
@@ -1555,12 +1571,13 @@
                 <div class="row">
                   <div class="col-md-6 col-xs-12">
                     <label class="control-label mb-10" for="Roadwortiness"> Certification Of Roadwortiness (required):</label>
-                    <input type="file" id="Roadwortiness" name="Roadwortiness" class="dropify"  required/>
+                    <input type="file" id="Roadwortiness" name="Certification_of_roadwortiness" class="dropify" value="Documents/Certification of Road worthiness/${Attachments.road_Wortiness}"  />
+
                   </div>
                   <div class="span1"></div>
                   <div class="col-md-6 col-xs-12">
                     <label class="control-label mb-10" for="Cooperation">Certification of Cooperation(required):</label>
-                    <input type="file" id="Cooperation" name="Cooperation" class="dropify"  required/>
+                    <input type="file" id="Cooperation" name="Certification of cooperation" class="dropify" value="Documents/Certification of cooperation/${Attachments.certification_of_Cooperation}"/>
                   </div>
                 </div>
               </div>

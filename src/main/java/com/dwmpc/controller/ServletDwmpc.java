@@ -320,7 +320,7 @@ public class ServletDwmpc extends HttpServlet {
         String action=request.getParameter("action");
 
         String CompanyName=request.getParameter("CompanyName");
-
+        String addAction=request.getParameter("addAction");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String ApplicationDate= String.valueOf(timestamp.getTime());
 
@@ -339,150 +339,182 @@ public class ServletDwmpc extends HttpServlet {
 
 
         if(action.equals("RegisteringVehicle") || action.equals("EditingAttachment")){
-            String folderName12 = "Documents/Motor Vehicle Registration Book";
-            String uploadPath12 = request.getServletContext().getRealPath("") + folderName12;
-            File dir12 = new File(uploadPath12);
-            if (!dir12.exists()) {
-                dir12.mkdirs();
+
+
+            if(addAction.equals("EditingCertificateAttachment") || addAction.equals("Both")){
+
+
+                String folderName6 = "Documents/Hazardous Waste";
+                String uploadPath6 = request.getServletContext().getRealPath("") + folderName6;
+                File dir6 = new File(uploadPath6);
+                if (!dir6.exists()) {
+                    dir6.mkdirs();
+                }
+
+                    Part hazardous_waste=request.getPart("hazardous waste");
+                    InputStream hazardous_waste1 = hazardous_waste.getInputStream();
+                    fileName6=CompanyName+"_hazardous waste"+ApplicationDate+".pdf";
+                    Files.copy(hazardous_waste1, Paths.get(uploadPath6 + File.separator + fileName6), StandardCopyOption.REPLACE_EXISTING);
+
+
+                String folderName8 = "Documents/Health and Safety";
+                String uploadPath8 = request.getServletContext().getRealPath("") + folderName8;
+                File dir8 = new File(uploadPath8);
+                if (!dir8.exists()) {
+                    dir8.mkdirs();
+                }
+
+                    Part training_on_health_and_safety=request.getPart("Health and Safety");
+                    InputStream training_on_health_and_safety1 = training_on_health_and_safety.getInputStream();
+                    fileName8=CompanyName+"_Health and Safety"+ApplicationDate+".pdf";
+                    Files.copy(training_on_health_and_safety1, Paths.get(uploadPath8 + File.separator + fileName8), StandardCopyOption.REPLACE_EXISTING);
+
+
+                String folderName9 = "Documents/Fire fighting and First Aid";
+                String uploadPath9 = request.getServletContext().getRealPath("") + folderName9;
+                File dir9 = new File(uploadPath9);
+                if (!dir9.exists()) {
+                    dir9.mkdirs();
+                }
+
+
+                    Part Fire_fighting_and_first_aid=request.getPart("Fire fighting and First Aid");
+                    InputStream Fire_fighting_and_first_aid1 = Fire_fighting_and_first_aid.getInputStream();
+                    fileName9=CompanyName+"_Fire fighting and First Aid"+ApplicationDate+".pdf";
+                    Files.copy(Fire_fighting_and_first_aid1, Paths.get(uploadPath9 + File.separator + fileName9), StandardCopyOption.REPLACE_EXISTING);
+
+                String folderName10 = "Documents/Health and Environment";
+                String uploadPath10 = request.getServletContext().getRealPath("") + folderName10;
+                File dir10 = new File(uploadPath10);
+                if (!dir10.exists()) {
+                    dir10.mkdirs();
+                }
+
+                    Part Health_and_Environment=request.getPart("Health and Environment");
+                    InputStream Health_and_Environment1 = Health_and_Environment.getInputStream();
+                    fileName10=CompanyName+"_Health and Environment"+ApplicationDate+".pdf";
+                    Files.copy(Health_and_Environment1, Paths.get(uploadPath10 + File.separator + fileName10), StandardCopyOption.REPLACE_EXISTING);
+
+
+                String folderName11 = "Documents/Certification of Road worthiness";
+                String uploadPath11 = request.getServletContext().getRealPath("") + folderName11;
+                File dir11 = new File(uploadPath11);
+                if (!dir11.exists()) {
+                    dir11.mkdirs();
+                }
+
+                    Part Certification_of_roadwortiness=request.getPart("Certification_of_roadwortiness");
+                    System.out.println("This is problem :"+Certification_of_roadwortiness);
+                    InputStream Certification_of_roadwortiness1 = Certification_of_roadwortiness.getInputStream();
+                    fileName11=CompanyName+"_Certification of Road worthiness"+ApplicationDate+".pdf";
+                    Files.copy(Certification_of_roadwortiness1, Paths.get(uploadPath11 + File.separator + fileName11), StandardCopyOption.REPLACE_EXISTING);
+
+                String folderName3 = "Documents/Certification of cooperation";
+                String uploadPath3 = request.getServletContext().getRealPath("") + folderName3;
+                File dir3 = new File(uploadPath3);
+                if (!dir3.exists()) {
+                    dir3.mkdirs();
+                }
+
+                    Part Certification_of_Cooperation=request.getPart("Certification of cooperation");
+                    InputStream Certification_of_Cooperation2 = Certification_of_Cooperation.getInputStream();
+                    fileName3=CompanyName+"_Certification of cooperation"+ApplicationDate+".pdf";
+                    Files.copy(Certification_of_Cooperation2, Paths.get(uploadPath3 + File.separator + fileName3), StandardCopyOption.REPLACE_EXISTING);
+
             }
-            Part Motor_Vehicle_Registration_Book=request.getPart("Motor_Vehicle_Registration_Book");
-            System.out.println("This is problem :"+Motor_Vehicle_Registration_Book);
-            InputStream Motor_Vehicle_Registration_Book1 = Motor_Vehicle_Registration_Book.getInputStream();
-            fileName12=CompanyName+"_Motor Vehicle Registration Book"+ApplicationDate+".pdf";
-            Files.copy(Motor_Vehicle_Registration_Book1, Paths.get(uploadPath12 + File.separator + fileName12), StandardCopyOption.REPLACE_EXISTING);
 
-            String folderName14 = "Documents/Affidavit";
-            String uploadPath14 = request.getServletContext().getRealPath("") + folderName14;
-            File dir14 = new File(uploadPath14);
-            if (!dir14.exists()) {
-                dir14.mkdirs();
+
+            if(addAction.equals("EditingVehicleAttachment") || addAction.equals("Both")){
+
+                String folderName12 = "Documents/Motor Vehicle Registration Book";
+                String uploadPath12 = request.getServletContext().getRealPath("") + folderName12;
+                File dir12 = new File(uploadPath12);
+                if (!dir12.exists()) {
+                    dir12.mkdirs();
+                }
+
+
+                    Part Motor_Vehicle_Registration_Book=request.getPart("Motor_Vehicle_Registration_Book");
+                    System.out.println("This is problem :"+Motor_Vehicle_Registration_Book);
+                    InputStream Motor_Vehicle_Registration_Book1 = Motor_Vehicle_Registration_Book.getInputStream();
+                    fileName12=CompanyName+"_Motor Vehicle Registration Book"+ApplicationDate+".pdf";
+                    Files.copy(Motor_Vehicle_Registration_Book1, Paths.get(uploadPath12 + File.separator + fileName12), StandardCopyOption.REPLACE_EXISTING);
+
+
+                String folderName14 = "Documents/Affidavit";
+                String uploadPath14 = request.getServletContext().getRealPath("") + folderName14;
+                File dir14 = new File(uploadPath14);
+                if (!dir14.exists()) {
+                    dir14.mkdirs();
+                }
+
+                    Part affidavit=request.getPart("affidavit");
+                    InputStream affidavit1 = affidavit.getInputStream();
+                    fileName14=CompanyName+"_affidavit"+ApplicationDate+".pdf";
+                    Files.copy(affidavit1, Paths.get(uploadPath14 + File.separator + fileName14), StandardCopyOption.REPLACE_EXISTING);
+
+
+                String folderName = "Documents/BA permit";
+                String uploadPath = request.getServletContext().getRealPath("") + folderName;
+                File dir = new File(uploadPath);
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+                    Part BA_permit=request.getPart("BA permit");
+                    InputStream BA_permit1 = BA_permit.getInputStream();
+                    fileName=CompanyName+"_BA permit"+ApplicationDate+".pdf";
+                    Files.copy(BA_permit1, Paths.get(uploadPath + File.separator + fileName), StandardCopyOption.REPLACE_EXISTING);
+
+                String folderName2 = "Documents/Payment receipt";
+                String uploadPath2 = request.getServletContext().getRealPath("") + folderName2;
+                File dir2 = new File(uploadPath2);
+                if (!dir2.exists()) {
+                    dir2.mkdirs();
+                }
+                    Part Payment_receipt=request.getPart("Payment receipt");
+                    InputStream Payment_receipt1 = Payment_receipt.getInputStream();
+                    fileName2=CompanyName+"_Payment receipt"+ApplicationDate+".pdf";
+                    Files.copy(Payment_receipt1, Paths.get(uploadPath2 + File.separator + fileName2), StandardCopyOption.REPLACE_EXISTING);
+
+                // fileName="test.pdf";
+
+
+                String folderName4 = "Documents/Facility Licence";
+                String uploadPath4 = request.getServletContext().getRealPath("") + folderName4;
+                File dir4 = new File(uploadPath4);
+                if (!dir4.exists()) {
+                    dir4.mkdirs();
+                }
+
+
+                fileName4=request.getParameter("Facility Licence1");
+                if(getAttachment==null || !getAttachment.getFacility_Licence().equals(fileName4)){
+                    Part Facility_Licence=request.getPart("Facility Licence");
+                    InputStream Facility_Licence1 = Facility_Licence.getInputStream();
+                    fileName4=CompanyName+"_Facility Licence"+ApplicationDate+".pdf";
+                    Files.copy(Facility_Licence1, Paths.get(uploadPath4 + File.separator + fileName4), StandardCopyOption.REPLACE_EXISTING);
+                }else{
+                    fileName4=request.getParameter("Facility Licence1");
+                }
+
+                String folderName5 = "Documents/PrDP 'H' For Hazardous Waste";
+                String uploadPath5 = request.getServletContext().getRealPath("") + folderName5;
+                File dir5 = new File(uploadPath5);
+                if (!dir5.exists()) {
+                    dir5.mkdirs();
+                }
+                    Part PrPD=request.getPart("PrDP 'H' For Hazardous Waste");
+                    InputStream PrPD1 = PrPD.getInputStream();
+                    fileName5=CompanyName+"_PrDP 'H' For Hazardous Waste"+ApplicationDate+".pdf";
+                    Files.copy(PrPD1, Paths.get(uploadPath5 + File.separator + fileName5), StandardCopyOption.REPLACE_EXISTING);
+
+
             }
-            Part affidavit=request.getPart("affidavit");
-            InputStream affidavit1 = affidavit.getInputStream();
-            fileName14=CompanyName+"_affidavit"+ApplicationDate+".pdf";
-            Files.copy(affidavit1, Paths.get(uploadPath14 + File.separator + fileName14), StandardCopyOption.REPLACE_EXISTING);
 
-            String folderName = "Documents/BA permit";
-            String uploadPath = request.getServletContext().getRealPath("") + folderName;
-            File dir = new File(uploadPath);
-            if (!dir.exists()) {
-                dir.mkdirs();
-            }
-            Part BA_permit=request.getPart("BA permit");
-            InputStream BA_permit1 = BA_permit.getInputStream();
-            fileName=CompanyName+"_BA permit"+ApplicationDate+".pdf";
-            Files.copy(BA_permit1, Paths.get(uploadPath + File.separator + fileName), StandardCopyOption.REPLACE_EXISTING);
-
-            String folderName11 = "Documents/Certification of Road worthiness";
-            String uploadPath11 = request.getServletContext().getRealPath("") + folderName11;
-            File dir11 = new File(uploadPath11);
-            if (!dir11.exists()) {
-                dir11.mkdirs();
-            }
-
-            Part Certification_of_roadwortiness=request.getPart("Certification_of_roadwortiness");
-            System.out.println("This is problem :"+Certification_of_roadwortiness);
-            InputStream Certification_of_roadwortiness1 = Certification_of_roadwortiness.getInputStream();
-            fileName11=CompanyName+"_Certification of Road worthiness"+ApplicationDate+".pdf";
-            Files.copy(Certification_of_roadwortiness1, Paths.get(uploadPath11 + File.separator + fileName11), StandardCopyOption.REPLACE_EXISTING);
-
-
-
-
-            String folderName2 = "Documents/Payment receipt";
-            String uploadPath2 = request.getServletContext().getRealPath("") + folderName2;
-            File dir2 = new File(uploadPath2);
-            if (!dir2.exists()) {
-                dir2.mkdirs();
-            }
-            Part Payment_receipt=request.getPart("Payment receipt");
-            InputStream Payment_receipt1 = Payment_receipt.getInputStream();
-            fileName2=CompanyName+"_Payment receipt"+ApplicationDate+".pdf";
-            Files.copy(Payment_receipt1, Paths.get(uploadPath2 + File.separator + fileName2), StandardCopyOption.REPLACE_EXISTING);
-
-            // fileName="test.pdf";
-
-            String folderName3 = "Documents/Certification of cooperation";
-            String uploadPath3 = request.getServletContext().getRealPath("") + folderName3;
-            File dir3 = new File(uploadPath3);
-            if (!dir3.exists()) {
-                dir3.mkdirs();
-            }
-            Part Certification_of_Cooperation=request.getPart("Certification of cooperation");
-            InputStream Certification_of_Cooperation2 = Certification_of_Cooperation.getInputStream();
-            fileName3=CompanyName+"_Certification of cooperation"+ApplicationDate+".pdf";
-            Files.copy(Certification_of_Cooperation2, Paths.get(uploadPath3 + File.separator + fileName3), StandardCopyOption.REPLACE_EXISTING);
-
-            String folderName4 = "Documents/Facility Licence";
-            String uploadPath4 = request.getServletContext().getRealPath("") + folderName4;
-            File dir4 = new File(uploadPath4);
-            if (!dir4.exists()) {
-                dir4.mkdirs();
-            }
-            Part Facility_Licence=request.getPart("Facility Licence");
-            InputStream Facility_Licence1 = Facility_Licence.getInputStream();
-            fileName4=CompanyName+"_Facility Licence"+ApplicationDate+".pdf";
-            Files.copy(Facility_Licence1, Paths.get(uploadPath4 + File.separator + fileName4), StandardCopyOption.REPLACE_EXISTING);
-
-            String folderName5 = "Documents/PrDP 'H' For Hazardous Waste";
-            String uploadPath5 = request.getServletContext().getRealPath("") + folderName5;
-            File dir5 = new File(uploadPath5);
-            if (!dir5.exists()) {
-                dir5.mkdirs();
-            }
-            Part PrPD=request.getPart("PrDP 'H' For Hazardous Waste");
-            InputStream PrPD1 = PrPD.getInputStream();
-            fileName5=CompanyName+"_PrDP 'H' For Hazardous Waste"+ApplicationDate+".pdf";
-            Files.copy(PrPD1, Paths.get(uploadPath5 + File.separator + fileName5), StandardCopyOption.REPLACE_EXISTING);
-
-            String folderName6 = "Documents/Hazardous Waste";
-            String uploadPath6 = request.getServletContext().getRealPath("") + folderName6;
-            File dir6 = new File(uploadPath6);
-            if (!dir6.exists()) {
-                dir6.mkdirs();
-            }
-            Part hazardous_waste=request.getPart("hazardous waste");
-            InputStream hazardous_waste1 = hazardous_waste.getInputStream();
-            fileName6=CompanyName+"_hazardous waste"+ApplicationDate+".pdf";
-            Files.copy(hazardous_waste1, Paths.get(uploadPath6 + File.separator + fileName6), StandardCopyOption.REPLACE_EXISTING);
-
-
-            String folderName8 = "Documents/Health and Safety";
-            String uploadPath8 = request.getServletContext().getRealPath("") + folderName8;
-            File dir8 = new File(uploadPath8);
-            if (!dir8.exists()) {
-                dir8.mkdirs();
-            }
-            Part training_on_health_and_safety=request.getPart("Health and Safety");
-            InputStream training_on_health_and_safety1 = training_on_health_and_safety.getInputStream();
-            fileName8=CompanyName+"_Health and Safety"+ApplicationDate+".pdf";
-            Files.copy(training_on_health_and_safety1, Paths.get(uploadPath8 + File.separator + fileName8), StandardCopyOption.REPLACE_EXISTING);
-
-            String folderName9 = "Documents/Fire fighting and First Aid";
-            String uploadPath9 = request.getServletContext().getRealPath("") + folderName9;
-            File dir9 = new File(uploadPath9);
-            if (!dir9.exists()) {
-                dir9.mkdirs();
-            }
-            Part Fire_fighting_and_first_aid=request.getPart("Fire fighting and First Aid");
-            InputStream Fire_fighting_and_first_aid1 = Fire_fighting_and_first_aid.getInputStream();
-            fileName9=CompanyName+"_Fire fighting and First Aid"+ApplicationDate+".pdf";
-            Files.copy(Fire_fighting_and_first_aid1, Paths.get(uploadPath9 + File.separator + fileName9), StandardCopyOption.REPLACE_EXISTING);
-
-            String folderName10 = "Documents/Health and Environment";
-            String uploadPath10 = request.getServletContext().getRealPath("") + folderName10;
-            File dir10 = new File(uploadPath10);
-            if (!dir10.exists()) {
-                dir10.mkdirs();
-            }
-            Part Health_and_Environment=request.getPart("Health and Environment");
-            InputStream Health_and_Environment1 = Health_and_Environment.getInputStream();
-            fileName10=CompanyName+"_Health and Environment"+ApplicationDate+".pdf";
-            Files.copy(Health_and_Environment1, Paths.get(uploadPath10 + File.separator + fileName10), StandardCopyOption.REPLACE_EXISTING);
 
         }
         int company_id = 0;
-        String chase_id = null;
+        String  chase_id=request.getParameter("Chassis_Number");;
         String vehicle_Type = null;
         String Unladen = null;
         String Waste_Type = null;
@@ -491,9 +523,7 @@ public class ServletDwmpc extends HttpServlet {
         String Own = null;
 
         if(action.equals("RegisteringVehicle") || action.equals("EditingVehicle")){
-            System.out.println("sdsdsd");
             company_id= Integer.parseInt(request.getParameter("Company Id"));
-            chase_id=request.getParameter("Chassis_Number");
             // RegisterCompany registerCompany=connectionUtil.getCompanyDetail(company_id, action, chase_id);
             vehicle_Type=request.getParameter("vehicle_Type");
             System.out.println("sdsdsd "+vehicle_Type);
@@ -517,15 +547,35 @@ public class ServletDwmpc extends HttpServlet {
         }else if(action.equals("EditingVehicle")){
             vehicleRegistration=new vehicle(chase_id,vehicle_Type,Unladen,Waste_Type,
                     Annual_Quatity,Waste_Type,Registration_Number,Own);
+        }else if(action.equals("EditingAttachment")){
+            if(addAction.equals("EditingVehicleAttachment")){
+                System.out.println(" Chassis :"+chase_id);
+                vehicleRegistration=new vehicle(chase_id,
+                        fileName,fileName2,
+                        fileName4,fileName5,fileName12,fileName14);
+            }else{
+                vehicleRegistration=new vehicle(chase_id,
+                        fileName3,fileName6,fileName8,
+                        fileName9,fileName10,fileName11);
+            }
+
+
         }
 
 
-        connectionUtil.registerVehicle(vehicleRegistration,action);
+        connectionUtil.registerVehicle(vehicleRegistration,action,addAction);
 
         List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(company_id);
         HttpSession session = request.getSession();
-        session.setAttribute("All_Vehicles",getVehicleDetail);
-        response.sendRedirect("Vehicle-Table.jsp");
+        if(addAction.equals("Both")){
+            session.setAttribute("All_Vehicles",getVehicleDetail);
+            response.sendRedirect("Vehicle-Table.jsp");
+        }else{
+            getAttachment=connectionUtil.getAttachments(chase_id);
+            session.setAttribute("Attachments",getAttachment);
+            response.sendRedirect("Attachments.jsp");
+        }
+
 
     }
 
