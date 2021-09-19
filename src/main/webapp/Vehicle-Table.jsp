@@ -1112,60 +1112,7 @@
                 <div class="set-height-wrap">
                   <!-- Todo-List -->
                   <ul class="todo-list nicescroll-bar">
-                    <li class="todo-item">
-                      <div class="checkbox checkbox-default">
-                        <input type="checkbox" id="checkbox01"/>
-                        <label for="checkbox01">Record The First Episode</label>
-                      </div>
-                    </li>
-                    <li>
-                      <hr class="light-grey-hr"/>
-                    </li>
-                    <li class="todo-item">
-                      <div class="checkbox checkbox-pink">
-                        <input type="checkbox" id="checkbox02"/>
-                        <label for="checkbox02">Prepare The Conference Schedule</label>
-                      </div>
-                    </li>
-                    <li>
-                      <hr class="light-grey-hr"/>
-                    </li>
-                    <li class="todo-item">
-                      <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="checkbox03" checked/>
-                        <label for="checkbox03">Decide The Live Discussion Time</label>
-                      </div>
-                    </li>
-                    <li>
-                      <hr class="light-grey-hr"/>
-                    </li>
-                    <li class="todo-item">
-                      <div class="checkbox checkbox-success">
-                        <input type="checkbox" id="checkbox04" checked/>
-                        <label for="checkbox04">Prepare For The Next Project</label>
-                      </div>
-                    </li>
-                    <li>
-                      <hr class="light-grey-hr"/>
-                    </li>
-                    <li class="todo-item">
-                      <div class="checkbox checkbox-danger">
-                        <input type="checkbox" id="checkbox05" checked/>
-                        <label for="checkbox05">Finish Up AngularJs Tutorial</label>
-                      </div>
-                    </li>
-                    <li>
-                      <hr class="light-grey-hr"/>
-                    </li>
-                    <li class="todo-item">
-                      <div class="checkbox checkbox-purple">
-                        <input type="checkbox" id="checkbox06" checked/>
-                        <label for="checkbox06">Finish Infinity Project</label>
-                      </div>
-                    </li>
-                    <li>
-                      <hr class="light-grey-hr"/>
-                    </li>
+
                   </ul>
                   <!-- /Todo-List -->
                 </div>
@@ -1246,8 +1193,14 @@
                           <td class="Annual-Quantity">${Vehicles.annual_Quantity}</td>
                           <td class="Registration-Number">${Vehicles.carrie_number}</td>
                           <td class="Vehicle-Ownership">${Vehicles.own}</td>
-                          <td><span class="label label-danger">Stage 0</span> </td>
-                          <td class="text-nowrap"><span class="pencil-Edit" id="${countVehicles}" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Vehicle-information-modal"> <a  class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span><span id="${Vehicles.chase_number}" onclick="VehicleAttachments(this.id)"> <a   data-toggle="tooltip" data-original-title="Attachments"> <i class="fa fa-file-pdf-o text-warning"></i> </a> </span></td>
+                          <td><span class="label label-danger">${Vehicles.status}</span> </td>
+                          <td class="text-nowrap">
+                            <c:if test="${Vehicles.status=='Pending'}">
+                            <span class="pencil-Edit" id="${countVehicles}" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Vehicle-information-modal">
+                            <a  class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                          </span>
+                            </c:if>
+                            <span id="${Vehicles.chase_number}" onclick="VehicleAttachments(this.id)"> <a   data-toggle="tooltip" data-original-title="Attachments"> <i class="fa fa-file-pdf-o text-warning"></i> </a> </span></td>
                         </tr>
                       </c:forEach>
 
@@ -1261,6 +1214,7 @@
 
 
                   </div>
+
                   <div id="Vehicle-information-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -1337,6 +1291,7 @@
                     </div>
                   </div>
 
+
                   <script>
                     let tableRowElement;
                     function toggleModal(element) {
@@ -1363,6 +1318,24 @@
 
 
                     }
+
+                    function checkboxes(){
+                      alert("thi")
+                      var inputElems = document.getElementsByTagName("test"),
+                              count = 0;
+                      for (var i=0; i<inputElems.length; i++) {
+                        if (inputElems[i].type === "checkbox" && inputElems[i].checked === true){
+                          count++;
+                          alert(count);
+                        }
+                      }}
+                    function studCheck() {
+                      let total = document.querySelectorAll('input[type="checkbox"]:checked').length;
+                      var number=Number(total)+Number(4)
+                      alert("count :"+number)
+                      document.getElementById("totalStudents").innerHTML = "Total students Present: " + total;
+                    }
+
                     function VehicleAttachments(chassis_No){
 
                       document.getElementById("chassis_No").value=chassis_No;
@@ -1371,6 +1344,16 @@
                     function test(chassis_No){
                       alert("worked"+chassis_No)
                     }
+                    function handleCheckbox(){
+                      var inputElems = document.getElementsByTagName("input"),
+                              count = 0;
+                      for (var i=0; i<inputElems.length; i++) {
+                        if (inputElems[i].type === "checkbox" && inputElems[i].checked === true){
+                          count++;
+                          document.getElementById("Number_Checked").value=count;
+                          alert(count);
+                        }
+                      }}
 
                   </script>
 
@@ -1378,9 +1361,43 @@
 
                 </br>
                 <div style="float: right" class="row">
+                  <c:if test="${Pending!=null}">
+                    <button type="button"  data-target="#Apply-License-modal" data-toggle="modal"  class="btn btn-primary btn-anim btn-rounded"><i class="fa fa-pencil"></i><span class="btn-text">Apply</span></button>
+                  </c:if>
                   <button type="button" onclick="location.href='Vehicle-Form.jsp';" data-toggle="modal" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Add New Vehicle</span></button>
                 </div>
               </div>
+
+              <div id="Apply-License-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                      <h5 class="modal-title" >Check Vehicle you Wish get License For </h5>
+                    </div><form method="post" action="ServletDwmpc">
+                    <div class="modal-body">
+                      <input type="hidden" name="command" value="LicenseApplication">
+                      <input type="hidden" name="company_id" class="hidden" value="${Company_info.company_Id}"/>
+                      <c:set var="countPending" value="0" scope="page"/>
+            <c:forEach var="Pending_Vehicles" items="${Pending}">
+                <c:set var="countPending" value="${countPending+1}" scope="page"/>
+
+                  <div class="checkbox checkbox-warning">
+                        <input id="checkbox${countPending}" type="checkbox" value="${Pending_Vehicles.chase_number}" name="Chassis" onchange="handleCheckbox()">
+                        <label for="checkbox${countPending}"> ${Pending_Vehicles.blue_book} </label>
+                      </div>
+                </c:forEach>
+                    </div>
+                    <input type="hidden" name="Number_Checked" value="">
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
+                      <button type="submit"  class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Save Changes</span></button>
+                    </div>
+                  </form>
+                  </div>
+                </div>
+              </div>
+
 
             </div>
 

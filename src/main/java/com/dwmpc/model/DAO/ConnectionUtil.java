@@ -369,7 +369,7 @@ public class ConnectionUtil {
                         " `Unladen Weight`, `Waste Type`, `Annual Quantity`, `Type Of Waste Covered During Transportation`," +
                         " `Carrier Number`, `BA Permit`, `Certification Of Cooperation`, `Payment Receipt`, `Facility Licence`," +
                         " `Hazardous Waste`, `Training On Health And Safety`, `Fire Fighting And First Aid`, `Health And Environment`, " +
-                        "`Road_Worthiness`, `Blue_Book`, `Affidavit` , `PrDP_att`, `Owner` ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                        "`Road_Worthiness`, `Blue_Book`, `Affidavit` , `PrDP_att`, `Owner` , `StatusV` ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 myStmt=myConn.prepareStatement(sql);
                 myStmt.setString(1,vehicleRegistration.getChase_number());
                 myStmt.setInt(2,vehicleRegistration.getCompany_Id());
@@ -394,6 +394,7 @@ public class ConnectionUtil {
                 myStmt.setString(19,vehicleRegistration.getAffidavit());
                 myStmt.setString(20,vehicleRegistration.getPrPD());
                 myStmt.setString(21,vehicleRegistration.getOwn());
+                myStmt.setString(22,"Pending");
             } else if(action.equals("EditingAttachment")){
                 if(addAction.equals("EditingVehicleAttachment")){
                     sql ="update vehicle set `Affidavit`=? ,`BA Permit`=?," +
@@ -455,9 +456,10 @@ public class ConnectionUtil {
                 String Transportation=myRs.getString("Type Of Waste Covered During Transportation");
                 String Carrier_NO=myRs.getString("Carrier Number");
                 String Own=myRs.getString("Owner");
+                String Status=myRs.getString("StatusV");
 
-                vehicle setVehicleDetail=new vehicle(chase_number,Vehicle_Type,Unladen,Waste_Type,Annual,Transportation,Carrier_NO,Own);
-
+                vehicle setVehicleDetail=new vehicle(chase_number,Vehicle_Type,Unladen,Waste_Type,Annual,Transportation,Carrier_NO,Own,Status);
+                System.out.println("Problem is Here :"+Status);
                 getVehicleDetail.add(setVehicleDetail);
             }
         }finally {
@@ -513,6 +515,67 @@ public class ConnectionUtil {
 
         }
         return Attachment;
+
+    }
+
+    public List<vehicle> getPendingApplication(int company_id) throws Exception {
+        List<vehicle> getPendingAppliaction = new ArrayList<>();
+        Connection myConn=null;
+        ResultSet myRs=null;
+        PreparedStatement myStmt=null;
+
+        try {
+            //get a connectio
+
+            myConn=dataSource.getConnection();
+            String sql ="Select * from vehicle where `Company Id`="+company_id+" and `StatusV`='Pending'";
+            myStmt=myConn.prepareStatement(sql);
+            myRs=myStmt.executeQuery();
+
+            //process result set
+            while(myRs.next()) {
+                //retrieve data from the result set
+                String chase_number=myRs.getString("Chase Number");
+                String Carrier_NO=myRs.getString("Carrier Number");
+
+
+                vehicle setPendingApplication=new vehicle(chase_number,Carrier_NO);
+
+                getPendingAppliaction.add(setPendingApplication);
+            }
+        }finally {
+
+            close(myConn,myStmt,myRs);
+
+        }
+        return getPendingAppliaction;
+    }
+
+    public void ApplyForLicence(String s) throws Exception{
+        Connection myConn=null;
+        PreparedStatement myStmt=null;
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String ApplicationDate= String.valueOf(timestamp.getTime());
+        try {
+            myConn = dataSource.getConnection();
+            String sql2 = "INSERT INTO `dwmpc1.0`.`application_status` (`Level`, `Current Office`, `Chase Number`, `Unix Application Date`, `Status Of Application`) VALUES (?,?,?,?,?)";
+            myStmt = myConn.prepareStatement(sql2);
+            myStmt.setString(1,"stage 1");
+            myStmt.setString(2, "Compliance Officer");
+            myStmt.setString(3, s);
+            myStmt.setString(4, ApplicationDate);
+            myStmt.setString(5, "UptoDate");
+            myStmt.execute();
+            sql2="update vehicle set `StatusV`=? where `Chase Number`='"+s+"'";
+            myStmt=myConn.prepareStatement(sql2);
+            myStmt.setString(1,"stage 1");
+            myStmt.execute();
+        }catch (SQLIntegrityConstraintViolationException e){
+            System.out.println("This ");
+        } finally {
+            close(myConn,myStmt,null);
+        }
+        System.out.println("error ");
 
     }
 }
