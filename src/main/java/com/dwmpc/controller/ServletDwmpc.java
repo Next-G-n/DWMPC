@@ -131,6 +131,9 @@ public class ServletDwmpc extends HttpServlet {
                 case "downloadVehicleAttachment":
                     downloadVehicleAttachment(request, response);
                     break;
+                case "LicenseApplication":
+                    LicenseApplication(request, response);
+                    break;
 
 
             }
@@ -141,6 +144,19 @@ public class ServletDwmpc extends HttpServlet {
             exc.printStackTrace();
 
         }
+    }
+
+    private void LicenseApplication(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String[] Checked=request.getParameterValues("Chassis");
+        if (Checked != null) {
+            for (int i = 0; i < Checked.length; i++)
+            {
+                System.out.println ("<b>"+Checked[i]+"<b>");
+                connectionUtil.ApplyForLicence(Checked[i]);
+            }
+        }
+        getVehicle(request,response);
+
     }
 
 
@@ -311,7 +327,10 @@ public class ServletDwmpc extends HttpServlet {
         HttpSession session=request.getSession();
         int Company_id= Integer.parseInt(request.getParameter("company_id"));
         List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(Company_id);
+        List<vehicle> getUnAppliedVehicle=connectionUtil.getPendingApplication(Company_id);
+        System.out.println("Problem is Here :"+getVehicleDetail.get(0).getStatus());
         session.setAttribute("All_Vehicles",getVehicleDetail);
+        session.setAttribute("Pending",getUnAppliedVehicle);
         response.sendRedirect("Vehicle-Table.jsp");
     }
 
@@ -546,7 +565,7 @@ public class ServletDwmpc extends HttpServlet {
                     fileName9,fileName10,fileName11,fileName12,fileName14,Own);
         }else if(action.equals("EditingVehicle")){
             vehicleRegistration=new vehicle(chase_id,vehicle_Type,Unladen,Waste_Type,
-                    Annual_Quatity,Waste_Type,Registration_Number,Own);
+                    Annual_Quatity,Waste_Type,Registration_Number,Own,"UptoDate");
         }else if(action.equals("EditingAttachment")){
             if(addAction.equals("EditingVehicleAttachment")){
                 System.out.println(" Chassis :"+chase_id);
@@ -566,8 +585,10 @@ public class ServletDwmpc extends HttpServlet {
         connectionUtil.registerVehicle(vehicleRegistration,action,addAction);
 
         List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(company_id);
+        List<vehicle> getUnAppliedVehicle=connectionUtil.getPendingApplication(company_id);
         HttpSession session = request.getSession();
         if(addAction.equals("Both")){
+            session.setAttribute("Pending",getUnAppliedVehicle);
             session.setAttribute("All_Vehicles",getVehicleDetail);
             response.sendRedirect("Vehicle-Table.jsp");
         }else{

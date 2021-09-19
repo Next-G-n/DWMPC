@@ -1341,7 +1341,7 @@
                                                                             <input type="file" id="Facility" name="Facility Licence" class="dropify"  required/>
                                                                         </div>
                                                                         <div class="span1"></div>
-                                                                        <div id="affidavit1" class="col-md-6 col-xs-12" style="display: none">
+                                                                        <div id="affidavit1" class="col-md-6 col-xs-12">
                                                                             <label class="control-label mb-10" for="Affidavit"> Affidavit for Borrowed Vehicle(required):</label>
                                                                             <input type="file" id="Affidavit" name="affidavit" class="dropify"  required/>
                                                                         </div>
@@ -1456,6 +1456,7 @@
                                 </div>
                             </div>
                         </div>
+
 
 
                     </div>

@@ -26,6 +26,7 @@ public class vehicle {
     //String own_vehicle;
     String affidavit;
     String Own;
+    String Status;
 
     public vehicle(String chase_number, int company_Id, String vehicle_type, String unladen_Weight, String waste_Type, String annual_Quantity, String type_Of_Waste_covered_during_Transportation, String carrie_number, String BA_permit, String payment_receipt, String certification_of_Cooperation, String facility_Licence, String prPD, String hazardous_waste, String training_on_health_and_safety, String fire_fighting_and_first_aid, String health_and_Environment, String road_Wortiness, String blue_book, String affidavit, String own) {
         Chase_number = chase_number;
@@ -51,7 +52,7 @@ public class vehicle {
         Own = own;
     }
 
-    public vehicle(String chase_number, String vehicle_type, String unladen_Weight, String waste_Type, String annual_Quantity, String type_Of_Waste_covered_during_Transportation, String carrie_number, String own) {
+    public vehicle(String chase_number, String vehicle_type, String unladen_Weight, String waste_Type, String annual_Quantity, String type_Of_Waste_covered_during_Transportation, String carrie_number, String own, String status) {
         Chase_number = chase_number;
         Vehicle_type = vehicle_type;
         Unladen_Weight = unladen_Weight;
@@ -60,7 +61,10 @@ public class vehicle {
         Type_Of_Waste_covered_during_Transportation = type_Of_Waste_covered_during_Transportation;
         Carrie_number = carrie_number;
         Own = own;
+        Status = status;
     }
+
+
 
     public vehicle(String chase_number, String certification_of_Cooperation, String hazardous_waste, String training_on_health_and_safety, String fire_fighting_and_first_aid, String health_and_Environment, String road_Wortiness) {
         Chase_number = chase_number;
@@ -71,8 +75,6 @@ public class vehicle {
         Health_and_Environment = health_and_Environment;
         Road_Wortiness = road_Wortiness;
     }
-
-
 
 
     public vehicle(String chase_number, String BA_permit, String payment_receipt, String certification_of_Cooperation, String facility_Licence, String prPD, String hazardous_waste, String training_on_health_and_safety, String fire_fighting_and_first_aid, String health_and_Environment, String road_Wortiness, String blue_book, String affidavit) {
@@ -89,6 +91,11 @@ public class vehicle {
         Road_Wortiness = road_Wortiness;
         Blue_book = blue_book;
         this.affidavit = affidavit;
+    }
+
+    public vehicle(String chase_number, String blue_book) {
+        Chase_number = chase_number;
+        Blue_book = blue_book;
     }
 
     public String getOwn() {
@@ -257,6 +264,14 @@ public class vehicle {
 
     public void setAffidavit(String affidavit) {
         this.affidavit = affidavit;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
     }
 
     @Override
