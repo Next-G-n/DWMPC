@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: NITRO5
-  Date: 9/6/2021
-  Time: 5:36 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -12,32 +6,62 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>DWMPC || Employee Registration Form</title>
+    <title>DWMPC</title>
     <meta name="description" content="Zapily is a Dashboard & Admin Site Responsive Template by hencework." />
     <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Zapily Admin, Zapilyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
     <meta name="author" content="hencework"/>
 
+    <!-- jquery-steps css -->
+    <link rel="stylesheet" href="vendors/bower_components/jquery.steps/demo/css/jquery.steps.css">
+
+    <!--alerts CSS -->
+    <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
+
     <!-- Favicon -->
-    <link rel="shortcut icon" href="icon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" href="icon.ico" type="image/x-icon">
-    <!-- vector map CSS -->
-    <link href="vendors/bower_components/jquery-wizard.js/css/wizard.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Data table CSS -->
+    <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Toast CSS -->
+    <link href="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
 
     <!-- bootstrap-select CSS -->
     <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
 
+    <!-- Calendar CSS -->
+    <link href="vendors/bower_components/fullcalendar/dist/fullcalendar.css" rel="stylesheet" type="text/css"/>
+
+    <!-- bootstrap-touchspin CSS -->
+    <link href="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css"/>
+
+
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+    <style>
+        #example_paginate, #example_info{
+            display: none;
+        }
+        .pa-01:hover {
+            cursor: pointer;
+            background-color: #f6f7f6;
+        }
+        .bg-dark-green:hover{
+            cursor: pointer;
+            background-color: #5a896f;
+        }
+    </style>
 </head>
 
 <body>
-<!--Preloader-->
+<!-- Preloader -->
 <div class="preloader-it">
     <div class="la-anim-1"></div>
 </div>
-<!--/Preloader-->
-<div class="wrapper theme-1-active pimary-color-gold">
-
+<!-- /Preloader -->
+<div class="wrapper theme-1-active pimary-color-green">
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="mobile-only-brand pull-left">
@@ -63,7 +87,7 @@
         <div id="mobile_only_nav" class="mobile-only-nav pull-right">
             <ul class="nav navbar-right top-nav pull-right">
                 <li>
-                    <a id="" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
+                    <a id="open_right_sidebar1" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
                 </li>
                 <li class="dropdown app-drp">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
@@ -124,7 +148,7 @@
                         <li class="product-nicescroll-bar row">
                             <ul class="pa-20">
                                 <li class="col-md-3 col-xs-6 col-menu-list">
-                                    <a href="javascript:void(0);"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                                    <a href="javascript:void(0);"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Home</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                                     <hr class="light-grey-hr ma-0"/>
                                     <ul>
                                         <li>
@@ -155,7 +179,7 @@
                                         <div class="pull-left">
                                             <i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span>
                                         </div>
-                                        <div class="pull-right"><span class="label label-gold">hot</span>
+                                        <div class="pull-right"><span class="label label-green">hot</span>
                                         </div>
                                         <div class="clearfix"></div>
                                     </a>
@@ -486,8 +510,8 @@
             <li>
                 <div  class="tab-struct custom-tab-1">
                     <ul role="tablist" class="nav nav-tabs" id="right_sidebar_tab">
-                        <li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab">chat</a></li>
-                        <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">messages</a></li>
+                        <li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab">Notification</a></li>
+                        <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">Emails</a></li>
                         <li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="false">todo</a></li>
                     </ul>
                     <div class="tab-content" id="right_sidebar_content">
@@ -909,129 +933,118 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark"></h5>
+                    <h5 class="txt-dark">Companies Registered</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Dashboard</a></li>
-                        <li><a href="${pageContext.request.contextPath}/Employees.jsp">Employee Table</a></li>
-                        <li class="active"><span>Company Registration Form</span></li>
+                        <li><a href="CompanyInfo.jsp">Home</a></li>
+                        <li class="active"><span>Companies Registered</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
-                <!-- Row -->
-
             </div>
             <!-- /Title -->
+
+            <!-- Row -->
             <div class="row">
-                <div class="col-sm-12">
-                    <div class="panel panel-warning card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <h6 class="panel-title txt-light"><i class="icon-note txt-black"></i>Employee Registration</h6>
+                <c:set var="countDate" scope="page" value="0" />
+                <c:forEach var="tempCompany" items="${All_companies}">
+                    <c:url var="CompanyDetailsLink" value="ServletDwmpc">
+                        <c:param name="command" value="getCompany"/>
+                        <c:param name="company_id" value="${tempCompany.company_Id}"/>
+                        <c:param name="UserType" value="Client"/>
+                    </c:url>
+                    <c:set value="${countDate+1}" scope="page" var="countDate"/>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="panel panel-warning contact-card card-view">
+                            <div class="panel-heading">
+                                <div class="pull-left">
+                                    <div class="pull-left user-img-wrap mr-15">
+                                        <img class="card-user-img img-circle pull-left" src="img/user.png" alt="user"/>
+                                    </div>
+                                    <div class="pull-left user-detail-wrap">
+											<span class="block card-user-name">
+                                                    ${tempCompany.company_Name}
+                                            </span>
+                                        <span class="block card-user-desn">
+                                                ${tempCompany.company_Status}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="pull-right">
+                                    <a class="pull-left inline-block mr-15" href="#">
+                                        <i class="zmdi zmdi-edit txt-light"></i>
+                                    </a>
+                                    <a class="pull-left inline-block mr-15" href="#">
+                                        <i class="zmdi zmdi-delete txt-light"></i>
+                                    </a>
+                                    <div class="pull-left inline-block dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert txt-light"></i></a>
+                                        <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
+                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Full Info</a></li>
+                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Send Message</a></li>
+                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Follow</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
-                            <div class="clearfix"></div>
-                        </div>
-
-                        <div class="panel-wrapper collapse in">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-wrap">
-                                            <form data-toggle="validator" method="post" action="ServletDwmpc" role="form">
-                                                <input type="hidden" id="command" name="command" class="hidden" value="RegisteringEmployee"/>
-                                                <input type="hidden" id="action" name="action"  class="hidden" value="RegisteringEmployee"/>
-                                                <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
-                                                <input type="hidden" id="Employee_Id" name="Employee Id" class="hidden" value=""/>
-
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-xs-12 mt-40">
-                                                            <label class="control-label mb-10" for="First_Name"> First Name(required):</label>
-                                                            <input type="text" id="First_Name" name="First Name"  class="form-control required"   required/>
-                                                        </div>
-                                                        <div class="span1"></div>
-                                                        <div class="col-md-6 col-xs-12 mt-40">
-                                                            <label class="control-label mb-10" for="Last_Name"> Last Name(required):</label>
-                                                            <input type="text" id="Last_Name" name="Last Name"  class="form-control required"   required/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Job_Title"> Job Title(required):</label>
-                                                            <input type="text" class="form-control required" id="Job_Title" name="Position/job Title" placeholder="Job Title">
-                                                        </div>
-                                                        <div class="span1"></div>
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Qualification"> Qualification(required):</label>
-                                                            <input type="text" class="form-control required" id="Qualification" name="Qualification" placeholder="Qualification" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label mb-10" for="Contact">Contact(required):</label>
-                                                    <input type="text" id="Contact" name="Contact" data-mask="+267 99 999 999"  class="form-control required"  required/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="training" class="col-sm-3 control-label">Training in waste Management(required):</label>
-                                                    <select class="selectpicker" id= "training" name="training" data-style="form-control btn-default btn-outline">
-                                                        <option value="Yes">Yes</option>
-                                                        <option value="No">No</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group mb-0" style="float: right">
-                                                    <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">submit</span></button>
-                                                </div>
-                                            </form>
+                            <div class="panel-wrapper collapse in" onclick="location.href='${CompanyDetailsLink}'">
+                                <div class="panel-body row">
+                                    <div class="user-others-details pl-15 pr-15">
+                                        <div class="mb-15">
+                                            <i class="zmdi zmdi-email-open inline-block mr-10"></i>
+                                            <span class="inline-block txt-dark">${tempCompany.email}</span>
+                                        </div>
+                                        <div class="mb-15">
+                                            <i class="zmdi zmdi-phone inline-block mr-10"></i>
+                                            <span class="inline-block txt-dark">${tempCompany.telephone}</span>
+                                        </div>
+                                        <div class="mb-15">
+                                            <i class="zmdi zmdi-print inline-block mr-10"></i>
+                                            <span class="inline-block txt-dark">${tempCompany.fax_Number}</span>
+                                        </div>
+                                        <div class="mb-15">
+                                            <i class="zmdi zmdi-my-location inline-block mr-10"></i>
+                                            <span class="inline-block txt-dark">${tempCompany.region_Town_Village}, ${tempCompany.ward}, ${tempCompany.plot_Number}</span>
+                                        </div>
+                                        <div class="mb-15">
+                                            <i class="zmdi zmdi-local-post-office inline-block mr-10"></i>
+                                            <span class="inline-block txt-dark">${tempCompany.street_Address}</span>
+                                        </div>
+                                        <div>
+                                            <i class="zmdi zmdi zmdi-bookmark inline-block mr-10"></i>
+                                            <span class="inline-block txt-dark">${tempCompany.phone_Number}</span>
+                                        </div>
+                                    </div>
+                                    <hr class="light-grey-hr mt-20 mb-20"/>
+                                    <div class="emp-detail pl-15 pr-15">
+                                        <div class="mb-5">
+                                            <span class="inline-block capitalize-font mr-5">joininig date:</span>
+                                            <span class="txt-dark">${tempCompany.date_Unix}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-                        <script>
-                            $('#test').click(function(event){
-                                event.preventDefault();
-                                alert("great")
-                                var	command = $('#command').val();
-                                $.ajax({
-                                    type: "POST",
-                                    url: "ServletDwmpc",
-                                    data: { command:command },
-                                    dataType: "json",
-                                    success: function(result){
-                                    }
-                                });
-                            });
-                            function SendIT(){
-                                alert("test")
-                                var	command = $('#command').val();
-                                var ht=new XMLHttpRequest();
-                                ht.open("Post","ServletDwmpc",true);
-                                ht.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-                                ht.send(command);
-                            }
-
-                        </script>
-
                     </div>
+
+                </c:forEach>
+            </div>
+            <!-- Row -->
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer container-fluid pl-30 pr-30">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>2018 &copy; Zapily. Pampered by Hencework</p>
                 </div>
             </div>
-            <!-- Footer -->
-            <footer class="footer container-fluid pl-30 pr-30">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <p>2021 &copy; DWMPC. Created by Next-gen</p>
-                    </div>
-                </div>
-            </footer>
-            <!-- /Footer -->
-        </div>
+        </footer>
+        <!-- /Footer -->
+
     </div>
     <!-- /Main Content -->
 
@@ -1047,28 +1060,70 @@
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
 <script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
+<script src="dist/js/modal-data.js"></script>
+
+<!-- Bootstrap Touchspin JavaScript -->
+<script src="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+
+
+<!-- Data table JavaScript -->
+<script src="vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="vendors/bower_components/jszip/dist/jszip.min.js"></script>
+<script src="vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
+<script src="vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
+
+<script src="vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="dist/js/export-table-data.js"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="dist/js/jquery.slimscroll.js"></script>
 
+<!-- EChartJS JavaScript -->
+<script src="vendors/bower_components/echarts/dist/echarts-en.min.js"></script>
+<script src="vendors/echarts-liquidfill.min.js"></script>
+<script src="vendors/ecStat.min.js"></script>
+
+<!-- Toast JavaScript -->
+<script src="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+
+<!-- Progressbar Animation JavaScript -->
+<script src="vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
+
 <!-- Fancy Dropdown JS -->
 <script src="dist/js/dropdown-bootstrap-extended.js"></script>
+
+<!-- Sparkline JavaScript -->
+<script src="vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
 
 <!-- Owl JavaScript -->
 <script src="vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 
+<!-- Calender JavaScripts -->
+<script src="vendors/bower_components/moment/min/moment.min.js"></script>
+<script src="vendors/jquery-ui.min.js"></script>
+<script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="dist/js/fullcalendar-data.js"></script>
+
 <!-- Switchery JavaScript -->
 <script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
+<!-- Bootstrap Select JavaScript -->
+<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+
 <!-- Init JavaScript -->
 <script src="dist/js/init.js"></script>
-
-<!-- Bootstrap Select JavaScript -->
-<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>
+<script src="dist/js/dashboard4-data.js"></script>
 
 <!-- Sweet-Alert  -->
 <script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <script src="dist/js/sweetalert-data.js"></script>
+
+
+
 
 </body>
 

@@ -36,7 +36,7 @@
 								<div class="row">
 									<div class="col-sm-12 col-xs-12">
 										<div class="sp-logo-wrap text-center pa-0 mb-30">
-											<a href="${pageContext.request.contextPath}/index.jsp">
+											<a href="${pageContext.request.contextPath}/CompanyInfo.jsp">
 												<img class="brand-img mr-10" src="img/logo.png" alt="brand"/>
 												<span class="brand-text">Zapily</span>
 											</a>

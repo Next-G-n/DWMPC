@@ -1,3 +1,6 @@
+
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +41,7 @@
         <div class="mobile-only-brand pull-left">
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
-                    <a href="${pageContext.request.contextPath}/index.jsp">
+                    <a href="${pageContext.request.contextPath}/CompanyInfo.jsp">
                         <img class="brand-img" src="img/logo2.png" alt="brand"/>
                     </a>
                 </div>
@@ -123,7 +126,7 @@
                                     <hr class="light-grey-hr ma-0"/>
                                     <ul>
                                         <li>
-                                            <a href="${pageContext.request.contextPath}/index.jsp">Analytical</a>
+                                            <a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Analytical</a>
                                         </li>
                                         <li>
                                             <a href="index2.html">Demographic</a>
@@ -355,7 +358,7 @@
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                 <ul id="dashboard_dr" class="collapse collapse-level-1">
                     <li>
-                        <a href="${pageContext.request.contextPath}/index.jsp">Analytical</a>
+                        <a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Analytical</a>
                     </li>
                     <li>
                         <a href="index2.html">Demographic</a>
@@ -1181,7 +1184,7 @@
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="${pageContext.request.contextPath}/index.jsp">Dashboard</a></li>
+                        <li><a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Dashboard</a></li>
                         <li class="active"><span>Officer's Detail Table</span></li>
                     </ol>
                 </div>
@@ -1217,98 +1220,29 @@
                                                 <th>Omang</th>
                                                 <th>Contact</th>
                                                 <th>Location</th>
+                                                <th>Add Roles</th>
                                                 <th class="text-nowrap">Action</th>
 
 
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            <c:set var="countOffers" value="0" scope="page"/>
+                                            <c:forEach var="Offers" items="${All_offers}">
+                                                <c:set var="countOffers" value="${countOffers+1}" scope="page"/>
                                             <tr>
-                                                <td>1</td>
-                                                <td class="First-Name">Chandida</td>
-                                                <td class="Last-Name">Matiha</td>
-                                                <td class="Email">Chandida@gmail.com</td>
-                                                <td class="Occupation">Waste Management Officer</td>
-                                                <td class="Omang">15347655</td>
-                                                <td class="Contact">+267 75 123 658</td>
-                                                <td class="Location">Francistown Branch</td>
-                                                <td class="text-nowrap"><span class="pencil-Edit" id="1" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Officer-Registration-modal"> <a  class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span> <a href="#"  data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a> </td>
-
+                                                <td >${countOffers}<a class="Id"  style="display: none">${Offers.user_Id}</a></td>
+                                                <td class="First-Name">${Offers.first_name}</td>
+                                                <td class="Last-Name">${Offers.last_name}</td>
+                                                <td class="Email">${Offers.email}</td>
+                                                <td class="Occupation">${Offers.user_type}</td>
+                                                <td class="Omang">${Offers.omang}</td>
+                                                <td class="Contact">${Offers.contact}</td>
+                                                <td class="Location">${Offers.location}</td>
+                                                <td class="Add-Roles">${Offers.addRoles}</td>
+                                                <td class="text-nowrap"><span class="pencil-Edit" id="${countOffers}" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Officer-Registration-modal"> <a  class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span> <a href="#"  data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a> </td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td class="First-Name">Thapelo</td>
-                                                <td class="Last-Name">Phakela</td>
-                                                <td class="Email">Thapelo@gmail.com</td>
-                                                <td class="Occupation">Compliance Officer</td>
-                                                <td class="Omang">15347655</td>
-                                                <td class="Contact">+267 75 123 658</td>
-                                                <td class="Location">Gaborone Branch</td>
-                                                <td class="text-nowrap"><span class="pencil-Edit" id="2" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Officer-Registration-modal"> <a href="#" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span> <a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a> </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td class="First-Name">kaone</td>
-                                                <td class="Last-Name">Choba</td>
-                                                <td class="Email">kaone@gmail.com</td>
-                                                <td class="Occupation">Waste Management Officer Compliance Headquarters</td>
-                                                <td class="Omang">15347655</td>
-                                                <td class="Contact">+267 75 123 658</td>
-                                                <td class="Location">Gaborone Branch</td>
-                                                <td class="text-nowrap"><span class="pencil-Edit" id="3" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Officer-Registration-modal"> <a href="#" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span> <a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td class="First-Name">kevin</td>
-                                                <td class="Last-Name">Matoha</td>
-                                                <td class="Email">kevin@gmail.com</td>
-                                                <td class="Occupation">Head of Division Headquarters</td>
-                                                <td class="Omang">15347655</td>
-                                                <td class="Contact">+267 75 123 658</td>
-                                                <td class="Location">Francistown Branch</td>
-                                                <td class="text-nowrap"><span class="pencil-Edit" id="4" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Officer-Registration-modal"> <a href="#" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span> <a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a> </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td class="First-Name">Natasha</td>
-                                                <td class="Last-Name">Lolo</td>
-                                                <td class="Email">Natasha@gmail.com</td>
-                                                <td class="Occupation">Generate licence</td>
-                                                <td class="Omang">15347655</td>
-                                                <td class="Contact">+267 75 123 658</td>
-                                                <td class="Location">Gaborone Branch</td>
-                                                <td class="text-nowrap"><span class="pencil-Edit" id="5" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Officer-Registration-modal"> <a href="#" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span><a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a> </td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td class="First-Name">Nshathisi</td>
-                                                <td class="Last-Name">Matiha</td>
-                                                <td class="Email">Nshathisi@gmail.com</td>
-                                                <td class="Occupation">Regional Coordinate</td>
-                                                <td class="Omang">15347655</td>
-                                                <td class="Contact">+267 75 123 658</td>
-                                                <td class="Location">Francistown Branch</td>
-                                                <td class="text-nowrap"><span class="pencil-Edit" id="6"  data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Officer-Registration-modal"> <a href="#" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span><a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a> </td>
-
-
-
-                                            </tr>
-
-                                            <tr>
-                                                <td>7</td>
-                                                <td class="First-Name">lorato</td>
-                                                <td class="Last-Name">shatty</td>
-                                                <td class="Email">Lorato@gmail.com</td>
-                                                <td class="Occupation">Administrator</td>
-                                                <td class="Omang">15347655</td>
-                                                <td class="Contact">+267 75 123 658</td>
-                                                <td class="Location">Gaborone Branch</td>
-                                                <td class="text-nowrap"><span class="pencil-Edit" id="7" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Officer-Registration-modal"> <a href="#" class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span> <a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a> </td>
-
-                                            </tr>
-
+                                            </c:forEach>
                                             </tbody>
                                         </table>
 
@@ -1321,19 +1255,21 @@
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                     <h5 class="modal-title" id="myLargeModalLabel">Editing Officer Information for <a id="OfficerName">$Name</a></h5>
-                                                </div><form>
+                                                </div><form action="ServletDwmpc" method="post">
                                                 <div class="modal-body">
-
+                                                    <input type="hidden" name="User_Id" id="ID">
+                                                    <input type="hidden" name="command" value="Registering_User">
+                                                    <input type="hidden" name="action" value="Editing_Offers">
                                                     <div class="form-group">
                                                         <div class="row">
                                                             <div class="col-md-6 col-xs-12 mt-40">
                                                                 <label class="control-label mb-10" for="First_Name"> First Name(required):</label>
-                                                                <input type="text" id="First_Name" name="First_Name"  class="form-control required"   required/>
+                                                                <input type="text" id="First_Name" name="first_name"  class="form-control required"   required/>
                                                             </div>
                                                             <div class="span1"></div>
                                                             <div class="col-md-6 col-xs-12 mt-40">
                                                                 <label class="control-label mb-10" for="Last_Name"> Last Name(required):</label>
-                                                                <input type="text" id="Last_Name" name="Last_Name"  class="form-control required"   required/>
+                                                                <input type="text" id="Last_Name" name="last_name"  class="form-control required"   required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1341,12 +1277,12 @@
                                                         <div class="row">
                                                             <div class="col-md-6 col-xs-12">
                                                                 <label class="control-label mb-10" for="Email"> Email(required):</label>
-                                                                <input type="email" id="Email" name="Email"  class="form-control required"   required/>
+                                                                <input type="email" id="Email" name="email"  class="form-control required"   required/>
                                                             </div>
                                                             <div class="span1"></div>
                                                             <div class="col-md-6 col-xs-12">
                                                                 <label class="control-label mb-10" for="Occupation"> Occupation(required):</label>
-                                                                <select id="Occupation" class="selectpicker" data-style="form-control btn-default btn-outline">
+                                                                <select id="Occupation" name="User_Type" class="selectpicker" data-style="form-control btn-default btn-outline">
                                                                     <option value="Compliance Officer">Compliance Officer</option>
                                                                     <option value="Waste Management Officer">Waste Management Officer</option>
                                                                     <option value="Regional Coordinate">Regional Coordinate</option>
@@ -1360,22 +1296,41 @@
                                                         <div class="row">
                                                             <div class="col-md-6 col-xs-12">
                                                                 <label class="control-label mb-10" for="Omang"> Omang(required):</label>
-                                                                <input type="text" id="Omang" name="Omang"  class="form-control required"  required/>
+                                                                <input type="text" id="Omang" data-mask="999999999" name="Omang_code"  class="form-control required"  required/>
                                                             </div>
                                                             <div class="span1"></div>
                                                             <div class="col-md-6 col-xs-12">
                                                                 <label class="control-label mb-10" for="Contact">Contact(required):</label>
-                                                                <input type="text" id="Contact" name="Contact"  class="form-control required"  required/>
+                                                                <input type="text" id="Contact"  data-mask="+267 99 999 999" name="phone_number"  class="form-control required"  required/>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-xs-12">
                                                         <label class="control-label mb-10" for="Branch_Location"> Branch Location (required):</label>
-                                                        <select id="Branch_Location" class="selectpicker" data-style="form-control btn-default btn-outline">
+                                                        <select id="Branch_Location" name="location" class="selectpicker" data-style="form-control btn-default btn-outline">
                                                             <option value="Francistown Branch">Francistown Branch</option>
                                                             <option value="Gaborone Branch">Gaborone Branch</option>
-                                                            <option value="Maun Branch">Maun Branch</option>
+                                                            <option value="Chobe Branch">Chobe Branch</option>
+                                                            <option value="kgalagadi Branch">kgalagadi Branch</option>
                                                         </select>
+                                                            </div>
+                                                            <div class="span1"></div>
+                                                            <div class="col-md-6 col-xs-12">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-10">Add Roles</label>
+                                                            <select id="Add_Roles" name="add_Roles" class="selectpicker" multiple data-style="form-control btn-default btn-outline">
+                                                                <option value="Compliance Officer">Compliance Officer</option>
+                                                                <option value="Waste Management Officer">Waste Management Officer</option>
+                                                                <option value="Regional Coordinate">Regional Coordinate</option>
+                                                                <option value="Waste Management Officer Compliance Headquarters">Waste Management Officer Compliance Headquarters</option>
+                                                                <option value="Head of Division Headquarters">Head of Division Headquarters</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
 
                                                 </div>
@@ -1393,6 +1348,7 @@
                                         function toggleModal(element) {
 
                                             tableRowElement = element.parentElement.parentElement;
+                                            const id = tableRowElement.getElementsByClassName('Id')[0].innerHTML;
                                             const First_Name = tableRowElement.getElementsByClassName('First-Name')[0].innerHTML;
                                             const Last_Name = tableRowElement.getElementsByClassName('Last-Name')[0].innerHTML;
                                             const Email = tableRowElement.getElementsByClassName('Email')[0].innerHTML;
@@ -1400,19 +1356,50 @@
                                             const Omang = tableRowElement.getElementsByClassName('Omang')[0].innerHTML;
                                             const Contact = tableRowElement.getElementsByClassName('Contact')[0].innerHTML;
                                             const Location = tableRowElement.getElementsByClassName('Location')[0].innerHTML;
+                                            const Add_Roles = tableRowElement.getElementsByClassName('Add-Roles')[0].innerHTML;
 
-
+                                            const add_Roles = Add_Roles.split(", ");
+                                            let add_Roles2 = "";
+                                            alert(add_Roles);
+                                            let add_Roles1 = [];
+                                            for ( i = 0; i < add_Roles.length; i++) {
+                                                alert("This '"+add_Roles[i].replace(/\s/g, '')+"'")
+                                                switch (add_Roles[i].replace(/\s/g, '')) {
+                                                    case "CO":
+                                                        add_Roles2 = "Compliance Officer";
+                                                        break;
+                                                    case "WMO":
+                                                        add_Roles2 = "Waste Management Officer";
+                                                        break;
+                                                    case "RC":
+                                                        add_Roles2 = "Regional Coordinate";
+                                                        break;
+                                                    case "WMOCH":
+                                                        add_Roles2 = "Waste Management Officer Compliance Headquarters";
+                                                        break;
+                                                    case "HDH":
+                                                        add_Roles2 = "Head of Division Headquarters";
+                                                        break;
+                                                }
+                                                add_Roles1.push(add_Roles2);
+                                            }
+                                            alert(add_Roles1)
+                                            // const add_Roles1=add_Roles2.slice(0, -1);
+                                            //  const add_Roles1="'Compliance Officer', 'Waste Management Officer'"
+                                            document.getElementById("ID").value = id;
                                             document.getElementById('First_Name').value = First_Name;
                                             document.getElementById('Last_Name').value = Last_Name;
-                                            document.getElementById('OfficerName').innerHTML=First_Name+" "+Last_Name;
+                                            document.getElementById('OfficerName').innerHTML = First_Name + " " + Last_Name;
                                             document.getElementById('Email').value = Email;
                                             document.getElementById('Occupation').value = Occupation;
                                             $("#Occupation").selectpicker("refresh");
                                             document.getElementById('Omang').value = Omang;
                                             document.getElementById('Contact').value = Contact;
-                                            document.getElementById('Location').value = Location;
-                                            $("#Location").selectpicker("refresh");
+                                            document.getElementById('Branch_Location').value = Location;
+                                            $("#Branch_Location").selectpicker("refresh");
 
+                                            document.getElementById('Add_Roles').value = add_Roles1[i];
+                                            $("#Add_Roles").selectpicker("refresh");
 
                                         }
 
@@ -1423,7 +1410,7 @@
 
                                 </br>
                                 <div style="float: right" class="row">
-                                    <button type="button" onclick="location.href='Officer-Registration-Form.html';" data-toggle="modal" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Add New Vehicle</span></button>
+                                    <button type="button" onclick="location.href='Officer-Registration-Form.jsp';" data-toggle="modal" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Add New Vehicle</span></button>
                                 </div>
                             </div>
 
@@ -1462,7 +1449,8 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
+<script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
+<script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
 <script src="dist/js/modal-data.js"></script>
 
 <!-- Piety JavaScript -->
