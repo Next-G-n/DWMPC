@@ -44,23 +44,54 @@ public class ConnectionUtil {
         }
     }
 
-    public String registerUser(user userReg) throws Exception{
+    public String registerUser(user userReg,String action) throws Exception{
         Connection myConn=null;
         PreparedStatement myStmt=null;
         String error="Successful";
         try {
             myConn = dataSource.getConnection();
-            String sql2 = "Insert user (`First Name`, `Last Name`, `Email`, `User Type`, `Password`, `Omang`, `Contact`,`Location`) values(?,?,?,?,?,?,?,?)";
-            myStmt = myConn.prepareStatement(sql2);
-            myStmt.setString(1, userReg.getFirst_name());
-            myStmt.setString(2, userReg.getLast_name());
-            myStmt.setString(3, userReg.getEmail());
-            myStmt.setString(4, userReg.getUser_type());
-            myStmt.setString(5, userReg.getPassword());
-            myStmt.setInt(6, userReg.getOmang());
-            myStmt.setInt(7, userReg.getContact());
-            myStmt.setString(8, userReg.getLocation());
-            myStmt.execute();
+            String sql2;
+            if(action.equals("Registration")){
+                sql2= "Insert user (`First Name`, `Last Name`, `Email`, `User Type`, `Password`, `Omang`, `Contact`,`Location`) values(?,?,?,?,?,?,?,?)";
+                myStmt = myConn.prepareStatement(sql2);
+                myStmt.setString(1, userReg.getFirst_name());
+                myStmt.setString(2, userReg.getLast_name());
+                myStmt.setString(3, userReg.getEmail());
+                myStmt.setString(4, userReg.getUser_type());
+                myStmt.setString(5, userReg.getPassword());
+                myStmt.setInt(6, userReg.getOmang());
+                myStmt.setString(7, userReg.getContact());
+                myStmt.setString(8, userReg.getLocation());
+                myStmt.execute();
+            }else if(action.equals("Editing_Offers")){
+                sql2= "Update user set `First Name`=?, `Last Name`=?, `Email`=?, `User Type`=?, `Omang`=?, `Contact`=?,`Location`=?" +
+                        ", `Add Roles`=? where `User Id`=?";
+                myStmt = myConn.prepareStatement(sql2);
+                myStmt.setString(1, userReg.getFirst_name());
+                myStmt.setString(2, userReg.getLast_name());
+                myStmt.setString(3, userReg.getEmail());
+                myStmt.setString(4, userReg.getUser_type());
+                myStmt.setInt(5, userReg.getOmang());
+                myStmt.setString(6, userReg.getContact());
+                myStmt.setString(7, userReg.getLocation());
+                myStmt.setString(8, userReg.getAddRoles());
+                myStmt.setInt(9, userReg.getUser_Id());
+                myStmt.execute();
+            } else if(action.equals("Editing_Client")){
+                sql2= "Update user set `First Name`=?, `Last Name`=?, `Email`=?, `User Type`=?, `Omang`=?, `Contact`=?,`Location`=? where `User Id`=?";
+                myStmt = myConn.prepareStatement(sql2);
+                myStmt.setString(1, userReg.getFirst_name());
+                myStmt.setString(2, userReg.getLast_name());
+                myStmt.setString(3, userReg.getEmail());
+                myStmt.setString(4, userReg.getUser_type());
+                myStmt.setInt(5, userReg.getOmang());
+                myStmt.setString(6, userReg.getContact());
+                myStmt.setString(7, userReg.getLocation());
+                myStmt.setInt(8, userReg.getUser_Id());
+                myStmt.execute();
+            }
+
+
         }catch (SQLIntegrityConstraintViolationException e){
             error="You have "+e;
             System.out.println("This "+error);
@@ -82,8 +113,8 @@ public class ConnectionUtil {
         try {
             myConn=dataSource.getConnection();
             String sql;
-            if(action.equals("getOfficerInfo")){
-                sql="select * from user where not UserType='Client'";
+            if(action.equals("Admin")){
+                sql="select * from user where not `User Type`='Client'";
                 myStmt=myConn.prepareStatement(sql);
             }else {
                 sql="select * from user where Email=?";
@@ -100,10 +131,17 @@ public class ConnectionUtil {
                 String lastName=myRS.getString("Last Name");
                 email=myRS.getString("Email");
                 int omang=myRS.getInt("Omang");
-                int contact=myRS.getInt("Contact");
+                String contact=myRS.getString("Contact");
                 String location=myRS.getString("Location");
-                user login2=new user(id,firstName,lastName,email,userType,password,omang,contact,location);
-                login.add(login2);
+                if(action.equals("Admin")){
+                    String addRoles=myRS.getString("Add Roles");
+                    user login2=new user(id,firstName,lastName,email,userType,omang,contact,addRoles,location);
+                    login.add(login2);
+                }else{
+                    user login2=new user(id,firstName,lastName,email,userType,password,omang,contact,location);
+                    login.add(login2);
+                }
+
             }
         }finally {
             close(myConn,myStmt,myRS);
@@ -191,7 +229,7 @@ public class ConnectionUtil {
         return viewRegisteredCompany;
     }
 
-    public List<company_Information> getAllCompanies(int userId) throws Exception {
+    public List<company_Information> getAllCompanies(int userId, String userType) throws Exception {
             List<company_Information> getCompanyDetail = new ArrayList<>();
             Connection myConn=null;
             ResultSet myRs=null;
@@ -199,9 +237,16 @@ public class ConnectionUtil {
 
             try {
                 //get a connectio
-
+                String sql=null;
                 myConn=dataSource.getConnection();
-                String sql ="Select * from company_information where `User Id`="+userId;
+
+                if(userType.equals("Offer")){
+                    sql ="Select * from company_information where `User Id`="+userId;
+                }else{
+                    sql ="SELECT * FROM `dwmpc1.0`.application_status a left join vehicle v on a.`Chase Number`=v.`Chase Number` left join company_information c on v.`Company Id`=c.`Company Id` where a.`Current Office`='"+userType+"';";
+
+                }
+
                 myStmt=myConn.prepareStatement(sql);
                 myRs=myStmt.executeQuery();
 
@@ -210,8 +255,48 @@ public class ConnectionUtil {
                     //retrieve data from the result set
                     int id=myRs.getInt("Company Id");
                     String companyName=myRs.getString("Company Name");
+                    String Com_email = myRs.getString("Company Email");
+                    String City_Town_Village = myRs.getString("City/Town/Village");
+                    String plot_number = myRs.getString("Plot Number");
+                    String ward = myRs.getString("Ward");
+                    String telephone = myRs.getString("Telephone");
+                    String fax = myRs.getString("Fax Number");
+                    String phone_number = myRs.getString("Phone Number");
+                    String date = myRs.getString("Date Unix");
+                    String Status = myRs.getString("Company status");
+                    String Street_address = myRs.getString("Street Address");
 
-                    company_Information registerCompany=new company_Information(id,userId,companyName);
+                    int count=0;
+                    for(int i=0; i<companyName.length(); i++){
+                        if(companyName.charAt(i)!='\0'){
+                            count++;
+                        }
+                    }
+                    if(count>=19){
+                        companyName=companyName.substring(0, 19)+"...";
+                    }
+
+                    long unixSeconds = Long.parseLong(date);
+                    Date dateinMi = new Date(unixSeconds*1000L);
+                    SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
+                    sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT-4"));
+
+                    Timestamp timestamp = new Timestamp(unixSeconds);
+                    Date dateMi = new Date(timestamp.getTime());
+                    String formattedDate=sdf.format(dateMi);;
+                    company_Information registerCompany=null;
+                    if(userType.equals("Client")){
+
+                        registerCompany=new company_Information(id,userId, companyName, Com_email,City_Town_Village, plot_number,ward, telephone, fax, phone_number, Status, formattedDate,Street_address);
+
+                    }else{
+                     String  formattedDate2=myRs.getString("Unix Application Date");
+                        registerCompany=new company_Information(id,userId, companyName, Com_email,
+                                City_Town_Village, plot_number,ward, telephone, fax, phone_number, Status, formattedDate,Street_address,formattedDate2);
+                    }
+
+
+
 
                     getCompanyDetail.add(registerCompany);
                 }
@@ -232,14 +317,14 @@ public class ConnectionUtil {
 
         try {
             //get a connectio
-
             myConn=dataSource.getConnection();
             String sql ="Select * from company_information where `Company Id`="+Company_id;
             myStmt=myConn.prepareStatement(sql);
             myRs=myStmt.executeQuery();
             while (myRs.next()) {
-    //retrieve data from the result set
-    int id = myRs.getInt("Company Id");
+
+    //retrieve data from the result set111
+    int id = myRs.getInt("User Id");
     String companyName = myRs.getString("Company Name");
     String Com_email = myRs.getString("Company Email");
     String Street_address = myRs.getString("Street Address");
@@ -255,7 +340,7 @@ public class ConnectionUtil {
     String Status = myRs.getString("Company status");
     String Company_Licence_Status = myRs.getString("Company License Status");
 
-    getCompanyDetail = new company_Information(id, Company_id, companyName, Com_email,
+    getCompanyDetail = new company_Information( Company_id,id, companyName, Com_email,
             Street_address, street_address_line1, City_Town_Village, region, plot_number,
             ward, telephone, fax, phone_number, Status, date, Company_Licence_Status);
 }

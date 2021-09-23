@@ -19,11 +19,44 @@ public class company_Information {
     String Company_Status;
     String Date_Unix;
     String Company_License_Status;
+    String CompanyDate;
 
     public company_Information(int company_Id, int user_Id, String company_Name) {
         Company_Id = company_Id;
         User_Id = user_Id;
         Company_Name = company_Name;
+    }
+
+    public company_Information(int company_Id, int user_Id, String company_Name, String email, String region_Town_Village, String plot_Number, String ward, String telephone, String fax_Number, String phone_Number, String company_Status, String date_Unix, String street_Address,String companyDate) {
+        Company_Id = company_Id;
+        User_Id = user_Id;
+        Company_Name = company_Name;
+        Email = email;
+        Region_Town_Village = region_Town_Village;
+        Plot_Number = plot_Number;
+        Ward = ward;
+        Telephone = telephone;
+        Fax_Number = fax_Number;
+        Phone_Number = phone_Number;
+        Company_Status = company_Status;
+        Date_Unix = date_Unix;
+        Street_Address = street_Address;
+        CompanyDate=companyDate;
+    }
+    public company_Information(int company_Id, int user_Id, String company_Name, String email, String region_Town_Village, String plot_Number, String ward, String telephone, String fax_Number, String phone_Number, String company_Status, String date_Unix, String street_Address) {
+        Company_Id = company_Id;
+        User_Id = user_Id;
+        Company_Name = company_Name;
+        Email = email;
+        Region_Town_Village = region_Town_Village;
+        Plot_Number = plot_Number;
+        Ward = ward;
+        Telephone = telephone;
+        Fax_Number = fax_Number;
+        Phone_Number = phone_Number;
+        Company_Status = company_Status;
+        Date_Unix = date_Unix;
+        Street_Address = street_Address;
     }
 
     public company_Information(int company_Id, int user_Id, String company_Name, String email, String street_Address, String street_Address2, String region_Town_Village, String region, String plot_Number, String ward, String telephone, String fax_Number, String phone_Number, String company_Status, String date_Unix, String company_License_Status) {
@@ -43,6 +76,14 @@ public class company_Information {
         Company_Status = company_Status;
         Date_Unix = date_Unix;
         Company_License_Status = company_License_Status;
+    }
+
+    public String getCompanyDate() {
+        return CompanyDate;
+    }
+
+    public void setCompanyDate(String companyDate) {
+        CompanyDate = companyDate;
     }
 
     public int getCompany_Id() {

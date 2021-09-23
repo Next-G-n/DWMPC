@@ -77,6 +77,9 @@ public class ServletDwmpc extends HttpServlet {
                 case "downloadVehicleAttachment":
                     downloadVehicleAttachment(request, response);
                     break;
+                case "getCompany":
+                    getCompany(request,response);
+                    break;
 
 
             }
@@ -109,6 +112,9 @@ public class ServletDwmpc extends HttpServlet {
                 case "Company Registration":
                     registerCompany(request,response);
                     break;
+                case "getCompany":
+                    getCompany(request,response);
+                    break;
                 case "RegisteringEmployee":
                     registerEmployee(request,response);
                     break;
@@ -134,6 +140,10 @@ public class ServletDwmpc extends HttpServlet {
                 case "LicenseApplication":
                     LicenseApplication(request, response);
                     break;
+                case "LogOut Session":
+                    System.out.println("Log Out");
+                    Logout(request, response);
+                    break;
 
 
             }
@@ -146,19 +156,557 @@ public class ServletDwmpc extends HttpServlet {
         }
     }
 
-    private void LicenseApplication(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String[] Checked=request.getParameterValues("Chassis");
-        if (Checked != null) {
-            for (int i = 0; i < Checked.length; i++)
-            {
-                System.out.println ("<b>"+Checked[i]+"<b>");
-                connectionUtil.ApplyForLicence(Checked[i]);
-            }
+
+    // Register and Login
+
+    private void Logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpSession session=request.getSession();
+        System.out.println("Log Out");
+        if (session.getAttribute("All_Vehicles") != null){
+            session.removeAttribute("All_Vehicles");
         }
-        getVehicle(request,response);
+        if (session.getAttribute("Attachments") != null){
+            session.removeAttribute("Attachments");
+        }
+        if (session.getAttribute("Pending") != null){
+            session.removeAttribute("Pending");
+        }
+        if (session.getAttribute("All_Employee") != null){
+            session.removeAttribute("All_Employee");
+        }
+        if (session.getAttribute("Company_info") != null){
+            session.removeAttribute("Company_info");
+        }
+        if (session.getAttribute("All_companies") != null){
+            session.removeAttribute("All_companies");
+        }
+        System.out.println("Log Out test");
+        response.sendRedirect("login.jsp");
+    }
+
+    private void Login(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String Email = request.getParameter("email");
+        String Password = request.getParameter("password");
+        String userType="Unknown";
+        String action="Login";
+        byte[] salt = getSalt();
+        String securePassword = get_SHA_512_SecurePassword(Password, salt);
+
+        List<user> userlg = connectionUtil.loginUser(Email, securePassword,action);
+        HttpSession session=request.getSession();
+        session.setAttribute("User_Info", userlg);
+        int user_id=userlg.get(0).getUser_Id();
+
+
+
+        if(userlg.get(0).getUser_type().equals("Administrator")){
+            action="Admin";
+            List<user> userlg2 = connectionUtil.loginUser(Email, securePassword,action);
+            session.setAttribute("All_offers", userlg2);
+            request.getRequestDispatcher("Admin-Table.jsp").forward(request, response);
+
+        }else if(userlg.get(0).getUser_type().equals("Client")){
+            userType="Client";
+            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(user_id,userType);
+
+            if(!CompanyInfo.isEmpty()){
+                session.setAttribute("All_companies", CompanyInfo);
+            }
+            request.getRequestDispatcher("Home.jsp").forward(request, response);
+        }else  {
+            userType=userlg.get(0).getUser_type();
+            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(user_id,userType);
+
+            if(!CompanyInfo.isEmpty()){
+                session.setAttribute("All_companies", CompanyInfo);
+            }
+            request.getRequestDispatcher("Home.jsp").forward(request, response);
+        }
 
     }
 
+    private void User_Registration(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        String firstName=request.getParameter("first_name");
+        String lastName=request.getParameter("last_name");
+        String email=request.getParameter("email");
+        String securePassword=null;
+        String action=request.getParameter("action");
+
+
+
+        int omang= Integer.parseInt(request.getParameter("Omang_code"));
+        String contacting= request.getParameter("phone_number");
+        String UserType=request.getParameter("User_Type");
+        String location=request.getParameter("location");
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        int user_id=0;
+        if(!action.equals("Registration")){
+            user_id= Integer.parseInt(request.getParameter("User_Id"));
+
+        }else{
+            String password=request.getParameter("password");
+            byte[] salt = getSalt();
+            securePassword = get_SHA_512_SecurePassword(password, salt);
+        }
+        user userReg;
+        if(action.equals("Editing_Offers")){
+            String[] add_Roles=request.getParameterValues("add_Roles");
+            String add_Roles1=null;
+            if (add_Roles != null) {
+                String add_Roles2="";
+                for (int i = 0; i < add_Roles.length; i++)
+                {
+                    System.out.println ("<b>"+add_Roles[i]+"<b>");
+                    switch (add_Roles[i]) {
+                        case "Compliance Officer":
+                            add_Roles2 = "CO, ";
+                            break;
+                        case "Waste Management Officer":
+                            add_Roles2 = add_Roles2 + "WMO, ";
+                            break;
+                        case "Regional Coordinate":
+                            add_Roles2 = add_Roles2 + "RC, ";
+                            break;
+                        case "Waste Management Officer Compliance Headquarters":
+                            add_Roles2 = add_Roles2 + "WMOCH, ";
+                            break;
+                        case "Head of Division Headquarters":
+                            add_Roles2 = add_Roles2 + "HDH, ";
+                            break;
+                    }
+                }
+                StringBuffer sb= new StringBuffer(add_Roles2);
+                sb.deleteCharAt(sb.length()-2);
+                add_Roles1= String.valueOf(sb);
+            }
+            userReg=new user(user_id,firstName,lastName,email,UserType,omang,contacting,add_Roles1,location);
+        }else{
+            userReg=new user(user_id,firstName,lastName,email,UserType,securePassword,omang,contacting,location);
+        }
+
+       String msg=connectionUtil.registerUser(userReg,action);
+
+        HttpSession session=request.getSession();
+
+        action="Registration";
+        if(msg.equals("Successful")){
+            List<user> userlg = connectionUtil.loginUser(email, securePassword,action);
+            session.setAttribute("User_Info", userlg);
+
+            if(UserType.equals("Client")){
+                List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(userlg.get(0).getUser_Id(),"Client");
+                if(CompanyInfo.get(0).getCompany_Name()!=null){
+                    session.setAttribute("All_companies", CompanyInfo);
+                }
+                RequestDispatcher dispatcher = request.getRequestDispatcher("Home.jsp");
+                dispatcher.forward(request, response);
+            }else{
+                action="Admin";
+                String Email="null";
+                List<user> userlg2 = connectionUtil.loginUser(Email, securePassword,action);
+                session.setAttribute("All_offers", userlg2);
+                request.getRequestDispatcher("Admin-Table.jsp").forward(request, response);
+
+            }
+
+        }else {
+            if(UserType.equals("Client")){
+                session.setAttribute("ErrorEmail",userReg);
+                this.getServletContext().getRequestDispatcher("signup.jsp").forward(request, response);
+            }else{
+                session.setAttribute("ErrorEmail",userReg);
+                this.getServletContext().getRequestDispatcher("Officer-Registration-Form.jsp").forward(request, response);
+            }
+
+        }
+    }
+
+
+
+    // Company Info
+    private void registerCompany(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpSession session=request.getSession();
+        String action=request.getParameter("action");
+
+        int id= Integer.parseInt(request.getParameter("User_id"));
+        String companyName=request.getParameter("Company name");
+        String Com_email=request.getParameter("Company_Email");
+        String Street_address=request.getParameter("Street_Address");
+        String street_address_line1=request.getParameter("Street_Address2");
+        String City_Town_Village=request.getParameter("City");
+        String region=request.getParameter("Region");
+        String plot_number=request.getParameter("Plot_Number");
+        String ward=request.getParameter("Ward");
+        String telephone=request.getParameter("telephone");
+        String fax=request.getParameter("fax");
+        String phone_number=request.getParameter("Phone_Number");
+        String Status=request.getParameter("StatusA");
+        String Company_License_Status=request.getParameter("Status");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String ApplicationDate= String.valueOf(timestamp.getTime());
+
+        int companyId;
+        if(action.equals("Registration")){
+            companyId=0;
+            session.setAttribute("Successful_Registration_Alert","CompanyRegistration");
+        }else{
+            companyId= Integer.parseInt(request.getParameter("company_Id"));
+        }
+
+
+        company_Information registerCompany=new company_Information(companyId,id,companyName,Com_email,
+                Street_address,street_address_line1,City_Town_Village,region,plot_number,
+                ward,telephone,fax,phone_number,Status,ApplicationDate,Company_License_Status);
+
+        company_Information getCurrentCompanyID=connectionUtil.registerCompany(registerCompany,action);
+
+        List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(id,"Client");
+        session.setAttribute("All_companies", CompanyInfo);
+
+
+        session.removeAttribute("Company_info");
+        session.setAttribute("Company_info", getCurrentCompanyID);
+
+
+        List<company_personnel> employees=connectionUtil.getAllEmployees(getCurrentCompanyID.getCompany_Id());
+        session.setAttribute("All_Employee",employees);
+
+        //request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
+        response.sendRedirect("CompanyInfo.jsp");
+
+    }
+
+    private void getCompany(HttpServletRequest request, HttpServletResponse response) throws  Exception{
+        HttpSession session=request.getSession();
+        int Company_id= Integer.parseInt(request.getParameter("company_id"));
+        company_Information FirstCompanyDetails=connectionUtil.getCompanyDetails(Company_id);
+        session.setAttribute("Company_info", FirstCompanyDetails);
+        request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
+    }
+
+
+    // Employee info
+    private void getEmployees(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpSession session=request.getSession();
+
+        int Company_id= Integer.parseInt(request.getParameter("company_id"));
+        System.out.println("well  :"+Company_id);
+        List<company_personnel> employees=connectionUtil.getAllEmployees(Company_id);
+        session.setAttribute("All_Employee",employees);
+        response.sendRedirect("Employee-Table.jsp");
+
+    }
+
+    private void registerEmployee(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpSession session=request.getSession();
+        String action = request.getParameter("action");
+        int Company_id = Integer.parseInt(request.getParameter("Company Id"));
+        String firstName = request.getParameter("First Name");
+        String lastName = request.getParameter("Last Name");
+        String position = request.getParameter("Position/job Title");
+        String qualification = request.getParameter("Qualification");
+        String training = request.getParameter("training");
+        String Contact = request.getParameter("Contact");
+        String Employee_Status="UpToDate";
+        int Employee_Id;
+        if(action.equals("EditingEmployee")){
+            Employee_Id = Integer.parseInt(request.getParameter("Employee Id"));
+        }else{
+            Employee_Id=0;
+        }
+
+
+        company_personnel companyPersonnel = new company_personnel(Employee_Id,Company_id,firstName, lastName, position, qualification, training,Employee_Status,Contact);
+        connectionUtil.EmployeeRegistration(companyPersonnel,action);
+
+
+        List<company_personnel> employees=connectionUtil.getAllEmployees(Company_id);
+        session.setAttribute("All_Employee",employees);
+        response.sendRedirect("Employee-Table.jsp");
+
+    }
+
+
+
+    // Vehicle info
+    private void registerVehicle(HttpServletRequest request, HttpServletResponse response)throws Exception {
+
+        String action=request.getParameter("action");
+
+        String CompanyName=request.getParameter("CompanyName");
+        String addAction=request.getParameter("addAction");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String ApplicationDate= String.valueOf(timestamp.getTime());
+
+        String fileName = null;
+        String fileName2 = null;
+        String fileName3 = null;
+        String fileName4 = null;
+        String fileName5 = null;
+        String fileName6 = null;
+        String fileName8 = null;
+        String fileName9 = null;
+        String fileName10 = null;
+        String fileName11 = null;
+        String fileName12 = null;
+        String fileName14 = null;
+
+
+        if(action.equals("RegisteringVehicle") || action.equals("EditingAttachment")){
+
+
+            if(addAction.equals("EditingCertificateAttachment") || addAction.equals("Both")){
+
+
+                String folderName6 = "Documents/Hazardous Waste";
+                String uploadPath6 = request.getServletContext().getRealPath("") + folderName6;
+                File dir6 = new File(uploadPath6);
+                if (!dir6.exists()) {
+                    dir6.mkdirs();
+                }
+
+                Part hazardous_waste=request.getPart("hazardous waste");
+                InputStream hazardous_waste1 = hazardous_waste.getInputStream();
+                fileName6=CompanyName+"_hazardous waste"+ApplicationDate+".pdf";
+                Files.copy(hazardous_waste1, Paths.get(uploadPath6 + File.separator + fileName6), StandardCopyOption.REPLACE_EXISTING);
+
+
+                String folderName8 = "Documents/Health and Safety";
+                String uploadPath8 = request.getServletContext().getRealPath("") + folderName8;
+                File dir8 = new File(uploadPath8);
+                if (!dir8.exists()) {
+                    dir8.mkdirs();
+                }
+
+                Part training_on_health_and_safety=request.getPart("Health and Safety");
+                InputStream training_on_health_and_safety1 = training_on_health_and_safety.getInputStream();
+                fileName8=CompanyName+"_Health and Safety"+ApplicationDate+".pdf";
+                Files.copy(training_on_health_and_safety1, Paths.get(uploadPath8 + File.separator + fileName8), StandardCopyOption.REPLACE_EXISTING);
+
+
+                String folderName9 = "Documents/Fire fighting and First Aid";
+                String uploadPath9 = request.getServletContext().getRealPath("") + folderName9;
+                File dir9 = new File(uploadPath9);
+                if (!dir9.exists()) {
+                    dir9.mkdirs();
+                }
+
+
+                Part Fire_fighting_and_first_aid=request.getPart("Fire fighting and First Aid");
+                InputStream Fire_fighting_and_first_aid1 = Fire_fighting_and_first_aid.getInputStream();
+                fileName9=CompanyName+"_Fire fighting and First Aid"+ApplicationDate+".pdf";
+                Files.copy(Fire_fighting_and_first_aid1, Paths.get(uploadPath9 + File.separator + fileName9), StandardCopyOption.REPLACE_EXISTING);
+
+                String folderName10 = "Documents/Health and Environment";
+                String uploadPath10 = request.getServletContext().getRealPath("") + folderName10;
+                File dir10 = new File(uploadPath10);
+                if (!dir10.exists()) {
+                    dir10.mkdirs();
+                }
+
+                Part Health_and_Environment=request.getPart("Health and Environment");
+                InputStream Health_and_Environment1 = Health_and_Environment.getInputStream();
+                fileName10=CompanyName+"_Health and Environment"+ApplicationDate+".pdf";
+                Files.copy(Health_and_Environment1, Paths.get(uploadPath10 + File.separator + fileName10), StandardCopyOption.REPLACE_EXISTING);
+
+
+                String folderName11 = "Documents/Certification of Road worthiness";
+                String uploadPath11 = request.getServletContext().getRealPath("") + folderName11;
+                File dir11 = new File(uploadPath11);
+                if (!dir11.exists()) {
+                    dir11.mkdirs();
+                }
+
+                Part Certification_of_roadwortiness=request.getPart("Certification_of_roadwortiness");
+                System.out.println("This is problem :"+Certification_of_roadwortiness);
+                InputStream Certification_of_roadwortiness1 = Certification_of_roadwortiness.getInputStream();
+                fileName11=CompanyName+"_Certification of Road worthiness"+ApplicationDate+".pdf";
+                Files.copy(Certification_of_roadwortiness1, Paths.get(uploadPath11 + File.separator + fileName11), StandardCopyOption.REPLACE_EXISTING);
+
+                String folderName3 = "Documents/Certification of cooperation";
+                String uploadPath3 = request.getServletContext().getRealPath("") + folderName3;
+                File dir3 = new File(uploadPath3);
+                if (!dir3.exists()) {
+                    dir3.mkdirs();
+                }
+
+                Part Certification_of_Cooperation=request.getPart("Certification of cooperation");
+                InputStream Certification_of_Cooperation2 = Certification_of_Cooperation.getInputStream();
+                fileName3=CompanyName+"_Certification of cooperation"+ApplicationDate+".pdf";
+                Files.copy(Certification_of_Cooperation2, Paths.get(uploadPath3 + File.separator + fileName3), StandardCopyOption.REPLACE_EXISTING);
+
+            }
+
+
+            if(addAction.equals("EditingVehicleAttachment") || addAction.equals("Both")){
+
+                String folderName12 = "Documents/Motor Vehicle Registration Book";
+                String uploadPath12 = request.getServletContext().getRealPath("") + folderName12;
+                File dir12 = new File(uploadPath12);
+                if (!dir12.exists()) {
+                    dir12.mkdirs();
+                }
+
+
+                Part Motor_Vehicle_Registration_Book=request.getPart("Motor_Vehicle_Registration_Book");
+                System.out.println("This is problem :"+Motor_Vehicle_Registration_Book);
+                InputStream Motor_Vehicle_Registration_Book1 = Motor_Vehicle_Registration_Book.getInputStream();
+                fileName12=CompanyName+"_Motor Vehicle Registration Book"+ApplicationDate+".pdf";
+                Files.copy(Motor_Vehicle_Registration_Book1, Paths.get(uploadPath12 + File.separator + fileName12), StandardCopyOption.REPLACE_EXISTING);
+
+
+                String folderName14 = "Documents/Affidavit";
+                String uploadPath14 = request.getServletContext().getRealPath("") + folderName14;
+                File dir14 = new File(uploadPath14);
+                if (!dir14.exists()) {
+                    dir14.mkdirs();
+                }
+
+                Part affidavit=request.getPart("affidavit");
+                InputStream affidavit1 = affidavit.getInputStream();
+                fileName14=CompanyName+"_affidavit"+ApplicationDate+".pdf";
+                Files.copy(affidavit1, Paths.get(uploadPath14 + File.separator + fileName14), StandardCopyOption.REPLACE_EXISTING);
+
+
+                String folderName = "Documents/BA permit";
+                String uploadPath = request.getServletContext().getRealPath("") + folderName;
+                File dir = new File(uploadPath);
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+                Part BA_permit=request.getPart("BA permit");
+                InputStream BA_permit1 = BA_permit.getInputStream();
+                fileName=CompanyName+"_BA permit"+ApplicationDate+".pdf";
+                Files.copy(BA_permit1, Paths.get(uploadPath + File.separator + fileName), StandardCopyOption.REPLACE_EXISTING);
+
+                String folderName2 = "Documents/Payment receipt";
+                String uploadPath2 = request.getServletContext().getRealPath("") + folderName2;
+                File dir2 = new File(uploadPath2);
+                if (!dir2.exists()) {
+                    dir2.mkdirs();
+                }
+                Part Payment_receipt=request.getPart("Payment receipt");
+                InputStream Payment_receipt1 = Payment_receipt.getInputStream();
+                fileName2=CompanyName+"_Payment receipt"+ApplicationDate+".pdf";
+                Files.copy(Payment_receipt1, Paths.get(uploadPath2 + File.separator + fileName2), StandardCopyOption.REPLACE_EXISTING);
+
+                // fileName="test.pdf";
+
+
+                String folderName4 = "Documents/Facility Licence";
+                String uploadPath4 = request.getServletContext().getRealPath("") + folderName4;
+                File dir4 = new File(uploadPath4);
+                if (!dir4.exists()) {
+                    dir4.mkdirs();
+                }
+
+
+                fileName4=request.getParameter("Facility Licence1");
+                if(getAttachment==null || !getAttachment.getFacility_Licence().equals(fileName4)){
+                    Part Facility_Licence=request.getPart("Facility Licence");
+                    InputStream Facility_Licence1 = Facility_Licence.getInputStream();
+                    fileName4=CompanyName+"_Facility Licence"+ApplicationDate+".pdf";
+                    Files.copy(Facility_Licence1, Paths.get(uploadPath4 + File.separator + fileName4), StandardCopyOption.REPLACE_EXISTING);
+                }else{
+                    fileName4=request.getParameter("Facility Licence1");
+                }
+
+                String folderName5 = "Documents/PrDP 'H' For Hazardous Waste";
+                String uploadPath5 = request.getServletContext().getRealPath("") + folderName5;
+                File dir5 = new File(uploadPath5);
+                if (!dir5.exists()) {
+                    dir5.mkdirs();
+                }
+                Part PrPD=request.getPart("PrDP 'H' For Hazardous Waste");
+                InputStream PrPD1 = PrPD.getInputStream();
+                fileName5=CompanyName+"_PrDP 'H' For Hazardous Waste"+ApplicationDate+".pdf";
+                Files.copy(PrPD1, Paths.get(uploadPath5 + File.separator + fileName5), StandardCopyOption.REPLACE_EXISTING);
+
+
+            }
+
+
+        }
+        int company_id = 0;
+        String  chase_id=request.getParameter("Chassis_Number");;
+        String vehicle_Type = null;
+        String Unladen = null;
+        String Waste_Type = null;
+        String Annual_Quatity = null;
+        String Registration_Number = null;
+        String Own = null;
+
+        if(action.equals("RegisteringVehicle") || action.equals("EditingVehicle")){
+            company_id= Integer.parseInt(request.getParameter("Company Id"));
+            // RegisterCompany registerCompany=connectionUtil.getCompanyDetail(company_id, action, chase_id);
+            vehicle_Type=request.getParameter("vehicle_Type");
+            System.out.println("sdsdsd "+vehicle_Type);
+            //String Chase_no=request.getParameter("Vehicle_Registration_No");
+            Unladen=request.getParameter("Unladen_Weight");
+            Waste_Type=request.getParameter("Waste_Type");
+            Annual_Quatity=request.getParameter("Annual_Quatity");
+            //String type_of_waste_covered=request.getParameter("type_of_waste_covered");
+            Registration_Number=request.getParameter("Registration_Number");
+            Own=request.getParameter("Your_Vehicle");
+
+        }
+
+        vehicle vehicleRegistration= null;
+
+        if (action.equals("RegisteringVehicle")){
+            vehicleRegistration=new vehicle(chase_id,company_id,vehicle_Type,Unladen,Waste_Type,
+                    Annual_Quatity,Waste_Type,Registration_Number,fileName,fileName2,
+                    fileName3,fileName4,fileName5,fileName6,fileName8,
+                    fileName9,fileName10,fileName11,fileName12,fileName14,Own);
+        }else if(action.equals("EditingVehicle")){
+            vehicleRegistration=new vehicle(chase_id,vehicle_Type,Unladen,Waste_Type,
+                    Annual_Quatity,Waste_Type,Registration_Number,Own,"UptoDate");
+        }else if(action.equals("EditingAttachment")){
+            if(addAction.equals("EditingVehicleAttachment")){
+                System.out.println(" Chassis :"+chase_id);
+                vehicleRegistration=new vehicle(chase_id,
+                        fileName,fileName2,
+                        fileName4,fileName5,fileName12,fileName14);
+            }else{
+                vehicleRegistration=new vehicle(chase_id,
+                        fileName3,fileName6,fileName8,
+                        fileName9,fileName10,fileName11);
+            }
+
+
+        }
+
+
+        connectionUtil.registerVehicle(vehicleRegistration,action,addAction);
+
+        List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(company_id);
+        List<vehicle> getUnAppliedVehicle=connectionUtil.getPendingApplication(company_id);
+        HttpSession session = request.getSession();
+        if(addAction.equals("Both")){
+            session.setAttribute("Pending",getUnAppliedVehicle);
+            session.setAttribute("All_Vehicles",getVehicleDetail);
+            response.sendRedirect("Vehicle-Table.jsp");
+        }else{
+            getAttachment=connectionUtil.getAttachments(chase_id);
+            session.setAttribute("Attachments",getAttachment);
+            response.sendRedirect("Attachments.jsp");
+        }
+
+
+    }
+
+    private void getVehicle(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpSession session=request.getSession();
+        int Company_id= Integer.parseInt(request.getParameter("company_id"));
+        List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(Company_id);
+        List<vehicle> getUnAppliedVehicle=connectionUtil.getPendingApplication(Company_id);
+        session.setAttribute("All_Vehicles",getVehicleDetail);
+        session.setAttribute("Pending",getUnAppliedVehicle);
+        response.sendRedirect("Vehicle-Table.jsp");
+    }
 
     private void downloadAttachment(String subDir, String filename, HttpServletResponse response) throws Exception{
         if (filename == null || filename.equals("")) {
@@ -323,450 +871,29 @@ public class ServletDwmpc extends HttpServlet {
         response.sendRedirect("Attachments.jsp");
     }
 
-    private void getVehicle(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session=request.getSession();
-        int Company_id= Integer.parseInt(request.getParameter("company_id"));
-        List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(Company_id);
-        List<vehicle> getUnAppliedVehicle=connectionUtil.getPendingApplication(Company_id);
-        System.out.println("Problem is Here :"+getVehicleDetail.get(0).getStatus());
-        session.setAttribute("All_Vehicles",getVehicleDetail);
-        session.setAttribute("Pending",getUnAppliedVehicle);
-        response.sendRedirect("Vehicle-Table.jsp");
-    }
-
-    private void registerVehicle(HttpServletRequest request, HttpServletResponse response)throws Exception {
-
-        String action=request.getParameter("action");
-
-        String CompanyName=request.getParameter("CompanyName");
-        String addAction=request.getParameter("addAction");
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String ApplicationDate= String.valueOf(timestamp.getTime());
-
-        String fileName = null;
-        String fileName2 = null;
-        String fileName3 = null;
-        String fileName4 = null;
-        String fileName5 = null;
-        String fileName6 = null;
-        String fileName8 = null;
-        String fileName9 = null;
-        String fileName10 = null;
-        String fileName11 = null;
-        String fileName12 = null;
-        String fileName14 = null;
-
-
-        if(action.equals("RegisteringVehicle") || action.equals("EditingAttachment")){
-
-
-            if(addAction.equals("EditingCertificateAttachment") || addAction.equals("Both")){
-
-
-                String folderName6 = "Documents/Hazardous Waste";
-                String uploadPath6 = request.getServletContext().getRealPath("") + folderName6;
-                File dir6 = new File(uploadPath6);
-                if (!dir6.exists()) {
-                    dir6.mkdirs();
-                }
-
-                    Part hazardous_waste=request.getPart("hazardous waste");
-                    InputStream hazardous_waste1 = hazardous_waste.getInputStream();
-                    fileName6=CompanyName+"_hazardous waste"+ApplicationDate+".pdf";
-                    Files.copy(hazardous_waste1, Paths.get(uploadPath6 + File.separator + fileName6), StandardCopyOption.REPLACE_EXISTING);
-
-
-                String folderName8 = "Documents/Health and Safety";
-                String uploadPath8 = request.getServletContext().getRealPath("") + folderName8;
-                File dir8 = new File(uploadPath8);
-                if (!dir8.exists()) {
-                    dir8.mkdirs();
-                }
-
-                    Part training_on_health_and_safety=request.getPart("Health and Safety");
-                    InputStream training_on_health_and_safety1 = training_on_health_and_safety.getInputStream();
-                    fileName8=CompanyName+"_Health and Safety"+ApplicationDate+".pdf";
-                    Files.copy(training_on_health_and_safety1, Paths.get(uploadPath8 + File.separator + fileName8), StandardCopyOption.REPLACE_EXISTING);
-
-
-                String folderName9 = "Documents/Fire fighting and First Aid";
-                String uploadPath9 = request.getServletContext().getRealPath("") + folderName9;
-                File dir9 = new File(uploadPath9);
-                if (!dir9.exists()) {
-                    dir9.mkdirs();
-                }
-
-
-                    Part Fire_fighting_and_first_aid=request.getPart("Fire fighting and First Aid");
-                    InputStream Fire_fighting_and_first_aid1 = Fire_fighting_and_first_aid.getInputStream();
-                    fileName9=CompanyName+"_Fire fighting and First Aid"+ApplicationDate+".pdf";
-                    Files.copy(Fire_fighting_and_first_aid1, Paths.get(uploadPath9 + File.separator + fileName9), StandardCopyOption.REPLACE_EXISTING);
-
-                String folderName10 = "Documents/Health and Environment";
-                String uploadPath10 = request.getServletContext().getRealPath("") + folderName10;
-                File dir10 = new File(uploadPath10);
-                if (!dir10.exists()) {
-                    dir10.mkdirs();
-                }
-
-                    Part Health_and_Environment=request.getPart("Health and Environment");
-                    InputStream Health_and_Environment1 = Health_and_Environment.getInputStream();
-                    fileName10=CompanyName+"_Health and Environment"+ApplicationDate+".pdf";
-                    Files.copy(Health_and_Environment1, Paths.get(uploadPath10 + File.separator + fileName10), StandardCopyOption.REPLACE_EXISTING);
-
-
-                String folderName11 = "Documents/Certification of Road worthiness";
-                String uploadPath11 = request.getServletContext().getRealPath("") + folderName11;
-                File dir11 = new File(uploadPath11);
-                if (!dir11.exists()) {
-                    dir11.mkdirs();
-                }
-
-                    Part Certification_of_roadwortiness=request.getPart("Certification_of_roadwortiness");
-                    System.out.println("This is problem :"+Certification_of_roadwortiness);
-                    InputStream Certification_of_roadwortiness1 = Certification_of_roadwortiness.getInputStream();
-                    fileName11=CompanyName+"_Certification of Road worthiness"+ApplicationDate+".pdf";
-                    Files.copy(Certification_of_roadwortiness1, Paths.get(uploadPath11 + File.separator + fileName11), StandardCopyOption.REPLACE_EXISTING);
-
-                String folderName3 = "Documents/Certification of cooperation";
-                String uploadPath3 = request.getServletContext().getRealPath("") + folderName3;
-                File dir3 = new File(uploadPath3);
-                if (!dir3.exists()) {
-                    dir3.mkdirs();
-                }
-
-                    Part Certification_of_Cooperation=request.getPart("Certification of cooperation");
-                    InputStream Certification_of_Cooperation2 = Certification_of_Cooperation.getInputStream();
-                    fileName3=CompanyName+"_Certification of cooperation"+ApplicationDate+".pdf";
-                    Files.copy(Certification_of_Cooperation2, Paths.get(uploadPath3 + File.separator + fileName3), StandardCopyOption.REPLACE_EXISTING);
-
+    private void LicenseApplication(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String[] Checked=request.getParameterValues("Chassis");
+        if (Checked != null) {
+            for (int i = 0; i < Checked.length; i++)
+            {
+                System.out.println ("<b>"+Checked[i]+"<b>");
+                connectionUtil.ApplyForLicence(Checked[i]);
             }
-
-
-            if(addAction.equals("EditingVehicleAttachment") || addAction.equals("Both")){
-
-                String folderName12 = "Documents/Motor Vehicle Registration Book";
-                String uploadPath12 = request.getServletContext().getRealPath("") + folderName12;
-                File dir12 = new File(uploadPath12);
-                if (!dir12.exists()) {
-                    dir12.mkdirs();
-                }
-
-
-                    Part Motor_Vehicle_Registration_Book=request.getPart("Motor_Vehicle_Registration_Book");
-                    System.out.println("This is problem :"+Motor_Vehicle_Registration_Book);
-                    InputStream Motor_Vehicle_Registration_Book1 = Motor_Vehicle_Registration_Book.getInputStream();
-                    fileName12=CompanyName+"_Motor Vehicle Registration Book"+ApplicationDate+".pdf";
-                    Files.copy(Motor_Vehicle_Registration_Book1, Paths.get(uploadPath12 + File.separator + fileName12), StandardCopyOption.REPLACE_EXISTING);
-
-
-                String folderName14 = "Documents/Affidavit";
-                String uploadPath14 = request.getServletContext().getRealPath("") + folderName14;
-                File dir14 = new File(uploadPath14);
-                if (!dir14.exists()) {
-                    dir14.mkdirs();
-                }
-
-                    Part affidavit=request.getPart("affidavit");
-                    InputStream affidavit1 = affidavit.getInputStream();
-                    fileName14=CompanyName+"_affidavit"+ApplicationDate+".pdf";
-                    Files.copy(affidavit1, Paths.get(uploadPath14 + File.separator + fileName14), StandardCopyOption.REPLACE_EXISTING);
-
-
-                String folderName = "Documents/BA permit";
-                String uploadPath = request.getServletContext().getRealPath("") + folderName;
-                File dir = new File(uploadPath);
-                if (!dir.exists()) {
-                    dir.mkdirs();
-                }
-                    Part BA_permit=request.getPart("BA permit");
-                    InputStream BA_permit1 = BA_permit.getInputStream();
-                    fileName=CompanyName+"_BA permit"+ApplicationDate+".pdf";
-                    Files.copy(BA_permit1, Paths.get(uploadPath + File.separator + fileName), StandardCopyOption.REPLACE_EXISTING);
-
-                String folderName2 = "Documents/Payment receipt";
-                String uploadPath2 = request.getServletContext().getRealPath("") + folderName2;
-                File dir2 = new File(uploadPath2);
-                if (!dir2.exists()) {
-                    dir2.mkdirs();
-                }
-                    Part Payment_receipt=request.getPart("Payment receipt");
-                    InputStream Payment_receipt1 = Payment_receipt.getInputStream();
-                    fileName2=CompanyName+"_Payment receipt"+ApplicationDate+".pdf";
-                    Files.copy(Payment_receipt1, Paths.get(uploadPath2 + File.separator + fileName2), StandardCopyOption.REPLACE_EXISTING);
-
-                // fileName="test.pdf";
-
-
-                String folderName4 = "Documents/Facility Licence";
-                String uploadPath4 = request.getServletContext().getRealPath("") + folderName4;
-                File dir4 = new File(uploadPath4);
-                if (!dir4.exists()) {
-                    dir4.mkdirs();
-                }
-
-
-                fileName4=request.getParameter("Facility Licence1");
-                if(getAttachment==null || !getAttachment.getFacility_Licence().equals(fileName4)){
-                    Part Facility_Licence=request.getPart("Facility Licence");
-                    InputStream Facility_Licence1 = Facility_Licence.getInputStream();
-                    fileName4=CompanyName+"_Facility Licence"+ApplicationDate+".pdf";
-                    Files.copy(Facility_Licence1, Paths.get(uploadPath4 + File.separator + fileName4), StandardCopyOption.REPLACE_EXISTING);
-                }else{
-                    fileName4=request.getParameter("Facility Licence1");
-                }
-
-                String folderName5 = "Documents/PrDP 'H' For Hazardous Waste";
-                String uploadPath5 = request.getServletContext().getRealPath("") + folderName5;
-                File dir5 = new File(uploadPath5);
-                if (!dir5.exists()) {
-                    dir5.mkdirs();
-                }
-                    Part PrPD=request.getPart("PrDP 'H' For Hazardous Waste");
-                    InputStream PrPD1 = PrPD.getInputStream();
-                    fileName5=CompanyName+"_PrDP 'H' For Hazardous Waste"+ApplicationDate+".pdf";
-                    Files.copy(PrPD1, Paths.get(uploadPath5 + File.separator + fileName5), StandardCopyOption.REPLACE_EXISTING);
-
-
-            }
-
-
         }
-        int company_id = 0;
-        String  chase_id=request.getParameter("Chassis_Number");;
-        String vehicle_Type = null;
-        String Unladen = null;
-        String Waste_Type = null;
-        String Annual_Quatity = null;
-        String Registration_Number = null;
-        String Own = null;
-
-        if(action.equals("RegisteringVehicle") || action.equals("EditingVehicle")){
-            company_id= Integer.parseInt(request.getParameter("Company Id"));
-            // RegisterCompany registerCompany=connectionUtil.getCompanyDetail(company_id, action, chase_id);
-            vehicle_Type=request.getParameter("vehicle_Type");
-            System.out.println("sdsdsd "+vehicle_Type);
-            //String Chase_no=request.getParameter("Vehicle_Registration_No");
-            Unladen=request.getParameter("Unladen_Weight");
-            Waste_Type=request.getParameter("Waste_Type");
-            Annual_Quatity=request.getParameter("Annual_Quatity");
-            //String type_of_waste_covered=request.getParameter("type_of_waste_covered");
-            Registration_Number=request.getParameter("Registration_Number");
-            Own=request.getParameter("Your_Vehicle");
-
-        }
-
-         vehicle vehicleRegistration= null;
-
-        if (action.equals("RegisteringVehicle")){
-             vehicleRegistration=new vehicle(chase_id,company_id,vehicle_Type,Unladen,Waste_Type,
-                    Annual_Quatity,Waste_Type,Registration_Number,fileName,fileName2,
-                    fileName3,fileName4,fileName5,fileName6,fileName8,
-                    fileName9,fileName10,fileName11,fileName12,fileName14,Own);
-        }else if(action.equals("EditingVehicle")){
-            vehicleRegistration=new vehicle(chase_id,vehicle_Type,Unladen,Waste_Type,
-                    Annual_Quatity,Waste_Type,Registration_Number,Own,"UptoDate");
-        }else if(action.equals("EditingAttachment")){
-            if(addAction.equals("EditingVehicleAttachment")){
-                System.out.println(" Chassis :"+chase_id);
-                vehicleRegistration=new vehicle(chase_id,
-                        fileName,fileName2,
-                        fileName4,fileName5,fileName12,fileName14);
-            }else{
-                vehicleRegistration=new vehicle(chase_id,
-                        fileName3,fileName6,fileName8,
-                        fileName9,fileName10,fileName11);
-            }
-
-
-        }
-
-
-        connectionUtil.registerVehicle(vehicleRegistration,action,addAction);
-
-        List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(company_id);
-        List<vehicle> getUnAppliedVehicle=connectionUtil.getPendingApplication(company_id);
-        HttpSession session = request.getSession();
-        if(addAction.equals("Both")){
-            session.setAttribute("Pending",getUnAppliedVehicle);
-            session.setAttribute("All_Vehicles",getVehicleDetail);
-            response.sendRedirect("Vehicle-Table.jsp");
-        }else{
-            getAttachment=connectionUtil.getAttachments(chase_id);
-            session.setAttribute("Attachments",getAttachment);
-            response.sendRedirect("Attachments.jsp");
-        }
-
+        getVehicle(request,response);
 
     }
 
 
+    //Un-Used
     private void Stop_Session(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         session.removeAttribute("Successful_Registration_Alert");
-        response.sendRedirect("index.jsp");
-    }
-
-    private void getEmployees(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session=request.getSession();
-
-        int Company_id= Integer.parseInt(request.getParameter("company_id"));
-        System.out.println("well  :"+Company_id);
-        List<company_personnel> employees=connectionUtil.getAllEmployees(Company_id);
-        session.setAttribute("All_Employee",employees);
-        response.sendRedirect("Employee-Table.jsp");
-
-    }
-
-    private void registerEmployee(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session=request.getSession();
-        String action = request.getParameter("action");
-        int Company_id = Integer.parseInt(request.getParameter("Company Id"));
-        String firstName = request.getParameter("First Name");
-        String lastName = request.getParameter("Last Name");
-        String position = request.getParameter("Position/job Title");
-        String qualification = request.getParameter("Qualification");
-        String training = request.getParameter("training");
-        String Contact = request.getParameter("Contact");
-        String Employee_Status="UpToDate";
-        int Employee_Id;
-        if(action.equals("EditingEmployee")){
-            Employee_Id = Integer.parseInt(request.getParameter("Employee Id"));
-        }else{
-            Employee_Id=0;
-        }
-
-
-        company_personnel companyPersonnel = new company_personnel(Employee_Id,Company_id,firstName, lastName, position, qualification, training,Employee_Status,Contact);
-        connectionUtil.EmployeeRegistration(companyPersonnel,action);
-
-
-        List<company_personnel> employees=connectionUtil.getAllEmployees(Company_id);
-        session.setAttribute("All_Employee",employees);
-        response.sendRedirect("Employee-Table.jsp");
-
+        response.sendRedirect("CompanyInfo.jsp");
     }
 
 
-    private void registerCompany(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        HttpSession session=request.getSession();
-        String action=request.getParameter("action");
 
-        int id= Integer.parseInt(request.getParameter("User_id"));
-        String companyName=request.getParameter("Company name");
-        String Com_email=request.getParameter("Company_Email");
-        String Street_address=request.getParameter("Street_Address");
-        String street_address_line1=request.getParameter("Street_Address2");
-        String City_Town_Village=request.getParameter("City");
-        String region=request.getParameter("Region");
-        String plot_number=request.getParameter("Plot_Number");
-        String ward=request.getParameter("Ward");
-        String telephone=request.getParameter("telephone");
-        String fax=request.getParameter("fax");
-        String phone_number=request.getParameter("Phone_Number");
-        String Status=request.getParameter("StatusA");
-        String Company_License_Status=request.getParameter("Status");
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String ApplicationDate= String.valueOf(timestamp.getTime());
-
-        int companyId;
-        if(action.equals("Registration")){
-            companyId=0;
-            session.setAttribute("Successful_Registration_Alert","CompanyRegistration");
-        }else{
-            companyId= Integer.parseInt(request.getParameter("company_Id"));
-        }
-
-
-        company_Information registerCompany=new company_Information(companyId,id,companyName,Com_email,
-                Street_address,street_address_line1,City_Town_Village,region,plot_number,
-                ward,telephone,fax,phone_number,Status,ApplicationDate,Company_License_Status);
-
-        company_Information getCurrentCompanyID=connectionUtil.registerCompany(registerCompany,action);
-
-        List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(id);
-        session.setAttribute("All_companies", CompanyInfo);
-
-
-        session.removeAttribute("Company_info");
-        session.setAttribute("Company_info", getCurrentCompanyID);
-
-
-        List<company_personnel> employees=connectionUtil.getAllEmployees(getCurrentCompanyID.getCompany_Id());
-        session.setAttribute("All_Employee",employees);
-
-        //request.getRequestDispatcher("index.jsp").forward(request, response);
-        response.sendRedirect("index.jsp");
-
-    }
-
-    private void Login(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String Email = request.getParameter("email");
-        String Password = request.getParameter("password");
-        String userType="Unknown";
-        String action="Login";
-        byte[] salt = getSalt();
-        String securePassword = get_SHA_512_SecurePassword(Password, salt);
-
-        List<user> userlg = connectionUtil.loginUser(Email, securePassword,action);
-        HttpSession session=request.getSession();
-        session.setAttribute("User_Info", userlg);
-        int user_id=userlg.get(0).getUser_Id();
-
-        List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(user_id);
-
-
-        if(!CompanyInfo.isEmpty()){
-            session.setAttribute("All_companies", CompanyInfo);
-            company_Information FirstCompanyDetails=connectionUtil.getCompanyDetails(CompanyInfo.get(0).getCompany_Id());
-            session.setAttribute("Company_info", FirstCompanyDetails);
-        }
-
-
-        request.getRequestDispatcher("index.jsp").forward(request, response);
-    }
-
-    private void User_Registration(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-
-        String firstName=request.getParameter("first_name");
-        String lastName=request.getParameter("last_name");
-        String email=request.getParameter("email");
-        String password=request.getParameter("password");
-
-        byte[] salt = getSalt();
-        String securePassword = get_SHA_512_SecurePassword(password, salt);
-
-        int omang= Integer.parseInt(request.getParameter("Omang_code"));
-        int contacting= Integer.parseInt(request.getParameter("phone_number").replace("+267 ","").replace(" ",""));
-        String UserType=request.getParameter("User_Type");
-        String location=request.getParameter("location");
-
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-
-        user userReg=new user(0,firstName,lastName,email,UserType,securePassword,omang,contacting,location);
-        String msg=connectionUtil.registerUser(userReg);
-        HttpSession session=request.getSession();
-        String action="Registration";
-
-
-        if(msg.equals("Successful")){
-            List<user> userlg = connectionUtil.loginUser(email, securePassword,action);
-            session.setAttribute("User_Info", userlg);
-            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(userlg.get(0).getUser_Id());
-            if(CompanyInfo.get(0).getCompany_Name()!=null){
-                session.setAttribute("All_companies", CompanyInfo);
-                company_Information FirstCompanyDetails=connectionUtil.getCompanyDetails(CompanyInfo.get(0).getCompany_Id());
-                session.setAttribute("Company_info", FirstCompanyDetails);
-            }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
-        }else {
-            session.setAttribute("ErrorEmail",userReg);
-            this.getServletContext().getRequestDispatcher("/SignIn_and_signUp.jsp").forward(request, response);
-        }
-    }
 
     //Add salt
     private static byte[] getSalt() throws NoSuchAlgorithmException

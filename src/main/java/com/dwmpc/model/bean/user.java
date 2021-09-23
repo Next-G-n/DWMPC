@@ -10,11 +10,12 @@ public class user {
     String user_type;
     String password;
     int omang;
-    int contact;
+    String contact;
+    String addRoles;
 
     String location;
 
-    public user(int user_Id, String first_name, String last_name, String email, String user_type, String password, int omang, int contact, String location) {
+    public user(int user_Id, String first_name, String last_name, String email, String user_type, String password, int omang, String contact, String location) {
         this.user_Id = user_Id;
         this.first_name = first_name;
         Last_name = last_name;
@@ -24,6 +25,26 @@ public class user {
         this.omang = omang;
         this.contact = contact;
         this.location = location;
+    }
+
+    public user(int user_Id, String first_name, String last_name, String email, String user_type, int omang, String contact, String addRoles, String location) {
+        this.user_Id = user_Id;
+        this.first_name = first_name;
+        Last_name = last_name;
+        this.email = email;
+        this.user_type = user_type;
+        this.omang = omang;
+        this.contact = contact;
+        this.addRoles = addRoles;
+        this.location = location;
+    }
+
+    public String getAddRoles() {
+        return addRoles;
+    }
+
+    public void setAddRoles(String addRoles) {
+        this.addRoles = addRoles;
     }
 
     public int getUser_Id() {
@@ -82,11 +103,11 @@ public class user {
         this.omang = omang;
     }
 
-    public int getContact() {
+    public String getContact() {
         return contact;
     }
 
-    public void setContact(int contact) {
+    public void setContact(String contact) {
         this.contact = contact;
     }
 

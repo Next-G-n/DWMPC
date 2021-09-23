@@ -33,7 +33,7 @@
 		<div class="wrapper pa-0">
 			<header class="sp-header">
 				<div class="sp-logo-wrap pull-left">
-					<a href="${pageContext.request.contextPath}/index.jsp">
+					<a href="${pageContext.request.contextPath}/CompanyInfo.jsp">
 						<img class="brand-img mr-10" src="img/logo4.png" alt="brand"/>
 					</a>
 				</div>

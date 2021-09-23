@@ -37,7 +37,7 @@
     <div class="mobile-only-brand pull-left">
       <div class="nav-header pull-left">
         <div class="logo-wrap">
-          <a href="${pageContext.request.contextPath}/index.jsp">
+          <a href="${pageContext.request.contextPath}/CompanyInfo.jsp">
             <img class="brand-img" src="img/logo2.png" alt="brand"/>
           </a>
         </div>
@@ -57,7 +57,7 @@
     <div id="mobile_only_nav" class="mobile-only-nav pull-right">
       <ul class="nav navbar-right top-nav pull-right">
         <li>
-          <a id="open_right_sidebar" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
+          <a id="" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
         </li>
         <li class="dropdown app-drp">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
@@ -122,7 +122,7 @@
                   <hr class="light-grey-hr ma-0"/>
                   <ul>
                     <li>
-                      <a href="${pageContext.request.contextPath}/index.jsp">Analytical</a>
+                      <a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Analytical</a>
                     </li>
                     <li>
                       <a href="index2.html">Demographic</a>
@@ -347,105 +347,20 @@
   <div class="fixed-sidebar-left">
     <ul class="nav navbar-nav side-nav nicescroll-bar">
       <li class="navigation-header">
-        <span>Main</span>
+        <span>User Information</span>
         <i class="zmdi zmdi-more"></i>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-        <ul id="dashboard_dr" class="collapse collapse-level-1">
-          <li>
-            <a href="${pageContext.request.contextPath}/index.jsp">Analytical</a>
-          </li>
-          <li>
-            <a href="index2.html">Demographic</a>
-          </li>
-          <li>
-            <a href="index3.html">Project</a>
-          </li>
-          <li>
-            <a href="index4.html">Hospital</a>
-          </li>
-          <li>
-            <a href="index5.html">HRM</a>
-          </li>
-          <li>
-            <a href="index6.html">Real Estate</a>
-          </li>
-          <li>
-            <a href="profile.html">profile</a>
-          </li>
-        </ul>
+        <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span></div><div class="pull-right"><span class="label label-gold">hot</span></div><div class="clearfix"></div></a>
-        <ul id="ecom_dr" class="collapse collapse-level-1">
-          <li>
-            <a href="e-commerce.html">Dashboard</a>
-          </li>
-          <li>
-            <a href="product.html">Products</a>
-          </li>
-          <li>
-            <a href="product-detail.html">Product Detail</a>
-          </li>
-          <li>
-            <a href="add-products.html">Add Product</a>
-          </li>
-          <li>
-            <a href="product-orders.html">Orders</a>
-          </li>
-          <li>
-            <a href="product-cart.html">Cart</a>
-          </li>
-          <li>
-            <a href="product-checkout.html">Checkout</a>
-          </li>
-        </ul>
+        <a id="open_right_sidebar" href="#" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Apps </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-        <ul id="app_dr" class="collapse collapse-level-1">
-          <li>
-            <a href="chats.html">chats</a>
-          </li>
-          <li>
-            <a href="calendar.html">calendar</a>
-          </li>
-          <li>
-            <a href="weather.html">weather</a>
-          </li>
-          <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#email_dr">Email<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-            <ul id="email_dr" class="collapse collapse-level-2">
-              <li>
-                <a href="inbox.html">inbox</a>
-              </li>
-              <li>
-                <a href="inbox-detail.html">detail email</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#contact_dr">Contacts<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-            <ul id="contact_dr" class="collapse collapse-level-2">
-              <li>
-                <a href="contact-list.html">list</a>
-              </li>
-              <li>
-                <a href="contact-card.html">cards</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="file-manager.html">File Manager</a>
-          </li>
-          <li>
-            <a href="todo-tasklist.html">To Do/Tasklist</a>
-          </li>
-        </ul>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="widgets.html"><div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">widgets</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+        <a href="widgets.html"><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
       </li>
       <li><hr class="light-grey-hr mb-10"/></li>
       <li class="navigation-header">
@@ -453,145 +368,30 @@
         <i class="zmdi zmdi-more"></i>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">UI Elements</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">My Companies</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
         <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
-          <li>
-            <a href="panels-wells.html">Panels & Wells</a>
+          <li class="active" role="presentation">
+            <a  data-toggle="tab"  role="tab" href="#Company_info" href="#Company_info2" aria-expanded="true">Information</a>
+          </li>
+          <li >
+            <a aria-expanded="false"  data-toggle="tab" role="tab"  href="#Vehicle_info">Vehicles</a>
           </li>
           <li>
-            <a href="modals.html">Modals</a>
+            <a  data-toggle="tab"  role="tab"  aria-expanded="false">Attachments</a>
           </li>
           <li>
-            <a href="sweetalert.html">Sweet Alerts</a>
-          </li>
-          <li>
-            <a href="notifications.html">notifications</a>
-          </li>
-          <li>
-            <a href="typography.html">Typography</a>
-          </li>
-          <li>
-            <a href="buttons.html">Buttons</a>
-          </li>
-          <li>
-            <a href="accordion-toggle.html">Accordion / Toggles</a>
-          </li>
-          <li>
-            <a href="tabs.html">Tabs</a>
-          </li>
-          <li>
-            <a href="progressbars.html">Progress bars</a>
-          </li>
-          <li>
-            <a href="skills-counter.html">Skills & Counters</a>
-          </li>
-          <li>
-            <a href="pricing.html">Pricing Tables</a>
-          </li>
-          <li>
-            <a href="nestable.html">Nestables</a>
-          </li>
-          <li>
-            <a href="dorpdown.html">Dropdowns</a>
-          </li>
-          <li>
-            <a href="bootstrap-treeview.html">Tree View</a>
-          </li>
-          <li>
-            <a href="carousel.html">Carousel</a>
-          </li>
-          <li>
-            <a href="range-slider.html">Range Slider</a>
-          </li>
-          <li>
-            <a href="grid-styles.html">Grid</a>
-          </li>
-          <li>
-            <a href="bootstrap-ui.html">Bootstrap UI</a>
+            <a href="#">Employees</a>
           </li>
         </ul>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-        <ul id="form_dr" class="collapse collapse-level-1 two-col-list">
-          <li>
-            <a href="form-element.html">Basic Forms</a>
-          </li>
-          <li>
-            <a href="form-layout.html">form Layout</a>
-          </li>
-          <li>
-            <a href="form-advanced.html">Form Advanced</a>
-          </li>
-          <li>
-            <a href="form-mask.html">Form Mask</a>
-          </li>
-          <li>
-            <a href="form-picker.html">Form Picker</a>
-          </li>
-          <li>
-            <a href="form-validation.html">form Validation</a>
-          </li>
-          <li>
-            <a href="form-wizard.html">Form Wizard</a>
-          </li>
-          <li>
-            <a href="form-x-editable.html">X-Editable</a>
-          </li>
-          <li>
-            <a href="cropperjs.html">Cropperjs</a>
-          </li>
-          <li>
-            <a href="form-file-upload.html">File Upload</a>
-          </li>
-          <li>
-            <a href="dropzone.html">Dropzone</a>
-          </li>
-          <li>
-            <a href="bootstrap-wysihtml5.html">Bootstrap Wysihtml5</a>
-          </li>
-          <li>
-            <a href="tinymce-wysihtml5.html">Tinymce Wysihtml5</a>
-          </li>
-          <li>
-            <a href="summernote-wysihtml5.html">summernote</a>
-          </li>
-          <li>
-            <a href="typeahead-js.html">typeahead</a>
-          </li>
-        </ul>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-        <ul id="chart_dr" class="collapse collapse-level-1 two-col-list">
-          <li>
-            <a href="flot-chart.html">Flot Chart</a>
-          </li>
-          <li>
-            <a href="echart.html">Echart Chart</a>
-          </li>
-          <li>
-            <a href="morris-chart.html">Morris Chart</a>
-          </li>
-          <li>
-            <a href="chart.js.html">chartjs</a>
-          </li>
-          <li>
-            <a href="chartist.html">chartist</a>
-          </li>
-          <li>
-            <a href="easy-pie-chart.html">Easy Pie Chart</a>
-          </li>
-          <li>
-            <a href="sparkline.html">Sparkline</a>
-          </li>
-          <li>
-            <a href="peity-chart.html">Peity Chart</a>
-          </li>
-        </ul>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">Tables</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
         <ul id="table_dr" class="collapse collapse-level-1 two-col-list">
           <li>
             <a href="basic-table.html">Basic Table</a>
@@ -623,7 +423,7 @@
         </ul>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-iridescent mr-20"></i><span class="right-nav-text">Icons</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
         <ul id="icon_dr" class="collapse collapse-level-1">
           <li>
             <a href="fontawesome.html">Fontawesome</a>
@@ -662,85 +462,13 @@
         <i class="zmdi zmdi-more"></i>
       </li>
       <li>
-        <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-google-pages mr-20"></i><span class="right-nav-text">Special Pages</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-        <ul id="pages_dr" class="collapse collapse-level-1 two-col-list">
-          <li>
-            <a class="active-page" href="blank.html">Blank Page</a>
-          </li>
-          <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#auth_dr">Authantication pages<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-            <ul id="auth_dr" class="collapse collapse-level-2">
-              <li>
-                <a href="login.html">Login</a>
-              </li>
-              <li>
-                <a href="signup.html">Register</a>
-              </li>
-              <li>
-                <a href="forgot-password.html">Recover Password</a>
-              </li>
-              <li>
-                <a href="reset-password.html">reset Password</a>
-              </li>
-              <li>
-                <a href="locked.html">Lock Screen</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#invoice_dr">Invoice<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-            <ul id="invoice_dr" class="collapse collapse-level-2">
-              <li>
-                <a href="invoice.html">Invoice</a>
-              </li>
-              <li>
-                <a href="invoice-archive.html">Invoice Archive</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#error_dr">error pages<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-            <ul id="error_dr" class="collapse collapse-level-2">
-              <li>
-                <a href="404.html">Error 404</a>
-              </li>
-              <li>
-                <a href="500.html">Error 500</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="gallery.html">Gallery</a>
-          </li>
-          <li>
-            <a href="timeline.html">Timeline</a>
-          </li>
-          <li>
-            <a href="faq.html">FAQ</a>
-          </li>
-        </ul>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="documentation.html"><div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">documentation</span></div><div class="clearfix"></div></a>
+        <a href="documentation.html"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-filter-list mr-20"></i><span class="right-nav-text">multilevel</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-        <ul id="dropdown_dr_lv1" class="collapse collapse-level-1">
-          <li>
-            <a href="#">Item level 1</a>
-          </li>
-          <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv2">Dropdown level 2<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-            <ul id="dropdown_dr_lv2" class="collapse collapse-level-2">
-              <li>
-                <a href="#">Item level 2</a>
-              </li>
-              <li>
-                <a href="#">Item level 2</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
     </ul>
   </div>
@@ -1180,7 +908,7 @@
         <!-- Breadcrumb -->
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
           <ol class="breadcrumb">
-            <li><a href="${pageContext.request.contextPath}/index.jsp">Dashboard</a></li>
+            <li><a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Dashboard</a></li>
             <li><a href="Admin-Table.jsp">Officer's Detail Table</a></li>
             <li class="active"><span>Officer Registration Form</span></li>
           </ol>
@@ -1205,17 +933,20 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-wrap">
-                      <form data-toggle="validator" role="form">
+                      <form data-toggle="validator" role="form" action="ServletDwmpc" method="post">
                         <div class="form-group">
                           <div class="row">
+                            <input type="hidden" name="command" value="Registering_User">
+                            <input type="hidden" name="action" value="Registration">
+                            <input type="hidden" name="password" value="2021">
                             <div class="col-md-6 col-xs-12 mt-40">
                               <label class="control-label mb-10" for="First_Name"> First Name(required):</label>
-                              <input type="text" id="First_Name" name="First_Name"  class="form-control required"   required/>
+                              <input type="text" id="First_Name" name="first_name"  class="form-control required"   required/>
                             </div>
                             <div class="span1"></div>
                             <div class="col-md-6 col-xs-12 mt-40">
                               <label class="control-label mb-10" for="Last_Name"> Last Name(required):</label>
-                              <input type="text" id="Last_Name" name="Last_Name"  class="form-control required"   required/>
+                              <input type="text" id="Last_Name" name="last_name"  class="form-control required"   required/>
                             </div>
                           </div>
                         </div>
@@ -1223,12 +954,12 @@
                           <div class="row">
                             <div class="col-md-6 col-xs-12">
                               <label class="control-label mb-10" for="Email"> Email(required):</label>
-                              <input type="email" id="Email" name="Email"  class="form-control required"   required/>
+                              <input type="email" id="Email" name="email"  class="form-control required"   required/>
                             </div>
                             <div class="span1"></div>
                             <div class="col-md-6 col-xs-12">
                               <label class="control-label mb-10" for="Occupation"> Occupation(required):</label>
-                              <select id="Occupation" class="selectpicker" data-style="form-control btn-default btn-outline">
+                              <select id="Occupation" name="User_Type" class="selectpicker" data-style="form-control btn-default btn-outline">
                                 <option value="Compliance Officer">Compliance Officer</option>
                                 <option value="Waste Management Officer">Waste Management Officer</option>
                                 <option value="Regional Coordinate">Regional Coordinate</option>
@@ -1242,21 +973,22 @@
                           <div class="row">
                             <div class="col-md-6 col-xs-12">
                               <label class="control-label mb-10" for="Omang"> Omang(required):</label>
-                              <input type="text" id="Omang" name="Omang"  class="form-control required"  required/>
+                              <input type="text" id="Omang" name="Omang_code" data-mask="999999999"  class="form-control required"  required/>
                             </div>
                             <div class="span1"></div>
                             <div class="col-md-6 col-xs-12">
                               <label class="control-label mb-10" for="Contact">Contact(required):</label>
-                              <input type="text" id="Contact" name="Contact"  class="form-control required"  required/>
+                              <input type="tel" id="Contact" data-mask="+267 99 999 999" name="phone_number"  class="form-control required"  required/>
                             </div>
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="control-label mb-10" for="Branch_Location"> Branch Location (required):</label>
-                          <select id="Branch_Location" class="selectpicker" data-style="form-control btn-default btn-outline">
+                          <select id="Branch_Location" name="location" class="selectpicker" data-style="form-control btn-default btn-outline">
                             <option value="Francistown Branch">Francistown Branch</option>
                             <option value="Gaborone Branch">Gaborone Branch</option>
-                            <option value="Maun Branch">Maun Branch</option>
+                            <option value="Chobe Branch">Chobe Branch</option>
+                            <option value="kgalagadi Branch">kgalagadi Branch</option>
                           </select>
                         </div>
                         <div class="form-group mb-0" style="float: right">
@@ -1297,6 +1029,7 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
+<script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="dist/js/jquery.slimscroll.js"></script>
