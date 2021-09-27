@@ -1,9 +1,6 @@
 package com.dwmpc.model.DAO;
 
-import com.dwmpc.model.bean.company_Information;
-import com.dwmpc.model.bean.company_personnel;
-import com.dwmpc.model.bean.user;
-import com.dwmpc.model.bean.vehicle;
+import com.dwmpc.model.bean.*;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -138,7 +135,7 @@ public class ConnectionUtil {
                     user login2=new user(id,firstName,lastName,email,userType,omang,contact,addRoles,location);
                     login.add(login2);
                 }else{
-                    user login2=new user(id,firstName,lastName,email,userType,password,omang,contact,location);
+                    user login2=new user(id,firstName,lastName,email,userType,password,omang,contact,location,"just");
                     login.add(login2);
                 }
 
@@ -240,10 +237,13 @@ public class ConnectionUtil {
                 String sql=null;
                 myConn=dataSource.getConnection();
 
-                if(userType.equals("Offer")){
-                    sql ="Select * from company_information where `User Id`="+userId;
+                if(userType.equals("Client")){
+                    sql ="Select * from company_information where `User Id`="+userId+";";
                 }else{
-                    sql ="SELECT * FROM `dwmpc1.0`.application_status a left join vehicle v on a.`Chase Number`=v.`Chase Number` left join company_information c on v.`Company Id`=c.`Company Id` where a.`Current Office`='"+userType+"';";
+                    sql ="SELECT * FROM `dwmpc1.0`.application_status a left join vehicle v on" +
+                            " a.`Chase Number`=v.`Chase Number` left join company_information c on " +
+                            "v.`Company Id`=c.`Company Id` where a.`Current Office`='"+userType+"' and " +
+                            "a.`Status Of Application`='UptoDate' and not v.`StatusV`='Company is Revoked';";
 
                 }
 
@@ -266,6 +266,7 @@ public class ConnectionUtil {
                     String Status = myRs.getString("Company status");
                     String Street_address = myRs.getString("Street Address");
 
+
                     int count=0;
                     for(int i=0; i<companyName.length(); i++){
                         if(companyName.charAt(i)!='\0'){
@@ -283,16 +284,19 @@ public class ConnectionUtil {
 
                     Timestamp timestamp = new Timestamp(unixSeconds);
                     Date dateMi = new Date(timestamp.getTime());
-                    String formattedDate=sdf.format(dateMi);;
+                    String formattedDate=sdf.format(dateMi);
                     company_Information registerCompany=null;
                     if(userType.equals("Client")){
 
                         registerCompany=new company_Information(id,userId, companyName, Com_email,City_Town_Village, plot_number,ward, telephone, fax, phone_number, Status, formattedDate,Street_address);
 
                     }else{
-                     String  formattedDate2=myRs.getString("Unix Application Date");
+                        String Chassis = myRs.getString("Chase Number");
+                        String Apply_id = myRs.getString("Application Status Id");
+                        String  formattedDate2=myRs.getString("Unix Application Date");
                         registerCompany=new company_Information(id,userId, companyName, Com_email,
-                                City_Town_Village, plot_number,ward, telephone, fax, phone_number, Status, formattedDate,Street_address,formattedDate2);
+                                City_Town_Village, plot_number,ward, telephone, fax, phone_number,
+                                Status, formattedDate,Street_address,formattedDate2,userType,Chassis,Apply_id);
                     }
 
 
@@ -339,6 +343,7 @@ public class ConnectionUtil {
     String date = myRs.getString("Date Unix");
     String Status = myRs.getString("Company status");
     String Company_Licence_Status = myRs.getString("Company License Status");
+    System.out.println("this is :"+id);
 
     getCompanyDetail = new company_Information( Company_id,id, companyName, Com_email,
             Street_address, street_address_line1, City_Town_Village, region, plot_number,
@@ -662,5 +667,83 @@ public class ConnectionUtil {
         }
         System.out.println("error ");
 
+    }
+
+    public void OfficersActions(officerAction setAction, String userType,String vehicle_id,String Company_id)throws Exception {
+        Connection myConn=null;
+        PreparedStatement myStmt=null;
+        try {
+            myConn=dataSource.getConnection();
+            String sql=null;
+
+                sql = "INSERT INTO `dwmpc1.0`.`officer_action` (`User Id`, `Application Status Id`, `Action Taken`, `Delay Time`)" +
+                        " VALUES (?,?,?,?)";
+                myStmt = myConn.prepareStatement(sql);
+                myStmt.setInt(1, setAction.getUser_Id());
+                myStmt.setInt(2, setAction.getApplication_Status_Id());
+                myStmt.setString(3, setAction.getAction_Taken());
+                myStmt.setString(4, setAction.getDelay_Time());
+                myStmt.execute();
+                if(setAction.getAction_Taken().equals("Approving")) {
+                    String nextApprove=null;
+                    String level=null;
+                    switch (userType){
+                        case "Compliance Officer":
+                            nextApprove="Waste Management Officer";
+                            level="Stage 2";
+                            break;
+                        case "Waste Management Officer":
+                            nextApprove="Regional Coordinate";
+                            level="Stage 3";
+                            break;
+                        case "Regional Coordinate":
+                            nextApprove="Waste Management Officer Compliance Headquarters";
+                            level="Stage 4";
+                            break;
+                        case "Waste Management Officer Compliance Headquarters":
+                            nextApprove="Head of Division Headquarters";
+                            level="Stage 5";
+                            break;
+                        case "Head of Division Headquarters":
+                            nextApprove="Generate licence";
+                            level="Generating licence";
+                            break;
+                        case "Generate licence":
+                            nextApprove="licence Generated";
+                            level="licenced";
+                            break;
+                        default:
+                            throw new IllegalStateException("Unexpected value: " + nextApprove);
+                    }
+                        sql = "update `dwmpc1.0`.application_status set `Level` ='"+level+"' , `Current Office`='"+nextApprove+
+                                "' where `Application Status Id`="+setAction.getApplication_Status_Id()+"";
+                    myStmt = myConn.prepareStatement(sql);
+                    myStmt.execute();
+                    sql = "update `dwmpc1.0`.vehicle set `StatusV` ='"+level+
+                            "' where `Chase Number`='"+vehicle_id+"'";
+                    myStmt = myConn.prepareStatement(sql);
+                    myStmt.execute();
+                }else if(setAction.getAction_Taken().equals("Decline")){
+                    sql = "update `dwmpc1.0`.vehicle set `StatusV` ='Fix info"+
+                            "' where `Chase Number`='"+vehicle_id+"'";
+                    myStmt = myConn.prepareStatement(sql);
+                    myStmt.execute();
+                    sql = "update `dwmpc1.0`.application_status set `Status Of Application` ='Fix info"+
+                            "' where `Chase Number`='"+vehicle_id+"'";
+                    myStmt = myConn.prepareStatement(sql);
+                    myStmt.execute();
+                }else if(setAction.getAction_Taken().equals("Revoke")) {
+                    sql = "update `dwmpc1.0`.company_information set `Current Status` ='Company is Revoked" +
+                            "' where `Company Id`='" + Company_id + "'";
+                    myStmt = myConn.prepareStatement(sql);
+                    myStmt.execute();
+                    sql = "update `dwmpc1.0`.vehicle set `StatusV` ='Company is Revoked"+
+                            "' where `Company Id`='" + Company_id + "'";
+                    myStmt = myConn.prepareStatement(sql);
+                    myStmt.execute();
+                }
+        }finally {
+            close(myConn,myStmt,null);
+        }
     }
 }

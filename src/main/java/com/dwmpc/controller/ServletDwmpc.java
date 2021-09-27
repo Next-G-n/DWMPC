@@ -2,10 +2,7 @@ package com.dwmpc.controller;
 import javax.servlet.annotation.MultipartConfig;
 
 import com.dwmpc.model.DAO.ConnectionUtil;
-import com.dwmpc.model.bean.company_Information;
-import com.dwmpc.model.bean.company_personnel;
-import com.dwmpc.model.bean.user;
-import com.dwmpc.model.bean.vehicle;
+import com.dwmpc.model.bean.*;
 
 import javax.annotation.Resource;
 import javax.servlet.*;
@@ -141,11 +138,15 @@ public class ServletDwmpc extends HttpServlet {
                     LicenseApplication(request, response);
                     break;
                 case "LogOut Session":
-                    System.out.println("Log Out");
                     Logout(request, response);
                     break;
-
-
+                case "Officers Action":
+                    OfficerActions(request, response);
+                    break;
+                case "Delay":
+                    delay_Time=request.getParameter("delayTime");
+                    System.out.println("this good :"+delay_Time);
+                    break;
             }
             // listStudents(request, response);
         }
@@ -154,6 +155,24 @@ public class ServletDwmpc extends HttpServlet {
             exc.printStackTrace();
 
         }
+    }
+
+
+    private void OfficerActions(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String action=request.getParameter("action");
+        int User_id = Integer.parseInt(request.getParameter("User Id"));
+        String UserType = request.getParameter("UserType");
+
+            String Company_Id=request.getParameter("company_id");
+            officerAction setAction=new officerAction(User_id,Apply_id,action,delay_Time);
+            connectionUtil.OfficersActions(setAction,UserType,Vehicle_id,Company_Id);
+            HttpSession session=request.getSession();
+            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(User_id,UserType);
+
+            if(!CompanyInfo.isEmpty()){
+                session.setAttribute("All_companies", CompanyInfo);
+            }
+            request.getRequestDispatcher("Officer-Home.jsp").forward(request, response);
     }
 
 
@@ -196,6 +215,7 @@ public class ServletDwmpc extends HttpServlet {
         HttpSession session=request.getSession();
         session.setAttribute("User_Info", userlg);
         int user_id=userlg.get(0).getUser_Id();
+        System.out.println("this is user id :"+user_id+" and type :"+userlg.get(0).getUser_type());
 
 
 
@@ -220,7 +240,7 @@ public class ServletDwmpc extends HttpServlet {
             if(!CompanyInfo.isEmpty()){
                 session.setAttribute("All_companies", CompanyInfo);
             }
-            request.getRequestDispatcher("Home.jsp").forward(request, response);
+            request.getRequestDispatcher("Officer-Home.jsp").forward(request, response);
         }
 
     }
@@ -284,7 +304,7 @@ public class ServletDwmpc extends HttpServlet {
             }
             userReg=new user(user_id,firstName,lastName,email,UserType,omang,contacting,add_Roles1,location);
         }else{
-            userReg=new user(user_id,firstName,lastName,email,UserType,securePassword,omang,contacting,location);
+            userReg=new user(user_id,firstName,lastName,email,UserType,securePassword,omang,contacting,location,"just");
         }
 
        String msg=connectionUtil.registerUser(userReg,action);
@@ -378,14 +398,32 @@ public class ServletDwmpc extends HttpServlet {
         response.sendRedirect("CompanyInfo.jsp");
 
     }
+    int Apply_id;
+    String delay_Time;
+    String Vehicle_id;
 
     private void getCompany(HttpServletRequest request, HttpServletResponse response) throws  Exception{
         HttpSession session=request.getSession();
         int Company_id= Integer.parseInt(request.getParameter("company_id"));
+        String userType= request.getParameter("UserType");
+        System.out.println("This "+userType);
+
         company_Information FirstCompanyDetails=connectionUtil.getCompanyDetails(Company_id);
         session.setAttribute("Company_info", FirstCompanyDetails);
-        request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
+        if(!userType.equals("Client")){
+            Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
+            Vehicle_id=request.getParameter("vehicle_id");
+            delay_Time=request.getParameter("delayTime");
+            System.out.println("This is well :"+delay_Time);
+            System.out.println("This "+userType);
+            request.getRequestDispatcher("CompanyInfo-Officer-Table.jsp").forward(request, response);
+        }else {
+            request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
+        }
+
+
     }
+
 
 
     // Employee info

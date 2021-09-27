@@ -69,6 +69,7 @@
 																	<div class="form-wrap" >
 																		<input class="inputs" type="hidden" name="command" value="Registering_User">
 																		<input class="inputs" type="hidden" name="User_Type" value="Client">
+																		<input class="inputs" type="hidden" name="action" value="Registration">
 																		<div class="form-group">
 																			<div class="row">
 																				<div class="col-md-6 col-xs-12">

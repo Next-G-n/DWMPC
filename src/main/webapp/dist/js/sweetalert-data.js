@@ -9,7 +9,7 @@ $(function() {
     SweetAlert.prototype.init = function() {
         
     //Basic
-    $('#sa-basic').on('click',function(e){
+    $('#sa-basic1').on('click',function(e){
 	    swal({   
 			title: "Here's a message!",   
             confirmButtonColor: "#2196F3",   
@@ -42,9 +42,56 @@ $(function() {
 		return false;
     });
 
+    $('#Approving-Officer').on('click',function(e){
+            swal({
+                title: "Are are you sure?",
+                type: "success",
+                text: "You are about to approving this Company's Vehicle",
+                showCancelButton: true,
+                confirmButtonColor: "#8BC34A",
+                confirmButtonText: "Yes, Approve",
+                closeOnCancel: true
+            },function (){
+                // window.open('Employees.jsp', '_parent');
+                document.getElementById("Approving").submit();
+            });
+            return false;
+        });
 
 
-        $('#employee-alert').on('click',function(e){
+    $('#Declining-Officer').on('click',function(e){
+            swal({
+                title: "Are are you sure?",
+                type: "warning",
+                text: "You are about to Decline this Company's Vehicle",
+                showCancelButton: true,
+                confirmButtonColor: "#8BC34A",
+                confirmButtonText: "Yes, Approve",
+                closeOnCancel: true
+            },function (){
+                // window.open('Employees.jsp', '_parent');
+                document.getElementById("Declining").submit();
+            });
+            return false;
+        });
+
+    $('#Revoking-Officer').on('click',function(e){
+            swal({
+                title: "Are are you sure?",
+                type: "warning",
+                text: "You are about to Revoke this Company's Vehicle",
+                showCancelButton: true,
+                confirmButtonColor: "#8BC34A",
+                confirmButtonText: "Yes, Approve",
+                closeOnCancel: true
+            },function (){
+                // window.open('Employees.jsp', '_parent');
+                document.getElementById("Revoking").submit();
+            });
+            return false;
+        });
+
+    $('#employee-alert').on('click',function(e){
             swal({
                 title: "Company Registered Successful!",
                 text: "Please Register All The Company's Employees",
