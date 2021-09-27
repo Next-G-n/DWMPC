@@ -5450,7 +5450,10 @@ a.compose-mail {
   background-color: #e7368d; }
 
 .panel-danger > .panel-heading {
-  background-color: #f33923; }
+  background-color: #FBD411; }
+
+.panel-waring-yellow > .panel-heading {
+  background-color: #FBD411; }
 
 .panel-warning > .panel-heading {
   background-color: #487C5F; }

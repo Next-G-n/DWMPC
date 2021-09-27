@@ -20,6 +20,9 @@ public class company_Information {
     String Date_Unix;
     String Company_License_Status;
     String CompanyDate;
+    String UserType;
+    String Chassis;
+    String Apply_Id;
 
     public company_Information(int company_Id, int user_Id, String company_Name) {
         Company_Id = company_Id;
@@ -27,7 +30,7 @@ public class company_Information {
         Company_Name = company_Name;
     }
 
-    public company_Information(int company_Id, int user_Id, String company_Name, String email, String region_Town_Village, String plot_Number, String ward, String telephone, String fax_Number, String phone_Number, String company_Status, String date_Unix, String street_Address,String companyDate) {
+    public company_Information(int company_Id, int user_Id, String company_Name, String email, String region_Town_Village, String plot_Number, String ward, String telephone, String fax_Number, String phone_Number, String company_Status, String date_Unix, String street_Address,String companyDate,String userType,String chassis,String apply_Id) {
         Company_Id = company_Id;
         User_Id = user_Id;
         Company_Name = company_Name;
@@ -42,6 +45,9 @@ public class company_Information {
         Date_Unix = date_Unix;
         Street_Address = street_Address;
         CompanyDate=companyDate;
+        UserType=userType;
+        Chassis=chassis;
+        Apply_Id=apply_Id;
     }
     public company_Information(int company_Id, int user_Id, String company_Name, String email, String region_Town_Village, String plot_Number, String ward, String telephone, String fax_Number, String phone_Number, String company_Status, String date_Unix, String street_Address) {
         Company_Id = company_Id;
@@ -76,6 +82,30 @@ public class company_Information {
         Company_Status = company_Status;
         Date_Unix = date_Unix;
         Company_License_Status = company_License_Status;
+    }
+
+    public String getChassis() {
+        return Chassis;
+    }
+
+    public void setChassis(String chassis) {
+        Chassis = chassis;
+    }
+
+    public String getApply_Id() {
+        return Apply_Id;
+    }
+
+    public void setApply_Id(String apply_Id) {
+        Apply_Id = apply_Id;
+    }
+
+    public String getUserType() {
+        return UserType;
+    }
+
+    public void setUserType(String userType) {
+        UserType = userType;
     }
 
     public String getCompanyDate() {

@@ -2774,6 +2774,7 @@ a#toggle_mobile_nav {
 		&.panel-info,
 		&.panel-success,
 		&.panel-warning,
+		&.panel-warning-yellow,
 		&.panel-danger,
 		&.panel-primary,
 		&.panel-inverse {
@@ -5816,7 +5817,10 @@ a.compose-mail {
     background-color: $pink;
 }
 .panel-danger > .panel-heading {
-    background-color: $red;
+    background-color: $yellow;
+}
+.panel-warning-yellow > .panel-heading {
+	background-color: $yellow;
 }
 .panel-warning > .panel-heading {
     background-color: $yellow;

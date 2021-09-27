@@ -1,4 +1,10 @@
-
+<%--
+  Created by IntelliJ IDEA.
+  User: NITRO5
+  Date: 9/6/2021
+  Time: 5:36 PM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -6,65 +12,32 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>DWMPC</title>
+    <title>DWMPC || Employee Registration Form</title>
     <meta name="description" content="Zapily is a Dashboard & Admin Site Responsive Template by hencework." />
     <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Zapily Admin, Zapilyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
     <meta name="author" content="hencework"/>
 
-    <!-- jquery-steps css -->
-    <link rel="stylesheet" href="vendors/bower_components/jquery.steps/demo/css/jquery.steps.css">
-
-    <!--alerts CSS -->
-    <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
-
-
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="icon.ico">
     <link rel="icon" href="icon.ico" type="image/x-icon">
-
-    <!-- Data table CSS -->
-    <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-
-    <!-- Toast CSS -->
-    <link href="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
+    <!-- vector map CSS -->
+    <link href="vendors/bower_components/jquery-wizard.js/css/wizard.css" rel="stylesheet" type="text/css"/>
 
     <!-- bootstrap-select CSS -->
     <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
 
-    <!-- Calendar CSS -->
-    <link href="vendors/bower_components/fullcalendar/dist/fullcalendar.css" rel="stylesheet" type="text/css"/>
-
-    <!-- bootstrap-touchspin CSS -->
-    <link href="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css"/>
-
-
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
-    <style>
-        #example_paginate, #example_info{
-            display: none;
-        }
-        .pa-01:hover {
-            cursor: pointer;
-            background-color: #f6f7f6;
-        }
-        .bg-dark-green:hover{
-            cursor: pointer;
-            background-color: #5a896f;
-        }
-        .Yellow{
-            background-color: #FBDE11;
-        }
-    </style>
 </head>
 
 <body>
-<!-- Preloader -->
+<!--Preloader-->
 <div class="preloader-it">
     <div class="la-anim-1"></div>
 </div>
-<!-- /Preloader -->
-<div class="wrapper theme-1-active pimary-color-green">
+<!--/Preloader-->
+<div class="wrapper theme-1-active pimary-color-gold">
+
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="mobile-only-brand pull-left">
@@ -90,7 +63,7 @@
         <div id="mobile_only_nav" class="mobile-only-nav pull-right">
             <ul class="nav navbar-right top-nav pull-right">
                 <li>
-                    <a id="open_right_sidebar1" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
+                    <a id="" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
                 </li>
                 <li class="dropdown app-drp">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
@@ -151,7 +124,7 @@
                         <li class="product-nicescroll-bar row">
                             <ul class="pa-20">
                                 <li class="col-md-3 col-xs-6 col-menu-list">
-                                    <a href="javascript:void(0);"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Home</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                                    <a href="javascript:void(0);"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                                     <hr class="light-grey-hr ma-0"/>
                                     <ul>
                                         <li>
@@ -182,7 +155,7 @@
                                         <div class="pull-left">
                                             <i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span>
                                         </div>
-                                        <div class="pull-right"><span class="label label-green">hot</span>
+                                        <div class="pull-right"><span class="label label-gold">hot</span>
                                         </div>
                                         <div class="clearfix"></div>
                                     </a>
@@ -513,8 +486,8 @@
             <li>
                 <div  class="tab-struct custom-tab-1">
                     <ul role="tablist" class="nav nav-tabs" id="right_sidebar_tab">
-                        <li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab">Notification</a></li>
-                        <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">Emails</a></li>
+                        <li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab">chat</a></li>
+                        <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">messages</a></li>
                         <li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="false">todo</a></li>
                     </ul>
                     <div class="tab-content" id="right_sidebar_content">
@@ -936,146 +909,538 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Companies Registered</h5>
+                    <h5 class="txt-dark"></h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="CompanyInfo.jsp">Home</a></li>
-                        <li class="active"><span>Companies Registered</span></li>
+                        <li><a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Dashboard</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Employees.jsp">Employee Table</a></li>
+                        <li class="active"><span>Company Registration Form</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
+                <!-- Row -->
+
             </div>
             <!-- /Title -->
 
-            <!-- Row -->
-            <div class="row">
-                <c:set var="countDate" scope="page" value="0" />
-                <c:forEach var="tempCompany" items="${All_companies}">
-                    <c:url var="CompanyDetailsLink" value="ServletDwmpc">
-                        <c:param name="command" value="getCompany"/>
-                        <c:param name="company_id" value="${tempCompany.company_Id}"/>
-                        <c:param name="UserType" value="${tempCompany.userType}"/>
-                        <c:param name="Apply_id" value="${tempCompany.apply_Id}"/>
-                        <c:param name="vehicle_id" value="${tempCompany.chassis}"/>
-                        <c:param name="delay"  value=""/>
-                    </c:url>
-                    <c:set value="${countDate+1}" scope="page" var="countDate"/>
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                        <div id="element${countDate}" class="panel panel-warning contact-card card-view">
-                            <div class="panel-heading">
-                                <div class="pull-left">
-                                    <div class="pull-left user-img-wrap mr-15">
-                                        <img class="card-user-img img-circle pull-left" src="img/user.png" alt="user"/>
-                                    </div>
-                                    <div class="pull-left user-detail-wrap">
-											<span class="block card-user-name">
-                                                    ${tempCompany.company_Name}
-                                            </span>
-                                        <span class="block card-user-desn">
-                                                ${tempCompany.company_Status}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="pull-right">
-                                    <a class="pull-left inline-block mr-15" href="#">
-                                        <i class="zmdi zmdi-edit txt-light"></i>
-                                    </a>
-                                    <a class="pull-left inline-block mr-15" href="#">
-                                        <i class="zmdi zmdi-delete txt-light"></i>
-                                    </a>
-                                    <div class="pull-left inline-block dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert txt-light"></i></a>
-                                        <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Full Info</a></li>
-                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Send Message</a></li>
-                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Follow</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
+            <div class="col-lg-4 col-md-12">
+                    <div class="panel panel-default border-panel card-view">
+                        <div class="panel-heading">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-dark">todo</h6>
                             </div>
-                            <div class="panel-wrapper collapse in" onclick="Submit${countDate}() ">
-                                <div class="panel-body row">
-                                    <div class="user-others-details pl-15 pr-15">
-                                        <div class="mb-15">
-                                            <i class="zmdi zmdi-email-open inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.email}</span>
+                            <div class="pull-right">
+                                <div class="pull-left inline-block dropdown mr-15">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert"></i></a>
+                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
+                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Edit</a></li>
+                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Clear All</a></li>
+                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Select All</a></li>
+                                    </ul>
+                                </div>
+                                <a class="pull-left inline-block close-panel" href="#" data-effect="fadeOut">
+                                    <i class="zmdi zmdi-close"></i>
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body row pa-0">
+                                <div class="todo-box-wrap">
+                                    <!-- Todo-List -->
+                                    <ul class="todo-list todo-box-nicescroll-bar">
+                                        <div style="float: right; margin-right: 10px" class="checkbox checkbox-warning">
+                                            <input type="checkbox" onclick="toggle4(this);"  id="checkbox035" />
+                                            <label for="checkbox034">Select All</label>
                                         </div>
-                                        <div class="mb-15">
-                                            <i class="zmdi zmdi-phone inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.telephone}</span>
-                                        </div>
-                                        <div class="mb-15">
-                                            <i class="zmdi zmdi-print inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.fax_Number}</span>
-                                        </div>
-                                        <div class="mb-15">
-                                            <i class="zmdi zmdi-my-location inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.region_Town_Village}, ${tempCompany.ward}, ${tempCompany.plot_Number}</span>
-                                        </div>
-                                        <div class="mb-15">
-                                            <i class="zmdi zmdi-local-post-office inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.street_Address}</span>
-                                        </div>
-                                        <div>
-                                            <i class="zmdi zmdi zmdi-bookmark inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.phone_Number}</span>
-                                        </div>
-                                    </div>
-                                    <hr class="light-grey-hr mt-20 mb-20"/>
-                                    <div class="emp-detail pl-15 pr-15">
-                                        <div class="mb-5">
-                                            <span class="inline-block capitalize-font mr-5">Sent :</span>
-                                            <input type="hidden" name="CompanyDate" id="CompanyDate${countDate}" value="${tempCompany.companyDate}">
-                                            <span class="txt-dark" id="GFG_DOWN${countDate}"></span>
-                                        </div>
-                                    </div>
+
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList1" id="checkbox001"/>
+                                                <label for="checkbox001"> B.A. Permit (Validity i.e. enter expiry date)</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList1" id="checkbox002"/>
+                                                <label for="checkbox002">Road worthiness (Validity i.e. enter expiry date)</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList1" id="checkbox003"/>
+                                                <label for="checkbox003">Certificate of incorporation</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList1" id="checkbox004" />
+                                                <label for="checkbox004">Waste handling and containment</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList1" id="checkbox005" />
+                                                <label for="checkbox005">Cleanliness</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+
+                                    </ul>
+                                    <!-- /Todo-List -->
+
                                 </div>
                             </div>
                         </div>
-                        <form id="delay${countDate}" action="ServletDwmpc" method="post">
-                            <input type="hidden" name="command" value="getCompany">
-                            <input type="hidden"  name="company_id" value="${tempCompany.company_Id}">
-                            <input type="hidden"  name="UserType" value="${tempCompany.userType}">
-                            <input type="hidden"  name="Apply_id" value="${tempCompany.apply_Id}">
-                            <input type="hidden"  name="vehicle_id" value="${tempCompany.chassis}">
-                            <input type="hidden" id="delayTime${countDate}" name="delayTime" value="">
-                        </form>
                     </div>
-                    <input type="hidden" onclick="location.href='${CompanyDetailsLink}'">
-                    <script>
-                        function Submit${countDate}(){
-                            document.getElementById("delay${countDate}").submit();
-                            //document.getElementById("delay${countDate}").click()
-                        }
-                    </script>
+                </div>
 
-                </c:forEach>
-                <input type="hidden" id="Count_date" name="dateCount" value="${countDate}"/>
-                <input type="button" onclick="TimeStamp_function()" value="Time" id="btn_time123" style="display: none"/>
-            </div>
-            <script>
-                window.onload = function () {
+            <div class="col-lg-4 col-md-12">
+                    <div class="panel panel-default border-panel card-view">
+                        <div class="panel-heading">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-dark">Protective Clothing</h6>
+                            </div>
+                            <div class="pull-right">
+                                <div class="pull-left inline-block dropdown mr-15">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert"></i></a>
+                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
+                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Edit</a></li>
+                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Clear All</a></li>
+                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Select All</a></li>
+                                    </ul>
+                                </div>
+                                <a class="pull-left inline-block close-panel" href="#" data-effect="fadeOut">
+                                    <i class="zmdi zmdi-close"></i>
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body row pa-0">
+                                <div class="todo-box-wrap">
+                                    <!-- Todo-List -->
+                                    <ul class="todo-list todo-box-nicescroll-bar">
+                                        <li class="todo-item">
+                                            <div style="float: right; margin-right: 10px" class="checkbox checkbox-warning">
+                                                <input type="checkbox" onclick="toggle3(this);"  id="checkbox034" />
+                                                <label for="checkbox034">Select All</label>
+                                            </div>
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList2" id="checkbox006" />
+                                                <label for="checkbox006">overalls</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList2" id="checkbox007" />
+                                                <label for="checkbox007">boots</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList2" id="checkbox008" />
+                                                <label for="checkbox008">ear plugs</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList2" id="checkbox009" />
+                                                <label for="checkbox009">goggles</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList2" id="checkbox010" />
+                                                <label for="checkbox010">hand sanitizer</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList2" id="checkbox011" />
+                                                <label for="checkbox011">infrared thermometer</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" id="checkbox012" />
+                                                <label for="checkbox012">aprons</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList2" id="checkbox013" />
+                                                <label for="checkbox013">helmets</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
 
-                    document.getElementById('btn_time123').click();
+                                    </ul>
+                                    <!-- /Todo-List -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                }
-            </script>
-            <!-- Row -->
-        </div>
+            <div class="col-lg-4 col-md-12">
+                    <div class="panel panel-default border-panel card-view">
+                        <div class="panel-heading">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-dark">Fire Extinguishers & First Aid Kits </h6>
+                            </div>
+                            <div class="pull-right">
+                                <div class="pull-left inline-block dropdown mr-15">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert"></i></a>
+                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
+                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Edit</a></li>
+                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Clear All</a></li>
+                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Select All</a></li>
+                                    </ul>
+                                </div>
+                                <a class="pull-left inline-block close-panel" href="#" data-effect="fadeOut">
+                                    <i class="zmdi zmdi-close"></i>
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body row pa-0">
+                                <div class="todo-box-wrap">
+                                    <!-- Todo-List -->
+                                    <ul class="todo-list todo-box-nicescroll-bar">
+                                        <div style="float: right; margin-right: 10px" class="checkbox checkbox-warning">
+                                            <input type="checkbox" onclick="toggle2(this);"  id="checkbox033" />
+                                            <label for="checkbox033">Select All</label>
+                                        </div>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList3" id="checkbox014" />
+                                                <label for="checkbox014">accessibility</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList3" id="checkbox015" />
+                                                <label for="checkbox015">condition (check gauge and service date)</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList3" id="checkbox016" />
+                                                <label for="checkbox016">ear plugs</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList3" id="checkbox017" />
+                                                <label for="checkbox017">inspection date</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" class="CheckList3" id="checkbox018" />
+                                                <label for="checkbox018">contents adequacy and expiry dates</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                    </ul>
+                                    <!-- /Todo-List -->
 
-        <!-- Footer -->
-        <footer class="footer container-fluid pl-30 pr-30">
-            <div class="row">
-                <div class="col-sm-12">
-                    <p>2018 &copy; Zapily. Pampered by Hencework</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="col-lg-4 col-md-12">
+                <div class="panel panel-default border-panel card-view">
+                    <div class="panel-heading">
+                        <div class="pull-left">
+                            <h6 class="panel-title txt-dark">Fire Extinguishers & First Aid Kits </h6>
+                        </div>
+                        <div class="pull-right">
+                            <div class="pull-left inline-block dropdown mr-15">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert"></i></a>
+                                <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
+                                    <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Edit</a></li>
+                                    <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Clear All</a></li>
+                                    <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Select All</a></li>
+                                </ul>
+                            </div>
+                            <a class="pull-left inline-block close-panel" href="#" data-effect="fadeOut">
+                                <i class="zmdi zmdi-close"></i>
+                            </a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-wrapper collapse in">
+                        <div class="panel-body row pa-0">
+                            <div class="todo-box-wrap">
+                                <!-- Todo-List -->
+                                <ul class="todo-list todo-box-nicescroll-bar">
+                                    <div style="float: right; margin-right: 10px" class="checkbox checkbox-warning">
+                                        <input type="checkbox" onclick="toggle1(this);"  id="checkbox031" />
+                                        <label for="checkbox031">Select All</label>
+                                    </div>
+                                    <li class="todo-item">
+                                        <div class="checkbox checkbox-warning">
+                                            <input type="checkbox" class="CheckList4" id="checkbox019" />
+                                            <label for="checkbox019">Warning Sign</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <hr class="light-grey-hr"/>
+                                    </li>
+                                    <li class="todo-item">
+                                        <div class="checkbox checkbox-warning">
+                                            <input type="checkbox" class="CheckList4" id="checkbox020" />
+                                            <label for="checkbox020">certified certificate on fire fighting</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <hr class="light-grey-hr"/>
+                                    </li>
+                                    <li class="todo-item">
+                                        <div class="checkbox checkbox-warning">
+                                            <input type="checkbox" class="CheckList4" id="checkbox021" />
+                                            <label for="checkbox021">certified certificate on first aid</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <hr class="light-grey-hr"/>
+                                    </li>
+                                    <li class="todo-item">
+                                        <div class="checkbox checkbox-warning">
+                                            <input type="checkbox" class="CheckList4" id="checkbox022" />
+                                            <label for="checkbox022">certified certificate on fire fighting</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <hr class="light-grey-hr"/>
+                                    </li>
+                                    <li class="todo-item">
+                                        <div class="checkbox checkbox-warning">
+                                            <input type="checkbox" class="CheckList4" id="checkbox023" />
+                                            <label for="checkbox023">certified certificate on first aid</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <hr class="light-grey-hr"/>
+                                    </li>
+                                    <li class="todo-item">
+                                        <div class="checkbox checkbox-warning">
+                                            <input type="checkbox" class="CheckList4" id="checkbox024" />
+                                            <label for="checkbox024">Waste Identification Card</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <hr class="light-grey-hr"/>
+                                    </li>
+                                </ul>
+                                <!-- /Todo-List -->
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </footer>
-        <!-- /Footer -->
 
+            <div class="col-lg-4 col-md-12">
+                <div class="panel panel-default border-panel card-view">
+                    <div class="panel-heading">
+                        <div class="pull-left">
+                            <h6 class="panel-title txt-dark">Addition Files</h6>
+                        </div>
+                        <div class="pull-right">
+                            <div class="pull-left inline-block dropdown mr-15">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert"></i></a>
+                                <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
+                                    <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Edit</a></li>
+                                    <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Clear All</a></li>
+                                    <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Select All</a></li>
+                                </ul>
+                            </div>
+                            <a class="pull-left inline-block close-panel" href="#" data-effect="fadeOut">
+                                <i class="zmdi zmdi-close"></i>
+                            </a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-wrapper collapse in">
+                        <div class="panel-body row pa-0">
+                            <div class="todo-box-wrap">
+                                <!-- Todo-List -->
+                                <ul class="todo-list todo-box-nicescroll-bar">
+                                    <div style="float: right; margin-right: 10px" class="checkbox checkbox-warning">
+                                        <input type="checkbox" onclick="toggle(this);"  id="checkbox032" />
+                                        <label for="checkbox032">Select All</label>
+                                    </div>
+                                    <li class="todo-item">
+                                        <div class="checkbox checkbox-warning ">
+                                            <input type="checkbox" class="CheckList5" id="checkbox025" />
+                                            <label for="checkbox025">Affidavit (if applicant is not owner of vehicle)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <hr class="light-grey-hr"/>
+                                    </li>
+                                    <li class="todo-item">
+                                        <div class="checkbox checkbox-warning">
+                                            <input type="checkbox" class="CheckList5" id="checkbox026" />
+                                            <label for="checkbox026">	Facility license (for all recyclers i   .e metal, used oil, cans, plastic etc)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <hr class="light-grey-hr"/>
+                                    </li>
+                                    <li class="todo-item">
+                                        <div class="checkbox checkbox-warning">
+                                            <input type="checkbox" class="CheckList5" id="checkbox027" />
+                                            <label for="checkbox027">spill containment system</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <hr class="light-grey-hr"/>
+                                    </li>
+                                    <li class="todo-item">
+                                        <div class="checkbox checkbox-warning">
+                                            <input type="checkbox" class="CheckList5" id="checkbox028" />
+                                            <label for="checkbox028">spill containment system</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <hr class="light-grey-hr"/>
+                                    </li>
+                                    <li class="todo-item">
+                                        <div class="checkbox checkbox-warning">
+                                            <input type="checkbox" class="CheckList5" id="checkbox029" />
+                                            <label for="checkbox029">Pollution liability cover (hazardous waste)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <hr class="light-grey-hr"/>
+                                    </li>
+                                    <li class="todo-item">
+                                        <div class="checkbox checkbox-warning">
+                                            <input type="checkbox" class="CheckList5" id="checkbox030" />
+                                            <label for="checkbox030">Service agreement with disposer (hazardous waste)</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <hr class="light-grey-hr"/>
+                                    </li>
+                                </ul>
+                                <!-- /Todo-List -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function toggle(source) {
+                    var checkboxes = document.querySelectorAll('.CheckList5');
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i] != source)
+                            checkboxes[i].checked = source.checked;
+                    }
+                }
+                function toggle1(source) {
+                    var checkboxes = document.querySelectorAll('.CheckList4');
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i] != source)
+                            checkboxes[i].checked = source.checked;
+                    }
+                }
+                function toggle2(source) {
+                    var checkboxes = document.querySelectorAll('.CheckList3');
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i] != source)
+                            checkboxes[i].checked = source.checked;
+                    }
+                }
+                function toggle3(source) {
+                    var checkboxes = document.querySelectorAll('.CheckList2');
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i] != source)
+                            checkboxes[i].checked = source.checked;
+                    }
+                }
+                function toggle4(source) {
+                    var checkboxes = document.querySelectorAll('.CheckList1');
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i] != source)
+                            checkboxes[i].checked = source.checked;
+                    }
+                }
+            </script>
+
+
+            <!-- Footer -->
+            <footer class="footer container-fluid pl-30 pr-30">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>2021 &copy; DWMPC. Created by Next-gen</p>
+                    </div>
+                </div>
+            </footer>
+            <!-- /Footer -->
+        </div>
     </div>
     <!-- /Main Content -->
 
@@ -1091,70 +1456,28 @@
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
 <script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
-<script src="dist/js/modal-data.js"></script>
-
-<!-- Bootstrap Touchspin JavaScript -->
-<script src="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
-
-
-<!-- Data table JavaScript -->
-<script src="vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="vendors/bower_components/jszip/dist/jszip.min.js"></script>
-<script src="vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
-<script src="vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
-
-<script src="vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
-<script src="vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
-<script src="dist/js/export-table-data.js"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="dist/js/jquery.slimscroll.js"></script>
 
-<!-- EChartJS JavaScript -->
-<script src="vendors/bower_components/echarts/dist/echarts-en.min.js"></script>
-<script src="vendors/echarts-liquidfill.min.js"></script>
-<script src="vendors/ecStat.min.js"></script>
-
-<!-- Toast JavaScript -->
-<script src="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
-
-<!-- Progressbar Animation JavaScript -->
-<script src="vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
-<script src="vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
-
 <!-- Fancy Dropdown JS -->
 <script src="dist/js/dropdown-bootstrap-extended.js"></script>
-
-<!-- Sparkline JavaScript -->
-<script src="vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
 
 <!-- Owl JavaScript -->
 <script src="vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 
-<!-- Calender JavaScripts -->
-<script src="vendors/bower_components/moment/min/moment.min.js"></script>
-<script src="vendors/jquery-ui.min.js"></script>
-<script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-<script src="dist/js/fullcalendar-data.js"></script>
-
 <!-- Switchery JavaScript -->
 <script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
-<!-- Bootstrap Select JavaScript -->
-<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-
 <!-- Init JavaScript -->
 <script src="dist/js/init.js"></script>
-<script src="dist/js/dashboard4-data.js"></script>
+
+<!-- Bootstrap Select JavaScript -->
+<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>
 
 <!-- Sweet-Alert  -->
 <script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <script src="dist/js/sweetalert-data.js"></script>
-
-<script src="dist/js/TimeStamp.js"></script>
-
 
 </body>
 

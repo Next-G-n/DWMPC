@@ -73,7 +73,7 @@
 												
 												<div class="form-group">
 													<div class="checkbox checkbox-success pr-10 pull-left">
-														<input id="checkbox_2" required="" type="checkbox">
+														<input id="checkbox_2" type="checkbox">
 														<label for="checkbox_2"> Keep me logged in</label>
 													</div>
 													<div class="clearfix"></div>

@@ -11,6 +11,8 @@ public class application_status {
     String Unix_Application_Date;
     String Status_Of_Application;
 
+
+
     public application_status(int application_Status_Id, String level, String current_Office, String chase_Number, Date application_Date, String unix_Application_Date, String status_Of_Application) {
         Application_Status_Id = application_Status_Id;
         Level = level;

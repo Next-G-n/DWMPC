@@ -14,8 +14,9 @@ public class user {
     String addRoles;
 
     String location;
+    String Just;
 
-    public user(int user_Id, String first_name, String last_name, String email, String user_type, String password, int omang, String contact, String location) {
+    public user(int user_Id, String first_name, String last_name, String email, String user_type, String password, int omang, String contact, String location, String just) {
         this.user_Id = user_Id;
         this.first_name = first_name;
         Last_name = last_name;
@@ -25,6 +26,7 @@ public class user {
         this.omang = omang;
         this.contact = contact;
         this.location = location;
+        Just=just;
     }
 
     public user(int user_Id, String first_name, String last_name, String email, String user_type, int omang, String contact, String addRoles, String location) {
