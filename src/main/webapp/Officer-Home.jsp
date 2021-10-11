@@ -1048,7 +1048,7 @@
                     <script>
                         function Submit${countDate}(){
                             document.getElementById("delay${countDate}").submit();
-                            //document.getElementById("delay${countDate}").click()
+                            ///document.getElementById("delay${countDate}").click()
                         }
                     </script>
 
@@ -1070,7 +1070,7 @@
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
                 <div class="col-sm-12">
-                    <p>2018 &copy; Zapily. Pampered by Hencework</p>
+                    <p>2021 &copy; DWMPC. Created By Next-gen</p>
                 </div>
             </div>
         </footer>

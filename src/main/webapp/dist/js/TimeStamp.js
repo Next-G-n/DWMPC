@@ -42,11 +42,13 @@ function TimeStamp_function() {
         var days = ( min/ (1000 * 60 * 60 * 24)).toFixed(0);
         var element = document.getElementById("element"+i);
         if(days>=2 && days<=6){
+            alert("yellow :"+days)
             element.classList.remove("panel-warning");
             element.classList.add("panel-waring-yellow");
             //element.classList.add("panel-danger");
 
         }else if(days>=6){
+            alert("read")
             element.classList.remove("panel-warning");
             element.classList.add("panel-danger");
         }

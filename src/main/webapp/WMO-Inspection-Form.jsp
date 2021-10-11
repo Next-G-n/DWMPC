@@ -915,8 +915,7 @@
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Dashboard</a></li>
-                        <li><a href="${pageContext.request.contextPath}/Employees.jsp">Employee Table</a></li>
-                        <li class="active"><span>Company Registration Form</span></li>
+                        <li class="active"><span>Inspection Form</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1392,6 +1391,13 @@
                 </div>
             </div>
 
+            <form method="post" id="Declining" action="ServletDwmpc">
+                <input type="hidden" name="command" value="Officers Action">
+                <input type="hidden" name="action" value="Decline">
+                <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
+                <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
+                <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+            </form>
             <script>
                 function toggle(source) {
                     var checkboxes = document.querySelectorAll('.CheckList5');

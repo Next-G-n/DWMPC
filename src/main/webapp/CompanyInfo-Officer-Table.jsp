@@ -924,6 +924,7 @@
                     <input type="hidden" name="action" value="Approving">
                     <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
                     <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
+                    <input type="hidden" name="Branch" value="${User_Info[0].location}">
                     <input type="hidden" name="company_id" value="${Company_info.company_Id}">
                 </form>
                 <form method="post" id="Declining" action="ServletDwmpc">

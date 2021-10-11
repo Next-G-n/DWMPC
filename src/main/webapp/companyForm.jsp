@@ -952,7 +952,7 @@
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Street-address2">Street Address 2 (Optional):</label>
+                                                            <label class="control-label mb-10" data-name="Test " for="Street-address2">Street Address 2 (Optional):</label>
                                                             <input id="Street-address2" type="text" name="Street_Address2" class="form-control" value=""/>
                                                         </div>
                                                         <div class="span1"></div>
@@ -970,7 +970,13 @@
                                                     <div class="row">
                                                         <div class="col-md-6 col-xs-12">
                                                             <label class="control-label mb-10" for="Region">Region (required):</label>
-                                                            <input id="Region" type="text" name="Region"  class="form-control required" value="" required/>
+                                                            <select id="Region" name="Region" class="selectpicker" data-style="form-control btn-default btn-outline">
+                                                                <option value="Francistown Branch">Francistown Zone</option>
+                                                                <option value="Gaborone Branch">Gaborone Zone</option>
+                                                                <option value="Chobe Branch">Chobe Zone</option>
+                                                                <option value="kgalagadi Branch">kgalagadi Zone</option>
+                                                            </select>
+
                                                         </div>
                                                         <div class="span1"></div>
                                                         <div class="col-md-6 col-xs-12">
