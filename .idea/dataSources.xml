@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="jdbc/Dwmpc_azure" uuid="803aaa87-65a6-4212-9859-26152344d7c9">
+    <data-source source="LOCAL" name="jdbc/Dwmpc_aws" uuid="803aaa87-65a6-4212-9859-26152344d7c9">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://dwmpc.mysql.database.azure.com:3306/dwmpc1.0</jdbc-url>
+      <jdbc-url>jdbc:mysql://dwmpc.creyhecmio17.us-east-2.rds.amazonaws.com:3306/dwmpc</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
     <data-source source="LOCAL" name="jdbc/Dwmpc_azureSA" uuid="02c505b7-0707-478c-8a42-cbb8059dd6b6">

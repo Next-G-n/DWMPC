@@ -226,7 +226,7 @@ public class ConnectionUtil {
         return viewRegisteredCompany;
     }
 
-    public List<company_Information> getAllCompanies(int userId, String userType) throws Exception {
+    public List<company_Information> getAllCompanies(int userId, String userType, String Branch) throws Exception {
             List<company_Information> getCompanyDetail = new ArrayList<>();
             Connection myConn=null;
             ResultSet myRs=null;
@@ -243,7 +243,7 @@ public class ConnectionUtil {
                     sql ="SELECT * FROM `dwmpc1.0`.application_status a left join vehicle v on" +
                             " a.`Chase Number`=v.`Chase Number` left join company_information c on " +
                             "v.`Company Id`=c.`Company Id` where a.`Current Office`='"+userType+"' and " +
-                            "a.`Status Of Application`='UptoDate' and not v.`StatusV`='Company is Revoked';";
+                            "a.`Status Of Application`='UptoDate' and c.`Region`='"+Branch+"' and not v.`StatusV`='Company is Revoked';";
 
                 }
 
@@ -531,7 +531,8 @@ public class ConnectionUtil {
             //get a connectio
 
             myConn=dataSource.getConnection();
-            String sql ="Select * from vehicle where `Company Id`="+company_id;
+            String sql;
+            sql ="Select * from vehicle where `Company Id`="+company_id;
             myStmt=myConn.prepareStatement(sql);
             myRs=myStmt.executeQuery();
 

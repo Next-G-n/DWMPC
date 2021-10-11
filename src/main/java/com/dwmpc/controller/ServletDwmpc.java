@@ -34,7 +34,7 @@ import java.util.Objects;
 public class ServletDwmpc extends HttpServlet {
 
     private ConnectionUtil connectionUtil;
-    @Resource(name = "jdbc/Dwmpc_azureSA")
+    @Resource(name = "jdbc/Dwmpc_aws")
 
     private DataSource dataSource;
     int id_user;
@@ -162,12 +162,13 @@ public class ServletDwmpc extends HttpServlet {
         String action=request.getParameter("action");
         int User_id = Integer.parseInt(request.getParameter("User Id"));
         String UserType = request.getParameter("UserType");
+        String Branch=request.getParameter("Branch");
 
             String Company_Id=request.getParameter("company_id");
             officerAction setAction=new officerAction(User_id,Apply_id,action,delay_Time);
             connectionUtil.OfficersActions(setAction,UserType,Vehicle_id,Company_Id);
             HttpSession session=request.getSession();
-            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(User_id,UserType);
+            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(User_id,UserType,Branch);
 
             if(!CompanyInfo.isEmpty()){
                 session.setAttribute("All_companies", CompanyInfo);
@@ -207,6 +208,7 @@ public class ServletDwmpc extends HttpServlet {
         String Email = request.getParameter("email");
         String Password = request.getParameter("password");
         String userType="Unknown";
+        String Branch="None";
         String action="Login";
         byte[] salt = getSalt();
         String securePassword = get_SHA_512_SecurePassword(Password, salt);
@@ -227,7 +229,7 @@ public class ServletDwmpc extends HttpServlet {
 
         }else if(userlg.get(0).getUser_type().equals("Client")){
             userType="Client";
-            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(user_id,userType);
+            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(user_id,userType,Branch);
 
             if(!CompanyInfo.isEmpty()){
                 session.setAttribute("All_companies", CompanyInfo);
@@ -235,7 +237,8 @@ public class ServletDwmpc extends HttpServlet {
             request.getRequestDispatcher("Home.jsp").forward(request, response);
         }else  {
             userType=userlg.get(0).getUser_type();
-            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(user_id,userType);
+            Branch=userlg.get(0).getLocation();
+            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(user_id,userType,Branch);
 
             if(!CompanyInfo.isEmpty()){
                 session.setAttribute("All_companies", CompanyInfo);
@@ -317,7 +320,7 @@ public class ServletDwmpc extends HttpServlet {
             session.setAttribute("User_Info", userlg);
 
             if(UserType.equals("Client")){
-                List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(userlg.get(0).getUser_Id(),"Client");
+                List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(userlg.get(0).getUser_Id(),"Client",userlg.get(0).getLocation());
                 if(CompanyInfo.get(0).getCompany_Name()!=null){
                     session.setAttribute("All_companies", CompanyInfo);
                 }
@@ -383,7 +386,7 @@ public class ServletDwmpc extends HttpServlet {
 
         company_Information getCurrentCompanyID=connectionUtil.registerCompany(registerCompany,action);
 
-        List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(id,"Client");
+        List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(id,"Client","None");
         session.setAttribute("All_companies", CompanyInfo);
 
 
@@ -410,15 +413,19 @@ public class ServletDwmpc extends HttpServlet {
 
         company_Information FirstCompanyDetails=connectionUtil.getCompanyDetails(Company_id);
         session.setAttribute("Company_info", FirstCompanyDetails);
-        if(!userType.equals("Client")){
-            Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
+        if(userType.equals("Client")){
+            request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
+        }else if(userType.equals("Client")) { Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
+            Vehicle_id=request.getParameter("vehicle_id");
+            delay_Time=request.getParameter("delayTime");
+
+            request.getRequestDispatcher("WMO-Inspection.jsp").forward(request, response);
+        }else{
             Vehicle_id=request.getParameter("vehicle_id");
             delay_Time=request.getParameter("delayTime");
             System.out.println("This is well :"+delay_Time);
             System.out.println("This "+userType);
             request.getRequestDispatcher("CompanyInfo-Officer-Table.jsp").forward(request, response);
-        }else {
-            request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
         }
 
 
