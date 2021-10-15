@@ -520,7 +520,7 @@ public class ConnectionUtil {
         }
     }
 
-    public List<vehicle> getVehicleDetails(int company_id) throws Exception {
+    public List<vehicle> getVehicleDetails(String company_id,String User_type) throws Exception {
 
         List<vehicle> getVehicleDetail = new ArrayList<>();
         Connection myConn=null;
@@ -532,7 +532,12 @@ public class ConnectionUtil {
 
             myConn=dataSource.getConnection();
             String sql;
-            sql ="Select * from vehicle where `Company Id`="+company_id;
+            if(User_type.equals("Waste Management Officer")){
+                sql ="Select * from vehicle where `Chase Number`='"+company_id+"'";
+            }else{
+                int Company_id= Integer.parseInt(company_id);
+                sql ="Select * from vehicle where `Company Id`="+Company_id;
+            }
             myStmt=myConn.prepareStatement(sql);
             myRs=myStmt.executeQuery();
 
@@ -746,5 +751,26 @@ public class ConnectionUtil {
         }finally {
             close(myConn,myStmt,null);
         }
+    }
+
+    public void registerInspection(int user_id, String general, String hazardus, String additional) throws Exception {
+        Connection myConn=null;
+        PreparedStatement myStmt=null;
+        try {
+            myConn = dataSource.getConnection();
+            String sql2 = "INSERT INTO `dwmpc`.`inspection` (`General Check List`," +
+                    " `Addition Check List`, `Hazardous Check List`, `Officer Action Id`) VALUES (?,?,?,?)";
+            myStmt = myConn.prepareStatement(sql2);
+            myStmt.setString(1,general);
+            myStmt.setString(2, additional);
+            myStmt.setString(3, hazardus);
+            myStmt.setInt(4, user_id);
+            myStmt.execute();
+        }catch (SQLIntegrityConstraintViolationException e){
+            System.out.println("This ");
+        } finally {
+            close(myConn,myStmt,null);
+        }
+        System.out.println("error ");
     }
 }
