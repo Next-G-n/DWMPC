@@ -915,7 +915,8 @@
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Dashboard</a></li>
-                        <li class="active"><span>Inspection Form</span></li>
+                        <li><a href="${pageContext.request.contextPath}/Employees.jsp">Employee Table</a></li>
+                        <li class="active"><span>Company Registration Form</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -923,531 +924,92 @@
 
             </div>
             <!-- /Title -->
-
-            <div class="col-lg-4 col-md-12">
-                    <div class="panel panel-default border-panel card-view">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-warning card-view">
                         <div class="panel-heading">
                             <div class="pull-left">
-                                <h6 class="panel-title txt-dark">todo</h6>
-                            </div>
-                            <div class="pull-right">
-                                <div class="pull-left inline-block dropdown mr-15">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert"></i></a>
-                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Edit</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Clear All</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Select All</a></li>
-                                    </ul>
-                                </div>
-                                <a class="pull-left inline-block close-panel" href="#" data-effect="fadeOut">
-                                    <i class="zmdi zmdi-close"></i>
-                                </a>
+                                <h6 class="panel-title txt-light"><i class="icon-note txt-black"></i>Employee Registration</h6>
                             </div>
                             <div class="clearfix"></div>
                         </div>
+
                         <div class="panel-wrapper collapse in">
-                            <div class="panel-body row pa-0">
-                                <div class="todo-box-wrap">
-                                    <!-- Todo-List -->
-                                    <ul class="todo-list todo-box-nicescroll-bar">
-                                        <div style="float: right; margin-right: 10px" class="checkbox checkbox-warning">
-                                            <input type="checkbox" onclick="toggle4(this);"  id="checkbox035" />
-                                            <label for="checkbox034">Select All</label>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-wrap">
+                                            <form data-toggle="validator" method="post" action="ServletDwmpc" role="form">
+                                                <input type="hidden" id="command" name="command" class="hidden" value="RegisteringEmployee"/>
+                                                <input type="hidden" id="action" name="action"  class="hidden" value="RegisteringEmployee"/>
+                                                <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
+                                                <input type="hidden" id="Employee_Id" name="Employee Id" class="hidden" value=""/>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-4 col-xs-12 mt-40">
+                                                            <label class="control-label mb-10" for="First_Name"> First Name(required):</label>
+                                                            <input type="text" id="First_Name" name="First Name"  class="form-control required"   required/>
+                                                        </div>
+                                                        <div class="span1"></div>
+                                                        <div class="col-md-4 col-xs-12 mt-40">
+                                                            <label class="control-label mb-10" for="Last_Name"> Last Name(required):</label>
+                                                            <input type="text" id="Last_Name" name="Last Name"  class="form-control required"   required/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-xs-12">
+                                                            <label class="control-label mb-10" for="Job_Title"> Job Title(required):</label>
+                                                            <input type="text" class="form-control required" id="Job_Title" name="Position/job Title" placeholder="Job Title">
+                                                        </div>
+                                                        <div class="span1"></div>
+                                                        <div class="col-md-6 col-xs-12">
+                                                            <label class="control-label mb-10" for="Qualification"> Qualification(required):</label>
+                                                            <input type="text" class="form-control required" id="Qualification" name="Qualification" placeholder="Qualification" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10" for="Contact">Contact(required):</label>
+                                                    <input type="text" id="Contact" name="Contact" data-mask="+267 99 999 999"  class="form-control required"  required/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="training" class="col-sm-3 control-label">Training in waste Management(required):</label>
+                                                    <select class="selectpicker" id= "training" name="training" data-style="form-control btn-default btn-outline">
+                                                        <option value="Yes">Yes</option>
+                                                        <option value="No">No</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group mb-0" style="float: right">
+                                                    <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">submit</span></button>
+                                                </div>
+                                            </form>
                                         </div>
-
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList1" id="checkbox001"/>
-                                                <label for="checkbox001"> B.A. Permit (Validity i.e. enter expiry date)</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList1" id="checkbox002"/>
-                                                <label for="checkbox002">Road worthiness (Validity i.e. enter expiry date)</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList1" id="checkbox003"/>
-                                                <label for="checkbox003">Certificate of incorporation</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList1" id="checkbox004" />
-                                                <label for="checkbox004">Waste handling and containment</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList1" id="checkbox005" />
-                                                <label for="checkbox005">Cleanliness</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-
-                                    </ul>
-                                    <!-- /Todo-List -->
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            <div class="col-lg-4 col-md-12">
-                    <div class="panel panel-default border-panel card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <h6 class="panel-title txt-dark">Protective Clothing</h6>
-                            </div>
-                            <div class="pull-right">
-                                <div class="pull-left inline-block dropdown mr-15">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert"></i></a>
-                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Edit</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Clear All</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Select All</a></li>
-                                    </ul>
-                                </div>
-                                <a class="pull-left inline-block close-panel" href="#" data-effect="fadeOut">
-                                    <i class="zmdi zmdi-close"></i>
-                                </a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="panel-wrapper collapse in">
-                            <div class="panel-body row pa-0">
-                                <div class="todo-box-wrap">
-                                    <!-- Todo-List -->
-                                    <ul class="todo-list todo-box-nicescroll-bar">
-                                        <li class="todo-item">
-                                            <div style="float: right; margin-right: 10px" class="checkbox checkbox-warning">
-                                                <input type="checkbox" onclick="toggle3(this);"  id="checkbox034" />
-                                                <label for="checkbox034">Select All</label>
-                                            </div>
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList2" id="checkbox006" />
-                                                <label for="checkbox006">overalls</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList2" id="checkbox007" />
-                                                <label for="checkbox007">boots</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList2" id="checkbox008" />
-                                                <label for="checkbox008">ear plugs</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList2" id="checkbox009" />
-                                                <label for="checkbox009">goggles</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList2" id="checkbox010" />
-                                                <label for="checkbox010">hand sanitizer</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList2" id="checkbox011" />
-                                                <label for="checkbox011">infrared thermometer</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" id="checkbox012" />
-                                                <label for="checkbox012">aprons</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList2" id="checkbox013" />
-                                                <label for="checkbox013">helmets</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-
-                                    </ul>
-                                    <!-- /Todo-List -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            <div class="col-lg-4 col-md-12">
-                    <div class="panel panel-default border-panel card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <h6 class="panel-title txt-dark">Fire Extinguishers & First Aid Kits </h6>
-                            </div>
-                            <div class="pull-right">
-                                <div class="pull-left inline-block dropdown mr-15">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert"></i></a>
-                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Edit</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Clear All</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Select All</a></li>
-                                    </ul>
-                                </div>
-                                <a class="pull-left inline-block close-panel" href="#" data-effect="fadeOut">
-                                    <i class="zmdi zmdi-close"></i>
-                                </a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="panel-wrapper collapse in">
-                            <div class="panel-body row pa-0">
-                                <div class="todo-box-wrap">
-                                    <!-- Todo-List -->
-                                    <ul class="todo-list todo-box-nicescroll-bar">
-                                        <div style="float: right; margin-right: 10px" class="checkbox checkbox-warning">
-                                            <input type="checkbox" onclick="toggle2(this);"  id="checkbox033" />
-                                            <label for="checkbox033">Select All</label>
-                                        </div>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList3" id="checkbox014" />
-                                                <label for="checkbox014">accessibility</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList3" id="checkbox015" />
-                                                <label for="checkbox015">condition (check gauge and service date)</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList3" id="checkbox016" />
-                                                <label for="checkbox016">ear plugs</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList3" id="checkbox017" />
-                                                <label for="checkbox017">inspection date</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" class="CheckList3" id="checkbox018" />
-                                                <label for="checkbox018">contents adequacy and expiry dates</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                    </ul>
-                                    <!-- /Todo-List -->
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            <div class="col-lg-4 col-md-12">
-                <div class="panel panel-default border-panel card-view">
-                    <div class="panel-heading">
-                        <div class="pull-left">
-                            <h6 class="panel-title txt-dark">Fire Extinguishers & First Aid Kits </h6>
-                        </div>
-                        <div class="pull-right">
-                            <div class="pull-left inline-block dropdown mr-15">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert"></i></a>
-                                <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                    <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Edit</a></li>
-                                    <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Clear All</a></li>
-                                    <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Select All</a></li>
-                                </ul>
-                            </div>
-                            <a class="pull-left inline-block close-panel" href="#" data-effect="fadeOut">
-                                <i class="zmdi zmdi-close"></i>
-                            </a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="panel-wrapper collapse in">
-                        <div class="panel-body row pa-0">
-                            <div class="todo-box-wrap">
-                                <!-- Todo-List -->
-                                <ul class="todo-list todo-box-nicescroll-bar">
-                                    <div style="float: right; margin-right: 10px" class="checkbox checkbox-warning">
-                                        <input type="checkbox" onclick="toggle1(this);"  id="checkbox031" />
-                                        <label for="checkbox031">Select All</label>
                                     </div>
-                                    <li class="todo-item">
-                                        <div class="checkbox checkbox-warning">
-                                            <input type="checkbox" class="CheckList4" id="checkbox019" />
-                                            <label for="checkbox019">Warning Sign</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <hr class="light-grey-hr"/>
-                                    </li>
-                                    <li class="todo-item">
-                                        <div class="checkbox checkbox-warning">
-                                            <input type="checkbox" class="CheckList4" id="checkbox020" />
-                                            <label for="checkbox020">certified certificate on fire fighting</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <hr class="light-grey-hr"/>
-                                    </li>
-                                    <li class="todo-item">
-                                        <div class="checkbox checkbox-warning">
-                                            <input type="checkbox" class="CheckList4" id="checkbox021" />
-                                            <label for="checkbox021">certified certificate on first aid</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <hr class="light-grey-hr"/>
-                                    </li>
-                                    <li class="todo-item">
-                                        <div class="checkbox checkbox-warning">
-                                            <input type="checkbox" class="CheckList4" id="checkbox022" />
-                                            <label for="checkbox022">certified certificate on fire fighting</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <hr class="light-grey-hr"/>
-                                    </li>
-                                    <li class="todo-item">
-                                        <div class="checkbox checkbox-warning">
-                                            <input type="checkbox" class="CheckList4" id="checkbox023" />
-                                            <label for="checkbox023">certified certificate on first aid</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <hr class="light-grey-hr"/>
-                                    </li>
-                                    <li class="todo-item">
-                                        <div class="checkbox checkbox-warning">
-                                            <input type="checkbox" class="CheckList4" id="checkbox024" />
-                                            <label for="checkbox024">Waste Identification Card</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <hr class="light-grey-hr"/>
-                                    </li>
-                                </ul>
-                                <!-- /Todo-List -->
-
+                                </div>
                             </div>
                         </div>
+
+
+                        <script>
+                            const qtyEl = document.getElementById('quantity');
+                            const valEl = document.getElementById('value');
+                            const totalEl = document.getElementById('autoValue');
+
+                            const setTotal = () => {
+                                let qty = qtyEl.value;
+                                let value = valEl.value;
+                                totalEl.innerHTML = Number(qty) + Number(value);
+                            }
+
+                        </script>
+
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-4 col-md-12">
-                <div class="panel panel-default border-panel card-view">
-                    <div class="panel-heading">
-                        <div class="pull-left">
-                            <h6 class="panel-title txt-dark">Addition Files</h6>
-                        </div>
-                        <div class="pull-right">
-                            <div class="pull-left inline-block dropdown mr-15">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert"></i></a>
-                                <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                    <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Edit</a></li>
-                                    <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Clear All</a></li>
-                                    <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Select All</a></li>
-                                </ul>
-                            </div>
-                            <a class="pull-left inline-block close-panel" href="#" data-effect="fadeOut">
-                                <i class="zmdi zmdi-close"></i>
-                            </a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="panel-wrapper collapse in">
-                        <div class="panel-body row pa-0">
-                            <div class="todo-box-wrap">
-                                <!-- Todo-List -->
-                                <ul class="todo-list todo-box-nicescroll-bar">
-                                    <div style="float: right; margin-right: 10px" class="checkbox checkbox-warning">
-                                        <input type="checkbox" onclick="toggle(this);"  id="checkbox032" />
-                                        <label for="checkbox032">Select All</label>
-                                    </div>
-                                    <c:if test='${All_Vehicles[0].affidavit="Yes"}'>
-                                    <li class="todo-item">
-                                        <div class="checkbox checkbox-warning ">
-                                            <input type="checkbox" class="CheckList5" id="checkbox025" />
-                                            <label for="checkbox025">Affidavit (if applicant is not owner of vehicle)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <hr class="light-grey-hr"/>
-                                    </li>
-                                    </c:if>
-                                    <li class="todo-item">
-                                        <div class="checkbox checkbox-warning">
-                                            <input type="checkbox" class="CheckList5" id="checkbox026" />
-                                            <label for="checkbox026">	Facility license (for all recyclers i   .e metal, used oil, cans, plastic etc)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <hr class="light-grey-hr"/>
-                                    </li>
-                                    <li class="todo-item">
-                                        <div class="checkbox checkbox-warning">
-                                            <input type="checkbox" class="CheckList5" id="checkbox027" />
-                                            <label for="checkbox027">spill containment system</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <hr class="light-grey-hr"/>
-                                    </li>
-                                    <li class="todo-item">
-                                        <div class="checkbox checkbox-warning">
-                                            <input type="checkbox" class="CheckList5" id="checkbox028" />
-                                            <label for="checkbox028">spill containment system</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <hr class="light-grey-hr"/>
-                                    </li>
-                                    <li class="todo-item">
-                                        <div class="checkbox checkbox-warning">
-                                            <input type="checkbox" class="CheckList5" id="checkbox029" />
-                                            <label for="checkbox029">Pollution liability cover (hazardous waste)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <hr class="light-grey-hr"/>
-                                    </li>
-                                    <li class="todo-item">
-                                        <div class="checkbox checkbox-warning">
-                                            <input type="checkbox" class="CheckList5" id="checkbox030" />
-                                            <label for="checkbox030">Service agreement with disposer (hazardous waste)</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <hr class="light-grey-hr"/>
-                                    </li>
-                                </ul>
-                                <!-- /Todo-List -->
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <form method="post" id="Declining" action="ServletDwmpc">
-                <input type="hidden" name="command" value="Officers Action">
-                <input type="hidden" name="action" value="Decline">
-                <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
-                <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
-                <input type="hidden" name="company_id" value="${Company_info.company_Id}">
-            </form>
-            <form method="post" id="Approve" action="ServletDwmpc">
-                <input type="hidden" name="command" value="Officers Action">
-                <input type="hidden" name="action" value="Approve">
-                <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
-                <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
-                <input type="hidden" name="company_id" value="${Company_info.company_Id}">
-                <input type="hidden" name="own" value="${All_Vehicles[0].own}">
-                <input type="hidden" name="hazardous_waste" value="${All_Vehicles[0].hazardous_waste}">
-            </form>
-            <script>
-                function toggle(source) {
-                    var checkboxes = document.querySelectorAll('.CheckList5');
-                    for (var i = 0; i < checkboxes.length; i++) {
-                        if (checkboxes[i] != source)
-                            checkboxes[i].checked = source.checked;
-                    }
-                }
-                function toggle1(source) {
-                    var checkboxes = document.querySelectorAll('.CheckList4');
-                    for (var i = 0; i < checkboxes.length; i++) {
-                        if (checkboxes[i] != source)
-                            checkboxes[i].checked = source.checked;
-                    }
-                }
-                function toggle2(source) {
-                    var checkboxes = document.querySelectorAll('.CheckList3');
-                    for (var i = 0; i < checkboxes.length; i++) {
-                        if (checkboxes[i] != source)
-                            checkboxes[i].checked = source.checked;
-                    }
-                }
-                function toggle3(source) {
-                    var checkboxes = document.querySelectorAll('.CheckList2');
-                    for (var i = 0; i < checkboxes.length; i++) {
-                        if (checkboxes[i] != source)
-                            checkboxes[i].checked = source.checked;
-                    }
-                }
-                function toggle4(source) {
-                    var checkboxes = document.querySelectorAll('.CheckList1');
-                    for (var i = 0; i < checkboxes.length; i++) {
-                        if (checkboxes[i] != source)
-                            checkboxes[i].checked = source.checked;
-                    }
-                }
-            </script>
-
-
             <!-- Footer -->
             <footer class="footer container-fluid pl-30 pr-30">
                 <div class="row">

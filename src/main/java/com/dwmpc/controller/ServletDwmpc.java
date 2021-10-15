@@ -170,6 +170,25 @@ public class ServletDwmpc extends HttpServlet {
             HttpSession session=request.getSession();
             List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(User_id,UserType,Branch);
 
+            if(UserType.equals("Waste Management Officer")){
+                String Affi=request.getParameter("own");
+                String hazardous_waste=request.getParameter("hazardous_waste");
+                String general="All Present";
+                String Additional;
+                String hazardus;
+                if(hazardous_waste.equals("Hazardous waste")){
+                    hazardus="All Present";
+                }else{
+                    hazardus="Not Needed";
+                }
+                if(Affi.equals("Yes")){
+                    Additional="All Present";
+                }else {
+                    Additional="Not Needed";
+                }
+                connectionUtil.registerInspection(User_id,general,hazardus,Additional);
+            }
+
             if(!CompanyInfo.isEmpty()){
                 session.setAttribute("All_companies", CompanyInfo);
             }
@@ -415,9 +434,11 @@ public class ServletDwmpc extends HttpServlet {
         session.setAttribute("Company_info", FirstCompanyDetails);
         if(userType.equals("Client")){
             request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
-        }else if(userType.equals("Client")) { Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
+        }else if(userType.equals("Waste Management Officer")) { Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
             Vehicle_id=request.getParameter("vehicle_id");
             delay_Time=request.getParameter("delayTime");
+            List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(Vehicle_id,"Waste Management Officer");
+            session.setAttribute("All_Vehicles",getVehicleDetail);
 
             request.getRequestDispatcher("WMO-Inspection.jsp").forward(request, response);
         }else{
@@ -727,7 +748,7 @@ public class ServletDwmpc extends HttpServlet {
 
         connectionUtil.registerVehicle(vehicleRegistration,action,addAction);
 
-        List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(company_id);
+        List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(String.valueOf(company_id),"Client");
         List<vehicle> getUnAppliedVehicle=connectionUtil.getPendingApplication(company_id);
         HttpSession session = request.getSession();
         if(addAction.equals("Both")){
@@ -745,9 +766,9 @@ public class ServletDwmpc extends HttpServlet {
 
     private void getVehicle(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session=request.getSession();
-        int Company_id= Integer.parseInt(request.getParameter("company_id"));
-        List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(Company_id);
-        List<vehicle> getUnAppliedVehicle=connectionUtil.getPendingApplication(Company_id);
+        String Company_id=request.getParameter("company_id");
+        List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(Company_id,"Client");
+        List<vehicle> getUnAppliedVehicle=connectionUtil.getPendingApplication(Integer.parseInt(Company_id));
         session.setAttribute("All_Vehicles",getVehicleDetail);
         session.setAttribute("Pending",getUnAppliedVehicle);
         response.sendRedirect("Vehicle-Table.jsp");
