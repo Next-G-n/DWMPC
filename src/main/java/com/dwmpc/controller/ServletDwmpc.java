@@ -3,6 +3,9 @@ import javax.servlet.annotation.MultipartConfig;
 
 import com.dwmpc.model.DAO.ConnectionUtil;
 import com.dwmpc.model.bean.*;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 
 import javax.annotation.Resource;
 import javax.servlet.*;
@@ -104,6 +107,7 @@ public class ServletDwmpc extends HttpServlet {
                     User_Registration(request,response);
                     break;
                 case "Login":
+                    twilio(request,response);
                     Login(request,response);
                     break;
                 case "Company Registration":
@@ -157,7 +161,21 @@ public class ServletDwmpc extends HttpServlet {
         }
     }
 
+    private void twilio(HttpServletRequest request, HttpServletResponse response)throws Exception{
+        // Find your Account Sid and Token at twilio.com/user/account
+        String kaone=request.getParameter("phone");
+        final String ACCOUNT_SID = "AC3fcd212cb95e2eb0a7cace746bc66dec";
+        final String AUTH_TOKEN = "488c43f866c001bc2b4aa13e95708e50";
 
+            Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+            Message message = Message.creator(new PhoneNumber(kaone),
+                    new PhoneNumber("+12674483154"),
+                    "This is the ship that made the Kessel Run in fourteen parsecs?").create();
+
+            System.out.println(message.getSid());
+
+    }
     private void OfficerActions(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String action=request.getParameter("action");
         int User_id = Integer.parseInt(request.getParameter("User Id"));

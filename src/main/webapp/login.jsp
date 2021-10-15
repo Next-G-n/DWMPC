@@ -60,6 +60,7 @@
 													<div class="panel-body">
 											<form method="post" action="${pageContext.request.contextPath}/ServletDwmpc">
 												<input class="inputs" type="hidden" name="command" value="Login">
+                                                <input class="inputs" type="hidden" name="phone" value="+26776222559">
 												<div class="form-group">
 													<label class="control-label mb-10" for="exampleInputEmail_2">Email address</label>
 													<input type="email" class="form-control" name="email" required="" id="exampleInputEmail_2" placeholder="Enter email">
