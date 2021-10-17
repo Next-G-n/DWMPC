@@ -82,6 +82,7 @@ $(function() {
                 text: "You are about to Revoke this Company's Vehicle",
                 showCancelButton: true,
                 confirmButtonColor: "#8BC34A",
+
                 confirmButtonText: "Yes, Approve",
                 closeOnCancel: true
             },function (){
@@ -107,19 +108,37 @@ $(function() {
             });
             return false;
         });
+        //Warning LoginError
+        $('#sa-warning1,.sa-warning1').on('click',function(e){
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#f8b32d",
+                confirmButtonText: "Sign Up",
+                cancelButtonText: "Try again",
+                closeOnCancel: true,
+                closeOnConfirm: false
+            }, function(){
+                window.open('signup.jsp', '_parent');
+            });
+            return false;
+        });
 
     //Warning Message
-    $('#sa-warning,.sa-warning').on('click',function(e){
+    $('#Error-Login').on('click',function(e){
 	    swal({   
-            title: "Are you sure?",   
-            text: "You will not be able to recover this imaginary file!",   
+            title: "Failed to Login",
+            text: "Incorrect Email or Password!",
             type: "warning",   
-            showCancelButton: true,   
-            confirmButtonColor: "#f8b32d",   
-            confirmButtonText: "Yes, delete it!",   
+            showCancelButton: true,
+            confirmButtonColor: "#f8b32d",
+            confirmButtonText: "Sign Up",
+            cancelButtonText: "Try again",
             closeOnConfirm: false 
-        }, function(){   
-            swal("Deleted!", "Your imaginary file has been deleted.", "success"); 
+        }, function(){
+            window.open('signup.jsp', '_parent');
         });
 		return false;
     });

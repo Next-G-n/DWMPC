@@ -922,6 +922,7 @@
                 <form method="post" id="Approving" action="ServletDwmpc">
                     <input type="hidden" name="command" value="Officers Action">
                     <input type="hidden" name="action" value="Approving">
+                    <input type="hidden" name="Apply_id" value="${Apply_id}">
                     <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
                     <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
                     <input type="hidden" name="Branch" value="${User_Info[0].location}">
@@ -930,6 +931,7 @@
                 <form method="post" id="Declining" action="ServletDwmpc">
                     <input type="hidden" name="command" value="Officers Action">
                     <input type="hidden" name="action" value="Decline">
+                    <input type="hidden" name="Apply_id" value="${Apply_id}">
                     <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
                     <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
                     <input type="hidden" name="company_id" value="${Company_info.company_Id}">
@@ -938,6 +940,7 @@
                 <form method="post" id="Revoking" action="ServletDwmpc">
                     <input type="hidden" name="command" value="Officers Action">
                     <input type="hidden" name="action" value="Revoke">
+                    <input type="hidden" name="Apply_id" value="${Apply_id}">
                     <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
                     <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
                     <input type="hidden" name="company_id" value="${Company_info.company_Id}">

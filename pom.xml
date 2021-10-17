@@ -45,6 +45,11 @@
             <artifactId>javax.servlet.jsp.jstl-api</artifactId>
             <version>1.2.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.3m</version>
+        </dependency>
 
         <dependency>
             <groupId>javax.mail</groupId>
