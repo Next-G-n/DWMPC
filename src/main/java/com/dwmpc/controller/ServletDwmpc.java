@@ -2,7 +2,9 @@ package com.dwmpc.controller;
 import javax.servlet.annotation.MultipartConfig;
 
 import com.dwmpc.model.DAO.ConnectionUtil;
+import com.dwmpc.model.DAO.hash;
 import com.dwmpc.model.bean.*;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.annotation.Resource;
 import javax.servlet.*;
@@ -13,6 +15,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 import java.sql.Timestamp;
 import java.util.List;
@@ -23,6 +26,14 @@ import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+
+import java.math.BigInteger;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 
 @WebServlet(name = "ServletDwmpc", value = "/ServletDwmpc")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 14, // 10 MB
@@ -163,14 +174,17 @@ public class ServletDwmpc extends HttpServlet {
         int User_id = Integer.parseInt(request.getParameter("User Id"));
         String UserType = request.getParameter("UserType");
         String Branch=request.getParameter("Branch");
+        Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
 
             String Company_Id=request.getParameter("company_id");
             officerAction setAction=new officerAction(User_id,Apply_id,action,delay_Time);
+            System.out.println("Apply id: "+Apply_id);
             connectionUtil.OfficersActions(setAction,UserType,Vehicle_id,Company_Id);
             HttpSession session=request.getSession();
-            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(User_id,UserType,Branch);
+
 
             if(UserType.equals("Waste Management Officer")){
+                System.out.println("This works");
                 String Affi=request.getParameter("own");
                 String hazardous_waste=request.getParameter("hazardous_waste");
                 String general="All Present";
@@ -187,9 +201,13 @@ public class ServletDwmpc extends HttpServlet {
                     Additional="Not Needed";
                 }
                 connectionUtil.registerInspection(User_id,general,hazardus,Additional);
+                List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(User_id,UserType,Branch);
+                session.setAttribute("All_companies", CompanyInfo);
             }
 
+            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(User_id,UserType,Branch);
             if(!CompanyInfo.isEmpty()){
+                System.out.println("Compamy Name :"+CompanyInfo.get(0).getCompany_Name());
                 session.setAttribute("All_companies", CompanyInfo);
             }
             request.getRequestDispatcher("Officer-Home.jsp").forward(request, response);
@@ -223,51 +241,65 @@ public class ServletDwmpc extends HttpServlet {
         response.sendRedirect("login.jsp");
     }
 
-    private void Login(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    private void Login(HttpServletRequest request, HttpServletResponse response) throws Exception,NoSuchAlgorithmException, InvalidKeySpecException {
         String Email = request.getParameter("email");
-        String Password = request.getParameter("password");
+        String Password = request.getParameter("password").trim();
         String userType="Unknown";
         String Branch="None";
         String action="Login";
-        byte[] salt = getSalt();
-        String securePassword = get_SHA_512_SecurePassword(Password, salt);
+        //String securePassword = generateStorngPasswordHash(Password);
+        System.out.println(Password);
+        String securePassword= hash.setHash(Password);
 
-        List<user> userlg = connectionUtil.loginUser(Email, securePassword,action);
+        String test=hashPassword(Password);
+
+        System.out.println("testing :"+test);
+
+        List<user> userlg = connectionUtil.loginUser(Email, Password,action);
         HttpSession session=request.getSession();
         session.setAttribute("User_Info", userlg);
-        int user_id=userlg.get(0).getUser_Id();
-        System.out.println("this is user id :"+user_id+" and type :"+userlg.get(0).getUser_type());
 
+        if(!userlg.isEmpty()) {
+            int user_id=userlg.get(0).getUser_Id();
+            System.out.println("this is user id :"+user_id+" and type :"+userlg.get(0).getUser_type());
 
+            session.removeAttribute("LoginError");
 
-        if(userlg.get(0).getUser_type().equals("Administrator")){
-            action="Admin";
-            List<user> userlg2 = connectionUtil.loginUser(Email, securePassword,action);
-            session.setAttribute("All_offers", userlg2);
-            request.getRequestDispatcher("Admin-Table.jsp").forward(request, response);
+            if (userlg.get(0).getUser_type().equals("Administrator")) {
+                action = "Admin";
+                List<user> userlg2 = connectionUtil.loginUser(Email, securePassword, action);
+                session.setAttribute("All_offers", userlg2);
+                request.getRequestDispatcher("Admin-Table.jsp").forward(request, response);
 
-        }else if(userlg.get(0).getUser_type().equals("Client")){
-            userType="Client";
-            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(user_id,userType,Branch);
+            } else if (userlg.get(0).getUser_type().equals("Client")) {
+                userType = "Client";
+                List<company_Information> CompanyInfo = connectionUtil.getAllCompanies(user_id, userType, Branch);
 
-            if(!CompanyInfo.isEmpty()){
-                session.setAttribute("All_companies", CompanyInfo);
+                if (!CompanyInfo.isEmpty()) {
+                    session.setAttribute("All_companies", CompanyInfo);
+                }
+                request.getRequestDispatcher("Home.jsp").forward(request, response);
+            } else {
+                userType = userlg.get(0).getUser_type();
+                Branch = userlg.get(0).getLocation();
+                List<company_Information> CompanyInfo = connectionUtil.getAllCompanies(user_id, userType, Branch);
+
+                System.out.println("officer");
+                if (!CompanyInfo.isEmpty()) {
+                    session.setAttribute("All_companies", CompanyInfo);
+                }
+                request.getRequestDispatcher("Officer-Home.jsp").forward(request, response);
             }
-            request.getRequestDispatcher("Home.jsp").forward(request, response);
-        }else  {
-            userType=userlg.get(0).getUser_type();
-            Branch=userlg.get(0).getLocation();
-            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(user_id,userType,Branch);
+        }else{
+            user ErrorSession=new user(Email);
 
-            if(!CompanyInfo.isEmpty()){
-                session.setAttribute("All_companies", CompanyInfo);
-            }
-            request.getRequestDispatcher("Officer-Home.jsp").forward(request, response);
+            session.setAttribute("LoginError",ErrorSession);
+            this.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
         }
 
     }
 
-    private void User_Registration(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    private void User_Registration(HttpServletRequest request, HttpServletResponse response) throws Exception,NoSuchAlgorithmException, InvalidKeySpecException {
 
         String firstName=request.getParameter("first_name");
         String lastName=request.getParameter("last_name");
@@ -290,8 +322,7 @@ public class ServletDwmpc extends HttpServlet {
 
         }else{
             String password=request.getParameter("password");
-            byte[] salt = getSalt();
-            securePassword = get_SHA_512_SecurePassword(password, salt);
+            securePassword= generateStorngPasswordHash(password);
         }
         user userReg;
         if(action.equals("Editing_Offers")){
@@ -434,18 +465,23 @@ public class ServletDwmpc extends HttpServlet {
         session.setAttribute("Company_info", FirstCompanyDetails);
         if(userType.equals("Client")){
             request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
-        }else if(userType.equals("Waste Management Officer")) { Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
+        }else if(userType.equals("Waste Management Officer")) {
+            Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
             Vehicle_id=request.getParameter("vehicle_id");
             delay_Time=request.getParameter("delayTime");
             List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(Vehicle_id,"Waste Management Officer");
             session.setAttribute("All_Vehicles",getVehicleDetail);
-
-            request.getRequestDispatcher("WMO-Inspection.jsp").forward(request, response);
+            session.setAttribute("Apply_id",Apply_id);
+            request.getRequestDispatcher("WMO-Inspection-Form.jsp").forward(request, response);
         }else{
+            Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
             Vehicle_id=request.getParameter("vehicle_id");
             delay_Time=request.getParameter("delayTime");
             System.out.println("This is well :"+delay_Time);
             System.out.println("This "+userType);
+            List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(Vehicle_id,"Waste Management Officer");
+            session.setAttribute("All_Vehicles",getVehicleDetail);
+            session.setAttribute("Apply_id",Apply_id);
             request.getRequestDispatcher("CompanyInfo-Officer-Table.jsp").forward(request, response);
         }
 
@@ -962,19 +998,18 @@ public class ServletDwmpc extends HttpServlet {
 
 
     //Add salt
-    private static byte[] getSalt() throws NoSuchAlgorithmException
-    {
-        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
-        byte[] salt = new byte[16];
-        sr.nextBytes(salt);
-        return salt;
+    //Add salt
+
+    private String hashPassword(String plainTextPassword){
+        return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt());
     }
+
     private static String get_SHA_512_SecurePassword(String passwordToHash, byte[] salt)
     {
         //Use MessageDigest md = MessageDigest.getInstance("SHA-512");
         String generatedPassword = null;
         try {
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
             md.update(salt);
             byte[] bytes = md.digest(passwordToHash.getBytes());
             StringBuilder sb = new StringBuilder();
@@ -990,5 +1025,76 @@ public class ServletDwmpc extends HttpServlet {
         }
         return generatedPassword;
     }
+
+    private static boolean validatePassword(String originalPassword, String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException
+    {
+        String[] parts = storedPassword.split(":");
+        int iterations = Integer.parseInt(parts[0]);
+        byte[] salt = fromHex(parts[1]);
+        byte[] hash = fromHex(parts[2]);
+
+        PBEKeySpec spec = new PBEKeySpec(originalPassword.toCharArray(), salt, iterations, hash.length * 8);
+
+        SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+
+        byte[] testHash = skf.generateSecret(spec).getEncoded();
+
+        int diff = hash.length ^ testHash.length;
+
+        for(int i = 0; i < hash.length && i < testHash.length; i++)
+        {
+            diff |= hash[i] ^ testHash[i];
+        }
+
+        return diff == 0;
+    }
+
+    private static String generateStorngPasswordHash(String password) throws NoSuchAlgorithmException, InvalidKeySpecException
+    {
+        int iterations = 1000;
+        char[] chars = password.toCharArray();
+        byte[] salt = getSalt().getBytes();
+
+        PBEKeySpec spec = new PBEKeySpec(chars, salt, iterations, 64 * 8);
+        SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+        byte[] hash = skf.generateSecret(spec).getEncoded();
+        return iterations + ":" + toHex(salt) + ":" + toHex(hash);
+
+    }
+
+    private static String getSalt() throws NoSuchAlgorithmException
+    {
+        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
+        byte[] salt = new byte[16];
+        sr.nextBytes(salt);
+        return salt.toString();
+    }
+
+    private static String toHex(byte[] array) throws NoSuchAlgorithmException
+    {
+        BigInteger bi = new BigInteger(1, array);
+        String hex = bi.toString(16);
+        int paddingLength = (array.length * 2) - hex.length();
+        if(paddingLength > 0)
+        {
+            return String.format("%0"  +paddingLength + "d", 0) + hex;
+        }else{
+            return hex;
+        }
+    }
+
+    private static byte[] fromHex(String hex) throws NoSuchAlgorithmException
+    {
+        byte[] bytes = new byte[hex.length() / 2];
+        for(int i = 0; i<bytes.length ;i++)
+        {
+            bytes[i] = (byte)Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);
+        }
+        return bytes;
+    }
+
+
+
+
 
 }

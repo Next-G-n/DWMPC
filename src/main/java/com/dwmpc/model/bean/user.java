@@ -29,6 +29,10 @@ public class user {
         Just=just;
     }
 
+    public user(String email) {
+        this.email = email;
+    }
+
     public user(int user_Id, String first_name, String last_name, String email, String user_type, int omang, String contact, String addRoles, String location) {
         this.user_Id = user_Id;
         this.first_name = first_name;

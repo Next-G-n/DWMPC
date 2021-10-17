@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -11,7 +13,11 @@
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="icon.ico">
 		<link rel="icon" href="icon.ico" type="image/x-icon">
-		
+
+		<!--alerts CSS -->
+		<link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
+
 		<!-- vector map CSS -->
 		<link href="vendors/bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css" rel="stylesheet" type="text/css"/>
 		
@@ -62,7 +68,7 @@
 												<input class="inputs" type="hidden" name="command" value="Login">
 												<div class="form-group">
 													<label class="control-label mb-10" for="exampleInputEmail_2">Email address</label>
-													<input type="email" class="form-control" name="email" required="" id="exampleInputEmail_2" placeholder="Enter email">
+													<input type="email" class="form-control" name="email" required="" id="exampleInputEmail_2" value="${LoginError.email}" placeholder="Enter email">
 												</div>
 												<div class="form-group">
 													<label class="pull-left control-label mb-10" for="exampleInputpwd_2">Password</label>
@@ -82,7 +88,16 @@
 													<button type="submit" class="btn btn-primary btn-anim"><i class="fa fa-sign-in"></i><span class="btn-text">Login</span></button>
 												</div>
 											</form>
+														<button style="display: none" id="Error-Login" alt="alert" >testing</button>
+
 													</div>
+													<c:if test="${LoginError!=null}">
+														<script>
+															window.onload = function() {
+																document.getElementById("Error-Login").click();
+															}
+														</script>
+													</c:if>
 												</div>
 										</div>
 									</div>	
@@ -110,6 +125,10 @@
 		
 		<!-- Slimscroll JavaScript -->
 		<script src="dist/js/jquery.slimscroll.js"></script>
+
+		<!-- Sweet-Alert  -->
+		<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="dist/js/sweetalert-data.js"></script>
 		
 		<!-- Init JavaScript -->
 		<script src="dist/js/init.js"></script>

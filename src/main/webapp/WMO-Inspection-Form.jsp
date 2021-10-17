@@ -1387,6 +1387,7 @@
                                 </ul>
                                 <!-- /Todo-List -->
 
+                                <button type="submit" onclick="Approve()"   class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Approve</span></button>
                             </div>
                         </div>
                     </div>
@@ -1396,15 +1397,19 @@
             <form method="post" id="Declining" action="ServletDwmpc">
                 <input type="hidden" name="command" value="Officers Action">
                 <input type="hidden" name="action" value="Decline">
+                <input type="hidden" name="Apply_id" value="${Apply_id}">
                 <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
                 <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
+                <input type="hidden" name="Branch" value="${User_Info[0].location}">
                 <input type="hidden" name="company_id" value="${Company_info.company_Id}">
             </form>
             <form method="post" id="Approve" action="ServletDwmpc">
                 <input type="hidden" name="command" value="Officers Action">
-                <input type="hidden" name="action" value="Approve">
+                <input type="hidden" name="action" value="Approving">
+                <input type="hidden" name="Apply_id" value="${Apply_id}">
                 <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
                 <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
+                <input type="hidden" name="Branch" value="${User_Info[0].location}">
                 <input type="hidden" name="company_id" value="${Company_info.company_Id}">
                 <input type="hidden" name="own" value="${All_Vehicles[0].own}">
                 <input type="hidden" name="hazardous_waste" value="${All_Vehicles[0].hazardous_waste}">
@@ -1444,6 +1449,9 @@
                         if (checkboxes[i] != source)
                             checkboxes[i].checked = source.checked;
                     }
+                }
+                function Approve(){
+                    document.getElementById("Approve").submit();
                 }
             </script>
 

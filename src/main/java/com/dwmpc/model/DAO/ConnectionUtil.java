@@ -107,40 +107,58 @@ public class ConnectionUtil {
         Connection myConn=null;
         PreparedStatement myStmt=null;
         ResultSet myRS=null;
+        String em=null;
         try {
-            myConn=dataSource.getConnection();
+            myConn = dataSource.getConnection();
             String sql;
-            if(action.equals("Admin")){
-                sql="select * from user where not `User Type`='Client'";
-                myStmt=myConn.prepareStatement(sql);
-            }else {
-                sql="select * from user where Email=?";
-                myStmt=myConn.prepareStatement(sql);
-                myStmt.setString(1,email);
+            if (action.equals("Admin")) {
+                System.out.println("thiss this");
+                em="Admin";
+                sql = "select * from user where not `User Type`='Client'";
+                myStmt = myConn.prepareStatement(sql);
+            } else {
+                em="Users";
+                sql = "select * from user where Email=?";
+                myStmt = myConn.prepareStatement(sql);
+                myStmt.setString(1, email);
             }
 
 
-            myRS=myStmt.executeQuery();
+            myRS = myStmt.executeQuery();
             while (myRS.next()) {
-                int id=myRS.getInt("User Id");
-                String userType=myRS.getString("User Type");
-                String firstName=myRS.getString("First Name");
-                String lastName=myRS.getString("Last Name");
-                email=myRS.getString("Email");
-                int omang=myRS.getInt("Omang");
-                String contact=myRS.getString("Contact");
-                String location=myRS.getString("Location");
-                if(action.equals("Admin")){
-                    String addRoles=myRS.getString("Add Roles");
-                    user login2=new user(id,firstName,lastName,email,userType,omang,contact,addRoles,location);
-                    login.add(login2);
-                }else{
-                    user login2=new user(id,firstName,lastName,email,userType,password,omang,contact,location,"just");
-                    login.add(login2);
+                int id = myRS.getInt("User Id");
+                String userType = myRS.getString("User Type");
+                String firstName = myRS.getString("First Name");
+                String lastName = myRS.getString("Last Name");
+                email = myRS.getString("Email");
+                int omang = myRS.getInt("Omang");
+                String contact = myRS.getString("Contact");
+                String location = myRS.getString("Location");
+                String PasswordOG = myRS.getString("Password");
+                boolean matched = hash.validatePassword(password, PasswordOG);
+
+                System.out.println(matched);
+                user login2;
+
+
+                    if (action.equals("Admin")) {
+                        System.out.println("testing ");
+                        String addRoles = myRS.getString("Add Roles");
+                        login2 = new user(id, firstName, lastName, email, userType, omang, contact, addRoles, location);
+                        login.add(login2);
+                    } else {
+                        login2 = new user(id, firstName, lastName, email, userType, password, omang, contact, location, "just");
+                        login.add(login2);
+                    }
+                if (!matched && !em.equals("Admin")) {
+                  login.clear();
+                  System.out.println("thiiswwwww");
                 }
 
+
             }
-        }finally {
+        }
+        finally {
             close(myConn,myStmt,myRS);
         }
 
@@ -158,7 +176,7 @@ public class ConnectionUtil {
             myConn=dataSource.getConnection();
             String sql2=null;
             if(action.equals("Registration")){
-                sql2="INSERT INTO `dwmpc1.0`.`company_information` (`User Id`, " +
+                sql2="INSERT INTO `company_information` (`User Id`, " +
                         "`Company Name`, `Company Email`, `Street Address`,`Street Address2`, `Region`, `City/Town/Village`, " +
                         "`Plot Number`, `Ward`, `Telephone`, `Fax Number`, `Phone Number`, `Date Unix`," +
                         " `Company License Status`, `Company Status`, `Current Status`) VALUES (?,?,?,?,?" +
@@ -185,7 +203,7 @@ public class ConnectionUtil {
                 myStmt.setString(16,"UpToDate" );
             }else {
                 System.out.println("www");
-                sql2="Update `dwmpc1.0`.`company_information` set  `Company Name`='"+registerCompany.getCompany_Name()+"'," +
+                sql2="Update `company_information` set  `Company Name`='"+registerCompany.getCompany_Name()+"'," +
                         " `Company Email`='"+registerCompany.getEmail()+"', " +
                         " `Street Address`='"+registerCompany.getStreet_Address()+"', " +
                         "`Street Address2`='"+registerCompany.getStreet_Address2()+"', " +
@@ -203,9 +221,9 @@ public class ConnectionUtil {
             int user_id=registerCompany.getUser_Id();
             String sql3;
             if(action.equals("Registration")){
-                sql3="select * from `dwmpc1.0`.`company_information` where `Company Id`=LAST_INSERT_ID()";
+                sql3="select * from `company_information` where `Company Id`=LAST_INSERT_ID()";
             }else {
-                sql3="select * from `dwmpc1.0`.`company_information` where `Company Id`="+registerCompany.getCompany_Id();
+                sql3="select * from `company_information` where `Company Id`="+registerCompany.getCompany_Id();
             }
 
             myStmt=myConn.prepareStatement(sql3);
@@ -240,11 +258,12 @@ public class ConnectionUtil {
                 if(userType.equals("Client")){
                     sql ="Select * from company_information where `User Id`="+userId+";";
                 }else{
-                    sql ="SELECT * FROM `dwmpc1.0`.application_status a left join vehicle v on" +
+
+                    System.out.println("application_status" +Branch);
+                    sql ="SELECT * FROM application_status a left join vehicle v on" +
                             " a.`Chase Number`=v.`Chase Number` left join company_information c on " +
                             "v.`Company Id`=c.`Company Id` where a.`Current Office`='"+userType+"' and " +
                             "a.`Status Of Application`='UptoDate' and c.`Region`='"+Branch+"' and not v.`StatusV`='Company is Revoked';";
-
                 }
 
                 myStmt=myConn.prepareStatement(sql);
@@ -367,7 +386,7 @@ public class ConnectionUtil {
             System.out.println("this is the action P :"+action);
             String sql=null;
             if(action.equals("RegisteringEmployee")){
-                sql="INSERT INTO `dwmpc1.0`.`company_personnel` (`Company Id`, `First Name`, `Last Name`, `Job Title`, " +
+                sql="INSERT INTO `company_personnel` (`Company Id`, `First Name`, `Last Name`, `Job Title`, " +
                         "`Qualification`, `Trained In Waste Management`, `Employee Status`,`Contact`) VALUES (?,?,?,?,?,?,?,?)";
                 myStmt=myConn.prepareStatement(sql);
                 myStmt.setInt(1,companyPersonnel.getCompany_Id());
@@ -455,7 +474,7 @@ public class ConnectionUtil {
                 myStmt.setString(8,vehicleRegistration.getChase_number());
 
             }else if(action.equals("RegisteringVehicle")){
-                sql ="INSERT INTO `dwmpc1.0`.`vehicle` (`Chase Number`, `Company Id`, `Vehicle Type`," +
+                sql ="INSERT INTO `vehicle` (`Chase Number`, `Company Id`, `Vehicle Type`," +
                         " `Unladen Weight`, `Waste Type`, `Annual Quantity`, `Type Of Waste Covered During Transportation`," +
                         " `Carrier Number`, `BA Permit`, `Certification Of Cooperation`, `Payment Receipt`, `Facility Licence`," +
                         " `Hazardous Waste`, `Training On Health And Safety`, `Fire Fighting And First Aid`, `Health And Environment`, " +
@@ -654,7 +673,7 @@ public class ConnectionUtil {
         String ApplicationDate= String.valueOf(timestamp.getTime());
         try {
             myConn = dataSource.getConnection();
-            String sql2 = "INSERT INTO `dwmpc1.0`.`application_status` (`Level`, `Current Office`, `Chase Number`, `Unix Application Date`, `Status Of Application`) VALUES (?,?,?,?,?)";
+            String sql2 = "INSERT INTO `application_status` (`Level`, `Current Office`, `Chase Number`, `Unix Application Date`, `Status Of Application`) VALUES (?,?,?,?,?)";
             myStmt = myConn.prepareStatement(sql2);
             myStmt.setString(1,"stage 1");
             myStmt.setString(2, "Compliance Officer");
@@ -682,7 +701,7 @@ public class ConnectionUtil {
             myConn=dataSource.getConnection();
             String sql=null;
 
-                sql = "INSERT INTO `dwmpc1.0`.`officer_action` (`User Id`, `Application Status Id`, `Action Taken`, `Delay Time`)" +
+                sql = "INSERT INTO `officer_action` (`User Id`, `Application Status Id`, `Action Taken`, `Delay Time`)" +
                         " VALUES (?,?,?,?)";
                 myStmt = myConn.prepareStatement(sql);
                 myStmt.setInt(1, setAction.getUser_Id());
@@ -721,29 +740,37 @@ public class ConnectionUtil {
                         default:
                             throw new IllegalStateException("Unexpected value: " + nextApprove);
                     }
-                        sql = "update `dwmpc1.0`.application_status set `Level` ='"+level+"' , `Current Office`='"+nextApprove+
+
+                    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                    String ApplicationDate= String.valueOf(timestamp.getTime());
+
+                    System.out.println("This testing Approve :"+setAction.getApplication_Status_Id());
+                    System.out.println("This testing Current Office :"+nextApprove);
+                        sql = "update application_status set `Level` ='"+level+"' " +
+                                ",`Unix Application Date`='"+ApplicationDate+"'" +
+                                ", `Current Office`='"+nextApprove+
                                 "' where `Application Status Id`="+setAction.getApplication_Status_Id()+"";
                     myStmt = myConn.prepareStatement(sql);
                     myStmt.execute();
-                    sql = "update `dwmpc1.0`.vehicle set `StatusV` ='"+level+
+                    sql = "update vehicle set `StatusV` ='"+level+
                             "' where `Chase Number`='"+vehicle_id+"'";
                     myStmt = myConn.prepareStatement(sql);
                     myStmt.execute();
                 }else if(setAction.getAction_Taken().equals("Decline")){
-                    sql = "update `dwmpc1.0`.vehicle set `StatusV` ='Fix info"+
+                    sql = "update vehicle set `StatusV` ='Fix info"+
                             "' where `Chase Number`='"+vehicle_id+"'";
                     myStmt = myConn.prepareStatement(sql);
                     myStmt.execute();
-                    sql = "update `dwmpc1.0`.application_status set `Status Of Application` ='Fix info"+
+                    sql = "update application_status set `Status Of Application` ='Fix info"+
                             "' where `Chase Number`='"+vehicle_id+"'";
                     myStmt = myConn.prepareStatement(sql);
                     myStmt.execute();
                 }else if(setAction.getAction_Taken().equals("Revoke")) {
-                    sql = "update `dwmpc1.0`.company_information set `Current Status` ='Company is Revoked" +
+                    sql = "update company_information set `Current Status` ='Company is Revoked" +
                             "' where `Company Id`='" + Company_id + "'";
                     myStmt = myConn.prepareStatement(sql);
                     myStmt.execute();
-                    sql = "update `dwmpc1.0`.vehicle set `StatusV` ='Company is Revoked"+
+                    sql = "update vehicle set `StatusV` ='Company is Revoked"+
                             "' where `Company Id`='" + Company_id + "'";
                     myStmt = myConn.prepareStatement(sql);
                     myStmt.execute();
@@ -756,6 +783,7 @@ public class ConnectionUtil {
     public void registerInspection(int user_id, String general, String hazardus, String additional) throws Exception {
         Connection myConn=null;
         PreparedStatement myStmt=null;
+        System.out.println("Join :"+user_id);
         try {
             myConn = dataSource.getConnection();
             String sql2 = "INSERT INTO `dwmpc`.`inspection` (`General Check List`," +
@@ -766,9 +794,8 @@ public class ConnectionUtil {
             myStmt.setString(3, hazardus);
             myStmt.setInt(4, user_id);
             myStmt.execute();
-        }catch (SQLIntegrityConstraintViolationException e){
-            System.out.println("This ");
-        } finally {
+            System.out.println("Thapelo Chandida");
+        }finally {
             close(myConn,myStmt,null);
         }
         System.out.println("error ");
