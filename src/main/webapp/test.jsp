@@ -1,36 +1,67 @@
+
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>DWMPC || Vehicle Registration Form</title>
+    <title>DWMPC</title>
     <meta name="description" content="Zapily is a Dashboard & Admin Site Responsive Template by hencework." />
     <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Zapily Admin, Zapilyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
     <meta name="author" content="hencework"/>
 
+    <!-- jquery-steps css -->
+    <link rel="stylesheet" href="vendors/bower_components/jquery.steps/demo/css/jquery.steps.css">
+
+    <!--alerts CSS -->
+    <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
+
     <!-- Favicon -->
-    <link rel="shortcut icon" href="icon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" href="icon.ico" type="image/x-icon">
-    <!-- vector map CSS -->
-    <link href="vendors/bower_components/jquery-wizard.js/css/wizard.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Data table CSS -->
+    <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Toast CSS -->
+    <link href="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
 
     <!-- bootstrap-select CSS -->
     <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
 
-    <!-- Bootstrap Dropify CSS -->
-    <link href="vendors/bower_components/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Calendar CSS -->
+    <link href="vendors/bower_components/fullcalendar/dist/fullcalendar.css" rel="stylesheet" type="text/css"/>
+
+    <!-- bootstrap-touchspin CSS -->
+    <link href="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css"/>
+
 
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+    <style>
+        #example_paginate, #example_info{
+            display: none;
+        }
+        .pa-01:hover {
+            cursor: pointer;
+            background-color: #f6f7f6;
+        }
+        .bg-dark-green:hover{
+            cursor: pointer;
+            background-color: #5a896f;
+        }
+    </style>
 </head>
 
 <body>
-<!--Preloader-->
+<!-- Preloader -->
 <div class="preloader-it">
     <div class="la-anim-1"></div>
 </div>
-<!--/Preloader-->
-<div class="wrapper theme-1-active pimary-color-gold">
+<!-- /Preloader -->
+<div class="wrapper theme-1-active pimary-color-green">
 
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -422,7 +453,8 @@
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle" src="img/user2.png" alt="user"/>
                                                                 <div class="user-data">
-                                                                    <span class="name block capitalize-font">Madalyn Rascon</span>
+                                                                    <span class="name block capitalize-font">Madalyn Rascon
+                                                                    </span>
                                                                     <span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
                                                                 </div>
                                                                 <div class="status online"></div>
@@ -709,68 +741,57 @@
                                     <a href="javascript:void(0)" class="inline-block txt-grey">
                                         <i class="zmdi zmdi-more"></i>
                                     </a>
-                                    <span class="inline-block txt-dark">todo list</span>
+                                    <span class="inline-block txt-dark">Profile</span>
                                     <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="set-height-wrap">
                                     <!-- Todo-List -->
-                                    <ul class="todo-list nicescroll-bar">
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-default">
-                                                <input type="checkbox" id="checkbox01"/>
-                                                <label for="checkbox01">Record The First Episode</label>
+                                    <div class="col-xs-12">
+                                        <div class="panel panel-default card-view  pa-0">
+                                            <div class="panel-wrapper collapse in">
+                                                <div class="panel-body  pa-0">
+                                                    <div class="profile-box">
+                                                        <div class="profile-cover-pic">
+                                                            <div class="fileupload btn btn-default">
+                                                                <span class="btn-text">edit</span>
+                                                                <input class="upload" type="file">
+                                                            </div>
+                                                            <div class="profile-image-overlay"></div>
+                                                        </div>
+                                                        <div class="profile-info text-center">
+                                                            <div class="profile-img-wrap">
+                                                                <img class="inline-block mb-10" src="img/mock1.jpg" alt="user"/>
+                                                                <div class="fileupload btn btn-default">
+                                                                    <span class="btn-text">edit</span>
+                                                                    <input class="upload" type="file">
+                                                                </div>
+                                                            </div>
+                                                            <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">Madalyn Rascon</h5>
+                                                            <h6 class="block capitalize-font pb-20">Developer Geek</h6>
+                                                        </div>
+                                                        <div class="social-info">
+                                                            <div class="row">
+                                                                <div class="col-xs-4 text-center">
+                                                                    <span class="counts block head-font"><span class="counter-anim">345</span></span>
+                                                                    <span class="counts-text block">post</span>
+                                                                </div>
+                                                                <div class="col-xs-4 text-center">
+                                                                    <span class="counts block head-font"><span class="counter-anim">246</span></span>
+                                                                    <span class="counts-text block">followers</span>
+                                                                </div>
+                                                                <div class="col-xs-4 text-center">
+                                                                    <span class="counts block head-font"><span class="counter-anim">898</span></span>
+                                                                    <span class="counts-text block">tweets</span>
+                                                                </div>
+                                                            </div>
+                                                            <button class="btn btn-gold btn-block  btn-anim mt-40" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-pink">
-                                                <input type="checkbox" id="checkbox02"/>
-                                                <label for="checkbox02">Prepare The Conference Schedule</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" id="checkbox03" checked/>
-                                                <label for="checkbox03">Decide The Live Discussion Time</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-success">
-                                                <input type="checkbox" id="checkbox04" checked/>
-                                                <label for="checkbox04">Prepare For The Next Project</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-danger">
-                                                <input type="checkbox" id="checkbox05" checked/>
-                                                <label for="checkbox05">Finish Up AngularJs Tutorial</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-purple">
-                                                <input type="checkbox" id="checkbox06" checked/>
-                                                <label for="checkbox06">Finish Infinity Project</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                    </ul>
+                                        </div>
+                                    </div>
                                     <!-- /Todo-List -->
                                 </div>
                             </div>
@@ -782,312 +803,201 @@
     </div>
     <!-- /Right Sidebar Menu -->
 
-
-
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container">
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark"></h5>
+                    <h5 class="txt-dark">form advanced</h5>
                 </div>
+
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Dashboard</a></li>
-                        <li><a href="${pageContext.request.contextPath}/Vehicle-Table.jsp">Vehicle Table</a></li>
-                        <li class="active"><span>Vehicle Registration Form</span></li>
+                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="#"><span>forms</span></a></li>
+                        <li class="active"><span>form-advanced</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
-                <!-- Row -->
 
             </div>
             <!-- /Title -->
+
+            <!-- Row -->
             <div class="row">
-                <div class="col-sm-12">
-                    <div class="panel panel-warning card-view">
+                <div class="col-md-6">
+                    <div class="panel panel-default card-view">
                         <div class="panel-heading">
                             <div class="pull-left">
-                                <h6 class="panel-title txt-light">Vehicle Registration</h6>
+                                <h6 class="panel-title txt-dark">Bootstrap Select boxes</h6>
                             </div>
                             <div class="clearfix"></div>
                         </div>
-
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-wrap">
-                                            <form data-toggle="validator" role="form" action="ServletDwmpc" method="post" enctype="multipart/form-data">
-
-                                                <input type="hidden" id="command" name="command" class="hidden" value="RegisteringVehicle"/>
-                                                <input type="hidden" id="action" name="action"  class="hidden" value="RegisteringVehicle"/>
-                                                <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
-                                                <input type="hidden" name="CompanyName" class="hidden" value="${Company_info.company_Name}"/>
-                                                <input type="hidden"  name="addAction"  class="hidden" value="Both"/>
-
+                                <p class="text-muted">Just add bootstrap-select-min.js and same css & add class <code>.selectpicker</code></p>
+                                <div class="form-wrap mt-40">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Vehicle_Type">Vehicle Type (required):</label>
-                                                            <input id="Vehicle_Type" type="text" name="vehicle_Type" class="form-control required" value="" required/>
-                                                        </div>
-                                                        <div class="span1"></div>
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Chassis_Number">Chassis Number(required):</label>
-                                                            <input id="Chassis_Number" type="text" name="Chassis_Number" class="form-control" value="" required/>
-                                                        </div>
-                                                    </div>
+                                                    <label class="control-label mb-10">Select box </label><i class="icon-question" data-container="body" title="" data-toggle="popover" data-placement="right" data-content="Photo booth Tofu biodiesel williamsburg marfa, four loko." data-original-title="Popover title"></i>
+                                                    <select class="selectpicker" data-style="form-control btn-default btn-outline">
+                                                        <option>Mustard</option>
+                                                        <option>Ketchup</option>
+                                                        <option>Relish</option>
+                                                    </select>
                                                 </div>
+                                            </div>
+                                            <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Unladen_Weight">Unladen Weight (required):</label>
-                                                            <input id="Unladen_Weight" type="text" name="Unladen_Weight" class="form-control required" value="" required/>
-                                                        </div>
-                                                        <div class="span1"></div>
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Registration_Number"> Vehicle Registration Number(required):</label>
-                                                            <input id="Registration_Number" type="text" name="Registration_Number" class="form-control" value="" required/>
-                                                        </div>
-                                                    </div>
+                                                    <label class="control-label mb-10">Select boxes with optgroups</label>
+                                                    <select class="selectpicker" data-style="form-control btn-default btn-outline">
+                                                        <optgroup label="Picnic">
+                                                            <option>Mustard</option>
+                                                            <option>Ketchup</option>
+                                                            <option>Relish</option>
+                                                        </optgroup>
+                                                        <optgroup label="Camping">
+                                                            <option>Tent</option>
+                                                            <option>Flashlight</option>
+                                                            <option>Toilet Paper</option>
+                                                        </optgroup>
+                                                    </select>
                                                 </div>
+                                            </div>
+                                            <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label for="Your_Vehicle" class="control-label mb-10"> This Your Vehicle?(required):</label>
-                                                            <select id="Your_Vehicle" name="Your_Vehicle" onchange="test2()" class="selectpicker" data-style="form-control btn-default btn-outline">
-                                                                <option value="Yes">Yes, I am the owner.</option>
-                                                                <option value="No">No, I borrowed it.</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="span1"></div>
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label for="Waste_Type" class="control-label mb-10"> Type Of Waste Transported(required):</label>
-                                                            <select id="Waste_Type" name="Waste_Type" class="selectpicker" data-style="form-control btn-default btn-outline">
-                                                                <option value="Bio waste">Bio Waste</option>
-                                                                <option value="Chemical waste">Chemical Waste</option>
-                                                                <option value="Hazardous waste">Hazardous Waste</option>
-                                                                <option value="Clinical Waste">Clinical Waste</option>
-                                                                <option value="Domestic Waste">Domestic Waste</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
+                                                    <label class="control-label mb-10">Multiple select boxes</label>
+                                                    <select class="selectpicker" multiple data-style="form-control btn-default btn-outline">
+                                                        <option>Mustard</option>
+                                                        <option>Ketchup</option>
+                                                        <option>Relish</option>
+                                                    </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Annual_Quatity">Annual Quantity(required):</label>
-                                                            <input id="Annual_Quatity" type="text" name="Annual_Quatity" class="form-control required" value="" required/>
-                                                        </div>
-                                                        <div class="span1"></div>
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Transportation">Type of Waste Covered During Transportation(required):</label>
-                                                            <input id="Transportation" type="text" name="Transportation" class="form-control" value="" required/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Vehicle_Attachment">Vehicle and Company Attachment(required):</label>
-                                                            <button href="#Vehicle-Attachment" data-toggle="modal" id="Vehicle_Attachment" class="btn btn-default btn-block btn-outline btn-anim"><i class="icon-paper-clip"></i><span class="btn-text">Upload Attactments</span></button>
-                                                        </div>
-                                                        <div class="span1"></div>
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Certificate_Attachment">Type of Waste Covered During Transportation(required):</label>
-                                                            <button href="#Certificate-Attachment" data-toggle="modal" id="Certificate_Attachment" class="btn btn-default btn-block btn-outline btn-anim"><i class="icon-paper-clip"></i><span class="btn-text">Upload Certificates</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-0">
-                                                    <div class="checkbox checkbox-success">
-                                                        <input type="checkbox" id="Vehicle_items" data-error="Please agree before proceeding" required>
-                                                        <label for="Vehicle_items">I agree that all the items listed here, a present with in Vehicle.</label>
-                                                        <div class="help-block with-errors"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-0" style="float: right">
-                                                    <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">submit</span></button>
-                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                                <div id="Vehicle-Attachment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                <h5 class="modal-title">Upload All The Following </h5>
-                                                            </div>
-                                                            <div class="modal-body">
+            </div>
+            <!-- /Row -->
 
+            <!-- test -->
+            <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h5 class="modal-title" id="myModalLabel">Edit Profile</h5>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Row -->
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="">
+                                        <div class="panel-wrapper collapse in">
+                                            <div class="panel-body pa-0">
+                                                <div class="col-sm-12 col-xs-12">
+                                                    <div class="form-wrap">
+                                                        <form action="#">
+                                                            <div class="form-body overflow-hide">
                                                                 <div class="form-group">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 col-xs-12 mt-40">
-                                                                            <label class="control-label mb-10" for="Payment_Receipt"> Payment Receipt(required):</label>
-                                                                            <input type="file" id="Payment_Receipt" name="Payment receipt" class="dropify"  required/>
+                                                                    <label class="control-label mb-10" for="exampleInputuname_1">Name</label>
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon"><i class="icon-user"></i></div>
+                                                                        <input type="text" class="form-control" id="exampleInputuname_1" placeholder="willard bryant">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label mb-10" for="exampleInputEmail_1">Email address</label>
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon"><i class="icon-envelope-open"></i></div>
+                                                                        <input type="email" class="form-control" id="exampleInputEmail_1" placeholder="xyz@gmail.com">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label mb-10" for="exampleInputContact_1">Contact number</label>
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon"><i class="icon-phone"></i></div>
+                                                                        <input type="email" class="form-control" id="exampleInputContact_1" placeholder="+102 9388333">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label mb-10" for="exampleInputpwd_1">Password</label>
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon"><i class="icon-lock"></i></div>
+                                                                        <input type="password" class="form-control" id="exampleInputpwd_1" placeholder="Enter pwd" value="password">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label mb-10">Gender</label>
+                                                                    <div>
+                                                                        <div class="radio">
+                                                                            <input type="radio" name="radio1" id="radio_1" value="option1" checked="">
+                                                                            <label for="radio_1">
+                                                                                M
+                                                                            </label>
                                                                         </div>
-                                                                        <div class="span1"></div>
-                                                                        <div class="col-md-6 col-xs-12 mt-40">
-                                                                            <label class="control-label mb-10" for="BA_Permit"> BA Permit(required):</label>
-                                                                            <input type="file" id="BA_Permit" name="BA permit" class="dropify"  required/>
+                                                                        <div class="radio">
+                                                                            <input type="radio" name="radio1" id="radio_2" value="option2">
+                                                                            <label for="radio_2">
+                                                                                F
+                                                                            </label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="PrDP"> PrDP 'H' For Hazardous Waste(required):</label>
-                                                                            <input type="file" id="PrDP" name="PrDP 'H' For Hazardous Waste" class="dropify"  required/>
-                                                                        </div>
-                                                                        <div class="span1"></div>
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="Registration_Book">Motor Vehicle Registration Book(required):</label>
-                                                                            <input type="file" id="Registration_Book" name="Motor_Vehicle_Registration_Book" class="dropify"  required/>
-                                                                        </div>
-                                                                    </div>
+                                                                    <label class="control-label mb-10">Country</label>
+                                                                    <select class="form-control" data-placeholder="Choose a Category" tabindex="1">
+                                                                        <option value="Category 1">USA</option>
+                                                                        <option value="Category 2">Austrailia</option>
+                                                                        <option value="Category 3">India</option>
+                                                                        <option value="Category 4">UK</option>
+                                                                    </select>
                                                                 </div>
-
-                                                                <div class="form-group">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="Facility"> Facility Licence[For all Recyclers](required):</label>
-                                                                            <input type="file" id="Facility" name="Facility Licence" class="dropify"  required/>
-                                                                        </div>
-                                                                        <div class="span1"></div>
-                                                                        <div id="affidavit1" class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="Affidavit"> Affidavit for Borrowed Vehicle(required):</label>
-                                                                            <input type="file" id="Affidavit" name="affidavit" class="dropify"  required/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
                                                             </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Done</span></button>
+                                                            <div class="form-actions mt-10">
+                                                                <button type="submit" class="btn btn-success mr-10 mb-30">Update profile</button>
                                                             </div>
-
-                                                        </div>
+                                                        </form>
                                                     </div>
                                                 </div>
-
-                                                <div id="Certificate-Attachment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                <h5 class="modal-title">Upload The Following Certificates</h5>
-                                                            </div>
-                                                            <div class="modal-body">
-
-                                                                <div class="form-group">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="Health_and_Safety"> Health and Safety(required):</label>
-                                                                            <input type="file" id="Health_and_Safety" name="Health and Safety" class="dropify"  required/>
-                                                                        </div>
-                                                                        <div class="span1"></div>
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="hazardous_waste">hazardous waste(required):</label>
-                                                                            <input type="file" id="hazardous_waste" name="hazardous waste" class="dropify"  required/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="FF_FA">Fire Fighting and First Aid(required):</label>
-                                                                            <input type="file" id="FF_FA" name="Fire fighting and First Aid" class="dropify"  required/>
-                                                                        </div>
-                                                                        <div class="span1"></div>
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="Environment">Health and Environment(required):</label>
-                                                                            <input type="file" id="Environment" name="Health and Environment" class="dropify"  required/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="Roadwortiness"> Certification Of Roadwortiness (required):</label>
-                                                                            <input type="file" id="Roadwortiness" name="Certification_of_roadwortiness" class="dropify"  required/>
-                                                                        </div>
-                                                                        <div class="span1"></div>
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="Cooperation">Certification of Cooperation(required):</label>
-                                                                            <input type="file" id="Cooperation" name="Certification of cooperation" class="dropify"  required/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Done</span></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </form>
-
-                                            <script>
-                                                function test2(){
-
-                                                }
-                                                $('#Your_Vehicle').bind('change', function(event) {
-
-                                                    var i= $('#Your_Vehicle').val();
-
-                                                    if(i==="Yes") // equal to a selection option
-                                                    {
-                                                        alert("Cicked")
-                                                        $('#affidavit1').hide();
-                                                        document.getElementById("affidavit1").style.display = "none";
-                                                    }
-                                                    else if(i==="No")
-                                                    {
-                                                        $('#affidavit1').show(); // show the other one
-                                                        document.getElementById("affidavit1").style.display = "block";
-                                                    }
-                                                });
-                                                $(document).ready(function(){
-                                                    $('#Your_Vehicle').on('change', function(){
-                                                        alert("yyy")
-                                                        var demovalue = $(this).val();
-                                                        if(demovalue ==="Yes"){
-                                                            alert("this Word")
-                                                            $("#affidavit1").hide();
-                                                        }else {
-                                                            $("#affidavit1").show();
-                                                        }
-                                                    });
-                                                });
-                                            </script>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success waves-effect" data-dismiss="modal">Save</button>
+                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+                        </div>
                     </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /test -->
 
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer container-fluid pl-30 pr-30">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>2018 &copy; Zapily. Pampered by Hencework</p>
                 </div>
             </div>
-            <!-- Footer -->
-            <footer class="footer container-fluid pl-30 pr-30">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <p>2021 &copy; DWMPC. Created by Next-gen</p>
-                    </div>
-                </div>
-            </footer>
-            <!-- /Footer -->
-        </div>
+        </footer>
+        <!-- /Footer -->
+
     </div>
     <!-- /Main Content -->
 
@@ -1106,36 +1016,79 @@
     }
 </script>
 
+
 <!-- jQuery -->
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
 <script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
+<script src="dist/js/modal-data.js"></script>
+
+<!-- Bootstrap Touchspin JavaScript -->
+<script src="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+
+
+<!-- Data table JavaScript -->
+<script src="vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="vendors/bower_components/jszip/dist/jszip.min.js"></script>
+<script src="vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
+<script src="vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
+
+<script src="vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="dist/js/export-table-data.js"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="dist/js/jquery.slimscroll.js"></script>
 
+<!-- EChartJS JavaScript -->
+<script src="vendors/bower_components/echarts/dist/echarts-en.min.js"></script>
+<script src="vendors/echarts-liquidfill.min.js"></script>
+<script src="vendors/ecStat.min.js"></script>
+
+<!-- Toast JavaScript -->
+<script src="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+
+<!-- Progressbar Animation JavaScript -->
+<script src="vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
+
 <!-- Fancy Dropdown JS -->
 <script src="dist/js/dropdown-bootstrap-extended.js"></script>
+
+<!-- Sparkline JavaScript -->
+<script src="vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
 
 <!-- Owl JavaScript -->
 <script src="vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 
+<!-- Calender JavaScripts -->
+<script src="vendors/bower_components/moment/min/moment.min.js"></script>
+<script src="vendors/jquery-ui.min.js"></script>
+<script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="dist/js/fullcalendar-data.js"></script>
+
 <!-- Switchery JavaScript -->
 <script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
+<!-- Bootstrap Select JavaScript -->
+<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+
 <!-- Init JavaScript -->
 <script src="dist/js/init.js"></script>
+<script src="dist/js/dashboard4-data.js"></script>
 
-<!-- Bootstrap Select JavaScript -->
-<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>
+<!-- Sweet-Alert  -->
+<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="dist/js/sweetalert-data.js"></script>
 
-<!-- Bootstrap Daterangepicker JavaScript -->
-<script src="vendors/bower_components/dropify/dist/js/dropify.min.js"></script>
 
-<!-- Form Flie Upload Data JavaScript -->
-<script src="dist/js/form-file-upload-data.js"></script>
+
+
 </body>
 
 </html>

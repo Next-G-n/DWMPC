@@ -73,7 +73,7 @@
         <div id="mobile_only_nav" class="mobile-only-nav pull-right">
             <ul class="nav navbar-right top-nav pull-right">
                 <li>
-                    <a id="" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
+                    <a href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
                 </li>
                 <li class="dropdown app-drp">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
@@ -82,7 +82,7 @@
                             <div class="app-nicescroll-bar">
                                 <ul class="app-icon-wrap pa-10">
                                     <li>
-                                        <a href="weather.html" class="connection-item">
+                                        <a href="weather." class="connection-item">
                                             <i class="zmdi zmdi-cloud-outline txt-info"></i>
                                             <span class="block">weather</span>
                                         </a>
@@ -132,75 +132,14 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
                     <ul class="dropdown-menu mega-menu pa-0" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                         <li class="product-nicescroll-bar row">
-                            <ul class="pa-20">
-                                <li class="col-md-3 col-xs-6 col-menu-list">
-                                    <a href="javascript:void(0);"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-                                    <hr class="light-grey-hr ma-0"/>
-                                    <ul>
-                                        <li>
-                                            <a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Analytical</a>
-                                        </li>
-                                        <li>
-                                            <a href="index2.html">Demographic</a>
-                                        </li>
-                                        <li>
-                                            <a href="index3.html">Project</a>
-                                        </li>
-                                        <li>
-                                            <a href="index4.html">Hospital</a>
-                                        </li>
-                                        <li>
-                                            <a href="index5.html">HRM</a>
-                                        </li>
-                                        <li>
-                                            <a href="index6.html">Real Estate</a>
-                                        </li>
-                                        <li>
-                                            <a href="profile.html">profile</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="col-md-3 col-xs-6 col-menu-list">
-                                    <a href="javascript:void(0);">
-                                        <div class="pull-left">
-                                            <i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span>
-                                        </div>
-                                        <div class="pull-right"><span class="label label-gold">hot</span>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </a>
-                                    <hr class="light-grey-hr ma-0"/>
-                                    <ul>
-                                        <li>
-                                            <a href="e-commerce.html">Dashboard</a>
-                                        </li>
-                                        <li>
-                                            <a href="product.html">Products</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-detail.html">Product Detail</a>
-                                        </li>
-                                        <li>
-                                            <a href="add-products.html">Add Product</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-orders.html">Orders</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-cart.html">Cart</a>
-                                        </li>
-                                        <li>
-                                            <a href="product-checkout.html">Checkout</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="col-md-6 col-xs-12 preview-carousel">
+                            <ul class="pa-5">
+                                <li class="col-md-7 col-xs-12 preview-carousel">
                                     <a href="javascript:void(0);"><div class="pull-left"><span class="right-nav-text">latest products</span></div><div class="clearfix"></div></a>
                                     <hr class="light-grey-hr ma-0"/>
                                     <div class="product-carousel owl-carousel owl-theme text-center">
                                         <a href="#">
                                             <img src="img/chair.jpg" alt="chair">
-                                            <span>Circle chair</span>
+                                            <span>New chairperson</span>
                                         </a>
                                         <a href="#">
                                             <img src="img/chair2.jpg" alt="chair">
@@ -325,10 +264,10 @@
                             <a href="profile.html"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
                         </li>
                         <li>
-                            <a href="#"><i class="zmdi zmdi-card"></i><span>my balance</span></a>
+                            <a href="#"><i class="zmdi zmdi-card"></i><span>My Files</span></a>
                         </li>
                         <li>
-                            <a href="inbox.jsp"><i class="zmdi zmdi-email"></i><span>Inbox</span></a>
+                            <a href="#"><i class="zmdi zmdi-email"></i><span>Emails</span></a>
                         </li>
                         <li>
                             <a href="#"><i class="zmdi zmdi-settings"></i><span>Settings</span></a>
@@ -373,10 +312,10 @@
                 <a id="open_right_sidebar" href="#" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="profile.jsp" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="widgets.html"><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+                <a href=""><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -407,66 +346,14 @@
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-                <ul id="table_dr" class="collapse collapse-level-1 two-col-list">
-                    <li>
-                        <a href="basic-table.html">Basic Table</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-table.html">Bootstrap Table</a>
-                    </li>
-                    <li>
-                        <a href="data-table.html">Data Table</a>
-                    </li>
-                    <li>
-                        <a href="export-table.html">Export Table</a>
-                    </li>
-                    <li>
-                        <a href="responsive-data-table.html">RSPV DataTable</a>
-                    </li>
-                    <li>
-                        <a href="responsive-table.html">Responsive Table</a>
-                    </li>
-                    <li>
-                        <a href="editable-table.html">Editable Table</a>
-                    </li>
-                    <li>
-                        <a href="foo-table.html">Foo Table</a>
-                    </li>
-                    <li>
-                        <a href="jsgrid-table.html">Jsgrid Table</a>
-                    </li>
-                </ul>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-                <ul id="icon_dr" class="collapse collapse-level-1">
-                    <li>
-                        <a href="fontawesome.html">Fontawesome</a>
-                    </li>
-                    <li>
-                        <a href="themify.html">Themify</a>
-                    </li>
-                    <li>
-                        <a href="linea-icon.html">Linea</a>
-                    </li>
-                    <li>
-                        <a href="simple-line-icons.html">Simple Line</a>
-                    </li>
-                    <li>
-                        <a href="pe-icon-7.html">Pe-icon-7</a>
-                    </li>
-                    <li>
-                        <a href="glyphicons.html">Glyphicons</a>
-                    </li>
-                </ul>
+                <a href="filemanager.jsp" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                 <ul id="maps_dr" class="collapse collapse-level-1">
-                    <li>
-                        <a href="vector-map.html">Vector Map</a>
-                    </li>
                     <li>
                         <a href="google-map.html">Google Map</a>
                     </li>
@@ -481,10 +368,10 @@
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="documentation.html"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
+                <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
         </ul>
     </div>
@@ -496,8 +383,8 @@
             <li>
                 <div  class="tab-struct custom-tab-1">
                     <ul role="tablist" class="nav nav-tabs" id="right_sidebar_tab">
-                        <li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab">chat</a></li>
-                        <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">messages</a></li>
+                        <li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab">Emails</a></li>
+                        <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">Notification</a></li>
                         <li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="false">todo</a></li>
                     </ul>
                     <div class="tab-content" id="right_sidebar_content">
@@ -1150,6 +1037,16 @@
 <!-- /#wrapper -->
 
 <!-- JavaScript -->
+
+<form method="post" id="LogOut_Session" action="ServletDwmpc">
+    <input type="hidden" name="command" value="LogOut Session">
+    <input type="hidden" name="action" value="Sign Out Session">
+</form>
+<script>
+    function LogOut(){
+        document.getElementById("LogOut_Session").submit();
+    }
+</script>
 
 <!-- jQuery -->
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>

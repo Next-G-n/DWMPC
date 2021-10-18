@@ -419,8 +419,8 @@
 				<li>
 					<div  class="tab-struct custom-tab-1">
 						<ul role="tablist" class="nav nav-tabs" id="right_sidebar_tab">
-							<li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab">Notification</a></li>
-							<li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">Emails</a></li>
+							<li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab">Emails</a></li>
+							<li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">Notifications</a></li>
 							<li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="false">todo</a></li>
 						</ul>
 						<div class="tab-content" id="right_sidebar_content">
