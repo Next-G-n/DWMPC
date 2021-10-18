@@ -1527,6 +1527,10 @@
                     </table>
                   </div>
                 </div>
+                <div class="form-group mb-0" style="float: right">
+                  <button type="submit" onclick="SubmitReport()" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">submit</span></button>
+                </div>
+
               </div>
             </div>
           </div>
@@ -1535,39 +1539,43 @@
       <input type="text" id="foo" value="something">
       <input type="text" id="goo" disabled="disabled" value="0">
       <!-- /Row -->
-
-      <form>
-        <input type="text" 	id="C_Male1" name="C_Male1" value="">
-        <input type="text" id="C_Male2" name="C_Male2" value="">
-        <input type="text" id="C_Male3" name="C_Male3" value="">
-        <input type="text" id="C_Male4" name="C_Male4" value="">
-        <input type="text" id="C_Male5" name="C_Male5" value="">
-        <input type="text" id="C_Male6" name="C_Male6" value="">
-        <input type="text" id="C_Female1" name="C_Female1" value="1">
-        <input type="text" id="C_Female2" name="C_Female2" value="2">
-        <input type="text" id="C_Female3" name="C_Female3" value="3">
-        <input type="text" id="C_Female4" name="C_Female4" value="4">
-        <input type="text" id="C_Female5" name="C_Female5" value="1">
-        <input type="text" id="C_Female6" name="C_Female6" value="4">
-        <input type="text" id="N_Male1" name="N_Male1" value="">
-        <input type="text" id="N_Male2" name="N_Male2" value="">
-        <input type="text" id="N_Male3" name="N_Male3" value="">
-        <input type="text" id="N_Male4" name="N_Male4" value="">
-        <input type="text" id="N_Male5" name="N_Male5" value="">
-        <input type="text" id="N_Male6" name="N_Male6" value="what">
-        <input type="text" id="N_Female1" name="N_Female1" value="note me">
-        <input type="text" id="N_Female2" name="N_Female2" value="">
-        <input type="text" id="N_Female3" name="N_Female3" value="">
-        <input type="text" id="N_Female4" name="N_Female4" value="">
-        <input type="text" id="N_Female5" name="N_Female5" value="">
-        <input type="text" id="N_Female6" name="N_Female6" value="">
-        <input type="text" id="Salary1" name="Salary1" value="">
-        <input type="text" id="Salary2" name="Salary2" value="">
-        <input type="text" id="Salary3" name="Salary3" value="">
-        <input type="text" id="Salary4" name="Salary4" value="">
-        <input type="text" id="Salary5" name="Salary5" value="">
-        <input type="text" id="Salary6" name="Salary6" value="">
-      </form>
+      <div style="display: none">
+        <form id="SubmitReport" method="post" action="ServletDwmpc">
+          <input class="inputs" type="hidden" name="command" value="Monthly Report">
+          <input class="inputs" type="hidden" name="action" value="Registration">
+          <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
+          <input type="text" 	id="C_Male1" name="C_Male1" value="">
+          <input type="text" id="C_Male2" name="C_Male2" value="0">
+          <input type="text" id="C_Male3" name="C_Male3" value="0">
+          <input type="text" id="C_Male4" name="C_Male4" value="0">
+          <input type="text" id="C_Male5" name="C_Male5" value="0">
+          <input type="text" id="C_Male6" name="C_Male6" value="0">
+          <input type="text" id="C_Female1" name="C_Female1" value="0">
+          <input type="text" id="C_Female2" name="C_Female2" value="0">
+          <input type="text" id="C_Female3" name="C_Female3" value="0">
+          <input type="text" id="C_Female4" name="C_Female4" value="0">
+          <input type="text" id="C_Female5" name="C_Female5" value="0">
+          <input type="text" id="C_Female6" name="C_Female6" value="0">
+          <input type="text" id="N_Male1" name="N_Male1" value="0">
+          <input type="text" id="N_Male2" name="N_Male2" value="0">
+          <input type="text" id="N_Male3" name="N_Male3" value="0">
+          <input type="text" id="N_Male4" name="N_Male4" value="0">
+          <input type="text" id="N_Male5" name="N_Male5" value="0">
+          <input type="text" id="N_Male6" name="N_Male6" value="0">
+          <input type="text" id="N_Female1" name="N_Female1" value="0">
+          <input type="text" id="N_Female2" name="N_Female2" value="0">
+          <input type="text" id="N_Female3" name="N_Female3" value="0">
+          <input type="text" id="N_Female4" name="N_Female4" value="0">
+          <input type="text" id="N_Female5" name="N_Female5" value="0">
+          <input type="text" id="N_Female6" name="N_Female6" value="0">
+          <input type="text" id="Salary1" name="Salary1" value="0">
+          <input type="text" id="Salary2" name="Salary2" value="0">
+          <input type="text" id="Salary3" name="Salary3" value="0">
+          <input type="text" id="Salary4" name="Salary4" value="0">
+          <input type="text" id="Salary5" name="Salary5" value="0">
+          <input type="text" id="Salary6" name="Salary6" value="0">
+        </form>
+      </div>
 
       <!-- Footer -->
       <footer class="footer container-fluid pl-30 pr-30">
@@ -1666,6 +1674,10 @@
   $('#fo1').keyup(function(){
     $('#goo').val($(this).val());
   });
+
+  function SubmitReport(){
+    document.getElementById("SubmitReport").submit();
+  }
 </script>
 
 </body>
