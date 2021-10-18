@@ -154,6 +154,9 @@ public class ServletDwmpc extends HttpServlet {
                 case "Officers Action":
                     OfficerActions(request, response);
                     break;
+                case "Monthly Report":
+                    setMonthlyReport(request, response);
+                    break;
                 case "Delay":
                     delay_Time=request.getParameter("delayTime");
                     System.out.println("this good :"+delay_Time);
@@ -165,6 +168,49 @@ public class ServletDwmpc extends HttpServlet {
         catch (Exception exc) {
             exc.printStackTrace();
 
+        }
+    }
+
+    private void setMonthlyReport(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String action=request.getParameter("action");
+        if(action.equals("Registration")){
+            String Employee_Type=null;
+            String reponse="Error";
+            for (int i=1;i<=5;++i){
+                int Company_id= Integer.parseInt(request.getParameter("Company Id"));
+                int C_M= Integer.parseInt(request.getParameter("C_Male"+i));
+                int C_F= Integer.parseInt(request.getParameter("C_Female"+i));
+                int N_M= Integer.parseInt(request.getParameter("N_Male"+i));
+                int N_F= Integer.parseInt(request.getParameter("N_Female"+i));
+                int Salary= Integer.parseInt(request.getParameter("Salary"+i));
+                switch(i){
+                    case 1:
+                        Employee_Type="Working proprietors";
+                        break;
+                    case 2:
+                        Employee_Type="Permanent employees";
+                        break;
+                    case 3:
+                        Employee_Type="Casual/ Temporary employees";
+                        break;
+                    case 4:
+                        Employee_Type="Number of Newly employed";
+                        break;
+                    case 5:
+                        Employee_Type="Number dismissed during the reporting Period";
+                        break;
+                }
+                Monthly_Report report=new Monthly_Report(0,Employee_Type,Company_id,C_M,C_F,N_M,N_F,Salary);
+                reponse=connectionUtil.setMonthlyReport(report,action);
+
+            }
+            if(reponse.equals("Successful")){
+                int Company_id= Integer.parseInt(request.getParameter("Company Id"));
+                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                String ApplicationDate= String.valueOf(timestamp.getTime());
+                connectionUtil.ReportUptodate(Company_id,ApplicationDate,"Update");
+                request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
+            }
         }
     }
 
@@ -439,9 +485,16 @@ public class ServletDwmpc extends HttpServlet {
         List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(id,"Client","None");
         session.setAttribute("All_companies", CompanyInfo);
 
+        if(action.equals("Registration")) {
+            connectionUtil.ReportUptodate(getCurrentCompanyID.getCompany_Id(),"null","Registration");
+
+        }
+
+
 
         session.removeAttribute("Company_info");
         session.setAttribute("Company_info", getCurrentCompanyID);
+
 
 
         List<company_personnel> employees=connectionUtil.getAllEmployees(getCurrentCompanyID.getCompany_Id());
@@ -464,6 +517,8 @@ public class ServletDwmpc extends HttpServlet {
         company_Information FirstCompanyDetails=connectionUtil.getCompanyDetails(Company_id);
         session.setAttribute("Company_info", FirstCompanyDetails);
         if(userType.equals("Client")){
+            String ClientReport=connectionUtil.getMonthlyReport(Company_id);
+            session.setAttribute("ReportBtn",ClientReport);
             request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
         }else if(userType.equals("Waste Management Officer")) {
             Apply_id= Integer.parseInt(request.getParameter("Apply_id"));

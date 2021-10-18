@@ -4,11 +4,10 @@ import com.dwmpc.model.bean.*;
 
 import javax.sql.DataSource;
 import java.sql.*;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
+import java.util.Date;
 
 public class ConnectionUtil {
     private final DataSource dataSource;
@@ -783,7 +782,6 @@ public class ConnectionUtil {
     public void registerInspection(int user_id, String general, String hazardus, String additional) throws Exception {
         Connection myConn=null;
         PreparedStatement myStmt=null;
-        System.out.println("Join :"+user_id);
         try {
             myConn = dataSource.getConnection();
             String sql2 = "INSERT INTO `dwmpc`.`inspection` (`General Check List`," +
@@ -794,10 +792,117 @@ public class ConnectionUtil {
             myStmt.setString(3, hazardus);
             myStmt.setInt(4, user_id);
             myStmt.execute();
-            System.out.println("Thapelo Chandida");
         }finally {
             close(myConn,myStmt,null);
         }
-        System.out.println("error ");
+    }
+
+    public String setMonthlyReport(Monthly_Report report, String action) throws Exception {
+        Connection myConn=null;
+        PreparedStatement myStmt=null;
+        String response="Error";
+        try {
+            myConn = dataSource.getConnection();
+            String sql2 = "INSERT INTO `dwmpc`.`Monthly_report` (`Company_id`, `Employee Type`," +
+                    " `Citizen Males`, `Citizen Females`," +
+                    " `Non-Citizen Males`, `Non-Citizen Females`, `Salary`) VALUES (?,?,?,?,?,?,?)";
+            myStmt = myConn.prepareStatement(sql2);
+            myStmt.setInt(1,report.getCompany_id());
+            myStmt.setString(2, report.getEmployee_Type());
+            myStmt.setInt(3, report.getC_M());
+            myStmt.setInt(4, report.getC_F());
+            myStmt.setInt(5, report.getN_M());
+            myStmt.setInt(6, report.getN_F());
+            myStmt.setDouble(7, report.getSalary());
+            myStmt.execute();
+            response="Successful";
+
+        }finally {
+            close(myConn,myStmt,null);
+        }
+        return response;
+    }
+
+    public void ReportUptodate(int company_id, String applicationDate, String action) throws Exception {
+        Connection myConn=null;
+        PreparedStatement myStmt=null;
+        try {
+            myConn = dataSource.getConnection();
+            String sql2;
+                    if(action.equals("")){
+                        sql2="INSERT INTO `dwmpc`.`MonthlyReport_Statue` (`Company_Id`) VALUES ("+company_id+");";
+                    }else{
+                sql2="UPDATE `dwmpc`.`MonthlyReport_Statue` SET  `dateUnix` = '"+applicationDate+"' WHERE (`Company_Id` = '"+company_id+"');";
+            }
+            myStmt = myConn.prepareStatement(sql2);
+            myStmt.execute();
+
+
+        }finally {
+            close(myConn,myStmt,null);
+        }
+
+    }
+
+    public String getMonthlyReport(int company_id) throws Exception {
+        Connection myConn=null;
+        ResultSet myRs=null;
+        PreparedStatement myStmt=null;
+        String Statue="Error";
+
+        try {
+            //get a connectio
+
+            myConn=dataSource.getConnection();
+            String sql ="SELECT * FROM dwmpc.MonthlyReport_Statue where `Company_Id`="+company_id;
+            myStmt=myConn.prepareStatement(sql);
+            myRs=myStmt.executeQuery();
+
+            //process result set
+            while(myRs.next()) {
+                //retrieve data from the result set
+                String date=myRs.getString("dateUnix");
+
+                if(!date.equals("null")){
+                    long unixSeconds = Long.parseLong(date);
+                    SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd MM yyyy");
+                    sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+2"));
+
+                    Timestamp timestamp = new Timestamp(unixSeconds);
+                    Date dateMi = new Date(timestamp.getTime());
+                    String formattedDate=sdf.format(dateMi);
+
+                    SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy");
+                    Date dateCurrent=new Date();
+                    String Current=sdf.format(dateCurrent);
+                    System.out.println("the first: "+formattedDate+" Second: "+Current);
+                    Date dateBefore = myFormat.parse(formattedDate);
+                    Date dateAfter = myFormat.parse(Current);
+                    long difference = dateAfter.getTime() - dateBefore.getTime();
+                    float daysBetween = (difference / (1000*60*60*24));
+                    /* You can also convert the milliseconds to days using this method
+                     * float daysBetween =
+                     *         TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS)
+                     */
+                    System.out.println("test :"+daysBetween);
+                    if(daysBetween>=28){
+                        Statue="Upload";
+                    }else{
+                        Statue="UptoDate";
+                    }
+
+                }
+
+
+
+
+            }
+        }finally {
+
+            close(myConn,myStmt,myRs);
+
+        }
+        System.out.println("Return :"+Statue);
+        return Statue;
     }
 }
