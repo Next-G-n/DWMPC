@@ -1,54 +1,69 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: NITRO5
-  Date: 9/7/2021
-  Time: 10:36 AM
-  To change this template use File | Settings | File Templates.
---%>
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>DWMPC || Employee Table</title>
-  <meta name="description" content="Waste Management System." />
+  <title>DWMPC</title>
+  <meta name="description" content="Zapily is a Dashboard & Admin Site Responsive Template by hencework." />
   <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Zapily Admin, Zapilyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
-  <meta name="Next-gen" content="hencework"/>
+  <meta name="author" content="hencework"/>
+
+  <!-- jquery-steps css -->
+  <link rel="stylesheet" href="vendors/bower_components/jquery.steps/demo/css/jquery.steps.css">
+
+  <!--alerts CSS -->
+  <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="icon.ico">
+  <link rel="shortcut icon" href="favicon.ico">
   <link rel="icon" href="icon.ico" type="image/x-icon">
-
-  <!-- bootstrap-select CSS -->
-  <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
-
 
   <!-- Data table CSS -->
   <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
 
+  <!-- Toast CSS -->
+  <link href="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
+
+  <!-- bootstrap-select CSS -->
+  <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
+
+  <!-- Calendar CSS -->
+  <link href="vendors/bower_components/fullcalendar/dist/fullcalendar.css" rel="stylesheet" type="text/css"/>
+
+  <!-- bootstrap-touchspin CSS -->
+  <link href="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css"/>
+
 
   <!-- Custom CSS -->
   <link href="dist/css/style.css" rel="stylesheet" type="text/css">
-
   <style>
-    .dt-buttons{
+    #example_paginate, #example_info{
       display: none;
     }
+    .pa-01:hover {
+      cursor: pointer;
+      background-color: #f6f7f6;
+    }
+    .bg-dark-green:hover{
+      cursor: pointer;
+      background-color: #5a896f;
+    }
   </style>
-
 </head>
 
 <body>
-<!--Preloader-->
+<!-- Preloader -->
 <div class="preloader-it">
   <div class="la-anim-1"></div>
 </div>
-<!--/Preloader-->
-<div class="wrapper theme-1-active pimary-color-gold">
+<!-- /Preloader -->
+<div class="wrapper theme-1-active pimary-color-green">
+
+
 
   <!-- Top Menu Items -->
   <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -440,7 +455,8 @@
                               <div class="chat-data">
                                 <img class="user-img img-circle" src="img/user2.png" alt="user"/>
                                 <div class="user-data">
-                                  <span class="name block capitalize-font">Madalyn Rascon</span>
+                                                                    <span class="name block capitalize-font">Madalyn Rascon
+                                                                    </span>
                                   <span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
                                 </div>
                                 <div class="status online"></div>
@@ -800,204 +816,408 @@
   </div>
   <!-- /Right Sidebar Menu -->
 
-
-
   <!-- Main Content -->
   <div class="page-wrapper">
     <div class="container">
       <!-- Title -->
       <div class="row heading-bg">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-          <h5 class="txt-dark"></h5>
+          <h5 class="txt-dark">file manager</h5>
         </div>
         <!-- Breadcrumb -->
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
           <ol class="breadcrumb">
-            <li><a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Dashboard</a></li>
-            <li class="active"><span>Employee Table</span></li>
+            <li><a href="Home.jsp">Home</a></li>
+            <li class="active"><span>file manager</span></li>
           </ol>
         </div>
         <!-- /Breadcrumb -->
       </div>
       <!-- /Title -->
-
+      <!-- Row -->
       <div class="row">
-
-        <!-- Bordered Table -->
-        <div class="col-sm-12">
-          <div class="panel panel-warning card-view">
-            <div class="panel-heading">
-              <div class="pull-left">
-                <h6 class="panel-title txt-light">Vehicle Details</h6>
-              </div>
-              <div class="clearfix"></div>
-            </div>
+        <div class="col-md-12">
+          <div class="panel panel-default card-view pa-0">
             <div class="panel-wrapper collapse in">
-              <div class="panel-body">
-                <div class="table-wrap mt-40">
-                  <div class="table-responsive">
+              <div class="panel-body pa-0">
+                <div class="">
+                  <div class="col-lg-3 col-md-4 file-directory pa-0">
+                    <div class="ibox float-e-margins">
+                      <div class="ibox-content">
+                        <div class="file-manager">
+                          <div class="mt-20 mb-20 ml-15 mr-15">
+                            <div class="fileupload btn btn-success btn-anim btn-block"><i class="fa fa-upload"></i><span class="btn-text">Upload files</span>
+                              <input type="file" class="upload">
+                            </div>
+                          </div>
+                          <div class="pl-15 mb-30">
+                            <a href="#" class="file-control active">All</a>
+                            <a href="#" class="file-control">Documents</a>
+                            <a href="#" class="file-control">Audio</a>
+                            <a href="#" class="file-control">Images</a>
+                          </div>
 
-                    <table  id="example"  data-paging="true" class="table table-striped display  pb-30">
-                      <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th >First Name</th>
-                        <th>Last Name</th>
-                        <th>Job Title</th>
-                        <th>Qualification</th>
-                        <th>Training in waste Management</th>
-                        <th>Contact</th>
-                        <th class="text-nowrap">Action</th>
-
-
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <c:forEach var="Employee" items="${All_Employee}">
-                        <c:set var="countEmployee" value="${countEmployee+1}" scope="page"/>
-
-                        <tr>
-                          <td class="Employee_Id">${Employee.company_Personnel_Id}</td>
-                          <td class="First_Name">${Employee.first_Name}</td>
-                          <td class="Last_Name">${Employee.last_Name}</td>
-                          <td class="Job_Title">${Employee.job_Title}</td>
-                          <td class="Qualification">${Employee.qualification}</td>
-                          <td class="training">${Employee.trained_In_Waste_Management}</td>
-                          <td class="Contact">${Employee.contact}</td>
-                          <td class="text-nowrap"><span class="pencil-Edit" id="${countEmployee}" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Officer-Registration-modal"> <a  class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span> <a data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a> </td>
-                        </tr>
-                      </c:forEach>
-
-                      </tbody>
-                    </table>
-
-
-                  </div>
-
-                  <div id="Officer-Registration-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                          <h5 class="modal-title" id="myLargeModalLabel">Editing Employee Information for ${Company_info.company_Name}</h5>
+                          <h6 class="mb-10 pl-15">Folders</h6>
+                          <ul class="folder-list mb-30">
+                            <li class="active"><a href=""><i class="zmdi zmdi-folder"></i> Files</a></li>
+                            <li><a href=""><i class="zmdi zmdi-folder"></i> Pictures</a></li>
+                            <li><a href=""><i class="zmdi zmdi-folder"></i> Web pages</a></li>
+                            <li><a href=""><i class="zmdi zmdi-folder"></i> Illustrations</a></li>
+                            <li><a href=""><i class="zmdi zmdi-folder"></i> Films</a></li>
+                            <li><a href=""><i class="zmdi zmdi-folder"></i> Books</a></li>
+                          </ul>
+                          <h6 class="pl-15 mb-10">Tags</h6>
+                          <ul class="tag-list pl-15 pr-15">
+                            <li><a href="">Family</a></li>
+                            <li><a href="">Work</a></li>
+                            <li><a href="">Home</a></li>
+                            <li><a href="">Children</a></li>
+                            <li><a href="">Holidays</a></li>
+                            <li><a href="">Music</a></li>
+                            <li><a href="">Photography</a></li>
+                            <li><a href="">Film</a></li>
+                          </ul>
+                          <div class="clearfix"></div>
                         </div>
-                        <form action="ServletDwmpc" method="post">
-                          <div class="modal-body">
-                            <input type="hidden" id="command" name="command" class="hidden" value="RegisteringEmployee"/>
-                            <input type="hidden" id="action" name="action"  class="hidden" value="EditingEmployee"/>
-                            <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
-                            <input type="hidden" id="Employee_Id" name="Employee Id" class="hidden" value=""/>
-
-                            <div class="form-group">
-                              <div class="row">
-                                <div class="col-md-6 col-xs-12 mt-40">
-                                  <label class="control-label mb-10" for="First_Name"> First Name(required):</label>
-                                  <input type="text" id="First_Name" name="First Name"  class="form-control required"   required/>
-                                </div>
-                                <div class="span1"></div>
-                                <div class="col-md-6 col-xs-12 mt-40">
-                                  <label class="control-label mb-10" for="Last_Name"> Last Name(required):</label>
-                                  <input type="text" id="Last_Name" name="Last Name"  class="form-control required"   required/>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <div class="row">
-                                <div class="col-md-6 col-xs-12">
-                                  <label class="control-label mb-10" for="Job_Title"> Job Title(required):</label>
-                                  <input type="text" class="form-control" id="Job_Title" name="Position/job Title" placeholder="Job Title">
-                                </div>
-                                <div class="span1"></div>
-                                <div class="col-md-6 col-xs-12">
-                                  <label class="control-label mb-10" for="Qualification"> Qualification(required):</label>
-                                  <input type="text" class="form-control" id="Qualification" name="Qualification" placeholder="Qualification" required>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label class="control-label mb-10" for="Contact">Contact(required):</label>
-                              <input type="text" id="Contact" name="Contact" data-mask="+267 99 999 999" value=""  class="form-control required"  required/>
-                            </div>
-                            <div class="form-group">
-                              <label for="training" class="col-sm-3 control-label">Training in waste Management(required):</label>
-                              <select class="selectpicker" id= "training" name="training" data-style="form-control btn-default btn-outline">
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Save Changes</span></button>
-                          </div>
-                        </form>
                       </div>
                     </div>
                   </div>
+                  <div class="col-lg-9 col-md-8 file-sec pt-20">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="row">
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
 
-                  <script>
-                    let tableRowElement;
-                    function toggleModal(element) {
+                                <div class="icon">
+                                  <i class="zmdi zmdi-file-text"></i>
+                                </div>
+                                <div class="file-name">
+                                  Document_2016.doc
+                                  <br>
+                                  <span>Added: Jan 11, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
 
-                      tableRowElement = element.parentElement.parentElement;
+                                <div class="image" style="background-image:url(img/gallery/mock1.jpg)">
+                                </div>
+                                <div class="file-name">
+                                  Italy street.jpg
+                                  <br>
+                                  <span>Added: Jan 6, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
 
-                      const First_Name = tableRowElement.getElementsByClassName('First_Name')[0].innerHTML;
-                      const Last_Name = tableRowElement.getElementsByClassName('Last_Name')[0].innerHTML;
-                      const Job_Title = tableRowElement.getElementsByClassName('Job_Title')[0].innerHTML;
-                      const Qualification = tableRowElement.getElementsByClassName('Qualification')[0].innerHTML;
-                      const training = tableRowElement.getElementsByClassName('training')[0].innerHTML;
-                      const Contact = tableRowElement.getElementsByClassName('Contact')[0].innerHTML;
-                      const Employee_Id = tableRowElement.getElementsByClassName('Employee_Id')[0].innerHTML;
+                                <div class="image" style="background-image:url(img/gallery/mock2.jpg)">
+                                </div>
+                                <div class="file-name">
+                                  My feel.png
+                                  <br>
+                                  <span>Added: Jan 7, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
 
-                      document.getElementById('First_Name').value = First_Name;
-                      document.getElementById('Last_Name').value = Last_Name;
-                      document.getElementById('Job_Title').value=Job_Title;
-                      document.getElementById('Qualification').value = Qualification;
-                      document.getElementById('training').value = training;
-                      $("#training").selectpicker("refresh");
-                      document.getElementById('Employee_Id').value = Employee_Id;
-                      document.getElementById('Contact').value = Contact;
+                                <div class="icon">
+                                  <i class="zmdi zmdi-collection-music"></i>
+                                </div>
+                                <div class="file-name">
+                                  Michal Jackson.mp3
+                                  <br>
+                                  <span>Added: Jan 22, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
 
+                                <div class="image" style="background-image:url(img/gallery/mock3.jpg)">
+                                </div>
+                                <div class="file-name">
+                                  Document_2016.doc
+                                  <br>
+                                  <span>Added: Fab 11, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
 
-                    }
+                                <div class="icon">
+                                  <i class="img-responsive zmdi zmdi-collection-video"></i>
+                                </div>
+                                <div class="file-name">
+                                  Monica's birthday.mpg4
+                                  <br>
+                                  <span>Added: Fab 18, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <a href="#">
+                              <div class="file">
 
+                                <div class="icon">
+                                  <i class="zmdi zmdi-chart"></i>
+                                </div>
+                                <div class="file-name">
+                                  Annual report 2016.xls
+                                  <br>
+                                  <span>Added: Fab 22, 2016</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
 
-                  </script>
+                                <div class="icon">
+                                  <i class="zmdi zmdi-file-text"></i>
+                                </div>
+                                <div class="file-name">
+                                  Document_2016.doc
+                                  <br>
+                                  <span>Added: Jan 11, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
 
-                </div>
+                                <div class="image" style="background-image:url(img/gallery/equal-size/mock6.jpg)">
+                                </div>
+                                <div class="file-name">
+                                  Italy street.jpg
+                                  <br>
+                                  <span>Added: Jan 6, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
 
-                </br>
-                <div style="float: right" class="row">
-                  <button type="button" onclick="location.href='Employee-form.jsp';" data-toggle="modal" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Add New Employee</span></button>
+                                <div class="image" style="background-image:url(img/gallery/equal-size/mock3.jpg)">
+                                </div>
+                                <div class="file-name">
+                                  My feel.png
+                                  <br>
+                                  <span>Added: Jan 7, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
+
+                                <div class="icon">
+                                  <i class="zmdi zmdi-collection-music"></i>
+                                </div>
+                                <div class="file-name">
+                                  Michal Jackson.mp3
+                                  <br>
+                                  <span>Added: Jan 22, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
+
+                                <div class="image" style="background-image:url(img/gallery/equal-size/mock2.jpg)">
+                                </div>
+                                <div class="file-name">
+                                  Document_2016.doc
+                                  <br>
+                                  <span>Added: Fab 11, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
+
+                                <div class="icon">
+                                  <i class="img-responsive zmdi zmdi-collection-video"></i>
+                                </div>
+                                <div class="file-name">
+                                  Monica's birthday.mpg4
+                                  <br>
+                                  <span>Added: Fab 18, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <a href="#">
+                              <div class="file">
+
+                                <div class="icon">
+                                  <i class="zmdi zmdi-chart"></i>
+                                </div>
+                                <div class="file-name">
+                                  Annual report 2016.xls
+                                  <br>
+                                  <span>Added: Fab 22, 2016</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
+
+                                <div class="icon">
+                                  <i class="zmdi zmdi-file-text"></i>
+                                </div>
+                                <div class="file-name">
+                                  Document_2016.doc
+                                  <br>
+                                  <span>Added: Jan 11, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
+
+                                <div class="image" style="background-image:url(img/gallery/mock6.jpg)">
+                                </div>
+                                <div class="file-name">
+                                  Italy street.jpg
+                                  <br>
+                                  <span>Added: Jan 6, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
+
+                                <div class="image" style="background-image:url(img/gallery/equal-size/mock5.jpg)">
+                                </div>
+                                <div class="file-name">
+                                  My feel.png
+                                  <br>
+                                  <span>Added: Jan 7, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
+
+                                <div class="icon">
+                                  <i class="zmdi zmdi-collection-music"></i>
+                                </div>
+                                <div class="file-name">
+                                  Michal Jackson.mp3
+                                  <br>
+                                  <span>Added: Jan 22, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
+
+                                <div class="image" style="background-image:url(img/gallery/equal-size/mock4.jpg)">
+                                </div>
+                                <div class="file-name">
+                                  Document_2016.doc
+                                  <br>
+                                  <span>Added: Fab 11, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <div class="file">
+                              <a href="#">
+
+                                <div class="icon">
+                                  <i class="img-responsive zmdi zmdi-collection-video"></i>
+                                </div>
+                                <div class="file-name">
+                                  Monica's birthday.mpg4
+                                  <br>
+                                  <span>Added: Fab 18, 2016</span>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
+                            <a href="#">
+                              <div class="file">
+
+                                <div class="icon">
+                                  <i class="zmdi zmdi-chart"></i>
+                                </div>
+                                <div class="file-name">
+                                  Annual report 2016.xls
+                                  <br>
+                                  <span>Added: Fab 22, 2016</span>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-
             </div>
-
           </div>
         </div>
-        <!-- /Bordered Table -->
-
       </div>
+      <!-- /Row -->
 
-      <!-- Footer -->
-      <footer class="footer container-fluid pl-30 pr-30">
-        <div class="row">
-          <div class="col-sm-12">
-            <p>2018 &copy; Zapily. Pampered by Hencework</p>
-          </div>
-        </div>
-      </footer>
-      <!-- /Footer -->
     </div>
+    <!-- Footer -->
+    <footer class="footer container-fluid pl-30 pr-30">
+      <div class="row">
+        <div class="col-sm-12">
+          <p>2021 &copy; Created by Next-gen</p>
+        </div>
+      </div>
+    </footer>
+    <!-- /Footer -->
   </div>
   <!-- /Main Content -->
 
 </div>
-<!-- /#wrapper -->
-
-<!-- JavaScript -->
-
 <!-- /#wrapper -->
 
 <!-- JavaScript -->
@@ -1012,30 +1232,19 @@
   }
 </script>
 
+
 <!-- jQuery -->
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
-
 
 <!-- Bootstrap Core JavaScript -->
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
+<script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
 <script src="dist/js/modal-data.js"></script>
 
-<!-- Piety JavaScript -->
-<script src="vendors/bower_components/peity/jquery.peity.min.js"></script>
-<script src="dist/js/peity-data.js"></script>
+<!-- Bootstrap Touchspin JavaScript -->
+<script src="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
 
-<!-- Slimscroll JavaScript -->
-<script src="dist/js/jquery.slimscroll.js"></script>
-
-<!-- Owl JavaScript -->
-<script src="vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-
-<!-- Switchery JavaScript -->
-<script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
-
-<!-- Init JavaScript -->
-<script src="dist/js/init.js"></script>
 
 <!-- Data table JavaScript -->
 <script src="vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
@@ -1049,12 +1258,53 @@
 <script src="vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script src="dist/js/export-table-data.js"></script>
 
+<!-- Slimscroll JavaScript -->
+<script src="dist/js/jquery.slimscroll.js"></script>
+
+<!-- EChartJS JavaScript -->
+<script src="vendors/bower_components/echarts/dist/echarts-en.min.js"></script>
+<script src="vendors/echarts-liquidfill.min.js"></script>
+<script src="vendors/ecStat.min.js"></script>
+
+<!-- Toast JavaScript -->
+<script src="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+
+<!-- Progressbar Animation JavaScript -->
+<script src="vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
+
+<!-- Fancy Dropdown JS -->
+<script src="dist/js/dropdown-bootstrap-extended.js"></script>
+
+<!-- Sparkline JavaScript -->
+<script src="vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
+
+<!-- Owl JavaScript -->
+<script src="vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+
+<!-- Calender JavaScripts -->
+<script src="vendors/bower_components/moment/min/moment.min.js"></script>
+<script src="vendors/jquery-ui.min.js"></script>
+<script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="dist/js/fullcalendar-data.js"></script>
+
+<!-- Switchery JavaScript -->
+<script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
+
 <!-- Bootstrap Select JavaScript -->
-<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>
+<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+
+<!-- Init JavaScript -->
+<script src="dist/js/init.js"></script>
+<script src="dist/js/dashboard4-data.js"></script>
+
+<!-- Sweet-Alert  -->
+<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="dist/js/sweetalert-data.js"></script>
+
 
 
 
 </body>
 
 </html>
-
