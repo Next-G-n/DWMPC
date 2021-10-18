@@ -33,6 +33,9 @@
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.30" />
           <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.3.1" />
           <element id="library" level="project" name="Maven: javax.activation:javax.activation-api:1.2.0" />
+          <element id="library" level="project" name="Maven: com.sendgrid:sendgrid-java:4.7.5" />
+          <element id="library" level="project" name="Maven: com.sendgrid:java-http-client:4.3.7" />
+          <element id="library" level="project" name="Maven: org.bouncycastle:bcprov-jdk15on:1.69" />
         </element>
       </element>
       <element id="directory" name="META-INF">
