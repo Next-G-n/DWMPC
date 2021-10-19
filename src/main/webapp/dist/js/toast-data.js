@@ -4,15 +4,16 @@
 $(document).ready(function() {
 	"use strict";
 	
-	$.toast({
+	/*$.toast({
 		heading: 'Welcome to Philbert',
 		text: 'Use the predefined ones, or specify a custom position object.',
 		position: 'top-right',
 		loaderBg:'#fec107',
 		icon: 'success',
-		hideAfter: 3500, 
+		hideAfter: 3500,
 		stack: 6
 	});
+	 */
 	
 	$('.tst1').on('click',function(e){
 	    $.toast().reset('all'); 
@@ -58,6 +59,21 @@ $(document).ready(function() {
           });
 		return false;  
 	});
+
+    $('.Report-toast').on('click',function(e){
+        $.toast().reset('all');
+        $("body").removeAttr('class');
+        $.toast({
+            heading: 'All Update',
+            text: 'Your Monthly Report are update. No need for Updating.',
+            position: 'top-right',
+            loaderBg:'#878787',
+            icon: 'success',
+            hideAfter: 7500,
+            stack: 6
+        });
+        return false;
+    });
 
 	$('.tst4').on('click',function(e){
 		$.toast().reset('all');

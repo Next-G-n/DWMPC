@@ -55,7 +55,7 @@
     <div class="mobile-only-brand pull-left">
       <div class="nav-header pull-left">
         <div class="logo-wrap">
-          <a href="${pageContext.request.contextPath}/CompanyInfo.jsp">
+          <a href="${pageContext.request.contextPath}/Home.jsp">
             <img class="brand-img" src="img/logo2.png" alt="brand"/>
           </a>
         </div>
@@ -813,7 +813,7 @@
         <!-- Breadcrumb -->
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
           <ol class="breadcrumb">
-            <li><a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Dashboard</a></li>
+            <li><a href="${pageContext.request.contextPath}/Home.jsp">Dashboard</a></li>
             <li class="active"><span>Employee Table</span></li>
           </ol>
         </div>
