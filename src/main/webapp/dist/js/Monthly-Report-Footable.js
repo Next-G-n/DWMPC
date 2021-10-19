@@ -23,7 +23,6 @@ $(function () {
     future= mm1 + '/' + dd1 + '/' + yyyy1;
     var date=today+" - "+future;
 
-
     $("#startedOn").val(date);
 
     var $modal = $('#editor-modal'),
@@ -35,6 +34,7 @@ $(function () {
                 addRow: function(){
                     $modal.removeData('row');
                     $editor[0].reset();
+                    $editor.find('#action_id').val("Registration");
                     $editorTitle.text('Add a new row');
                     document.getElementById("startedOn").value=date;
                     $modal.modal('show');
@@ -45,6 +45,7 @@ $(function () {
                     $editor.find('#WasteType').val(values.WasteType);
                     $("#WasteType").selectpicker("refresh");
                     $editor.find('#GeneratedQuantity').val(values.GeneratedQuantity);
+                    $editor.find('#action_id').val("Editing");
                     $editor.find('#AmountShipped').val(values.AmountShipped);
                     $editor.find('#Returns').val(values.Returns);
 
@@ -81,7 +82,7 @@ $(function () {
                 }
             }
         }),
-        uid = 1;
+        uid = document.getElementById("Report_id").value;
 
 
     $editor.on('submit', function(e){

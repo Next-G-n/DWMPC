@@ -161,6 +161,9 @@ public class ServletDwmpc extends HttpServlet {
                     delay_Time=request.getParameter("delayTime");
                     System.out.println("this good :"+delay_Time);
                     break;
+                case "Report Waste Type":
+                    setReportWaste(request,response);
+                    break;
             }
             // listStudents(request, response);
         }
@@ -169,6 +172,27 @@ public class ServletDwmpc extends HttpServlet {
             exc.printStackTrace();
 
         }
+    }
+
+    private void setReportWaste(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String action=request.getParameter("action_id");
+        int Company_id= Integer.parseInt(request.getParameter("Company Id"));
+        String Waste_Type = request.getParameter("Waste Type");
+        String Generated_Quantity = request.getParameter("GeneratedQuantity");
+        String Amount_Shipped = request.getParameter("AmountShipped");
+        String Return = request.getParameter("Returns");
+        String Date_Of_Report = request.getParameter("startedOn");
+        WasteTypeReport wasteTypeReport=new WasteTypeReport(Company_id,Waste_Type,Generated_Quantity,Amount_Shipped,Return,Date_Of_Report);
+        if(action.equals("Editing")){
+            int Report_id= Integer.parseInt(request.getParameter("Company Id"));
+            connectionUtil.setReportWaste(wasteTypeReport,action,Report_id);
+        }else{
+            connectionUtil.setReportWaste(wasteTypeReport,action,0);
+            Report(request,response);
+        }
+
+
+
     }
 
     private void setMonthlyReport(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -321,6 +345,7 @@ public class ServletDwmpc extends HttpServlet {
 
             } else if (userlg.get(0).getUser_type().equals("Client")) {
                 userType = "Client";
+                Report(request,response);
                 List<company_Information> CompanyInfo = connectionUtil.getAllCompanies(user_id, userType, Branch);
 
                 if (!CompanyInfo.isEmpty()) {
@@ -356,7 +381,7 @@ public class ServletDwmpc extends HttpServlet {
         String action=request.getParameter("action");
 
 
-
+        Report(request,response);
         int omang= Integer.parseInt(request.getParameter("Omang_code"));
         String contacting= request.getParameter("phone_number");
         String UserType=request.getParameter("User_Type");
@@ -510,6 +535,12 @@ public class ServletDwmpc extends HttpServlet {
     String delay_Time;
     String Vehicle_id;
 
+    private void Report(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        HttpSession session=request.getSession();
+        int Report_id=connectionUtil.getReportWaste();
+        session.setAttribute("Report_id",Report_id);
+    }
+
     private void getCompany(HttpServletRequest request, HttpServletResponse response) throws  Exception{
         HttpSession session=request.getSession();
         int Company_id= Integer.parseInt(request.getParameter("company_id"));
@@ -529,6 +560,8 @@ public class ServletDwmpc extends HttpServlet {
             if(count>=11){
                 companyName=companyName.substring(0, 19)+"...";
             }
+
+            Report(request,response);
 
             String ClientReport=connectionUtil.getMonthlyReport(Company_id);
             session.setAttribute("ReportBtn",ClientReport);

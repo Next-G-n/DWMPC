@@ -905,4 +905,62 @@ public class ConnectionUtil {
         System.out.println("Return :"+Statue);
         return Statue;
     }
+
+    public int getReportWaste() throws Exception{
+        Connection myConn=null;
+        ResultSet myRs=null;
+        PreparedStatement myStmt=null;
+        int report_id=0;
+
+        try {
+            //get a connectio
+
+            myConn=dataSource.getConnection();
+            String sql ="select * from dwmpc.Report_Waste_Type ORDER BY `Report_ID` DESC LIMIT 1;";
+            myStmt=myConn.prepareStatement(sql);
+            myRs=myStmt.executeQuery();
+
+            //process result set
+            while(myRs.next()) {
+                //retrieve data from the result set
+                report_id=myRs.getInt("Report_ID");
+
+                if(report_id == 0){
+                    report_id=1;
+                }
+            }
+        }finally {
+
+            close(myConn,myStmt,myRs);
+
+        }
+        System.out.println("Return :"+report_id);
+        return report_id;
+    }
+
+    public void setReportWaste(WasteTypeReport wasteTypeReport, String action,int Report_id) throws Exception {
+        Connection myConn=null;
+        PreparedStatement myStmt=null;
+        try {
+            myConn = dataSource.getConnection();
+            String sql2;
+            if(action.equals("Registration")){
+                sql2="INSERT INTO `Report_Waste_Type` (`Company ID`, `Waste Type`, `Generated Quantity`, `Amount Shipped`, `Return`, `Date Of Report`) VALUES(?,?,?,?,?,?);";
+            }else{
+                sql2="UPDATE `Report_Waste_Type` SET `Company ID` = '?', `Waste Type` = '?', `Generated Quantity` = '?', `Amount Shipped` = '?', `Return` = '?', `Date Of Report` = '?' WHERE (`Report_ID` = '"+Report_id+"');";
+            }
+            myStmt = myConn.prepareStatement(sql2);
+            myStmt.setInt(1,wasteTypeReport.getCompany_Id());
+            myStmt.setString(2, wasteTypeReport.getWaste_Type());
+            myStmt.setString(3, wasteTypeReport.getGenerated_Quantity());
+            myStmt.setString(4, wasteTypeReport.getAmount_Shipped());
+            myStmt.setString(5, wasteTypeReport.getReturn());
+            myStmt.setString(6, wasteTypeReport.getDate_Of_Report());
+            myStmt.execute();
+
+
+        }finally {
+            close(myConn,myStmt,null);
+        }
+    }
 }
