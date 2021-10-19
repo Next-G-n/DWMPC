@@ -173,6 +173,7 @@ public class ServletDwmpc extends HttpServlet {
 
     private void setMonthlyReport(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String action=request.getParameter("action");
+        HttpSession session=request.getSession();
         if(action.equals("Registration")){
             String Employee_Type=null;
             String reponse="Error";
@@ -209,6 +210,7 @@ public class ServletDwmpc extends HttpServlet {
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 String ApplicationDate= String.valueOf(timestamp.getTime());
                 connectionUtil.ReportUptodate(Company_id,ApplicationDate,"Update");
+                session.setAttribute("ReportBtn","Update");
                 request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
             }
         }
@@ -517,8 +519,20 @@ public class ServletDwmpc extends HttpServlet {
         company_Information FirstCompanyDetails=connectionUtil.getCompanyDetails(Company_id);
         session.setAttribute("Company_info", FirstCompanyDetails);
         if(userType.equals("Client")){
+            String companyName=FirstCompanyDetails.getCompany_Name();
+            int count=0;
+            for(int i=0; i<companyName.length(); i++){
+                if(companyName.charAt(i)!='\0'){
+                    count++;
+                }
+            }
+            if(count>=11){
+                companyName=companyName.substring(0, 19)+"...";
+            }
+
             String ClientReport=connectionUtil.getMonthlyReport(Company_id);
             session.setAttribute("ReportBtn",ClientReport);
+            session.setAttribute("CompanyName",companyName);
             request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
         }else if(userType.equals("Waste Management Officer")) {
             Apply_id= Integer.parseInt(request.getParameter("Apply_id"));

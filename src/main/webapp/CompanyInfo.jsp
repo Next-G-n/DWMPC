@@ -18,6 +18,9 @@
 	<link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 
 
+	<link href="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
+
+
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="icon" href="icon.ico" type="image/x-icon">
@@ -67,7 +70,7 @@
 			<div class="mobile-only-brand pull-left">
 				<div class="nav-header pull-left">
 					<div class="logo-wrap">
-						<a href="${pageContext.request.contextPath}/CompanyInfo.jsp">
+						<a href="${pageContext.request.contextPath}/Home.jsp">
 							<img class="brand-img" src="img/logo2.png" alt="brand"/>
 						</a>
 					</div>
@@ -307,29 +310,31 @@
 					<i class="zmdi zmdi-more"></i>
 				</li>
 				<li>
-					<a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">My Companies</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">${CompanyName}</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
 						<li class="active" role="presentation">
-							<a  data-toggle="tab"  role="tab" href="#Company_info" href="#Company_info2" aria-expanded="true">Information</a>
+							<a onclick="document.getElementById('Company_information').submit()" data-toggle="tab"  role="tab" aria-expanded="true">Information</a>
 						</li>
 						<li >
-							<a aria-expanded="false"  data-toggle="tab" role="tab"  href="#Vehicle_info">Vehicles</a>
+							<a onclick="document.getElementById('Vehicle_info').submit()" aria-expanded="false"  data-toggle="tab" role="tab">Vehicles</a>
 						</li>
 						<li>
-							<a  data-toggle="tab"  role="tab"  aria-expanded="false">Attachments</a>
-						</li>
-						<li>
-							<a href="#">Employees</a>
+							<a onclick="document.getElementById('Employee_info').submit()">Employees</a>
 						</li>
 					</ul>
 				</li>
 				<li>
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
 				</li>
-				<c:if test="${Report='Upload'}">
+				<c:if test="${ReportBtn=='Upload'}">
 				<li>
-					<a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+					<a href="Monthly-Report.jsp" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
 				</li>
+				</c:if>
+				<c:if test="${ReportBtn!='Upload'}">
+					<li>
+						<a href="javascript:void(0);" class="Report-toast" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+					</li>
 				</c:if>
 				<li>
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
@@ -412,6 +417,19 @@
 					<a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
 				</li>
 			</ul>
+			<form method="post" id="Employee_info" action="ServletDwmpc">
+				<input type="hidden" name="command" value="EmployeesDetail">
+				<input type="hidden" name="company_id" value="${Company_info.company_Id}">
+			</form>
+			<form method="post" id="Vehicle_info" action="ServletDwmpc">
+				<input type="hidden" name="command" value="VehicleDetail">
+				<input type="hidden" name="company_id" value="${Company_info.company_Id}">
+			</form>
+			<form method="post" id="Company_information" action="ServletDwmpc">
+				<input type="hidden" name="command" value="getCompany">
+				<input type="hidden" name="UserType" value="Client">
+				<input type="hidden" name="company_id" value="${Company_info.company_Id}">
+			</form>
 		</div>
 		<!-- /Left Sidebar Menu -->
 
@@ -1258,14 +1276,7 @@
 						</div>
 					</div>
 
-					<form method="post" id="Employee_info" action="ServletDwmpc">
-						<input type="hidden" name="command" value="EmployeesDetail">
-						<input type="hidden" name="company_id" value="${Company_info.company_Id}">
-					</form>
-					<form method="post" id="Vehicle_info" action="ServletDwmpc">
-						<input type="hidden" name="command" value="VehicleDetail">
-						<input type="hidden" name="company_id" value="${Company_info.company_Id}">
-					</form>
+
 					<form method="get" id="kill_Session" action="ServletDwmpc">
 						<input type="hidden" name="command" value="kill Session">
 						<input type="hidden" name="action" value="Alert Session">
@@ -1394,6 +1405,7 @@
 	<script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
 	<script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
+	<script src="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
 	<script src="dist/js/modal-data.js"></script>
 
     <!-- Bootstrap Touchspin JavaScript -->
@@ -1454,6 +1466,7 @@
 	<!-- Sweet-Alert  -->
 	<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="dist/js/sweetalert-data.js"></script>
+	<script src="dist/js/toast-data.js"></script>
 
 
 

@@ -72,9 +72,8 @@
     <div class="mobile-only-brand pull-left">
       <div class="nav-header pull-left">
         <div class="logo-wrap">
-          <a href="index.html">
-            <img class="brand-img" src="../img/logo.png" alt="brand"/>
-            <span class="brand-text">Zapily</span>
+          <a href="${pageContext.request.contextPath}/Home.jsp">
+            <img class="brand-img" src="img/logo2.png" alt="brand"/>
           </a>
         </div>
       </div>
@@ -819,7 +818,7 @@
                           <div class="chat-body">
                             <a href="javascript:void(0)">
                               <div class="chat-data">
-                                <img class="user-img img-circle"  src="../img/user.png" alt="user"/>
+                                <img class="user-img img-circle"  src="img/user.png" alt="user"/>
                                 <div class="user-data">
                                   <span class="name block capitalize-font">Clay Masse</span>
                                   <span class="time block truncate txt-grey">No one saves us but ourselves.</span>
@@ -830,7 +829,7 @@
                             </a>
                             <a href="javascript:void(0)">
                               <div class="chat-data">
-                                <img class="user-img img-circle"  src="../img/user1.png" alt="user"/>
+                                <img class="user-img img-circle"  src="img/user1.png" alt="user"/>
                                 <div class="user-data">
                                   <span class="name block capitalize-font">Evie Ono</span>
                                   <span class="time block truncate txt-grey">Unity is strength</span>
@@ -841,7 +840,7 @@
                             </a>
                             <a href="javascript:void(0)">
                               <div class="chat-data">
-                                <img class="user-img img-circle"  src="../img/user2.png" alt="user"/>
+                                <img class="user-img img-circle"  src="img/user2.png" alt="user"/>
                                 <div class="user-data">
                                   <span class="name block capitalize-font">Madalyn Rascon</span>
                                   <span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
@@ -1216,8 +1215,8 @@
         <!-- Breadcrumb -->
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
           <ol class="breadcrumb">
-            <li><a href="index.html">Dashboard</a></li>
-            <li><a href="#"><span>table</span></a></li>
+            <li><a href="${pageContext.request.contextPath}/Home.jsp">Dashboard</a></li>
+            <li><a href="${pageContext.request.contextPath}/CompanyInfo.jsp"><span>table</span></a></li>
             <li class="active"><span>foo table</span></li>
           </ol>
         </div>
