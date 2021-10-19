@@ -10,30 +10,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Zapily I Fast build Admin dashboard for any platform</title>
-  <meta name="description" content="Zapily is a Dashboard & Admin Site Responsive Template by hencework." />
-  <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Zapily Admin, Zapilyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
-  <meta name="author" content="hencework"/>
+  <title>DWMPC || Monthly Report</title>
+  <meta name="description" content="DWMPC created by next-gen." />
+  <meta name="keywords" content="DWMPC" />
+  <meta name="author" content="Next-gen"/>
   <!-- Favicon -->
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="icon.ico">
+  <link rel="icon" href="icon.ico" type="image/x-icon">
+
+  <!--alerts CSS -->
+  <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
 
   <!-- vector map CSS -->
-  <link href="../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+  <link href="vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
   <!-- Bootstrap Colorpicker CSS -->
-  <link href="../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
+  <link href="vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
 
   <!-- Bootstrap Datetimepicker CSS -->
-  <link href="../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+  <link href="vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
 
   <!-- Bootstrap Daterangepicker CSS -->
-  <link href="../vendors/bower_components/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css"/>
+  <link href="vendors/bower_components/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css"/>
 
 
   <!-- select2 CSS -->
-  <link href="../vendors/bower_components/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css"/>
+  <link href="vendors/bower_components/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css"/>
   <!-- bootstrap-select CSS -->
-  <link href="../vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
+  <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script>
@@ -52,11 +56,8 @@
     });
   </script>
 
-
-
-
   <!-- Footable CSS -->
-  <link href="../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+  <link href="vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet" type="text/css"/>
   <!-- Custom CSS -->
   <link href="dist/css/style.css" rel="stylesheet" type="text/css">
 </head>
@@ -1216,8 +1217,8 @@
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
           <ol class="breadcrumb">
             <li><a href="${pageContext.request.contextPath}/Home.jsp">Dashboard</a></li>
-            <li><a href="${pageContext.request.contextPath}/CompanyInfo.jsp"><span>table</span></a></li>
-            <li class="active"><span>foo table</span></li>
+            <li><a href="${pageContext.request.contextPath}/CompanyInfo.jsp"><span>Company Information</span></a></li>
+            <li class="active"><span>Monthly Report</span></li>
           </ol>
         </div>
         <!-- /Breadcrumb -->
@@ -1306,13 +1307,14 @@
                       <th data-name="AmountShipped" data-breakpoints="xs">Amount Shipped</th>
                       <th data-name="Returns" data-breakpoints="xs">Returns</th>
                       <th data-name="startedOn" data-breakpoints="xs sm" data-type="date" data-format-string="MMMM Do YYYY">Started On</th>
-                      <th data-name="dob" data-breakpoints="xs sm md" data-type="date" data-format-string="MMMM Do YYYY">End Date</th>
+                      <th data-name="dob" data-breakpoints="xs sm md" data-type="date" data-format-string="MMMM Do YYYY">End On</th>
 
                     </tr>
                     </thead>
                     <tbody>
 
                     </tbody>
+                    <input type="hidden" name="action" id="Report_id" value="${Report_id}">
                   </table>
 
                   <!--Editor-->
@@ -1325,13 +1327,16 @@
                           <h5 class="modal-title" id="editor-title">Add Row</h5>
                         </div>
                         <div class="modal-body">
+                          <input type="hidden" name="command" value="Report Waste Type">
+                          <input type="hidden" name="action" id="action_id" value="">
+                          <input type="hidden" name="Company Id" value="${Company_info.company_Id}"/>
                           <input type="number" id="id" name="id" class="hidden"/>
                           <div class="form-group required">
                             <label for="WasteType" class="col-sm-3 control-label">Waste Type</label>
 
                             <div class="col-sm-9">
 
-                              <select name="pets" id="WasteType" class="selectpicker" data-style="form-control btn-default btn-outline">
+                              <select name="Waste Type"  id="WasteType" class="selectpicker" data-style="form-control btn-default btn-outline">
 
                                 <option value="Ferrous Metal">Ferrous Metal(Steel, including sub-grade ,e.t.c)</option>
                                 <option value="Brass">Brass</option>
@@ -1398,49 +1403,6 @@
       </div>
       <!-- /Row -->
 
-
-      <!-- Row -->
-      <div class="row"  style="display: none;">
-        <div class="col-md-12">
-          <div class="panel panel-default card-view">
-            <div class="panel-heading">
-              <div class="pull-left">
-                <h6 class="panel-title txt-dark">Date Range Picker</h6>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-            <div class="panel-wrapper collapse in">
-              <div class="panel-body">
-                <div class="form-wrap">
-                  <form>
-                    <div class="row">
-                      <div class="col-lg-4">
-                        <div class="form-group mb-0">
-                          <label class="control-label mb-10 text-left">Date Range Pick</label>
-                          <input class="form-control input-daterange-datepicker" type="text" name="daterange" value="01/01/2016 - 01/31/2016"/>
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group mb-0">
-                          <label class="control-label mb-10 text-left">Date Range With Time</label>
-                          <input type="text" class="form-control input-daterange-timepicker" name="daterange" value="01/01/2016 1:30 PM - 01/01/2016 2:00 PM"/>
-                        </div>
-                      </div>
-                      <div class="col-lg-4">
-                        <div class="form-group mb-0">
-                          <label class="control-label mb-10 text-left">Limit Selectable Dates</label>
-                          <input class="form-control input-limit-datepicker" type="text" name="daterange" value="06/01/2016 - 06/07/2016"/>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /Row -->
 
       <!-- Row -->
       <div class="row">
@@ -1535,8 +1497,6 @@
           </div>
         </div>
       </div>
-      <input type="text" id="foo" value="something">
-      <input type="text" id="goo" disabled="disabled" value="0">
       <!-- /Row -->
       <div style="display: none">
         <form id="SubmitReport" method="post" action="ServletDwmpc">
@@ -1603,16 +1563,15 @@
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- Data table JavaScript -->
-<script src="vendors/bower_components/moment/min/moment.min.js"></script>
-<script src="vendors/bower_components/FooTable/compiled/footable.min.js" type="text/javascript"></script>
-<script src="dist/js/Monthly-Report-Footable.js"></script>
-
-<!-- Data table JavaScript -->
 <script src="vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="vendors/bower_components/editable-table/mindmup-editabletable.js"></script>
 <script src="dist/js/Monthly-Report-numeric-input.js"></script>
 <script src="dist/js/editable-table-data.js"></script>
 
+<!-- Data table JavaScript -->
+<script src="vendors/bower_components/moment/min/moment.min.js"></script>
+<script src="vendors/bower_components/FooTable/compiled/footable.min.js" type="text/javascript"></script>
+<script src="dist/js/Monthly-Report-Footable.js"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="dist/js/jquery.slimscroll.js"></script>
@@ -1634,6 +1593,8 @@
 
 <!-- Form Picker Init JavaScript -->
 <script src="dist/js/form-picker-data.js"></script>
+
+
 <!-- Bootstrap Colorpicker JavaScript -->
 <script src="vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 
