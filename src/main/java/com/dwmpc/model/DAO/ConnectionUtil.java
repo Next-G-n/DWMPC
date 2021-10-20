@@ -237,6 +237,12 @@ public class ConnectionUtil {
             //Run the getCompanyInfo
 
 
+        } catch (SQLIntegrityConstraintViolationException sqlI){
+            System.out.println("This is error: "+sqlI);
+            String ErrorSql= String.valueOf(sqlI);
+            if(ErrorSql.contains("Email_UNIQUE")){
+                viewRegisteredCompany=new company_Information("Error Email");
+            }
         }finally {
             close(myConn,myStmt,myRS);
         }
@@ -829,8 +835,8 @@ public class ConnectionUtil {
         try {
             myConn = dataSource.getConnection();
             String sql2;
-                    if(action.equals("")){
-                        sql2="INSERT INTO `dwmpc`.`MonthlyReport_Statue` (`Company_Id`) VALUES ("+company_id+");";
+                    if(action.equals("Registration")){
+                        sql2="INSERT INTO `dwmpc`.`MonthlyReport_Statue` (`Company_Id`,`dateUnix`) VALUES ("+company_id+","+applicationDate+");";
                     }else{
                 sql2="UPDATE `dwmpc`.`MonthlyReport_Statue` SET  `dateUnix` = '"+applicationDate+"' WHERE (`Company_Id` = '"+company_id+"');";
             }
@@ -848,7 +854,7 @@ public class ConnectionUtil {
         Connection myConn=null;
         ResultSet myRs=null;
         PreparedStatement myStmt=null;
-        String Statue="Error";
+        String Statue="Upload";
 
         try {
             //get a connectio
@@ -862,40 +868,34 @@ public class ConnectionUtil {
             while(myRs.next()) {
                 //retrieve data from the result set
                 String date=myRs.getString("dateUnix");
+                    if(!date.equals("null")){
+                        long unixSeconds = Long.parseLong(date);
+                        SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd MM yyyy");
+                        sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+2"));
 
-                if(!date.equals("null")){
-                    long unixSeconds = Long.parseLong(date);
-                    SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd MM yyyy");
-                    sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+2"));
+                        Timestamp timestamp = new Timestamp(unixSeconds);
+                        Date dateMi = new Date(timestamp.getTime());
+                        String formattedDate=sdf.format(dateMi);
 
-                    Timestamp timestamp = new Timestamp(unixSeconds);
-                    Date dateMi = new Date(timestamp.getTime());
-                    String formattedDate=sdf.format(dateMi);
-
-                    SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy");
-                    Date dateCurrent=new Date();
-                    String Current=sdf.format(dateCurrent);
-                    System.out.println("the first: "+formattedDate+" Second: "+Current);
-                    Date dateBefore = myFormat.parse(formattedDate);
-                    Date dateAfter = myFormat.parse(Current);
-                    long difference = dateAfter.getTime() - dateBefore.getTime();
-                    float daysBetween = (difference / (1000*60*60*24));
-                    /* You can also convert the milliseconds to days using this method
-                     * float daysBetween =
-                     *         TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS)
-                     */
-                    System.out.println("test :"+daysBetween);
-                    if(daysBetween>=28){
-                        Statue="Upload";
-                    }else{
-                        Statue="UptoDate";
-                    }
-
+                        SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy");
+                        Date dateCurrent=new Date();
+                        String Current=sdf.format(dateCurrent);
+                        System.out.println("the first: "+formattedDate+" Second: "+Current);
+                        Date dateBefore = myFormat.parse(formattedDate);
+                        Date dateAfter = myFormat.parse(Current);
+                        long difference = dateAfter.getTime() - dateBefore.getTime();
+                        float daysBetween = (difference / (1000*60*60*24));
+                        /* You can also convert the milliseconds to days using this method
+                         * float daysBetween =
+                         *         TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS)
+                         */
+                        System.out.println("test :"+daysBetween);
+                        if(daysBetween>=28){
+                            Statue="Upload";
+                        }else{
+                            Statue="UptoDate";
+                        }
                 }
-
-
-
-
             }
         }finally {
 
@@ -938,16 +938,17 @@ public class ConnectionUtil {
         return report_id;
     }
 
-    public void setReportWaste(WasteTypeReport wasteTypeReport, String action,int Report_id) throws Exception {
+    public void setReportWaste(WasteTypeReport wasteTypeReport, String action,int Report_id,String company_name) throws Exception {
         Connection myConn=null;
         PreparedStatement myStmt=null;
+        String companyName=company_name.replace(" ","_");
         try {
             myConn = dataSource.getConnection();
             String sql2;
             if(action.equals("Registration")){
-                sql2="INSERT INTO `Report_Waste_Type` (`Company ID`, `Waste Type`, `Generated Quantity`, `Amount Shipped`, `Return`, `Date Of Report`) VALUES(?,?,?,?,?,?);";
+                sql2="INSERT INTO `"+companyName+"` (`Company ID`, `Waste Type`, `Generated Quantity`, `Amount Shipped`, `Return`, `Date Of Report`) VALUES(?,?,?,?,?,?);";
             }else{
-                sql2="UPDATE `Report_Waste_Type` SET `Company ID` = '?', `Waste Type` = '?', `Generated Quantity` = '?', `Amount Shipped` = '?', `Return` = '?', `Date Of Report` = '?' WHERE (`Report_ID` = '"+Report_id+"');";
+                sql2="UPDATE `"+companyName+"` SET `Company ID` = '?', `Waste Type` = '?', `Generated Quantity` = '?', `Amount Shipped` = '?', `Return` = '?', `Date Of Report` = '?' WHERE (`Report_ID` = '"+Report_id+"');";
             }
             myStmt = myConn.prepareStatement(sql2);
             myStmt.setInt(1,wasteTypeReport.getCompany_Id());
@@ -962,5 +963,64 @@ public class ConnectionUtil {
         }finally {
             close(myConn,myStmt,null);
         }
+    }
+
+    public void ReportTableCreation(String company_name)throws Exception {
+        Connection myConn=null;
+        PreparedStatement myStmt=null;
+        String CompanyName=company_name.replace(" ","_");
+        try {
+            myConn = dataSource.getConnection();
+            String sql="CREATE TABLE `dwmpc`.`"+CompanyName+"` (\n" +
+                    "  `Report_ID` INT NOT NULL AUTO_INCREMENT,\n" +
+                    "  `Company ID` INT NOT NULL,\n" +
+                    "  `Waste Type` VARCHAR(45) NULL,\n" +
+                    "  `Generated Quantity` VARCHAR(45) NULL,\n" +
+                    "  `Amount Shipped` VARCHAR(45) NULL,\n" +
+                    "  `Return` VARCHAR(45) NULL,\n" +
+                    "  `Date Of Report` VARCHAR(45) NULL,\n" +
+                    "  `Date` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,\n" +
+                    "  PRIMARY KEY (`Report_ID`));";
+
+            myStmt = myConn.prepareStatement(sql);
+            myStmt.execute();
+
+
+        }finally {
+            close(myConn,myStmt,null);
+        }
+    }
+
+    public int getReportWaste_lastRow(String company_name) throws Exception {
+        Connection myConn=null;
+        ResultSet myRs=null;
+        PreparedStatement myStmt=null;
+        int report_id=1;
+        String CompanyName=company_name.replace(" ","_");
+
+        try {
+            //get a connectio
+
+            myConn=dataSource.getConnection();
+            String sql ="select * from dwmpc.`"+CompanyName+"` ORDER BY `Report_ID` DESC LIMIT 1;";
+            myStmt=myConn.prepareStatement(sql);
+            myRs=myStmt.executeQuery();
+
+            //process result set
+            while(myRs.next()) {
+                //retrieve data from the result set
+                report_id=myRs.getInt("Report_ID");
+
+                if(report_id == 0){
+                    report_id=1;
+                }
+            }
+        }finally {
+
+            close(myConn,myStmt,myRs);
+
+        }
+        System.out.println("Return :"+report_id);
+        return report_id;
     }
 }
