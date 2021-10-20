@@ -1321,15 +1321,16 @@
                   <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
 
                     <div class="modal-dialog" role="document">
-                      <form class="modal-content form-horizontal" id="editor">
+                      <form class="modal-content form-horizontal" id="editor" action="ServletDwmpc" method="post">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                           <h5 class="modal-title" id="editor-title">Add Row</h5>
                         </div>
                         <div class="modal-body">
                           <input type="hidden" name="command" value="Report Waste Type">
-                          <input type="hidden" name="action" id="action_id" value="">
+                          <input type="text" name="action" id="action_id" value="">
                           <input type="hidden" name="Company Id" value="${Company_info.company_Id}"/>
+                          <input type="hidden" name="Company Name" value="${Company_info.company_Name}"/>
                           <input type="number" id="id" name="id" class="hidden"/>
                           <div class="form-group required">
                             <label for="WasteType" class="col-sm-3 control-label">Waste Type</label>
@@ -1603,6 +1604,21 @@
 <script src="dist/js/init.js"></script>
 
 <script>
+
+  var form = $('#editor');
+  form.submit(function () {
+
+    $.ajax({
+      type: form.attr('method'),
+      url: form.attr('action'),
+      data: form.serialize(),
+      success: function (data) {
+      }
+    });
+
+    return false;
+  });
+
   $(document).ready(function(){
 
 
