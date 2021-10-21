@@ -896,25 +896,27 @@
                                                 <input class="inputs" type="hidden" name="action" value="Registration">
                                                 <input class="inputs" type="hidden" name="Status" value="Pending">
                                                 <input class="inputs" type="hidden" name="User_id" value="${User_Info[0].user_Id}">
+                                                <input class="inputs" type="hidden"  id="Sta" value="${Company_Info_Form.company_Status}">
+                                                <input class="inputs" type="hidden" id="Reg" value="${Company_Info_Form.region}">
                                                 <div class="form-group">
                                                     <label for="Company-name" class="control-label mb-10">Company Name (required):</label>
-                                                    <input type="text" class="form-control" name="Company name" id="Company-name" required>
+                                                    <input type="text" class="form-control" name="Company name" id="Company-name" value="${Company_Info_Form.company_Name}"  required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label mb-10" for="Street-address">Street Address (required):</label>
-                                                    <input id="Street-address" type="text" name="Street_Address" class="form-control required" value="" required/>
+                                                    <input id="Street-address" type="text" name="Street_Address" class="form-control required" value="${Company_Info_Form.street_Address}" required/>
 
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-md-6 col-xs-12">
                                                             <label class="control-label mb-10" data-name="Test " for="Street-address2">Street Address 2 (Optional):</label>
-                                                            <input id="Street-address2" type="text" name="Street_Address2" class="form-control" value=""/>
+                                                            <input id="Street-address2" type="text" name="Street_Address2" class="form-control" value="${Company_Info_Form.street_Address2}"/>
                                                         </div>
                                                         <div class="span1"></div>
                                                         <div class="col-md-6 col-xs-12">
                                                             <label class="control-label mb-10" for="Status">Status of applicant(required):</label>
-                                                            <select class="selectpicker" id="Status" name="StatusA" data-style="form-control btn-default btn-outline">
+                                                            <select class="selectpicker" id="Status" name="StatusA" data-style="form-control btn-default btn-outline" >
                                                                 <option value="Company">Company</option>
                                                                 <option value="Non-Governmental Organisation">Non-Governmental Organisation</option>
                                                                 <option value="Local Government Institution">Local Government Institution</option>
@@ -926,7 +928,7 @@
                                                     <div class="row">
                                                         <div class="col-md-6 col-xs-12">
                                                             <label class="control-label mb-10" for="Region">Region (required):</label>
-                                                            <select id="Region" name="Region" class="selectpicker" data-style="form-control btn-default btn-outline">
+                                                            <select id="Region" name="Region" class="selectpicker" data-style="form-control btn-default btn-outline" >
                                                                 <option value="Francistown Branch">Francistown Zone</option>
                                                                 <option value="Gaborone Branch">Gaborone Zone</option>
                                                                 <option value="Chobe Branch">Chobe Zone</option>
@@ -937,7 +939,7 @@
                                                         <div class="span1"></div>
                                                         <div class="col-md-6 col-xs-12">
                                                             <label class="control-label mb-10" for="City">City/Town/Village (required):</label>
-                                                            <input id="City" type="text" name="City" list="location_suggestions" class="form-control required" value="" required/>
+                                                            <input id="City" type="text" name="City" list="location_suggestions" class="form-control required" value="${Company_Info_Form.region_Town_Village}" required/>
                                                             <datalist id="location_suggestions">
 
                                                                 <option value="Phiring">
@@ -1079,12 +1081,12 @@
                                                     <div class="row">
                                                         <div class="col-md-6 col-xs-12">
                                                             <label class="control-label mb-10" for="Plot_Number">Plot Number (required):</label>
-                                                            <input id="Plot_Number" type="text" name="Plot_Number" class="form-control required" value="" required/>
+                                                            <input id="Plot_Number" type="text" name="Plot_Number" class="form-control required" value="${Company_Info_Form.plot_Number}" required/>
                                                         </div>
                                                         <div class="span1"></div>
                                                         <div class="col-md-6 col-xs-12">
                                                             <label class="control-label mb-10" for="Ward">Ward (required):</label>
-                                                            <input id="Ward" type="text" name="Ward" class="form-control required" value="" required/>
+                                                            <input id="Ward" type="text" name="Ward" class="form-control required" value="${Company_Info_Form.ward}" required/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1092,12 +1094,12 @@
                                                     <div class="row">
                                                         <div class="col-md-6 col-xs-12">
                                                             <label class="control-label mb-10" for="telephone">Telephone (required):</label>
-                                                            <input id="telephone"  type="text" data-mask="+267 999 9999" name="telephone" class="form-control required" value="" required/>
+                                                            <input id="telephone"  type="text" data-mask="+267 999 9999" name="telephone" class="form-control required" value="${Company_Info_Form.telephone}" required/>
                                                         </div>
                                                         <div class="span1"></div>
                                                         <div class="col-md-6 col-xs-12">
                                                             <label class="control-label mb-10" for="fax">Fax (required):</label>
-                                                            <input id="fax" type="text" data-mask="+267 999 9999" name="fax" class="form-control required" value="" required/>
+                                                            <input id="fax" type="text" data-mask="+267 999 9999" name="fax" class="form-control required" value="${Company_Info_Form.fax_Number}" required/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1105,12 +1107,12 @@
                                                     <div class="row">
                                                         <div class="col-md-6 col-xs-12">
                                                             <label class="control-label mb-10" for="Company_Email">Company Email (required):</label>
-                                                            <input id="Company_Email" type="email" name="Company_Email" class="form-control required" value="" required />
+                                                            <input id="Company_Email" type="email" name="Company_Email" class="form-control required" value="${Company_Info_Form.email}" required />
                                                         </div>
                                                         <div class="span1"></div>
                                                         <div class="col-md-6 col-xs-12">
                                                             <label class="control-label mb-10" for="phoneNumber">Phone Number (required):</label>
-                                                            <input id="phoneNumber" data-mask="+267 99 999 999"  type="tel" name="Phone_Number"  class="form-control required" value="" required/>
+                                                            <input id="phoneNumber" data-mask="+267 99 999 999"  type="tel" name="Phone_Number"  class="form-control required" value="${Company_Info_Form.phone_Number}" required/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1128,6 +1130,8 @@
                 </div>
             </div>
             <button  type="button"  alt="alert"  class="img-responsive model_img Company_Alert_Succes" id="employee-alert" style="display: none" onclick=""></button>
+
+            <button style="" id="Error-Email" alt="alert" ></button>
 
             <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 
@@ -1150,6 +1154,16 @@
 
                     return false;
                 });
+
+                <c:if test="${Company_Info_Form!=null}">
+                window.onload = function()  {
+                    document.getElementById('Region').value = document.getElementById('Reg').value;
+                    $("#Region").selectpicker("refresh");
+                    document.getElementById('Status').value = document.getElementById('Sta').value;
+                    $("#Status").selectpicker("refresh");
+                    document.getElementById("Error-Email").click();
+                }
+                </c:if>
 
 
 

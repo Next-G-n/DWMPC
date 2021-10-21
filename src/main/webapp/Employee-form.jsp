@@ -962,6 +962,8 @@
                                     }
                                 });
                             });
+
+
                             function SendIT(){
                                 alert("test")
                                 var	command = $('#command').val();

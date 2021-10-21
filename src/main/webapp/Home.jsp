@@ -338,21 +338,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">My Companies</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-                <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
-                    <li class="active" role="presentation">
-                        <a  data-toggle="tab"  role="tab" href="#Company_info" href="#Company_info2" aria-expanded="true">Information</a>
-                    </li>
-                    <li >
-                        <a aria-expanded="false"  data-toggle="tab" role="tab"  href="#Vehicle_info">Vehicles</a>
-                    </li>
-                    <li>
-                        <a  data-toggle="tab"  role="tab"  aria-expanded="false">Attachments</a>
-                    </li>
-                    <li>
-                        <a href="#">Employees</a>
-                    </li>
-                </ul>
+                <a href="${pageContext.request.contextPath}/companyForm.jsp" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">Add Company</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>

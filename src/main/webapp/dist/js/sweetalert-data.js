@@ -74,6 +74,18 @@ $(function() {
             });
             return false;
         });
+        $('#Error-Email').on('click',function(e){
+            swal({
+                title: "Failed to Register",
+                type: "warning",
+                text: "The Email you used Exist",
+                timer: 3000,
+                showConfirmButton: false
+            });
+            return false;
+        });
+
+
 
     $('#Revoking-Officer').on('click',function(e){
             swal({
@@ -82,7 +94,6 @@ $(function() {
                 text: "You are about to Revoke this Company's Vehicle",
                 showCancelButton: true,
                 confirmButtonColor: "#8BC34A",
-
                 confirmButtonText: "Yes, Approve",
                 closeOnCancel: true
             },function (){

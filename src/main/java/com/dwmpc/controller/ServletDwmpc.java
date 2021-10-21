@@ -161,6 +161,9 @@ public class ServletDwmpc extends HttpServlet {
                     delay_Time=request.getParameter("delayTime");
                     System.out.println("this good :"+delay_Time);
                     break;
+                case "Report Waste Type":
+                    setReportWaste(request,response);
+                    break;
             }
             // listStudents(request, response);
         }
@@ -169,6 +172,28 @@ public class ServletDwmpc extends HttpServlet {
             exc.printStackTrace();
 
         }
+    }
+
+    private void setReportWaste(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String action=request.getParameter("action");
+        int Company_id= Integer.parseInt(request.getParameter("Company Id"));
+        String Waste_Type = request.getParameter("Waste Type");
+        String Generated_Quantity = request.getParameter("GeneratedQuantity");
+        String Amount_Shipped = request.getParameter("AmountShipped");
+        String Return = request.getParameter("Returns");
+        String Date_Of_Report = request.getParameter("startedOn");
+        String CompanyName = request.getParameter("Company Name");
+        WasteTypeReport wasteTypeReport=new WasteTypeReport(Company_id,Waste_Type,Generated_Quantity,Amount_Shipped,Return,Date_Of_Report);
+        System.out.println("Action: "+action);
+        if(action.equals("Editing")){
+            int Report_id= Integer.parseInt(request.getParameter("Company Id"));
+            connectionUtil.setReportWaste(wasteTypeReport,action,Report_id,CompanyName);
+        }else{
+            connectionUtil.setReportWaste(wasteTypeReport,action,0,CompanyName);
+        }
+
+
+
     }
 
     private void setMonthlyReport(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -279,6 +304,9 @@ public class ServletDwmpc extends HttpServlet {
         if (session.getAttribute("All_Employee") != null){
             session.removeAttribute("All_Employee");
         }
+        if (session.getAttribute("Report_id") != null){
+            session.removeAttribute("Report_id");
+        }
         if (session.getAttribute("Company_info") != null){
             session.removeAttribute("Company_info");
         }
@@ -321,6 +349,7 @@ public class ServletDwmpc extends HttpServlet {
 
             } else if (userlg.get(0).getUser_type().equals("Client")) {
                 userType = "Client";
+
                 List<company_Information> CompanyInfo = connectionUtil.getAllCompanies(user_id, userType, Branch);
 
                 if (!CompanyInfo.isEmpty()) {
@@ -354,7 +383,6 @@ public class ServletDwmpc extends HttpServlet {
         String email=request.getParameter("email");
         String securePassword=null;
         String action=request.getParameter("action");
-
 
 
         int omang= Integer.parseInt(request.getParameter("Omang_code"));
@@ -484,31 +512,65 @@ public class ServletDwmpc extends HttpServlet {
 
         company_Information getCurrentCompanyID=connectionUtil.registerCompany(registerCompany,action);
 
-        List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(id,"Client","None");
-        session.setAttribute("All_companies", CompanyInfo);
+        if(getCurrentCompanyID.getCompany_Name().equals("Error Email")){
+            session.setAttribute("Company_Info_Form", registerCompany);
+            response.sendRedirect("companyForm.jsp");
 
-        if(action.equals("Registration")) {
-            connectionUtil.ReportUptodate(getCurrentCompanyID.getCompany_Id(),"null","Registration");
+        }else{
 
+            if (session.getAttribute("Company_Info_Form") != null){
+                session.removeAttribute("Company_Info_Form");
+            }
+            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(id,"Client","None");
+            session.setAttribute("All_companies", CompanyInfo);
+
+            if(action.equals("Registration")) {
+                connectionUtil.ReportUptodate(getCurrentCompanyID.getCompany_Id(),"null","Registration");
+                connectionUtil.ReportTableCreation(getCurrentCompanyID.getCompany_Name());
+                int Report_id=connectionUtil.getReportWaste_lastRow(getCurrentCompanyID.getCompany_Name());
+                session.setAttribute("Report_id",Report_id);
+                getCompanyName(request,response,getCurrentCompanyID.getCompany_Name());
+            }
+
+
+
+            session.removeAttribute("Company_info");
+            session.setAttribute("Company_info", getCurrentCompanyID);
+
+
+
+            List<company_personnel> employees=connectionUtil.getAllEmployees(getCurrentCompanyID.getCompany_Id());
+            session.setAttribute("All_Employee",employees);
+
+            //request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
+            response.sendRedirect("CompanyInfo.jsp");
         }
 
-
-
-        session.removeAttribute("Company_info");
-        session.setAttribute("Company_info", getCurrentCompanyID);
-
-
-
-        List<company_personnel> employees=connectionUtil.getAllEmployees(getCurrentCompanyID.getCompany_Id());
-        session.setAttribute("All_Employee",employees);
-
-        //request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
-        response.sendRedirect("CompanyInfo.jsp");
 
     }
     int Apply_id;
     String delay_Time;
     String Vehicle_id;
+    public void getCompanyName(HttpServletRequest request, HttpServletResponse response,String companyName){
+
+        HttpSession session=request.getSession();
+        int count=0;
+        for(int i=0; i<companyName.length(); i++){
+            if(companyName.charAt(i)!='\0'){
+                count++;
+            }
+        }
+        if(count>=11){
+            companyName=companyName.substring(0, 11)+"...";
+        }
+        session.setAttribute("CompanyName",companyName);
+    }
+
+    private void Report(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        HttpSession session=request.getSession();
+        int Report_id=connectionUtil.getReportWaste();
+        session.setAttribute("Report_id",Report_id);
+    }
 
     private void getCompany(HttpServletRequest request, HttpServletResponse response) throws  Exception{
         HttpSession session=request.getSession();
@@ -519,20 +581,14 @@ public class ServletDwmpc extends HttpServlet {
         company_Information FirstCompanyDetails=connectionUtil.getCompanyDetails(Company_id);
         session.setAttribute("Company_info", FirstCompanyDetails);
         if(userType.equals("Client")){
+
+            getCompanyName(request,response,FirstCompanyDetails.getCompany_Name());
             String companyName=FirstCompanyDetails.getCompany_Name();
-            int count=0;
-            for(int i=0; i<companyName.length(); i++){
-                if(companyName.charAt(i)!='\0'){
-                    count++;
-                }
-            }
-            if(count>=11){
-                companyName=companyName.substring(0, 19)+"...";
-            }
 
             String ClientReport=connectionUtil.getMonthlyReport(Company_id);
             session.setAttribute("ReportBtn",ClientReport);
-            session.setAttribute("CompanyName",companyName);
+            int Report_id=connectionUtil.getReportWaste_lastRow(companyName);
+            session.setAttribute("Report_id",Report_id);
             request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
         }else if(userType.equals("Waste Management Officer")) {
             Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
