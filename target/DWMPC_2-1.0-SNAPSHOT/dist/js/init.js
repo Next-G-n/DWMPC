@@ -132,16 +132,18 @@ var zapily = function(){
 	});
 	
 	/*Sidebar Navigation*/
-	$(document).on('click', '#toggle_nav_btn,#open_right_sidebar,#setting_panel_btn', function (e) {
+	$(document).on('click', '#toggle_nav_btn,#open_right_sidebar ,#open_email,#setting_panel_btn', function (e) {
 		$(".dropdown.open > .dropdown-toggle").dropdown("toggle");
 		return false;
+
 	});
+
 	$(document).on('click', '#toggle_nav_btn', function (e) {
 		$wrapper.removeClass('open-right-sidebar open-setting-panel').toggleClass('slide-nav-toggle');
 		return false;
 	});
 	
-	$(document).on('click', '#open_right_sidebar', function (e) {
+	$(document).on('click', '#open_right_sidebar ,#open_email', function (e) {
 		$wrapper.toggleClass('open-right-sidebar').removeClass('open-setting-panel');
 		return false;
 	
