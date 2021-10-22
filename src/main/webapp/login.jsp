@@ -64,7 +64,7 @@
 											<div class="panel panel-default card-view">
 												<div class="panel-wrapper collapse in">
 													<div class="panel-body">
-											<form method="post" action="${pageContext.request.contextPath}/ServletDwmpc">
+											<form method="post" id="login_test" action="ServletDwmpc">
 												<input class="inputs" type="hidden" name="command" value="Login">
 												<div class="form-group">
 													<label class="control-label mb-10" for="exampleInputEmail_2">Email address</label>
@@ -72,7 +72,7 @@
 												</div>
 												<div class="form-group">
 													<label class="pull-left control-label mb-10" for="exampleInputpwd_2">Password</label>
-													<a class="capitalize-font txt-primary block mb-10 pull-right font-12" href="forgot-password.html">forgot password ?</a>
+													<a class="capitalize-font txt-primary block mb-10 pull-right font-12" href="forgot-password.jsp">forgot password ?</a>
 													<div class="clearfix"></div>
 													<input type="password" class="form-control" name="password" required="" id="exampleInputpwd_2" placeholder="Enter Password">
 												</div>
@@ -89,7 +89,44 @@
 												</div>
 											</form>
 														<button style="display: none" id="Error-Login" alt="alert" >testing</button>
+														<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 
+														<script type="text/javascript">
+															var form = $('#bbb');
+															form.submit(function () {
+
+																alert("this ")
+																$.ajax({
+																	type: form.attr('method'),
+																	url: form.attr('action'),
+																	data: form.serialize(),
+																	fail: function (data){
+
+																	},
+																	success: function (data) {
+																		alert("this data :"+data)
+																		alert("this data :"+data.toString())
+																		var data2=data.toString();
+																		alert("this data :"+data2);
+																		alert(data2===('Error2'));
+																		alert(data2===('Error'));
+																		alert(data2.toString()===('Error'));
+																		alert("this data :"+data2.equals('Error'))
+																		if(data==="Error"){
+																			alert("this 1")
+																			document.getElementById("Error-Login").click();
+																		}else if(data==="Client"){
+																			window.open('Home.jsp', '_parent');
+																		}else if(data==="Officer"){
+																			window.open('Officer-Home.jsp', '_parent');
+																		}
+
+																	}
+																});
+
+																return false;
+															});
+														</script>
 													</div>
 													<c:if test="${LoginError!=null}">
 														<script>
@@ -98,6 +135,7 @@
 															}
 														</script>
 													</c:if>
+
 												</div>
 										</div>
 									</div>	
@@ -113,7 +151,7 @@
 		
 		</div>
 		<!-- /#wrapper -->
-		
+
 		<!-- JavaScript -->
 		
 		<!-- jQuery -->
