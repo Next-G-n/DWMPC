@@ -942,13 +942,15 @@ public class ConnectionUtil {
         Connection myConn=null;
         PreparedStatement myStmt=null;
         String companyName=company_name.replace(" ","_");
+        System.out.println("testing :"+Report_id);
         try {
             myConn = dataSource.getConnection();
             String sql2;
             if(action.equals("Registration")){
                 sql2="INSERT INTO `"+companyName+"` (`Company ID`, `Waste Type`, `Generated Quantity`, `Amount Shipped`, `Return`, `Date Of Report`) VALUES(?,?,?,?,?,?);";
             }else{
-                sql2="UPDATE `"+companyName+"` SET `Company ID` = '?', `Waste Type` = '?', `Generated Quantity` = '?', `Amount Shipped` = '?', `Return` = '?', `Date Of Report` = '?' WHERE (`Report_ID` = '"+Report_id+"');";
+                System.out.println("thiis wee");
+                sql2="UPDATE `"+companyName+"` SET `Company ID` = ?, `Waste Type` = ?, `Generated Quantity` = ?, `Amount Shipped` = ?, `Return` = ?, `Date Of Report` = ? WHERE (`Report_ID` = '"+Report_id+"');";
             }
             myStmt = myConn.prepareStatement(sql2);
             myStmt.setInt(1,wasteTypeReport.getCompany_Id());
@@ -958,6 +960,7 @@ public class ConnectionUtil {
             myStmt.setString(5, wasteTypeReport.getReturn());
             myStmt.setString(6, wasteTypeReport.getDate_Of_Report());
             myStmt.execute();
+
 
 
         }finally {
@@ -1010,6 +1013,7 @@ public class ConnectionUtil {
             while(myRs.next()) {
                 //retrieve data from the result set
                 report_id=myRs.getInt("Report_ID");
+                report_id=report_id+1;
 
                 if(report_id == 0){
                     report_id=1;

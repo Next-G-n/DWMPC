@@ -178,6 +178,9 @@ public class ServletDwmpc extends HttpServlet {
         String action=request.getParameter("action");
         int Company_id= Integer.parseInt(request.getParameter("Company Id"));
         String Waste_Type = request.getParameter("Waste Type");
+        if (Waste_Type.equals("yes")){
+            Waste_Type=request.getParameter("yes");
+        }
         String Generated_Quantity = request.getParameter("GeneratedQuantity");
         String Amount_Shipped = request.getParameter("AmountShipped");
         String Return = request.getParameter("Returns");
@@ -186,7 +189,7 @@ public class ServletDwmpc extends HttpServlet {
         WasteTypeReport wasteTypeReport=new WasteTypeReport(Company_id,Waste_Type,Generated_Quantity,Amount_Shipped,Return,Date_Of_Report);
         System.out.println("Action: "+action);
         if(action.equals("Editing")){
-            int Report_id= Integer.parseInt(request.getParameter("Company Id"));
+            int Report_id= Integer.parseInt(request.getParameter("id"));
             connectionUtil.setReportWaste(wasteTypeReport,action,Report_id,CompanyName);
         }else{
             connectionUtil.setReportWaste(wasteTypeReport,action,0,CompanyName);
@@ -355,6 +358,7 @@ public class ServletDwmpc extends HttpServlet {
                 if (!CompanyInfo.isEmpty()) {
                     session.setAttribute("All_companies", CompanyInfo);
                 }
+               // response.getWriter().println("Client");
                 request.getRequestDispatcher("Home.jsp").forward(request, response);
             } else {
                 userType = userlg.get(0).getUser_type();
@@ -365,12 +369,14 @@ public class ServletDwmpc extends HttpServlet {
                 if (!CompanyInfo.isEmpty()) {
                     session.setAttribute("All_companies", CompanyInfo);
                 }
+               // response.getWriter().println("Officer");
                 request.getRequestDispatcher("Officer-Home.jsp").forward(request, response);
             }
         }else{
             user ErrorSession=new user(Email);
 
             session.setAttribute("LoginError",ErrorSession);
+            //response.getWriter().println("Error");
             this.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
         }
 
