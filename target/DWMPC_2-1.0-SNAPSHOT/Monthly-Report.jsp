@@ -1,30 +1,67 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: NITRO5
+  Date: 10/18/2021
+  Time: 12:46 PM
+  To change this template use File | Settings | File Templates.
+--%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>DWMPC || Vehicle Registration Form</title>
-  <meta name="description" content="Zapily is a Dashboard & Admin Site Responsive Template by hencework." />
-  <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Zapily Admin, Zapilyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
-  <meta name="author" content="hencework"/>
-
+  <title>DWMPC || Monthly Report</title>
+  <meta name="description" content="DWMPC created by next-gen." />
+  <meta name="keywords" content="DWMPC" />
+  <meta name="author" content="Next-gen"/>
   <!-- Favicon -->
   <link rel="shortcut icon" href="icon.ico">
   <link rel="icon" href="icon.ico" type="image/x-icon">
-  <!-- vector map CSS -->
-  <link href="vendors/bower_components/jquery-wizard.js/css/wizard.css" rel="stylesheet" type="text/css"/>
 
+  <!--alerts CSS -->
+  <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
+
+  <!-- vector map CSS -->
+  <link href="vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+  <!-- Bootstrap Colorpicker CSS -->
+  <link href="vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
+
+  <!-- Bootstrap Datetimepicker CSS -->
+  <link href="vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+
+  <!-- Bootstrap Daterangepicker CSS -->
+  <link href="vendors/bower_components/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css"/>
+
+
+  <!-- select2 CSS -->
+  <link href="vendors/bower_components/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css"/>
   <!-- bootstrap-select CSS -->
   <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
 
-  <!-- Bootstrap Dropify CSS -->
-  <link href="vendors/bower_components/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css"/>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("select").change(function(){
+        $(this).find("option:selected").each(function(){
+          var optionValue = $(this).attr("value");
+          if(optionValue){
+            $(".box").not("." + optionValue).hide();
+            $("." + optionValue).show();
+          } else{
+            $(".box").hide();
+          }
+        });
+      }).change();
+    });
+  </script>
 
+  <!-- Footable CSS -->
+  <link href="vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet" type="text/css"/>
   <!-- Custom CSS -->
   <link href="dist/css/style.css" rel="stylesheet" type="text/css">
 </head>
-
-<body>
+<body onload="myFunction()">
 <!--Preloader-->
 <div class="preloader-it">
   <div class="la-anim-1"></div>
@@ -263,13 +300,13 @@
         <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a id="open_right_sidebar" href="#" onclick="document.getElementById('chat_tab_btn').click();" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
+        <a href="#" id="open_right_sidebar" onclick="document.getElementById('chat_tab_btn').click();" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+        <a href="#" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="" class="tst2" ><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+        <a href="#" class="tst2"><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
       </li>
       <li><hr class="light-grey-hr mb-10"/></li>
       <li class="navigation-header">
@@ -277,19 +314,37 @@
         <i class="zmdi zmdi-more"></i>
       </li>
       <li>
-        <a href="${pageContext.request.contextPath}/companyForm.jsp" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">Add Company</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">${CompanyName}</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+        <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
+          <li class="active" role="presentation">
+            <a onclick="document.getElementById('Company_information').submit()" data-toggle="tab"  role="tab" aria-expanded="true">Information</a>
+          </li>
+          <li >
+            <a onclick="document.getElementById('Vehicle_info').submit()" aria-expanded="false"  data-toggle="tab" role="tab">Vehicles</a>
+          </li>
+          <li>
+            <a onclick="document.getElementById('Employee_info').submit()">Employees</a>
+          </li>
+        </ul>
       </li>
       <li>
         <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
+      <c:if test="${ReportBtn=='Upload'}">
+        <li>
+          <a href="Monthly-Report.jsp" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+        </li>
+      </c:if>
+      <c:if test="${ReportBtn!='Upload'}">
+        <li>
+          <a href="javascript:void(0);" class="Report-toast" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+        </li>
+      </c:if>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="javascript:void(0);"  class="tst2" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
-      </li>
-      <li>
-        <a href="" class="tst2" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
         <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
@@ -305,7 +360,7 @@
         <i class="zmdi zmdi-more"></i>
       </li>
       <li>
-        <a href="javascript:void(0);" class="tst2" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+        <a href="" class="tst2" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
         <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
@@ -314,6 +369,19 @@
         <a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
     </ul>
+    <form method="post" id="Employee_info" action="ServletDwmpc">
+      <input type="hidden" name="command" value="EmployeesDetail">
+      <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+    </form>
+    <form method="post" id="Vehicle_info" action="ServletDwmpc">
+      <input type="hidden" name="command" value="VehicleDetail">
+      <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+    </form>
+    <form method="post" id="Company_information" action="ServletDwmpc">
+      <input type="hidden" name="command" value="getCompany">
+      <input type="hidden" name="UserType" value="Client">
+      <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+    </form>
   </div>
   <!-- /Left Sidebar Menu -->
 
@@ -736,107 +804,331 @@
       <!-- Title -->
       <div class="row heading-bg">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-          <h5 class="txt-dark"></h5>
+          <h5 class="txt-dark">foo table</h5>
         </div>
         <!-- Breadcrumb -->
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
           <ol class="breadcrumb">
-            <li><a href="${pageContext.request.contextPath}/Officer-Home.jsp">Dashboard</a></li>
-            <li><a href="Admin-Table.jsp">Officer's Detail Table</a></li>
-            <li class="active"><span>Officer Registration Form</span></li>
+            <li><a href="${pageContext.request.contextPath}/Home.jsp">Dashboard</a></li>
+            <li><a href="${pageContext.request.contextPath}/CompanyInfo.jsp"><span>Company Information</span></a></li>
+            <li class="active"><span>Monthly Report</span></li>
           </ol>
         </div>
         <!-- /Breadcrumb -->
-        <!-- Row -->
-
       </div>
       <!-- /Title -->
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="panel panel-warning card-view">
+
+      <!-- Row -->
+      <div class="row" style="display: none;">
+        <div class="col-md-12">
+          <div class="panel panel-default card-view">
             <div class="panel-heading">
               <div class="pull-left">
-                <h6 class="panel-title txt-light">Officer Registration</h6>
+                <h6 class="panel-title txt-dark">Date time picker</h6>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="panel-wrapper collapse in">
+              <div class="panel-body">
+                <div class="form-wrap">
+                  <form>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="control-label mb-10 text-left">date time pick</label>
+                          <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+																	<span class="fa fa-calendar"></span>
+																</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label class="control-label mb-10 text-left">time pick</label>
+                          <div class='input-group date' id='datetimepicker2'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+																	<span class="fa fa-clock-o"></span>
+																</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <label class="control-label mb-10 text-left">inline date pick</label>
+                        <div class="form-group">
+                          <div class='input-group date' id='datetimepicker3'></div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <label class="control-label mb-10 text-left">inline date time pick</label>
+                        <div class="form-group">
+                          <div class='input-group date' id='datetimepicker4'></div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Row -->
+
+      <!-- Row -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default card-view">
+            <div class="panel-heading">
+              <div class="pull-left">
+                <h6 class="panel-title txt-dark">Editing Table</h6>
               </div>
               <div class="clearfix"></div>
             </div>
 
             <div class="panel-wrapper collapse in">
               <div class="panel-body">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-wrap">
-                      <form data-toggle="validator" role="form" action="ServletDwmpc" method="post">
-                        <div class="form-group">
-                          <div class="row">
-                            <input type="hidden" name="command" value="Registering_User">
-                            <input type="hidden" name="action" value="Registration">
-                            <input type="hidden" name="password" value="2021">
-                            <div class="col-md-6 col-xs-12 mt-40">
-                              <label class="control-label mb-10" for="First_Name"> First Name(required):</label>
-                              <input type="text" id="First_Name" name="first_name"  class="form-control required"   required/>
-                            </div>
-                            <div class="span1"></div>
-                            <div class="col-md-6 col-xs-12 mt-40">
-                              <label class="control-label mb-10" for="Last_Name"> Last Name(required):</label>
-                              <input type="text" id="Last_Name" name="last_name"  class="form-control required"   required/>
-                            </div>
-                          </div>
+                <div class="table-wrap">
+                  <table id="footable_2" class="table" data-paging="true" data-filtering="true" data-sorting="true">
+                    <thead>
+                    <tr>
+                      <th data-name="id" data-breakpoints="xs" data-type="number">ID</th>
+                      <th data-name="WasteType">Waste Type</th>
+                      <th data-name="GeneratedQuantity">Generated Quantity in (Kg/ Tons/litres)</th>
+                      <th data-name="AmountShipped" data-breakpoints="xs">Amount Shipped</th>
+                      <th data-name="Returns" data-breakpoints="xs">Returns</th>
+                      <th data-name="startedOn" data-breakpoints="xs sm" data-type="date" data-format-string="MMMM Do YYYY">Started On</th>
+                      <th data-name="dob" data-breakpoints="xs sm md" data-type="date" data-format-string="MMMM Do YYYY">End On</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                    <input type="hidden" name="action" id="Report_id" value="${Report_id}">
+                  </table>
+
+                  <!--Editor-->
+                  <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
+
+                    <div class="modal-dialog" role="document">
+                      <form class="modal-content form-horizontal" id="editor" action="ServletDwmpc" method="post">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                          <h5 class="modal-title" id="editor-title">Add Row</h5>
                         </div>
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                              <label class="control-label mb-10" for="Email"> Email(required):</label>
-                              <input type="email" id="Email" name="email"  class="form-control required"   required/>
-                            </div>
-                            <div class="span1"></div>
-                            <div class="col-md-6 col-xs-12">
-                              <label class="control-label mb-10" for="Occupation"> Occupation(required):</label>
-                              <select id="Occupation" name="User_Type" class="selectpicker" data-style="form-control btn-default btn-outline">
-                                <option value="Compliance Officer">Compliance Officer</option>
-                                <option value="Waste Management Officer">Waste Management Officer</option>
-                                <option value="Regional Coordinate">Regional Coordinate</option>
-                                <option value="Waste Management Officer Compliance Headquarters">Waste Management Officer Compliance Headquarters</option>
-                                <option value="Head of Division Headquarters">Head of Division Headquarters</option>
+                        <div class="modal-body">
+                          <input type="hidden" name="command" value="Report Waste Type">
+                          <input type="text" name="action" id="action_id" value="">
+                          <input type="hidden" name="Company Id" value="${Company_info.company_Id}"/>
+                          <input type="hidden" name="Company Name" value="${Company_info.company_Name}"/>
+                          <input type="number" id="id" name="id" class="hidden"/>
+                          <div class="form-group required">
+                            <label for="WasteType" class="col-sm-3 control-label">Waste Type</label>
+
+                            <div class="col-sm-9">
+
+                              <select name="Waste Type"  id="WasteType" class="selectpicker" data-style="form-control btn-default btn-outline">
+
+                                <option value="Ferrous Metal">Ferrous Metal(Steel, including sub-grade ,e.t.c)</option>
+                                <option value="Brass">Brass</option>
+                                <option value="Copper">Copper</option>
+                                <option value="Aluminium">Aluminium</option>
+                                <option value="Scrap Batteries">Scrap Batteries</option>
+                                <option value="Cans">Cans</option>
+                                <option value="Paper">Paper</option>
+                                <option value="Plastics">Plastics</option>
+                                <option value="Used Oil">Used Oil</option>
+                                <option value="Glass">Glass</option>
+                                <option id="other" value="yes">Other</option>
                               </select>
+
+
                             </div>
                           </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                              <label class="control-label mb-10" for="Omang"> Omang(required):</label>
-                              <input type="text" id="Omang" name="Omang_code" data-mask="999999999"  class="form-control required"  required/>
+                          <div id="yes" class="form-group yes box" >
+                            <label for="GeneratedQuantity" class="col-sm-3 control-label">Other Waste Type</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control " id="yess" name="yes" placeholder="Other Waste type">
                             </div>
-                            <div class="span1"></div>
-                            <div class="col-md-6 col-xs-12">
-                              <label class="control-label mb-10" for="Contact">Contact(required):</label>
-                              <input type="tel" id="Contact" data-mask="+267 99 999 999" name="phone_number"  class="form-control required"  required/>
+
+                          </div>
+                          <div class="form-group required">
+                            <label for="GeneratedQuantity" class="col-sm-3 control-label">Generated Quantity</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" id="GeneratedQuantity" name="GeneratedQuantity" placeholder="Generated Quantity" required>
                             </div>
                           </div>
+                          <div class="form-group">
+                            <label for="AmountShipped" class="col-sm-3 control-label">Amount Shipped</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" id="AmountShipped" name="AmountShipped" placeholder="Amount Shipped">
+                            </div>
+                          </div>
+                          <div class="form-group required">
+                            <label for="Returns" class="col-sm-3 control-label">Returns</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" id="Returns" name="Returns" placeholder="Returns" required>
+                            </div>
+                          </div>
+                          <div class="form-group required">
+                            <label for="Returns" class="col-sm-3 control-label">Started On</label>
+                            <div class="col-sm-9">
+                              <input class="form-control input-daterange-datepicker" type="text" id="startedOn" name="startedOn" value=""/>
+                            </div>
+                          </div>
+
                         </div>
-                        <div class="form-group">
-                          <label class="control-label mb-10" for="Branch_Location"> Branch Location (required):</label>
-                          <select id="Branch_Location" name="location" class="selectpicker" data-style="form-control btn-default btn-outline">
-                            <option value="Francistown Branch">Francistown Branch</option>
-                            <option value="Gaborone Branch">Gaborone Branch</option>
-                            <option value="Chobe Branch">Chobe Branch</option>
-                            <option value="kgalagadi Branch">kgalagadi Branch</option>
-                          </select>
-                        </div>
-                        <div class="form-group mb-0" style="float: right">
-                          <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">submit</span></button>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary">Save changes</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                         </div>
                       </form>
                     </div>
                   </div>
+                  <!--/Editor-->
                 </div>
               </div>
             </div>
-
           </div>
-
         </div>
+      </div>
+      <!-- /Row -->
+
+
+      <!-- Row -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default card-view">
+            <div class="panel-heading">
+              <div class="pull-left">
+                <h6 class="panel-title txt-dark">Em</h6>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="panel-wrapper collapse in">
+              <div class="panel-body">
+                <div class="table-wrap">
+                  <div class="table-responsive">
+                    <table id="edit_datable_1" class="table  table-bordered table-striped m-b-0" >
+                      <thead>
+
+                      <tr>
+                        <th rowspan="2">Type of Employee</th>
+                        <th colspan="2">Citizens</th>
+                        <th colspan="2">Non-Citizens</th>
+                        <th rowspan="2">Salary (BWP)</th>
+                      </tr>
+                      <tr>
+                        <th>Male</th>
+                        <th>Female</th>
+                        <th>Male</th>
+                        <th>Female</th>
+                      </tr>
+                      </thead>
+                      <tbody id="#tbody" >
+                      <tr id="tr1">
+                        <td>Working proprietors</td>
+                        <td id="fo1" >0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      <tr id="tr2">
+                        <td>Permanent employees</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                      <tr id="tr3">
+                        <td readonly>Casual/ Temporary employees</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                      <tr id="tr4">
+                        <td readonly>Number of Newly employed</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                      <tr id="tr5">
+                        <td> Number dismissed during the reporting Period</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                      </tr>
+                      </tbody>
+                      <tfoot>
+                      <tr>
+                        <th><strong>TOTAL</strong></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+                <div class="form-group mb-0" style="float: right">
+                  <button type="submit" onclick="SubmitReport()" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">submit</span></button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Row -->
+      <div style="display: none">
+        <form id="SubmitReport" method="post" action="ServletDwmpc">
+          <input class="inputs" type="hidden" name="command" value="Monthly Report">
+          <input class="inputs" type="hidden" name="action" value="Registration">
+          <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
+          <input type="text" 	id="C_Male1" name="C_Male1" value="">
+          <input type="text" id="C_Male2" name="C_Male2" value="0">
+          <input type="text" id="C_Male3" name="C_Male3" value="0">
+          <input type="text" id="C_Male4" name="C_Male4" value="0">
+          <input type="text" id="C_Male5" name="C_Male5" value="0">
+          <input type="text" id="C_Male6" name="C_Male6" value="0">
+          <input type="text" id="C_Female1" name="C_Female1" value="0">
+          <input type="text" id="C_Female2" name="C_Female2" value="0">
+          <input type="text" id="C_Female3" name="C_Female3" value="0">
+          <input type="text" id="C_Female4" name="C_Female4" value="0">
+          <input type="text" id="C_Female5" name="C_Female5" value="0">
+          <input type="text" id="C_Female6" name="C_Female6" value="0">
+          <input type="text" id="N_Male1" name="N_Male1" value="0">
+          <input type="text" id="N_Male2" name="N_Male2" value="0">
+          <input type="text" id="N_Male3" name="N_Male3" value="0">
+          <input type="text" id="N_Male4" name="N_Male4" value="0">
+          <input type="text" id="N_Male5" name="N_Male5" value="0">
+          <input type="text" id="N_Male6" name="N_Male6" value="0">
+          <input type="text" id="N_Female1" name="N_Female1" value="0">
+          <input type="text" id="N_Female2" name="N_Female2" value="0">
+          <input type="text" id="N_Female3" name="N_Female3" value="0">
+          <input type="text" id="N_Female4" name="N_Female4" value="0">
+          <input type="text" id="N_Female5" name="N_Female5" value="0">
+          <input type="text" id="N_Female6" name="N_Female6" value="0">
+          <input type="text" id="Salary1" name="Salary1" value="0">
+          <input type="text" id="Salary2" name="Salary2" value="0">
+          <input type="text" id="Salary3" name="Salary3" value="0">
+          <input type="text" id="Salary4" name="Salary4" value="0">
+          <input type="text" id="Salary5" name="Salary5" value="0">
+          <input type="text" id="Salary6" name="Salary6" value="0">
+        </form>
+
         <!-- form -->
         <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -935,15 +1227,17 @@
         <!-- /form -->
 
       </div>
+
       <!-- Footer -->
       <footer class="footer container-fluid pl-30 pr-30">
         <div class="row">
           <div class="col-sm-12">
-            <p>2021 &copy; DWMPC. Created by Next-gen</p>
+            <p>2018 &copy; Zapily. Pampered by Hencework</p>
           </div>
         </div>
       </footer>
       <!-- /Footer -->
+
     </div>
   </div>
   <!-- /Main Content -->
@@ -953,24 +1247,22 @@
 
 <!-- JavaScript -->
 
-<form method="post" id="LogOut_Session" action="ServletDwmpc">
-  <input type="hidden" name="command" value="LogOut Session">
-  <input type="hidden" name="action" value="Sign Out Session">
-</form>
-<script>
-  function LogOut(){
-    document.getElementById("LogOut_Session").submit();
-  }
-</script>
-
-
 <!-- jQuery -->
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
-<script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
+
+<!-- Data table JavaScript -->
+<script src="vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="vendors/bower_components/editable-table/mindmup-editabletable.js"></script>
+<script src="dist/js/Monthly-Report-numeric-input.js"></script>
+<script src="dist/js/editable-table-data.js"></script>
+
+<!-- Data table JavaScript -->
+<script src="vendors/bower_components/moment/min/moment.min.js"></script>
+<script src="vendors/bower_components/FooTable/compiled/footable.min.js" type="text/javascript"></script>
+<script src="dist/js/Monthly-Report-Footable.js"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="dist/js/jquery.slimscroll.js"></script>
@@ -984,18 +1276,76 @@
 <!-- Switchery JavaScript -->
 <script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
+<!-- Bootstrap Datetimepicker JavaScript -->
+<script type="text/javascript" src="vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Bootstrap Daterangepicker JavaScript -->
+<script src="vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<!-- Form Picker Init JavaScript -->
+<script src="dist/js/form-picker-data.js"></script>
+
+
+<!-- Bootstrap Colorpicker JavaScript -->
+<script src="vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+
+<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 <!-- Init JavaScript -->
 <script src="dist/js/init.js"></script>
 <script src="dist/js/toast-data.js"></script>
 
-<!-- Bootstrap Select JavaScript -->
-<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>
+<script>
 
-<!-- Bootstrap Daterangepicker JavaScript -->
-<script src="vendors/bower_components/dropify/dist/js/dropify.min.js"></script>
+  var form = $('#editor');
+  form.submit(function () {
 
-<!-- Form Flie Upload Data JavaScript -->
-<script src="dist/js/form-file-upload-data.js"></script>
+    $.ajax({
+      type: form.attr('method'),
+      url: form.attr('action'),
+      data: form.serialize(),
+      success: function (data) {
+      }
+    });
+
+    return false;
+  });
+
+  $(document).ready(function(){
+
+
+
+    $("select").change(function(){
+      $(this).find("option:selected").each(function(){
+        var optionValue = $(this).attr("value");
+        if(optionValue){
+          $(".box").not("." + optionValue).hide();
+          $("." + optionValue).show();
+        } else{
+          $(".box").hide();
+        }
+      });
+    }).change();
+  });
+  $('#foo').keyup(updatetxt);
+  //$('#foo').keydown(updatetxt);
+
+  //var foo = $('#foo').val();
+
+  function updatetxt() {
+    $('#goo').val($('#foo').val());
+  }
+  $('#fo1').keyup(updatetxt1);
+  function updatetxt1() {
+    $('#goo').val($('#fo1').val());
+  }
+  $('#fo1').keyup(function(){
+    $('#goo').val($(this).val());
+  });
+
+  function SubmitReport(){
+    document.getElementById("SubmitReport").submit();
+  }
+</script>
+
 </body>
-
 </html>

@@ -68,7 +68,7 @@
         <div class="mobile-only-brand pull-left">
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
-                    <a href="${pageContext.request.contextPath}/Home.jsp">
+                    <a href="${pageContext.request.contextPath}/Officer-Home.jsp">
                         <img class="brand-img" src="img/logo2.png" alt="brand"/>
                     </a>
                 </div>
@@ -88,7 +88,7 @@
         <div id="mobile_only_nav" class="mobile-only-nav pull-right">
             <ul class="nav navbar-right top-nav pull-right">
                 <li>
-                    <a class="tst2" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
+                    <a href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
                 </li>
                 <li class="dropdown app-drp">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
@@ -97,7 +97,7 @@
                             <div class="app-nicescroll-bar">
                                 <ul class="app-icon-wrap pa-10">
                                     <li>
-                                        <a href="weather.html" class="connection-item">
+                                        <a href="weather." class="connection-item">
                                             <i class="zmdi zmdi-cloud-outline txt-info"></i>
                                             <span class="block">weather</span>
                                         </a>
@@ -144,8 +144,38 @@
                     </ul>
                 </li>
                 <li class="dropdown full-width-drp">
-                    <a href="#" class="tst2" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
                     <ul class="dropdown-menu mega-menu pa-0" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                        <li class="product-nicescroll-bar row">
+                            <ul class="pa-5">
+                                <li class="col-md-7 col-xs-12 preview-carousel">
+                                    <a href="javascript:void(0);"><div class="pull-left"><span class="right-nav-text">latest products</span></div><div class="clearfix"></div></a>
+                                    <hr class="light-grey-hr ma-0"/>
+                                    <div class="product-carousel owl-carousel owl-theme text-center">
+                                        <a href="#">
+                                            <img src="img/chair.jpg" alt="chair">
+                                            <span>New chairperson</span>
+                                        </a>
+                                        <a href="#">
+                                            <img src="img/chair2.jpg" alt="chair">
+                                            <span>square chair</span>
+                                        </a>
+                                        <a href="#">
+                                            <img src="img/chair3.jpg" alt="chair">
+                                            <span>semi circle chair</span>
+                                        </a>
+                                        <a href="#">
+                                            <img src="img/chair4.jpg" alt="chair">
+                                            <span>wooden chair</span>
+                                        </a>
+                                        <a href="#">
+                                            <img src="img/chair2.jpg" alt="chair">
+                                            <span>square chair</span>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li class="dropdown alert-drp">
@@ -249,10 +279,10 @@
                             <a href="profile.html"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
                         </li>
                         <li>
-                            <a href="#"><i class="zmdi zmdi-card"></i><span>my balance</span></a>
+                            <a href="#"><i class="zmdi zmdi-card"></i><span>My Files</span></a>
                         </li>
                         <li>
-                            <a href="inbox.jsp"><i class="zmdi zmdi-email"></i><span>Inbox</span></a>
+                            <a href="#"><i class="zmdi zmdi-email"></i><span>Emails</span></a>
                         </li>
                         <li>
                             <a href="#"><i class="zmdi zmdi-settings"></i><span>Settings</span></a>
@@ -294,13 +324,13 @@
                 <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a id="open_right_sidebar" href="#" onclick="document.getElementById('chat_tab_btn').click();" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
+                <a id="open_right_sidebar" href="#" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="profile.jsp" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="" class="tst2" ><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+                <a href=""><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -308,7 +338,21 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/companyForm.jsp" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">Add Company</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">My Companies</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
+                    <li class="active" role="presentation">
+                        <a  data-toggle="tab"  role="tab" href="#Company_info" href="#Company_info2" aria-expanded="true">Information</a>
+                    </li>
+                    <li >
+                        <a aria-expanded="false"  data-toggle="tab" role="tab"  href="#Vehicle_info">Vehicles</a>
+                    </li>
+                    <li>
+                        <a  data-toggle="tab"  role="tab"  aria-expanded="false">Attachments</a>
+                    </li>
+                    <li>
+                        <a href="#">Employees</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
@@ -317,10 +361,10 @@
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="javascript:void(0);"  class="tst2" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="" class="tst2" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="filemanager.jsp" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
@@ -336,7 +380,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" class="tst2" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
@@ -354,9 +398,9 @@
             <li>
                 <div  class="tab-struct custom-tab-1">
                     <ul role="tablist" class="nav nav-tabs" id="right_sidebar_tab">
-                        <li class="active" role="presentation"><a aria-expanded="false"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab" >Emails</a></li>
+                        <li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab">Emails</a></li>
                         <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">Notification</a></li>
-                        <li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="true">Profile</a></li>
+                        <li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="false">todo</a></li>
                     </ul>
                     <div class="tab-content" id="right_sidebar_content">
                         <div  id="chat_tab" class="tab-pane fade active in" role="tabpanel">
@@ -409,8 +453,7 @@
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle" src="img/user2.png" alt="user"/>
                                                                 <div class="user-data">
-                                                                    <span class="name block capitalize-font">Madalyn Rascon
-                                                                    </span>
+                                                                    <span class="name block capitalize-font">Madalyn Rascon</span>
                                                                     <span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
                                                                 </div>
                                                                 <div class="status online"></div>
@@ -697,57 +740,68 @@
                                     <a href="javascript:void(0)" class="inline-block txt-grey">
                                         <i class="zmdi zmdi-more"></i>
                                     </a>
-                                    <span class="inline-block txt-dark">Profile</span>
+                                    <span class="inline-block txt-dark">todo list</span>
                                     <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="set-height-wrap">
                                     <!-- Todo-List -->
-                                    <div class="col-xs-12">
-                                        <div class="panel panel-default card-view  pa-0">
-                                            <div class="panel-wrapper collapse in">
-                                                <div class="panel-body  pa-0">
-                                                    <div class="profile-box">
-                                                        <div class="profile-cover-pic">
-                                                            <div class="fileupload btn btn-default">
-                                                                <span class="btn-text">edit</span>
-                                                                <input class="upload" type="file">
-                                                            </div>
-                                                            <div class="profile-image-overlay"></div>
-                                                        </div>
-                                                        <div class="profile-info text-center">
-                                                            <div class="profile-img-wrap">
-                                                                <img class="inline-block mb-10" src="img/mock1.jpg" alt="user"/>
-                                                                <div class="fileupload btn btn-default">
-                                                                    <span class="btn-text">edit</span>
-                                                                    <input class="upload" type="file">
-                                                                </div>
-                                                            </div>
-                                                            <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">Kaone Rascon</h5>
-                                                            <h6 class="block capitalize-font pb-20">Client</h6>
-                                                        </div>
-                                                        <div class="social-info">
-                                                            <div class="row">
-                                                                <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">45</span></span>
-                                                                    <span class="counts-text block">Companies</span>
-                                                                </div>
-                                                                <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">206</span></span>
-                                                                    <span class="counts-text block">Employees</span>
-                                                                </div>
-                                                                <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">118</span></span>
-                                                                    <span class="counts-text block">Vechiles</span>
-                                                                </div>
-                                                            </div>
-                                                            <button class="btn btn-gold btn-block  btn-anim mt-40" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    <ul class="todo-list nicescroll-bar">
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-default">
+                                                <input type="checkbox" id="checkbox01"/>
+                                                <label for="checkbox01">Record The First Episode</label>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-pink">
+                                                <input type="checkbox" id="checkbox02"/>
+                                                <label for="checkbox02">Prepare The Conference Schedule</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" id="checkbox03" checked/>
+                                                <label for="checkbox03">Decide The Live Discussion Time</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-success">
+                                                <input type="checkbox" id="checkbox04" checked/>
+                                                <label for="checkbox04">Prepare For The Next Project</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-danger">
+                                                <input type="checkbox" id="checkbox05" checked/>
+                                                <label for="checkbox05">Finish Up AngularJs Tutorial</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-purple">
+                                                <input type="checkbox" id="checkbox06" checked/>
+                                                <label for="checkbox06">Finish Infinity Project</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                    </ul>
                                     <!-- /Todo-List -->
                                 </div>
                             </div>
@@ -763,303 +817,226 @@
 
     <!-- Main Content -->
     <div class="page-wrapper">
-        <div class="container">
-            <!-- Title -->
-            <div class="row heading-bg">
-                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Companies Registered</h5>
-                </div>
-                <!-- Breadcrumb -->
-                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                    <ol class="breadcrumb">
-                        <li><a href="CompanyInfo.jsp">Home</a></li>
-                        <li class="active"><span>Companies Registered</span></li>
-                    </ol>
-                </div>
-                <!-- /Breadcrumb -->
-            </div>
-            <!-- /Title -->
-
+        <div class="container pt-25">
             <!-- Row -->
-            <div class="row">
-<c:set var="countDate" scope="page" value="0" />
-<c:forEach var="tempCompany" items="${All_companies}">
-    <c:url var="CompanyDetailsLink" value="ServletDwmpc">
-        <c:param name="command" value="getCompany"/>
-        <c:param name="company_id" value="${tempCompany.company_Id}"/>
-        <c:param name="UserType" value="Client"/>
-    </c:url>
-    <c:set value="${countDate+1}" scope="page" var="countDate"/>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="panel panel-warning contact-card card-view">
+            <div   class=" row">
+
+                <div id="Company_info"  class="tab-pane fade in active tab-content col-lg-9 col-md-6 col-sm-12 col-xs-12">
+                    <div class=" panel panel-warning card-view" role="tabpanel">
                         <div class="panel-heading">
                             <div class="pull-left">
-                                <div class="pull-left user-img-wrap mr-15">
-                                    <img class="card-user-img img-circle pull-left" src="img/user.png" alt="user"/>
-                                </div>
-                                <div class="pull-left user-detail-wrap">
-											<span class="block card-user-name">
-                                                    ${tempCompany.company_Name}
-											</span>
-                                    <span class="block card-user-desn">
-                                            ${tempCompany.company_Status}
-											</span>
-                                </div>
-                            </div>
-                            <div class="pull-right">
-                                <a class="pull-left inline-block mr-15" href="#">
-                                    <i class="zmdi zmdi-edit txt-light"></i>
-                                </a>
-                                <a class="pull-left inline-block mr-15" href="#">
-                                    <i class="zmdi zmdi-delete txt-light"></i>
-                                </a>
-                                <div class="pull-left inline-block dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert txt-light"></i></a>
-                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Full Info</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Send Message</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Follow</a></li>
-                                    </ul>
-                                </div>
+                                <c:if test="${Company_info!=null}">
+                                    <h6 class="panel-title txt-light">${Company_info.company_Name} : Company Information</h6>
+                                </c:if>
+                                <c:if test="${Company_info==null}">
+                                    <h6 class="panel-title txt-light">Company Information</h6>
+                                </c:if>
+
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="panel-wrapper collapse in" onclick="location.href='${CompanyDetailsLink}'">
-                            <div class="panel-body row">
-                                <div class="user-others-details pl-15 pr-15">
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-email-open inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.email}</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-phone inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.telephone}</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-print inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.fax_Number}</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-my-location inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.region_Town_Village}, ${tempCompany.ward}, ${tempCompany.plot_Number}</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-local-post-office inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.street_Address}</span>
-                                    </div>
-                                    <div>
-                                        <i class="zmdi zmdi zmdi-bookmark inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.phone_Number}</span>
-                                    </div>
-                                </div>
-                                <hr class="light-grey-hr mt-20 mb-20"/>
-                                <div class="emp-detail pl-15 pr-15">
-                                    <div class="mb-5">
-                                        <span class="inline-block capitalize-font mr-5">joininig date:</span>
-                                        <span class="txt-dark">${tempCompany.date_Unix}</span>
-                                    </div>
-                                </div>
+                        <div id="refresh-script" class="panel-wrapper collapse in">
+                            <div  class="panel-body  pagination-lg">
+
+                                <c:if test="${Company_info!=null}">
+                                    <table class="table table-bordered m-0">
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 20%;"></th>
+                                            <th>Description</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><code>Region</code> </td>
+                                            <td class="Region">${Company_info.region}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><code>Email</code></td>
+                                            <td class="Email">${Company_info.email}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>Street Address</code> </td>
+                                            <td class="Street-Address">${Company_info.street_Address}</td>
+                                        </tr>
+                                        <c:if test='${Company_info.street_Address2!=""}'>
+                                            <tr>
+                                                <td><code>2nd Street Address</code> </td>
+                                                <td class="Street-Address2">${Company_info.street_Address2}</td>
+                                            </tr>
+                                        </c:if>
+
+                                        <tr>
+                                            <td><code>Company Status</code></td>
+                                            <td class="Company-status">${Company_info.company_Status}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>Location</code></td>
+                                            <td class="Location">${Company_info.region_Town_Village}, ${Company_info.ward}, ${Company_info.plot_Number}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>Contact</code> </td>
+                                            <td class="Contact">${Company_info.telephone},${Company_info.phone_Number}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><code>Fax</code></td>
+                                            <td class="Fax">${Company_info.fax_Number}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </c:if>
+
+                                <button type="button" alt="alert" id="Approving-Officer" style="float: right" class="btn btn-primary btn-anim btn-rounded"><i class="fa fa-pencil"></i><span class="btn-text">Approve</span></button>
+                                <button type="button" alt="alert" id="Declining-Officer"  style="float: right; margin-right: 5px" class="btn btn-primary btn-anim btn-rounded"><i class="fa  fa-building-o"></i><span class="btn-text">Decline</span></button>
+                                <button type="button" alt="alert" id="Revoking-Officer"   style="float: right; margin-right: 5px" class="btn btn-primary btn-anim btn-rounded"><i class="fa  fa-building-o"></i><span class="btn-text">Revoke</span></button>
                             </div>
+
                         </div>
                     </div>
+
                 </div>
 
-</c:forEach>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="panel panel-warning contact-card card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <div class="pull-left user-img-wrap mr-15">
-                                    <img class="card-user-img img-circle pull-left" src="img/user.png" alt="user"/>
-                                </div>
-                                <div class="pull-left user-detail-wrap">
-											<span class="block card-user-name">
-												Clay Masse
-											</span>
-                                    <span class="block card-user-desn">
-												Government
-											</span>
-                                </div>
-                            </div>
-                            <div class="pull-right">
-                                <a class="pull-left inline-block mr-15" href="#">
-                                    <i class="zmdi zmdi-edit txt-light"></i>
-                                </a>
-                                <a class="pull-left inline-block mr-15" href="#">
-                                    <i class="zmdi zmdi-delete txt-light"></i>
-                                </a>
-                                <div class="pull-left inline-block dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert txt-light"></i></a>
-                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Full Info</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Send Message</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="panel-wrapper collapse in">
-                            <div class="panel-body row">
-                                <div class="user-others-details pl-15 pr-15">
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-email-open inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">markh@example.com</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-phone inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">+267 72445241</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-print inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">360 876 876</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-my-location inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">Francistown, Monarch Area 4, Monarch Area 4</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-local-post-office inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">PO Box 20715</span>
-                                    </div>
-                                    <div>
-                                        <i class="zmdi zmdi zmdi-bookmark inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">Company</span>
-                                    </div>
-                                </div>
-                                <hr class="light-grey-hr mt-20 mb-20"/>
-                                <div class="emp-detail pl-15 pr-15">
-                                    <div class="mb-5">
-                                        <span class="inline-block capitalize-font mr-5">joininig date:</span>
-                                        <span class="txt-dark">12-10-2014</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="panel panel-warning card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <h6 style="text-align: center" class="panel-title block txt-light">No Companies Registered</h6>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div  class="panel-wrapper collapse in">
-                            <div  class="panel-body">
-                                <img src="img/sweetalert/alert4.png" alt="alert" class="img-responsive model_img" id="sa-close">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <form method="post" id="Approving" action="ServletDwmpc">
+                    <input type="hidden" name="command" value="Officers Action">
+                    <input type="hidden" name="action" value="Approving">
+                    <input type="hidden" name="Apply_id" value="${Apply_id}">
+                    <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
+                    <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
+                    <input type="hidden" name="Branch" value="${User_Info[0].location}">
+                    <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+                </form>
+                <form method="post" id="Declining" action="ServletDwmpc">
+                    <input type="hidden" name="command" value="Officers Action">
+                    <input type="hidden" name="action" value="Decline">
+                    <input type="hidden" name="Apply_id" value="${Apply_id}">
+                    <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
+                    <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
+                    <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+                </form>
+
+                <form method="post" id="Revoking" action="ServletDwmpc">
+                    <input type="hidden" name="command" value="Officers Action">
+                    <input type="hidden" name="action" value="Revoke">
+                    <input type="hidden" name="Apply_id" value="${Apply_id}">
+                    <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
+                    <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
+                    <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+                </form>
+
+                <form method="post" id="Employee_info" action="ServletDwmpc">
+                    <input type="hidden" name="command" value="EmployeesDetail">
+                    <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+                </form>
+                <form method="post" id="Vehicle_info" action="ServletDwmpc">
+                    <input type="hidden" name="command" value="VehicleDetail">
+                    <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+                </form>
+
+
+                <form method="post" id="LogOut_Session" action="ServletDwmpc">
+                    <input type="hidden" name="command" value="LogOut Session">
+                    <input type="hidden" name="action" value="Sign Out Session">
+                </form>
+
+                <script >
+                    function EmployeeTable(){
+                        document.getElementById("Employee_info").submit();
+                    }
+                    function VehicleTable(){
+                        document.getElementById("Vehicle_info").submit();
+                    }
+                    function LogOut(){
+                        document.getElementById("LogOut_Session").submit();
+                    }
+                    function toggleModal() {
+
+                        const Region = document.getElementsByClassName('Region')[0].innerHTML;
+                        const Email = document.getElementsByClassName('Email')[0].innerHTML;
+                        const Street_Address = document.getElementsByClassName('Street-Address')[0].innerHTML;
+                        <c:if test='${Company_info.street_Address2!=""}'>
+                        const Street_Address2 = document.getElementsByClassName('Street-Address2')[0].innerHTML;
+                        </c:if>
+                        const Company_status = document.getElementsByClassName('Company-status')[0].innerHTML;
+                        const Location = document.getElementsByClassName('Location')[0].innerHTML;
+                        const Contact = document.getElementsByClassName('Contact')[0].innerHTML;
+                        const Fax = document.getElementsByClassName('Fax')[0].innerHTML;
+
+                        //const Contact2=Contact.replace("+267 ","");
+
+
+                        document.getElementById('Region').value = Region;
+                        document.getElementById('Company_Email').value = Email;
+                        document.getElementById('Street-address').value = Street_Address;
+                        <c:if test='${Company_info.street_Address2!=""}'>
+                        document.getElementById('Street-address2').value = Street_Address2;
+                        </c:if>
+                        document.getElementById('Status').value = Company_status;
+                        $("#Company-status").selectpicker("refresh");
+                        document.getElementById('Plot_Number').value = Location.split(",")[1];
+                        document.getElementById('Ward').value = Location.split(",")[2];
+                        document.getElementById('City').value = Location.split(",")[0];
+                        document.getElementById('telephone').value =  Contact.split(",")[1];
+                        document.getElementById('phoneNumber').value = Contact.split(",")[0];
+                        document.getElementById('fax').value = Fax;
+                    }
+                    <c:if test="${All_Employee.isEmpty()}">
+                    window.onload = function(){
+                        document.getElementById('employee-alert').click();
+                    }
+                    </c:if>
+                    function removeValue(){
+                        document.getElementById('Region').value = "";
+                        document.getElementById('Email').value = "";
+                        document.getElementById('Street-Address').value = "";
+                        document.getElementById('Street-Address2').value = "";
+                        document.getElementById('Company-status').value = "Company";
+                        $("#Company-status").selectpicker("refresh");
+                        document.getElementById('Plot_Number').value = "";
+                        document.getElementById('Ward').value = "";
+                        document.getElementById('City').value = "";
+                        document.getElementById('Telephone').value =  "";
+                        document.getElementById('phoneNumber').value = "";
+                        document.getElementById('Fax').value = "";
+                    }
+                </script>
+
             </div>
-            <!-- Row -->
+            <!-- /Row -->
+            <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 
-            <!-- form -->
-            <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h5 class="modal-title" id="myModalLabel">Edit Profile</h5>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Row -->
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="">
-                                        <div class="panel-wrapper collapse in">
-                                            <div class="panel-body pa-0">
-                                                <div class="col-sm-12 col-xs-12">
-                                                    <div class="form-wrap">
-                                                        <form action="#">
-                                                            <div class="form-body overflow-hide">
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10" for="exampleInputuname_1">Name</label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-addon"><i class="icon-user"></i></div>
-                                                                        <input type="text" class="form-control" id="exampleInputuname_1" placeholder="willard bryant">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10" for="exampleInputEmail_1">Email address</label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-addon"><i class="icon-envelope-open"></i></div>
-                                                                        <input type="email" class="form-control" id="exampleInputEmail_1" placeholder="xyz@gmail.com">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10" for="exampleInputContact_1">Contact number</label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-addon"><i class="icon-phone"></i></div>
-                                                                        <input type="email" class="form-control" id="exampleInputContact_1" placeholder="+102 9388333">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10" for="exampleInputpwd_1">Password</label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-addon"><i class="icon-lock"></i></div>
-                                                                        <input type="password" class="form-control" id="exampleInputpwd_1" placeholder="Enter pwd" value="password">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10">Gender</label>
-                                                                    <div>
-                                                                        <div class="radio">
-                                                                            <input type="radio" name="radio1" id="radio_1" value="option1" checked="">
-                                                                            <label for="radio_1">
-                                                                                M
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="radio">
-                                                                            <input type="radio" name="radio1" id="radio_2" value="option2">
-                                                                            <label for="radio_2">
-                                                                                F
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10">Country</label>
-                                                                    <select class="form-control" data-placeholder="Choose a Category" tabindex="1">
-                                                                        <option value="Category 1">USA</option>
-                                                                        <option value="Category 2">Austrailia</option>
-                                                                        <option value="Category 3">India</option>
-                                                                        <option value="Category 4">UK</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-actions mt-10">
-                                                                <button type="submit" class="btn btn-success mr-10 mb-30">Update profile</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-success waves-effect" data-dismiss="modal">Save</button>
-                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /form -->
+            <script type="text/javascript">
 
+                var form = $('#');
+                form.submit(function () {
+
+                    $.ajax({
+                        type: form.attr('method'),
+                        url: form.attr('action'),
+                        data: form.serialize(),
+                        success: function (data) {
+                            var result=data;
+                            $('#content').html(result);
+                            updateDiv();
+                        }
+                    });
+
+                    return false;
+                });
+                function updateDiv()
+                {
+                    $( "#refresh-script" ).load(window.location.href + " #refresh-script" );
+
+                }
+            </script>
         </div>
 
         <!-- Footer -->
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
                 <div class="col-sm-12">
-                    <p>2018 &copy; Zapily. Pampered by Hencework</p>
+                    <p>2021 &copy; Created by Next-gen</p>
                 </div>
             </div>
         </footer>
@@ -1073,15 +1050,6 @@
 
 <!-- JavaScript -->
 
-<form method="post" id="LogOut_Session" action="ServletDwmpc">
-    <input type="hidden" name="command" value="LogOut Session">
-    <input type="hidden" name="action" value="Sign Out Session">
-</form>
-<script>
-    function LogOut(){
-        document.getElementById("LogOut_Session").submit();
-    }
-</script>
 
 
 <!-- jQuery -->
@@ -1146,9 +1114,7 @@
 <script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 
 <!-- Init JavaScript -->
-<script src="dist/js/dashboard4-data.js"></script>
 <script src="dist/js/init.js"></script>
-<script src="dist/js/toast-data.js"></script>
 
 <!-- Sweet-Alert  -->
 <script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>

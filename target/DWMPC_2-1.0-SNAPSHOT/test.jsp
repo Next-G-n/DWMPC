@@ -68,13 +68,13 @@
         <div class="mobile-only-brand pull-left">
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
-                    <a href="${pageContext.request.contextPath}/Home.jsp">
+                    <a href="${pageContext.request.contextPath}/CompanyInfo.jsp">
                         <img class="brand-img" src="img/logo2.png" alt="brand"/>
                     </a>
                 </div>
             </div>
             <a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block ml-20 pull-left" href="javascript:void(0);"><i class="zmdi zmdi-menu"></i></a>
-            <a id="toggle_mobile_search" data-toggle="collapse" data-target="#search_form" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-search"></i></a>
+            <a id="toggle_mobile_search"  data-toggle="collapse" data-target="#search_form" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-search"></i></a>
             <a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-more"></i></a>
             <form id="search_form" role="search" class="top-nav-search collapse pull-left">
                 <div class="input-group">
@@ -88,7 +88,7 @@
         <div id="mobile_only_nav" class="mobile-only-nav pull-right">
             <ul class="nav navbar-right top-nav pull-right">
                 <li>
-                    <a class="tst2" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
+                    <a href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
                 </li>
                 <li class="dropdown app-drp">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
@@ -97,7 +97,7 @@
                             <div class="app-nicescroll-bar">
                                 <ul class="app-icon-wrap pa-10">
                                     <li>
-                                        <a href="weather.html" class="connection-item">
+                                        <a href="weather." class="connection-item">
                                             <i class="zmdi zmdi-cloud-outline txt-info"></i>
                                             <span class="block">weather</span>
                                         </a>
@@ -144,8 +144,38 @@
                     </ul>
                 </li>
                 <li class="dropdown full-width-drp">
-                    <a href="#" class="tst2" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
                     <ul class="dropdown-menu mega-menu pa-0" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                        <li class="product-nicescroll-bar row">
+                            <ul class="pa-5">
+                                <li class="col-md-7 col-xs-12 preview-carousel">
+                                    <a href="javascript:void(0);"><div class="pull-left"><span class="right-nav-text">latest products</span></div><div class="clearfix"></div></a>
+                                    <hr class="light-grey-hr ma-0"/>
+                                    <div class="product-carousel owl-carousel owl-theme text-center">
+                                        <a href="#">
+                                            <img src="img/chair.jpg" alt="chair">
+                                            <span>New chairperson</span>
+                                        </a>
+                                        <a href="#">
+                                            <img src="img/chair2.jpg" alt="chair">
+                                            <span>square chair</span>
+                                        </a>
+                                        <a href="#">
+                                            <img src="img/chair3.jpg" alt="chair">
+                                            <span>semi circle chair</span>
+                                        </a>
+                                        <a href="#">
+                                            <img src="img/chair4.jpg" alt="chair">
+                                            <span>wooden chair</span>
+                                        </a>
+                                        <a href="#">
+                                            <img src="img/chair2.jpg" alt="chair">
+                                            <span>square chair</span>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li class="dropdown alert-drp">
@@ -249,10 +279,10 @@
                             <a href="profile.html"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
                         </li>
                         <li>
-                            <a href="#"><i class="zmdi zmdi-card"></i><span>my balance</span></a>
+                            <a href="#"><i class="zmdi zmdi-card"></i><span>My Files</span></a>
                         </li>
                         <li>
-                            <a href="inbox.jsp"><i class="zmdi zmdi-email"></i><span>Inbox</span></a>
+                            <a href="#"><i class="zmdi zmdi-email"></i><span>Emails</span></a>
                         </li>
                         <li>
                             <a href="#"><i class="zmdi zmdi-settings"></i><span>Settings</span></a>
@@ -294,13 +324,13 @@
                 <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a id="open_right_sidebar" href="#" onclick="document.getElementById('chat_tab_btn').click();" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
+                <a id="open_right_sidebar"  href="todo_tab" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a id="open_email" onclick="document.getElementById('todo_tab_btn').click();"  data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="" class="tst2" ><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+                <a href=""><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -308,7 +338,21 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/companyForm.jsp" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">Add Company</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">My Companies</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
+                    <li class="active" role="presentation">
+                        <a  data-toggle="tab"  role="tab" href="#Company_info" href="#Company_info2" aria-expanded="true">Information</a>
+                    </li>
+                    <li >
+                        <a aria-expanded="false"  data-toggle="tab" role="tab"  href="#Vehicle_info">Vehicles</a>
+                    </li>
+                    <li>
+                        <a  data-toggle="tab"  role="tab"  aria-expanded="false">Attachments</a>
+                    </li>
+                    <li>
+                        <a href="#">Employees</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
@@ -317,10 +361,10 @@
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="javascript:void(0);"  class="tst2" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="" class="tst2" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="filemanager.jsp" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
@@ -336,7 +380,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" class="tst2" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
@@ -723,22 +767,22 @@
                                                                     <input class="upload" type="file">
                                                                 </div>
                                                             </div>
-                                                            <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">Kaone Rascon</h5>
-                                                            <h6 class="block capitalize-font pb-20">Client</h6>
+                                                            <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">Madalyn Rascon</h5>
+                                                            <h6 class="block capitalize-font pb-20">Developer Geek</h6>
                                                         </div>
                                                         <div class="social-info">
                                                             <div class="row">
                                                                 <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">45</span></span>
-                                                                    <span class="counts-text block">Companies</span>
+                                                                    <span class="counts block head-font"><span class="counter-anim">345</span></span>
+                                                                    <span class="counts-text block">post</span>
                                                                 </div>
                                                                 <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">206</span></span>
-                                                                    <span class="counts-text block">Employees</span>
+                                                                    <span class="counts block head-font"><span class="counter-anim">246</span></span>
+                                                                    <span class="counts-text block">followers</span>
                                                                 </div>
                                                                 <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">118</span></span>
-                                                                    <span class="counts-text block">Vechiles</span>
+                                                                    <span class="counts block head-font"><span class="counter-anim">898</span></span>
+                                                                    <span class="counts-text block">tweets</span>
                                                                 </div>
                                                             </div>
                                                             <button class="btn btn-gold btn-block  btn-anim mt-40" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
@@ -759,204 +803,93 @@
     </div>
     <!-- /Right Sidebar Menu -->
 
-
-
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container">
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Companies Registered</h5>
+                    <h5 class="txt-dark">form advanced</h5>
                 </div>
+
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="CompanyInfo.jsp">Home</a></li>
-                        <li class="active"><span>Companies Registered</span></li>
+                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="#"><span>forms</span></a></li>
+                        <li class="active"><span>form-advanced</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
+
             </div>
             <!-- /Title -->
 
             <!-- Row -->
             <div class="row">
-<c:set var="countDate" scope="page" value="0" />
-<c:forEach var="tempCompany" items="${All_companies}">
-    <c:url var="CompanyDetailsLink" value="ServletDwmpc">
-        <c:param name="command" value="getCompany"/>
-        <c:param name="company_id" value="${tempCompany.company_Id}"/>
-        <c:param name="UserType" value="Client"/>
-    </c:url>
-    <c:set value="${countDate+1}" scope="page" var="countDate"/>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="panel panel-warning contact-card card-view">
+                <div class="col-md-6">
+                    <div class="panel panel-default card-view">
                         <div class="panel-heading">
                             <div class="pull-left">
-                                <div class="pull-left user-img-wrap mr-15">
-                                    <img class="card-user-img img-circle pull-left" src="img/user.png" alt="user"/>
-                                </div>
-                                <div class="pull-left user-detail-wrap">
-											<span class="block card-user-name">
-                                                    ${tempCompany.company_Name}
-											</span>
-                                    <span class="block card-user-desn">
-                                            ${tempCompany.company_Status}
-											</span>
-                                </div>
-                            </div>
-                            <div class="pull-right">
-                                <a class="pull-left inline-block mr-15" href="#">
-                                    <i class="zmdi zmdi-edit txt-light"></i>
-                                </a>
-                                <a class="pull-left inline-block mr-15" href="#">
-                                    <i class="zmdi zmdi-delete txt-light"></i>
-                                </a>
-                                <div class="pull-left inline-block dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert txt-light"></i></a>
-                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Full Info</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Send Message</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="panel-wrapper collapse in" onclick="location.href='${CompanyDetailsLink}'">
-                            <div class="panel-body row">
-                                <div class="user-others-details pl-15 pr-15">
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-email-open inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.email}</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-phone inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.telephone}</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-print inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.fax_Number}</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-my-location inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.region_Town_Village}, ${tempCompany.ward}, ${tempCompany.plot_Number}</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-local-post-office inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.street_Address}</span>
-                                    </div>
-                                    <div>
-                                        <i class="zmdi zmdi zmdi-bookmark inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.phone_Number}</span>
-                                    </div>
-                                </div>
-                                <hr class="light-grey-hr mt-20 mb-20"/>
-                                <div class="emp-detail pl-15 pr-15">
-                                    <div class="mb-5">
-                                        <span class="inline-block capitalize-font mr-5">joininig date:</span>
-                                        <span class="txt-dark">${tempCompany.date_Unix}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-</c:forEach>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="panel panel-warning contact-card card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <div class="pull-left user-img-wrap mr-15">
-                                    <img class="card-user-img img-circle pull-left" src="img/user.png" alt="user"/>
-                                </div>
-                                <div class="pull-left user-detail-wrap">
-											<span class="block card-user-name">
-												Clay Masse
-											</span>
-                                    <span class="block card-user-desn">
-												Government
-											</span>
-                                </div>
-                            </div>
-                            <div class="pull-right">
-                                <a class="pull-left inline-block mr-15" href="#">
-                                    <i class="zmdi zmdi-edit txt-light"></i>
-                                </a>
-                                <a class="pull-left inline-block mr-15" href="#">
-                                    <i class="zmdi zmdi-delete txt-light"></i>
-                                </a>
-                                <div class="pull-left inline-block dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert txt-light"></i></a>
-                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Full Info</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Send Message</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Follow</a></li>
-                                    </ul>
-                                </div>
+                                <h6 class="panel-title txt-dark">Bootstrap Select boxes</h6>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="panel-wrapper collapse in">
-                            <div class="panel-body row">
-                                <div class="user-others-details pl-15 pr-15">
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-email-open inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">markh@example.com</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-phone inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">+267 72445241</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-print inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">360 876 876</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-my-location inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">Francistown, Monarch Area 4, Monarch Area 4</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-local-post-office inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">PO Box 20715</span>
-                                    </div>
-                                    <div>
-                                        <i class="zmdi zmdi zmdi-bookmark inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">Company</span>
-                                    </div>
-                                </div>
-                                <hr class="light-grey-hr mt-20 mb-20"/>
-                                <div class="emp-detail pl-15 pr-15">
-                                    <div class="mb-5">
-                                        <span class="inline-block capitalize-font mr-5">joininig date:</span>
-                                        <span class="txt-dark">12-10-2014</span>
-                                    </div>
+                            <div class="panel-body">
+                                <p class="text-muted">Just add bootstrap-select-min.js and same css & add class <code>.selectpicker</code></p>
+                                <div class="form-wrap mt-40">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10">Select box </label><i class="icon-question" data-container="body" title="" data-toggle="popover" data-placement="right" data-content="Photo booth Tofu biodiesel williamsburg marfa, four loko." data-original-title="Popover title"></i>
+                                                    <select class="selectpicker" data-style="form-control btn-default btn-outline">
+                                                        <option>Mustard</option>
+                                                        <option>Ketchup</option>
+                                                        <option>Relish</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10">Select boxes with optgroups</label>
+                                                    <select class="selectpicker" data-style="form-control btn-default btn-outline">
+                                                        <optgroup label="Picnic">
+                                                            <option>Mustard</option>
+                                                            <option>Ketchup</option>
+                                                            <option>Relish</option>
+                                                        </optgroup>
+                                                        <optgroup label="Camping">
+                                                            <option>Tent</option>
+                                                            <option>Flashlight</option>
+                                                            <option>Toilet Paper</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10">Multiple select boxes</label>
+                                                    <select class="selectpicker" multiple data-style="form-control btn-default btn-outline">
+                                                        <option>Mustard</option>
+                                                        <option>Ketchup</option>
+                                                        <option>Relish</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="panel panel-warning card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <h6 style="text-align: center" class="panel-title block txt-light">No Companies Registered</h6>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div  class="panel-wrapper collapse in">
-                            <div  class="panel-body">
-                                <img src="img/sweetalert/alert4.png" alt="alert" class="img-responsive model_img" id="sa-close">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Row -->
 
-            <!-- form -->
+            </div>
+            <!-- /Row -->
+
+            <!-- test -->
             <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -1051,7 +984,7 @@
                 </div>
                 <!-- /.modal-dialog -->
             </div>
-            <!-- /form -->
+            <!-- /test -->
 
         </div>
 
@@ -1146,9 +1079,8 @@
 <script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 
 <!-- Init JavaScript -->
-<script src="dist/js/dashboard4-data.js"></script>
 <script src="dist/js/init.js"></script>
-<script src="dist/js/toast-data.js"></script>
+<script src="dist/js/dashboard4-data.js"></script>
 
 <!-- Sweet-Alert  -->
 <script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>

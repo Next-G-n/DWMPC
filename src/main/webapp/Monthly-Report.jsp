@@ -68,6 +68,7 @@
 </div>
 <!--/Preloader-->
 <div class="wrapper theme-1-active pimary-color-gold">
+
   <!-- Top Menu Items -->
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="mobile-only-brand pull-left">
@@ -85,15 +86,15 @@
         <div class="input-group">
           <input type="text" name="example-input1-group2" class="form-control" placeholder="Search">
           <span class="input-group-btn">
-							<button type="button" class="btn  btn-default"  data-target="#search_form" data-toggle="collapse" aria-label="Close" aria-expanded="true"><i class="zmdi zmdi-search"></i></button>
-							</span>
+						<button type="button" class="btn  btn-default"  data-target="#search_form" data-toggle="collapse" aria-label="Close" aria-expanded="true"><i class="zmdi zmdi-search"></i></button>
+						</span>
         </div>
       </form>
     </div>
     <div id="mobile_only_nav" class="mobile-only-nav pull-right">
       <ul class="nav navbar-right top-nav pull-right">
         <li>
-          <a id="open_right_sidebar" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
+          <a class="tst2" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
         </li>
         <li class="dropdown app-drp">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
@@ -108,7 +109,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="inbox.html" class="connection-item">
+                    <a href="inbox.jsp" class="connection-item">
                       <i class="zmdi zmdi-email-open txt-success"></i>
                       <span class="block">e-mail</span>
                     </a>
@@ -149,99 +150,8 @@
           </ul>
         </li>
         <li class="dropdown full-width-drp">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
+          <a href="#" class="tst2" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
           <ul class="dropdown-menu mega-menu pa-0" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-            <li class="product-nicescroll-bar row">
-              <ul class="pa-20">
-                <li class="col-md-3 col-xs-6 col-menu-list">
-                  <a href="javascript:void(0);"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-                  <hr class="light-grey-hr ma-0"/>
-                  <ul>
-                    <li>
-                      <a href="index.html">Analytical</a>
-                    </li>
-                    <li>
-                      <a href="index2.html">Demographic</a>
-                    </li>
-                    <li>
-                      <a href="index3.html">Project</a>
-                    </li>
-                    <li>
-                      <a href="index4.html">Hospital</a>
-                    </li>
-                    <li>
-                      <a href="index5.html">HRM</a>
-                    </li>
-                    <li>
-                      <a href="index6.html">Real Estate</a>
-                    </li>
-                    <li>
-                      <a href="profile.html">profile</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="col-md-3 col-xs-6 col-menu-list">
-                  <a href="javascript:void(0);">
-                    <div class="pull-left">
-                      <i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span>
-                    </div>
-                    <div class="pull-right"><span class="label label-gold">hot</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </a>
-                  <hr class="light-grey-hr ma-0"/>
-                  <ul>
-                    <li>
-                      <a href="e-commerce.html">Dashboard</a>
-                    </li>
-                    <li>
-                      <a href="product.html">Products</a>
-                    </li>
-                    <li>
-                      <a href="product-detail.html">Product Detail</a>
-                    </li>
-                    <li>
-                      <a href="add-products.html">Add Product</a>
-                    </li>
-                    <li>
-                      <a href="product-orders.html">Orders</a>
-                    </li>
-                    <li>
-                      <a href="product-cart.html">Cart</a>
-                    </li>
-                    <li>
-                      <a href="product-checkout.html">Checkout</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="col-md-6 col-xs-12 preview-carousel">
-                  <a href="javascript:void(0);"><div class="pull-left"><span class="right-nav-text">latest products</span></div><div class="clearfix"></div></a>
-                  <hr class="light-grey-hr ma-0"/>
-                  <div class="product-carousel owl-carousel owl-theme text-center">
-                    <a href="#">
-                      <img src="../img/chair.jpg" alt="chair">
-                      <span>Circle chair</span>
-                    </a>
-                    <a href="#">
-                      <img src="../img/chair2.jpg" alt="chair">
-                      <span>square chair</span>
-                    </a>
-                    <a href="#">
-                      <img src="../img/chair3.jpg" alt="chair">
-                      <span>semi circle chair</span>
-                    </a>
-                    <a href="#">
-                      <img src="../img/chair4.jpg" alt="chair">
-                      <span>wooden chair</span>
-                    </a>
-                    <a href="#">
-                      <img src="../img/chair2.jpg" alt="chair">
-                      <span>square chair</span>
-                    </a>
-                  </div>
-                </li>
-              </ul>
-            </li>
           </ul>
         </li>
         <li class="dropdown alert-drp">
@@ -263,8 +173,8 @@
                       <i class="zmdi zmdi-flag"></i>
                     </div>
                     <div class="sl-content">
-													<span class="inline-block capitalize-font  pull-left truncate head-notifications">
-													New subscription created</span>
+												<span class="inline-block capitalize-font  pull-left truncate head-notifications">
+												New subscription created</span>
                       <span class="inline-block font-11  pull-right notifications-time">2pm</span>
                       <div class="clearfix"></div>
                       <p class="truncate">Your customer subscribed for the basic plan. The customer will pay $25 per month.</p>
@@ -303,7 +213,7 @@
                 <div class="sl-item">
                   <a href="javascript:void(0)">
                     <div class="sl-avatar">
-                      <img class="img-responsive" src="../img/avatar.jpg" alt="avatar"/>
+                      <img class="img-responsive" src="img/avatar.jpg" alt="avatar"/>
                     </div>
                     <div class="sl-content">
                       <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
@@ -339,7 +249,7 @@
           </ul>
         </li>
         <li class="dropdown auth-drp">
-          <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
+          <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
           <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
             <li>
               <a href="profile.html"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
@@ -348,7 +258,7 @@
               <a href="#"><i class="zmdi zmdi-card"></i><span>my balance</span></a>
             </li>
             <li>
-              <a href="inbox.html"><i class="zmdi zmdi-email"></i><span>Inbox</span></a>
+              <a href="inbox.jsp"><i class="zmdi zmdi-email"></i><span>Inbox</span></a>
             </li>
             <li>
               <a href="#"><i class="zmdi zmdi-settings"></i><span>Settings</span></a>
@@ -383,105 +293,20 @@
   <div class="fixed-sidebar-left">
     <ul class="nav navbar-nav side-nav nicescroll-bar">
       <li class="navigation-header">
-        <span>Main</span>
+        <span>User Information</span>
         <i class="zmdi zmdi-more"></i>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-        <ul id="dashboard_dr" class="collapse collapse-level-1">
-          <li>
-            <a href="index.html">Analytical</a>
-          </li>
-          <li>
-            <a href="index2.html">Demographic</a>
-          </li>
-          <li>
-            <a href="index3.html">Project</a>
-          </li>
-          <li>
-            <a href="index4.html">Hospital</a>
-          </li>
-          <li>
-            <a href="index5.html">HRM</a>
-          </li>
-          <li>
-            <a href="index6.html">Real Estate</a>
-          </li>
-          <li>
-            <a href="profile.html">profile</a>
-          </li>
-        </ul>
+        <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span></div><div class="pull-right"><span class="label label-gold">hot</span></div><div class="clearfix"></div></a>
-        <ul id="ecom_dr" class="collapse collapse-level-1">
-          <li>
-            <a href="e-commerce.html">Dashboard</a>
-          </li>
-          <li>
-            <a href="product.html">Products</a>
-          </li>
-          <li>
-            <a href="product-detail.html">Product Detail</a>
-          </li>
-          <li>
-            <a href="add-products.html">Add Product</a>
-          </li>
-          <li>
-            <a href="product-orders.html">Orders</a>
-          </li>
-          <li>
-            <a href="product-cart.html">Cart</a>
-          </li>
-          <li>
-            <a href="product-checkout.html">Checkout</a>
-          </li>
-        </ul>
+        <a href="#" id="open_right_sidebar" onclick="document.getElementById('chat_tab_btn').click();" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Apps </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-        <ul id="app_dr" class="collapse collapse-level-1">
-          <li>
-            <a href="chats.html">chats</a>
-          </li>
-          <li>
-            <a href="calendar.html">calendar</a>
-          </li>
-          <li>
-            <a href="weather.html">weather</a>
-          </li>
-          <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#email_dr">Email<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-            <ul id="email_dr" class="collapse collapse-level-2">
-              <li>
-                <a href="inbox.html">inbox</a>
-              </li>
-              <li>
-                <a href="inbox-detail.html">detail email</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#contact_dr">Contacts<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-            <ul id="contact_dr" class="collapse collapse-level-2">
-              <li>
-                <a href="contact-list.html">list</a>
-              </li>
-              <li>
-                <a href="contact-card.html">cards</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="file-manager.html">File Manager</a>
-          </li>
-          <li>
-            <a href="todo-tasklist.html">To Do/Tasklist</a>
-          </li>
-        </ul>
+        <a href="#" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="widgets.html"><div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">widgets</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+        <a href="#" class="tst2"><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
       </li>
       <li><hr class="light-grey-hr mb-10"/></li>
       <li class="navigation-header">
@@ -489,204 +314,41 @@
         <i class="zmdi zmdi-more"></i>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">UI Elements</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">${CompanyName}</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
         <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
-          <li>
-            <a href="panels-wells.html">Panels & Wells</a>
+          <li class="active" role="presentation">
+            <a onclick="document.getElementById('Company_information').submit()" data-toggle="tab"  role="tab" aria-expanded="true">Information</a>
+          </li>
+          <li >
+            <a onclick="document.getElementById('Vehicle_info').submit()" aria-expanded="false"  data-toggle="tab" role="tab">Vehicles</a>
           </li>
           <li>
-            <a href="modals.html">Modals</a>
-          </li>
-          <li>
-            <a href="sweetalert.html">Sweet Alerts</a>
-          </li>
-          <li>
-            <a href="notifications.html">notifications</a>
-          </li>
-          <li>
-            <a href="typography.html">Typography</a>
-          </li>
-          <li>
-            <a href="buttons.html">Buttons</a>
-          </li>
-          <li>
-            <a href="accordion-toggle.html">Accordion / Toggles</a>
-          </li>
-          <li>
-            <a href="tabs.html">Tabs</a>
-          </li>
-          <li>
-            <a href="progressbars.html">Progress bars</a>
-          </li>
-          <li>
-            <a href="skills-counter.html">Skills & Counters</a>
-          </li>
-          <li>
-            <a href="pricing.html">Pricing Tables</a>
-          </li>
-          <li>
-            <a href="nestable.html">Nestables</a>
-          </li>
-          <li>
-            <a href="dorpdown.html">Dropdowns</a>
-          </li>
-          <li>
-            <a href="bootstrap-treeview.html">Tree View</a>
-          </li>
-          <li>
-            <a href="carousel.html">Carousel</a>
-          </li>
-          <li>
-            <a href="range-slider.html">Range Slider</a>
-          </li>
-          <li>
-            <a href="grid-styles.html">Grid</a>
-          </li>
-          <li>
-            <a href="bootstrap-ui.html">Bootstrap UI</a>
+            <a onclick="document.getElementById('Employee_info').submit()">Employees</a>
           </li>
         </ul>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-        <ul id="form_dr" class="collapse collapse-level-1 two-col-list">
-          <li>
-            <a href="form-element.html">Basic Forms</a>
-          </li>
-          <li>
-            <a href="form-layout.html">form Layout</a>
-          </li>
-          <li>
-            <a href="form-advanced.html">Form Advanced</a>
-          </li>
-          <li>
-            <a href="form-mask.html">Form Mask</a>
-          </li>
-          <li>
-            <a href="form-picker.html">Form Picker</a>
-          </li>
-          <li>
-            <a href="form-validation.html">form Validation</a>
-          </li>
-          <li>
-            <a href="form-wizard.html">Form Wizard</a>
-          </li>
-          <li>
-            <a href="form-x-editable.html">X-Editable</a>
-          </li>
-          <li>
-            <a href="cropperjs.html">Cropperjs</a>
-          </li>
-          <li>
-            <a href="form-file-upload.html">File Upload</a>
-          </li>
-          <li>
-            <a href="dropzone.html">Dropzone</a>
-          </li>
-          <li>
-            <a href="bootstrap-wysihtml5.html">Bootstrap Wysihtml5</a>
-          </li>
-          <li>
-            <a href="tinymce-wysihtml5.html">Tinymce Wysihtml5</a>
-          </li>
-          <li>
-            <a href="summernote-wysihtml5.html">summernote</a>
-          </li>
-          <li>
-            <a href="typeahead-js.html">typeahead</a>
-          </li>
-        </ul>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+      </li>
+      <c:if test="${ReportBtn=='Upload'}">
+        <li>
+          <a href="Monthly-Report.jsp" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+        </li>
+      </c:if>
+      <c:if test="${ReportBtn!='Upload'}">
+        <li>
+          <a href="javascript:void(0);" class="Report-toast" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+        </li>
+      </c:if>
+      <li>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-        <ul id="chart_dr" class="collapse collapse-level-1 two-col-list">
-          <li>
-            <a href="flot-chart.html">Flot Chart</a>
-          </li>
-          <li>
-            <a href="echart.html">Echart Chart</a>
-          </li>
-          <li>
-            <a href="morris-chart.html">Morris Chart</a>
-          </li>
-          <li>
-            <a href="chart.js.html">chartjs</a>
-          </li>
-          <li>
-            <a href="chartist.html">chartist</a>
-          </li>
-          <li>
-            <a href="easy-pie-chart.html">Easy Pie Chart</a>
-          </li>
-          <li>
-            <a href="sparkline.html">Sparkline</a>
-          </li>
-          <li>
-            <a href="peity-chart.html">Peity Chart</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">Tables</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-        <ul id="table_dr" class="collapse collapse-level-1 two-col-list">
-          <li>
-            <a href="basic-table.html">Basic Table</a>
-          </li>
-          <li>
-            <a href="bootstrap-table.html">Bootstrap Table</a>
-          </li>
-          <li>
-            <a href="data-table.html">Data Table</a>
-          </li>
-          <li>
-            <a href="export-table.html">Export Table</a>
-          </li>
-          <li>
-            <a href="responsive-data-table.html">RSPV DataTable</a>
-          </li>
-          <li>
-            <a href="responsive-table.html">Responsive Table</a>
-          </li>
-          <li>
-            <a href="editable-table.html">Editable Table</a>
-          </li>
-          <li>
-            <a class="active-page" href="foo-table.html">Foo Table</a>
-          </li>
-          <li>
-            <a href="jsgrid-table.html">Jsgrid Table</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-iridescent mr-20"></i><span class="right-nav-text">Icons</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-        <ul id="icon_dr" class="collapse collapse-level-1">
-          <li>
-            <a href="fontawesome.html">Fontawesome</a>
-          </li>
-          <li>
-            <a href="themify.html">Themify</a>
-          </li>
-          <li>
-            <a href="linea-icon.html">Linea</a>
-          </li>
-          <li>
-            <a href="simple-line-icons.html">Simple Line</a>
-          </li>
-          <li>
-            <a href="pe-icon-7.html">Pe-icon-7</a>
-          </li>
-          <li>
-            <a href="glyphicons.html">Glyphicons</a>
-          </li>
-        </ul>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
         <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
         <ul id="maps_dr" class="collapse collapse-level-1">
-          <li>
-            <a href="vector-map.html">Vector Map</a>
-          </li>
           <li>
             <a href="google-map.html">Google Map</a>
           </li>
@@ -698,87 +360,28 @@
         <i class="zmdi zmdi-more"></i>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-google-pages mr-20"></i><span class="right-nav-text">Special Pages</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-        <ul id="pages_dr" class="collapse collapse-level-1 two-col-list">
-          <li>
-            <a href="blank.html">Blank Page</a>
-          </li>
-          <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#auth_dr">Authantication pages<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-            <ul id="auth_dr" class="collapse collapse-level-2">
-              <li>
-                <a href="login.html">Login</a>
-              </li>
-              <li>
-                <a href="signup.html">Register</a>
-              </li>
-              <li>
-                <a href="forgot-password.html">Recover Password</a>
-              </li>
-              <li>
-                <a href="reset-password.html">reset Password</a>
-              </li>
-              <li>
-                <a href="locked.html">Lock Screen</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#invoice_dr">Invoice<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-            <ul id="invoice_dr" class="collapse collapse-level-2">
-              <li>
-                <a href="invoice.html">Invoice</a>
-              </li>
-              <li>
-                <a href="invoice-archive.html">Invoice Archive</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#error_dr">error pages<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-            <ul id="error_dr" class="collapse collapse-level-2">
-              <li>
-                <a href="404.html">Error 404</a>
-              </li>
-              <li>
-                <a href="500.html">Error 500</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="gallery.html">Gallery</a>
-          </li>
-          <li>
-            <a href="timeline.html">Timeline</a>
-          </li>
-          <li>
-            <a href="faq.html">FAQ</a>
-          </li>
-        </ul>
+        <a href="" class="tst2" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="documentation.html"><div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">documentation</span></div><div class="clearfix"></div></a>
+        <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-filter-list mr-20"></i><span class="right-nav-text">multilevel</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-        <ul id="dropdown_dr_lv1" class="collapse collapse-level-1">
-          <li>
-            <a href="#">Item level 1</a>
-          </li>
-          <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv2">Dropdown level 2<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-            <ul id="dropdown_dr_lv2" class="collapse collapse-level-2">
-              <li>
-                <a href="#">Item level 2</a>
-              </li>
-              <li>
-                <a href="#">Item level 2</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
     </ul>
+    <form method="post" id="Employee_info" action="ServletDwmpc">
+      <input type="hidden" name="command" value="EmployeesDetail">
+      <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+    </form>
+    <form method="post" id="Vehicle_info" action="ServletDwmpc">
+      <input type="hidden" name="command" value="VehicleDetail">
+      <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+    </form>
+    <form method="post" id="Company_information" action="ServletDwmpc">
+      <input type="hidden" name="command" value="getCompany">
+      <input type="hidden" name="UserType" value="Client">
+      <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+    </form>
   </div>
   <!-- /Left Sidebar Menu -->
 
@@ -788,9 +391,9 @@
       <li>
         <div  class="tab-struct custom-tab-1">
           <ul role="tablist" class="nav nav-tabs" id="right_sidebar_tab">
-            <li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab">chat</a></li>
-            <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">messages</a></li>
-            <li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="false">todo</a></li>
+            <li class="active" role="presentation"><a aria-expanded="false"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab" >Emails</a></li>
+            <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">Notification</a></li>
+            <li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="true">Profile</a></li>
           </ul>
           <div class="tab-content" id="right_sidebar_content">
             <div  id="chat_tab" class="tab-pane fade active in" role="tabpanel">
@@ -808,8 +411,8 @@
                     <div class="input-group">
                       <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search">
                       <span class="input-group-btn">
-													<button type="button" class="btn  btn-default"><i class="zmdi zmdi-search"></i></button>
-													</span>
+												<button type="button" class="btn  btn-default"><i class="zmdi zmdi-search"></i></button>
+												</span>
                     </div>
                   </form>
                   <div id="chat_list_scroll">
@@ -819,7 +422,7 @@
                           <div class="chat-body">
                             <a href="javascript:void(0)">
                               <div class="chat-data">
-                                <img class="user-img img-circle"  src="img/user.png" alt="user"/>
+                                <img class="user-img img-circle" src="img/user.png" alt="user"/>
                                 <div class="user-data">
                                   <span class="name block capitalize-font">Clay Masse</span>
                                   <span class="time block truncate txt-grey">No one saves us but ourselves.</span>
@@ -830,7 +433,7 @@
                             </a>
                             <a href="javascript:void(0)">
                               <div class="chat-data">
-                                <img class="user-img img-circle"  src="img/user1.png" alt="user"/>
+                                <img class="user-img img-circle" src="img/user1.png" alt="user"/>
                                 <div class="user-data">
                                   <span class="name block capitalize-font">Evie Ono</span>
                                   <span class="time block truncate txt-grey">Unity is strength</span>
@@ -841,9 +444,10 @@
                             </a>
                             <a href="javascript:void(0)">
                               <div class="chat-data">
-                                <img class="user-img img-circle"  src="img/user2.png" alt="user"/>
+                                <img class="user-img img-circle" src="img/user2.png" alt="user"/>
                                 <div class="user-data">
-                                  <span class="name block capitalize-font">Madalyn Rascon</span>
+                                                                    <span class="name block capitalize-font">Madalyn Rascon
+                                                                    </span>
                                   <span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
                                 </div>
                                 <div class="status online"></div>
@@ -852,7 +456,7 @@
                             </a>
                             <a href="javascript:void(0)">
                               <div class="chat-data">
-                                <img class="user-img img-circle"  src="../img/user3.png" alt="user"/>
+                                <img class="user-img img-circle" src="img/user3.png" alt="user"/>
                                 <div class="user-data">
                                   <span class="name block capitalize-font">Mitsuko Heid</span>
                                   <span class="time block truncate txt-grey">I’m thankful.</span>
@@ -863,7 +467,7 @@
                             </a>
                             <a href="javascript:void(0)">
                               <div class="chat-data">
-                                <img class="user-img img-circle"  src="../img/user.png" alt="user"/>
+                                <img class="user-img img-circle" src="img/user.png" alt="user"/>
                                 <div class="user-data">
                                   <span class="name block capitalize-font">Ezequiel Merideth</span>
                                   <span class="time block truncate txt-grey">Patience is bitter.</span>
@@ -874,7 +478,7 @@
                             </a>
                             <a href="javascript:void(0)">
                               <div class="chat-data">
-                                <img class="user-img img-circle"  src="../img/user1.png" alt="user"/>
+                                <img class="user-img img-circle" src="img/user1.png" alt="user"/>
                                 <div class="user-data">
                                   <span class="name block capitalize-font">Jonnie Metoyer</span>
                                   <span class="time block truncate txt-grey">Genius is eternal patience.</span>
@@ -885,7 +489,7 @@
                             </a>
                             <a href="javascript:void(0)">
                               <div class="chat-data">
-                                <img class="user-img img-circle"  src="../img/user2.png" alt="user"/>
+                                <img class="user-img img-circle" src="img/user2.png" alt="user"/>
                                 <div class="user-data">
                                   <span class="name block capitalize-font">Angelic Lauver</span>
                                   <span class="time block truncate txt-grey">Every burden is a blessing.</span>
@@ -896,7 +500,7 @@
                             </a>
                             <a href="javascript:void(0)">
                               <div class="chat-data">
-                                <img class="user-img img-circle"  src="../img/user3.png" alt="user"/>
+                                <img class="user-img img-circle" src="img/user3.png" alt="user"/>
                                 <div class="user-data">
                                   <span class="name block capitalize-font">Priscila Shy</span>
                                   <span class="time block truncate txt-grey">Wise to resolve, and patient to perform.</span>
@@ -907,7 +511,7 @@
                             </a>
                             <a href="javascript:void(0)">
                               <div class="chat-data">
-                                <img class="user-img img-circle"  src="../img/user4.png" alt="user"/>
+                                <img class="user-img img-circle" src="img/user4.png" alt="user"/>
                                 <div class="user-data">
                                   <span class="name block capitalize-font">Linda Stack</span>
                                   <span class="time block truncate txt-grey">Our patience will achieve more than our force.</span>
@@ -940,7 +544,7 @@
                           <ul class="nicescroll-bar pt-20">
                             <li class="friend">
                               <div class="friend-msg-wrap">
-                                <img class="user-img img-circle block pull-left"  src="../img/user.png" alt="user"/>
+                                <img class="user-img img-circle block pull-left" src="img/user.png" alt="user"/>
                                 <div class="msg pull-left">
                                   <p>Hello Jason, how are you, it's been a long time since we last met?</p>
                                   <div class="msg-per-detail text-right">
@@ -972,7 +576,7 @@
                             </li>
                             <li class="friend">
                               <div class="friend-msg-wrap">
-                                <img class="user-img img-circle block pull-left"  src="../img/user.png" alt="user"/>
+                                <img class="user-img img-circle block pull-left" src="img/user.png" alt="user"/>
                                 <div class="msg pull-left">
                                   <p>Not too bad.</p>
                                   <div class="msg-per-detail  text-right">
@@ -1025,7 +629,7 @@
                     <a href="javascript:void(0)">
                       <div class="sl-item unread-message">
                         <div class="sl-avatar avatar avatar-sm avatar-circle">
-                          <img class="img-responsive img-circle" src="../img/user.png" alt="avatar"/>
+                          <img class="img-responsive img-circle" src="img/user.png" alt="avatar"/>
                         </div>
                         <div class="sl-content">
                           <span class="inline-block capitalize-font   pull-left message-per">Clay Masse</span>
@@ -1039,7 +643,7 @@
                     <a href="javascript:void(0)">
                       <div class="sl-item">
                         <div class="sl-avatar avatar avatar-sm avatar-circle">
-                          <img class="img-responsive img-circle" src="../img/user1.png" alt="avatar"/>
+                          <img class="img-responsive img-circle" src="img/user1.png" alt="avatar"/>
                         </div>
                         <div class="sl-content">
                           <span class="inline-block capitalize-font   pull-left message-per">Evie Ono</span>
@@ -1053,7 +657,7 @@
                     <a href="javascript:void(0)">
                       <div class="sl-item">
                         <div class="sl-avatar avatar avatar-sm avatar-circle">
-                          <img class="img-responsive img-circle" src="../img/user2.png" alt="avatar"/>
+                          <img class="img-responsive img-circle" src="img/user2.png" alt="avatar"/>
                         </div>
                         <div class="sl-content">
                           <span class="inline-block capitalize-font   pull-left message-per">Madalyn Rascon</span>
@@ -1067,7 +671,7 @@
                     <a href="javascript:void(0)">
                       <div class="sl-item unread-message">
                         <div class="sl-avatar avatar avatar-sm avatar-circle">
-                          <img class="img-responsive img-circle" src="../img/user3.png" alt="avatar"/>
+                          <img class="img-responsive img-circle" src="img/user3.png" alt="avatar"/>
                         </div>
                         <div class="sl-content">
                           <span class="inline-block capitalize-font   pull-left message-per">Ezequiel Merideth</span>
@@ -1081,7 +685,7 @@
                     <a href="javascript:void(0)">
                       <div class="sl-item unread-message">
                         <div class="sl-avatar avatar avatar-sm avatar-circle">
-                          <img class="img-responsive img-circle" src="../img/user4.png" alt="avatar"/>
+                          <img class="img-responsive img-circle" src="img/user4.png" alt="avatar"/>
                         </div>
                         <div class="sl-content">
                           <span class="inline-block capitalize-font   pull-left message-per">Jonnie Metoyer</span>
@@ -1095,7 +699,7 @@
                     <a href="javascript:void(0)">
                       <div class="sl-item">
                         <div class="sl-avatar avatar avatar-sm avatar-circle">
-                          <img class="img-responsive img-circle" src="../img/user.png" alt="avatar"/>
+                          <img class="img-responsive img-circle" src="img/user.png" alt="avatar"/>
                         </div>
                         <div class="sl-content">
                           <span class="inline-block capitalize-font   pull-left message-per">Priscila Shy</span>
@@ -1109,7 +713,7 @@
                     <a href="javascript:void(0)">
                       <div class="sl-item">
                         <div class="sl-avatar avatar avatar-sm avatar-circle">
-                          <img class="img-responsive img-circle" src="../img/user1.png" alt="avatar"/>
+                          <img class="img-responsive img-circle" src="img/user1.png" alt="avatar"/>
                         </div>
                         <div class="sl-content">
                           <span class="inline-block capitalize-font   pull-left message-per">Linda Stack</span>
@@ -1130,68 +734,57 @@
                   <a href="javascript:void(0)" class="inline-block txt-grey">
                     <i class="zmdi zmdi-more"></i>
                   </a>
-                  <span class="inline-block txt-dark">todo list</span>
+                  <span class="inline-block txt-dark">Profile</span>
                   <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
                   <div class="clearfix"></div>
                 </div>
                 <div class="set-height-wrap">
                   <!-- Todo-List -->
-                  <ul class="todo-list nicescroll-bar">
-                    <li class="todo-item">
-                      <div class="checkbox checkbox-default">
-                        <input type="checkbox" id="checkbox01"/>
-                        <label for="checkbox01">Record The First Episode</label>
+                  <div class="col-xs-12">
+                    <div class="panel panel-default card-view  pa-0">
+                      <div class="panel-wrapper collapse in">
+                        <div class="panel-body  pa-0">
+                          <div class="profile-box">
+                            <div class="profile-cover-pic">
+                              <div class="fileupload btn btn-default">
+                                <span class="btn-text">edit</span>
+                                <input class="upload" type="file">
+                              </div>
+                              <div class="profile-image-overlay"></div>
+                            </div>
+                            <div class="profile-info text-center">
+                              <div class="profile-img-wrap">
+                                <img class="inline-block mb-10" src="img/mock1.jpg" alt="user"/>
+                                <div class="fileupload btn btn-default">
+                                  <span class="btn-text">edit</span>
+                                  <input class="upload" type="file">
+                                </div>
+                              </div>
+                              <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">Kaone Rascon</h5>
+                              <h6 class="block capitalize-font pb-20">Client</h6>
+                            </div>
+                            <div class="social-info">
+                              <div class="row">
+                                <div class="col-xs-4 text-center">
+                                  <span class="counts block head-font"><span class="counter-anim">45</span></span>
+                                  <span class="counts-text block">Companies</span>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                  <span class="counts block head-font"><span class="counter-anim">206</span></span>
+                                  <span class="counts-text block">Employees</span>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                  <span class="counts block head-font"><span class="counter-anim">118</span></span>
+                                  <span class="counts-text block">Vechiles</span>
+                                </div>
+                              </div>
+                              <button class="btn btn-gold btn-block  btn-anim mt-40" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </li>
-                    <li>
-                      <hr class="light-grey-hr"/>
-                    </li>
-                    <li class="todo-item">
-                      <div class="checkbox checkbox-pink">
-                        <input type="checkbox" id="checkbox02"/>
-                        <label for="checkbox02">Prepare The Conference Schedule</label>
-                      </div>
-                    </li>
-                    <li>
-                      <hr class="light-grey-hr"/>
-                    </li>
-                    <li class="todo-item">
-                      <div class="checkbox checkbox-warning">
-                        <input type="checkbox" id="checkbox03" checked/>
-                        <label for="checkbox03">Decide The Live Discussion Time</label>
-                      </div>
-                    </li>
-                    <li>
-                      <hr class="light-grey-hr"/>
-                    </li>
-                    <li class="todo-item">
-                      <div class="checkbox checkbox-success">
-                        <input type="checkbox" id="checkbox04" checked/>
-                        <label for="checkbox04">Prepare For The Next Project</label>
-                      </div>
-                    </li>
-                    <li>
-                      <hr class="light-grey-hr"/>
-                    </li>
-                    <li class="todo-item">
-                      <div class="checkbox checkbox-danger">
-                        <input type="checkbox" id="checkbox05" checked/>
-                        <label for="checkbox05">Finish Up AngularJs Tutorial</label>
-                      </div>
-                    </li>
-                    <li>
-                      <hr class="light-grey-hr"/>
-                    </li>
-                    <li class="todo-item">
-                      <div class="checkbox checkbox-purple">
-                        <input type="checkbox" id="checkbox06" checked/>
-                        <label for="checkbox06">Finish Infinity Project</label>
-                      </div>
-                    </li>
-                    <li>
-                      <hr class="light-grey-hr"/>
-                    </li>
-                  </ul>
+                    </div>
+                  </div>
                   <!-- /Todo-List -->
                 </div>
               </div>
@@ -1535,6 +1128,104 @@
           <input type="text" id="Salary5" name="Salary5" value="0">
           <input type="text" id="Salary6" name="Salary6" value="0">
         </form>
+
+        <!-- form -->
+        <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h5 class="modal-title" id="myModalLabel">Edit Profile</h5>
+              </div>
+              <div class="modal-body">
+                <!-- Row -->
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="">
+                      <div class="panel-wrapper collapse in">
+                        <div class="panel-body pa-0">
+                          <div class="col-sm-12 col-xs-12">
+                            <div class="form-wrap">
+                              <form action="#">
+                                <div class="form-body overflow-hide">
+                                  <div class="form-group">
+                                    <label class="control-label mb-10" for="exampleInputuname_1">Name</label>
+                                    <div class="input-group">
+                                      <div class="input-group-addon"><i class="icon-user"></i></div>
+                                      <input type="text" class="form-control" id="exampleInputuname_1" placeholder="willard bryant">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="control-label mb-10" for="exampleInputEmail_1">Email address</label>
+                                    <div class="input-group">
+                                      <div class="input-group-addon"><i class="icon-envelope-open"></i></div>
+                                      <input type="email" class="form-control" id="exampleInputEmail_1" placeholder="xyz@gmail.com">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="control-label mb-10" for="exampleInputContact_1">Contact number</label>
+                                    <div class="input-group">
+                                      <div class="input-group-addon"><i class="icon-phone"></i></div>
+                                      <input type="email" class="form-control" id="exampleInputContact_1" placeholder="+102 9388333">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="control-label mb-10" for="exampleInputpwd_1">Password</label>
+                                    <div class="input-group">
+                                      <div class="input-group-addon"><i class="icon-lock"></i></div>
+                                      <input type="password" class="form-control" id="exampleInputpwd_1" placeholder="Enter pwd" value="password">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="control-label mb-10">Gender</label>
+                                    <div>
+                                      <div class="radio">
+                                        <input type="radio" name="radio1" id="radio_1" value="option1" checked="">
+                                        <label for="radio_1">
+                                          M
+                                        </label>
+                                      </div>
+                                      <div class="radio">
+                                        <input type="radio" name="radio1" id="radio_2" value="option2">
+                                        <label for="radio_2">
+                                          F
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="control-label mb-10">Country</label>
+                                    <select class="form-control" data-placeholder="Choose a Category" tabindex="1">
+                                      <option value="Category 1">USA</option>
+                                      <option value="Category 2">Austrailia</option>
+                                      <option value="Category 3">India</option>
+                                      <option value="Category 4">UK</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="form-actions mt-10">
+                                  <button type="submit" class="btn btn-success mr-10 mb-30">Update profile</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success waves-effect" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /form -->
+
       </div>
 
       <!-- Footer -->
@@ -1549,7 +1240,6 @@
 
     </div>
   </div>
-
   <!-- /Main Content -->
 
 </div>
@@ -1602,6 +1292,7 @@
 <script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 <!-- Init JavaScript -->
 <script src="dist/js/init.js"></script>
+<script src="dist/js/toast-data.js"></script>
 
 <script>
 
