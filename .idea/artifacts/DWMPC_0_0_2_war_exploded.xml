@@ -14,12 +14,6 @@
         <element id="directory" name="classes">
           <element id="module-output" name="DWMPC_0.0.2" />
         </element>
-        <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.22" />
-          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
-          <element id="library" level="project" name="Maven: javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1" />
-          <element id="library" level="project" name="Maven: org.mindrot:jbcrypt:0.3m" />
-        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/DWMPC_2-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />

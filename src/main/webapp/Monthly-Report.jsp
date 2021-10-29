@@ -61,7 +61,7 @@
   <!-- Custom CSS -->
   <link href="dist/css/style.css" rel="stylesheet" type="text/css">
 </head>
-<body onload="myFunction()">
+<body>
 <!--Preloader-->
 <div class="preloader-it">
   <div class="la-anim-1"></div>
@@ -921,7 +921,7 @@
                         </div>
                         <div class="modal-body">
                           <input type="hidden" name="command" value="Report Waste Type">
-                          <input type="text" name="action" id="action_id" value="">
+                          <input type="hidden" name="action" id="action_id" value="">
                           <input type="hidden" name="Company Id" value="${Company_info.company_Id}"/>
                           <input type="hidden" name="Company Name" value="${Company_info.company_Name}"/>
                           <input type="number" id="id" name="id" class="hidden"/>

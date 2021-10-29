@@ -11,7 +11,10 @@
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="favicon.ico">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		
+		<!--alerts CSS -->
+		<link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
+
 		<!-- vector map CSS -->
 		<link href="vendors/bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css" rel="stylesheet" type="text/css"/>
 		
@@ -46,16 +49,41 @@
 											<h6 class="text-center txt-grey nonecase-font">Enter the email you use for Zapily, and we’ll help you create a new password.</h6>
 										</div>	
 										<div class="form-wrap">
-											<form action="#">
+											<form action="ServletDwmpc" method="post">
+												<input type="hidden" id="ForgotForm" name="command" value="Forget Password">
 												<div class="form-group">
 													<label class="control-label mb-10" for="exampleInputEmail_2">Email address</label>
 													<input type="email" class="form-control" required="" id="exampleInputEmail_2" placeholder="Enter email">
 												</div>
 												
 												<div class="form-group text-center">
-													<button type="submit" class="btn btn-success btn-rounded">Reset</button>
+													<button type="submit" class="btn btn-warning btn-rounded">Reset</button>
 												</div>
 											</form>
+											<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+											<button style="display: none" alt="alert" id="alert-Sent"></button>
+
+											<script type="text/javascript">
+												var form = $('#ForgotForm');
+												form.submit(function () {
+
+													alert("this ")
+													$.ajax({
+														type: form.attr('method'),
+														url: form.attr('action'),
+														data: form.serialize(),
+														fail: function (data){
+
+														},
+														success: function (data) {
+															document.getElementById("alert-Sent").click()
+														}
+													});
+
+													return false;
+												});
+											</script>
 										</div>
 									</div>	
 								</div>
@@ -78,7 +106,12 @@
 		<!-- Bootstrap Core JavaScript -->
 		<script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
-		
+
+		<!-- Sweet-Alert  -->
+		<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="dist/js/sweetalert-data.js"></script>
+
+
 		<!-- Slimscroll JavaScript -->
 		<script src="dist/js/jquery.slimscroll.js"></script>
 		

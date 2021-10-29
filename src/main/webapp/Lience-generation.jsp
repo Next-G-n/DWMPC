@@ -1,67 +1,44 @@
-
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: NITRO5
+  Date: 10/25/2021
+  Time: 9:01 AM
+  To change this template use File | Settings | File Templates.
+--%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>DWMPC</title>
-    <meta name="description" content="Zapily is a Dashboard & Admin Site Responsive Template by hencework." />
+    <title>DWMPC || Lience Generation</title>
+    <meta name="description" content="Waste Management System." />
     <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Zapily Admin, Zapilyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
-    <meta name="author" content="hencework"/>
-
-    <!-- jquery-steps css -->
-    <link rel="stylesheet" href="vendors/bower_components/jquery.steps/demo/css/jquery.steps.css">
-
-    <!--alerts CSS -->
-    <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
-
+    <meta name="Next-gen" content="hencework"/>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="icon.ico">
     <link rel="icon" href="icon.ico" type="image/x-icon">
-
-    <!-- Data table CSS -->
-    <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-
-    <!-- Toast CSS -->
-    <link href="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
 
     <!-- bootstrap-select CSS -->
     <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
 
-    <!-- Calendar CSS -->
-    <link href="vendors/bower_components/fullcalendar/dist/fullcalendar.css" rel="stylesheet" type="text/css"/>
 
-    <!-- bootstrap-touchspin CSS -->
-    <link href="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Data table CSS -->
+    <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
 
 
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
-    <style>
-        #example_paginate, #example_info{
-            display: none;
-        }
-        .pa-01:hover {
-            cursor: pointer;
-            background-color: #f6f7f6;
-        }
-        .bg-dark-green:hover{
-            cursor: pointer;
-            background-color: #5a896f;
-        }
-    </style>
+
 </head>
 
 <body>
-<!-- Preloader -->
+<!--Preloader-->
 <div class="preloader-it">
     <div class="la-anim-1"></div>
 </div>
-<!-- /Preloader -->
-<div class="wrapper theme-1-active pimary-color-green">
+<!--/Preloader-->
+<div class="wrapper theme-1-active pimary-color-gold">
 
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -294,13 +271,13 @@
                 <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a id="open_right_sidebar" href="#" onclick="document.getElementById('chat_tab_btn').click();" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
+                <a href="#" id="open_right_sidebar" onclick="document.getElementById('chat_tab_btn').click();" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="#" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="" class="tst2" ><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+                <a href="#" class="tst2"><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -308,19 +285,37 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/companyForm.jsp" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">Add Company</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">${CompanyName}</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
+                    <li class="active" role="presentation">
+                        <a onclick="document.getElementById('Company_information').submit()" data-toggle="tab"  role="tab" aria-expanded="true">Information</a>
+                    </li>
+                    <li >
+                        <a onclick="document.getElementById('Vehicle_info').submit()" aria-expanded="false"  data-toggle="tab" role="tab">Vehicles</a>
+                    </li>
+                    <li>
+                        <a onclick="document.getElementById('Employee_info').submit()">Employees</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
+            <c:if test="${ReportBtn=='Upload'}">
+                <li>
+                    <a href="Monthly-Report.jsp" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                </li>
+            </c:if>
+            <c:if test="${ReportBtn!='Upload'}">
+                <li>
+                    <a href="javascript:void(0);" class="Report-toast" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                </li>
+            </c:if>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="javascript:void(0);"  class="tst2" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="" class="tst2" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
@@ -336,7 +331,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" class="tst2" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="" class="tst2" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
@@ -345,6 +340,19 @@
                 <a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
         </ul>
+        <form method="post" id="Employee_info" action="ServletDwmpc">
+            <input type="hidden" name="command" value="EmployeesDetail">
+            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+        </form>
+        <form method="post" id="Vehicle_info" action="ServletDwmpc">
+            <input type="hidden" name="command" value="VehicleDetail">
+            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+        </form>
+        <form method="post" id="Company_information" action="ServletDwmpc">
+            <input type="hidden" name="command" value="getCompany">
+            <input type="hidden" name="UserType" value="Client">
+            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+        </form>
     </div>
     <!-- /Left Sidebar Menu -->
 
@@ -760,238 +768,187 @@
     <!-- /Right Sidebar Menu -->
 
 
-
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container">
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Companies Registered</h5>
+                    <h5 class="txt-dark"></h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="CompanyInfo.jsp">Home</a></li>
-                        <li class="active"><span>Companies Registered</span></li>
+                        <li><a href="${pageContext.request.contextPath}/Home.jsp">Dashboard</a></li>
+                        <li class="active"><span>Company Vehicles</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
 
-            <!-- Row -->
             <div class="row">
-<c:set var="countDate" scope="page" value="0" />
-<c:forEach var="tempCompany" items="${All_companies}">
-    <c:url var="CompanyDetailsLink" value="ServletDwmpc">
-        <c:param name="command" value="getCompany"/>
-        <c:param name="company_id" value="${tempCompany.company_Id}"/>
-        <c:param name="UserType" value="Client"/>
-    </c:url>
-    <c:set value="${countDate+1}" scope="page" var="countDate"/>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="panel panel-warning contact-card card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <div class="pull-left user-img-wrap mr-15">
-                                    <img class="card-user-img img-circle pull-left" src="img/user.png" alt="user"/>
-                                </div>
-                                <div class="pull-left user-detail-wrap">
-											<span class="block card-user-name">
-                                                    ${tempCompany.company_Name}
-											</span>
-                                    <span class="block card-user-desn">
-                                            ${tempCompany.company_Status}
-											</span>
-                                </div>
-                            </div>
-                            <div class="pull-right">
-                                <a class="pull-left inline-block mr-15" href="#">
-                                    <i class="zmdi zmdi-edit txt-light"></i>
-                                </a>
-                                <a class="pull-left inline-block mr-15" href="#">
-                                    <i class="zmdi zmdi-delete txt-light"></i>
-                                </a>
-                                <div class="pull-left inline-block dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert txt-light"></i></a>
-                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Full Info</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Send Message</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="panel-wrapper collapse in" onclick="location.href='${CompanyDetailsLink}'">
-                            <div class="panel-body row">
-                                <div class="user-others-details pl-15 pr-15">
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-email-open inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.email}</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-phone inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.telephone}</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-print inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.fax_Number}</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-my-location inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.region_Town_Village}, ${tempCompany.ward}, ${tempCompany.plot_Number}</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-local-post-office inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.street_Address}</span>
-                                    </div>
-                                    <div>
-                                        <i class="zmdi zmdi zmdi-bookmark inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.phone_Number}</span>
-                                    </div>
-                                </div>
-                                <hr class="light-grey-hr mt-20 mb-20"/>
-                                <div class="emp-detail pl-15 pr-15">
-                                    <div class="mb-5">
-                                        <span class="inline-block capitalize-font mr-5">joininig date:</span>
-                                        <span class="txt-dark">${tempCompany.date_Unix}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-</c:forEach>
-                <div class="col-lg-4 col-md-4 col-xs-12">
+                <!-- Bordered Table -->
+                <div class="col-sm-12">
                     <div class="panel panel-warning card-view">
                         <div class="panel-heading">
                             <div class="pull-left">
-                                <h6 style="text-align: center" class="panel-title block txt-light">No Companies Registered</h6>
+                                <h6 class="panel-title txt-light">Vehicle Details</h6>
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        <div  class="panel-wrapper collapse in">
-                            <div  class="panel-body">
-                                <img src="img/sweetalert/alert4.png" alt="alert" class="img-responsive model_img" id="sa-close">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Row -->
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body">
+                                <div class="table-wrap mt-40">
+                                    <div class="table-responsive">
 
-            <!-- form -->
-            <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h5 class="modal-title" id="myModalLabel">Edit Profile</h5>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Row -->
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="">
-                                        <div class="panel-wrapper collapse in">
-                                            <div class="panel-body pa-0">
-                                                <div class="col-sm-12 col-xs-12">
-                                                    <div class="form-wrap">
-                                                        <form action="#">
-                                                            <div class="form-body overflow-hide">
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10" for="exampleInputuname_1">Name</label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-addon"><i class="icon-user"></i></div>
-                                                                        <input type="text" class="form-control" id="exampleInputuname_1" placeholder="willard bryant">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10" for="exampleInputEmail_1">Email address</label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-addon"><i class="icon-envelope-open"></i></div>
-                                                                        <input type="email" class="form-control" id="exampleInputEmail_1" placeholder="xyz@gmail.com">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10" for="exampleInputContact_1">Contact number</label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-addon"><i class="icon-phone"></i></div>
-                                                                        <input type="email" class="form-control" id="exampleInputContact_1" placeholder="+102 9388333">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10" for="exampleInputpwd_1">Password</label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-addon"><i class="icon-lock"></i></div>
-                                                                        <input type="password" class="form-control" id="exampleInputpwd_1" placeholder="Enter pwd" value="password">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10">Gender</label>
-                                                                    <div>
-                                                                        <div class="radio">
-                                                                            <input type="radio" name="radio1" id="radio_1" value="option1" checked="">
-                                                                            <label for="radio_1">
-                                                                                M
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="radio">
-                                                                            <input type="radio" name="radio1" id="radio_2" value="option2">
-                                                                            <label for="radio_2">
-                                                                                F
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10">Country</label>
-                                                                    <select class="form-control" data-placeholder="Choose a Category" tabindex="1">
-                                                                        <option value="Category 1">USA</option>
-                                                                        <option value="Category 2">Austrailia</option>
-                                                                        <option value="Category 3">India</option>
-                                                                        <option value="Category 4">UK</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-actions mt-10">
-                                                                <button type="submit" class="btn btn-success mr-10 mb-30">Update profile</button>
-                                                            </div>
-                                                        </form>
+                                        <table  id="example"  data-paging="true" class="table table-hover display  pb-30">
+                                            <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th >Chase Number</th>
+                                                <th>Type of Vehicle</th>
+                                                <th>Unleaded Weight</th>
+                                                <th>Type of waste</th>
+                                                <th>Anual Quantity</th>
+                                                <th>Carrier Number</th>
+                                                <th>Vehicle Ownership</th>
+                                                <th>Status</th>
+                                                <th class="text-nowrap">Action</th>
+
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="Count"></td>
+                                                    <td class="Chassis-Number"></td>
+                                                    <td class="Vehicle-Type"></td>
+                                                    <td class="Weight"></td>
+                                                    <td class="Waste-Type"></td>
+                                                    <td class="Annual-Quantity"></td>
+                                                    <td class="Registration-Number"></td>
+                                                    <td class="Vehicle-Ownership"></td>
+                                                    <td><span class="label label-danger"></span> </td>
+                                                    <td class="text-nowrap">
+                            <span class="pencil-Edit" id="${countVehicles}" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Vehicle-information-modal">
+                            <a  class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                          </span>
+
+                                                        <span id="${Vehicles.chase_number}" onclick="VehicleAttachments(this.id)"> <a   data-toggle="tooltip" data-original-title="Attachments"> <i class="fa fa-file-pdf-o text-warning"></i> </a> </span></td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+
+                                        <form method="post" id="Vehicle_Att" action="ServletDwmpc">
+                                            <input type="hidden" name="command" value="VehicleAttachments">
+                                            <input type="hidden" id="chassis_No" name="chassis_No" value="">
+                                        </form>
+
+
+                                    </div>
+
+                                    <div id="Vehicle-information-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    <h5 class="modal-title" id="myLargeModalLabel">Editing Vehicle Information for ${Company_info.company_Name}</h5>
+                                                </div><form action="ServletDwmpc" method="post">
+                                                <div class="modal-body">
+                                                    <input type="hidden" id="command" name="command" class="hidden" value="RegisteringVehicle"/>
+                                                    <input type="hidden" id="action" name="action"  class="hidden" value="EditingVehicle"/>
+                                                    <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
+
+
+                                                    <div class="form-group">
+                                                        <label class="control-label mb-10" for="Chassis-Number">Chassis Number(required):</label>
+                                                        <input id="Chassis-Number" type="text" name="Chassis_Number" class="form-control" value="" required/>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-xs-12">
+                                                                <label class="control-label mb-10" for="Weight">Unladen Weight (required):</label>
+                                                                <input id="Weight" type="text" name="Unladen_Weight" class="form-control required" value="" required/>
+                                                            </div>
+                                                            <div class="span1"></div>
+                                                            <div class="col-md-6 col-xs-12">
+                                                                <label class="control-label mb-10" for="Registration-Number"> Vehicle Registration Number(required):</label>
+                                                                <input id="Registration-Number" type="text" name="Registration_Number" class="form-control" value="" required/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-xs-12">
+                                                                <label for="Vehicle-Ownership" class="control-label mb-10"> This Your Vehicle?(required):</label>
+                                                                <select id="Vehicle-Ownership" class="selectpicker" name="Your_Vehicle" data-style="form-control btn-default btn-outline">
+                                                                    <option value="Yes, I am the owner">Yes, I am the owner.</option>
+                                                                    <option value="No, I borrowed it">No, I borrowed it.</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="span1"></div>
+                                                            <div class="col-md-6 col-xs-12">
+                                                                <label for="Waste-Type" class="control-label mb-10"> Type Of Waste Transported(required):</label>
+                                                                <select id="Waste-Type"  name="Waste_Type" class="selectpicker" data-style="form-control btn-default btn-outline">
+                                                                    <option value="Bio Waste">Bio Waste</option>
+                                                                    <option value="Chemical Waste">Chemical Waste</option>
+                                                                    <option value="Hazardous Waste">Hazardous Waste</option>
+                                                                    <option value="Clinical Waste">Clinical Waste</option>
+                                                                    <option value="Domestic Waste">Domestic Waste</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-xs-12">
+                                                                <label class="control-label mb-10" for="Annual-Quantity">Annual Quantity(required):</label>
+                                                                <input id="Annual-Quantity" type="text" name="Annual_Quatity" class="form-control required" value="" required/>
+                                                            </div>
+                                                            <div class="span1"></div>
+                                                            <div class="col-md-6 col-xs-12">
+                                                                <label class="control-label mb-10" for="Vehicle-Type">Vehicle Type (required):</label>
+                                                                <input id="Vehicle-Type" type="text" name="vehicle_Type" class="form-control required" value="" required/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Save Changes</span></button>
+                                                </div>
+                                            </form>
                                             </div>
                                         </div>
                                     </div>
+
+
                                 </div>
+
+                                </br>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-success waves-effect" data-dismiss="modal">Save</button>
-                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
-                        </div>
+
                     </div>
-                    <!-- /.modal-content -->
                 </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /form -->
+                <!-- /Bordered Table -->
 
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer container-fluid pl-30 pr-30">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>2018 &copy; DWMPC. Created by Next-gen</p>
+                    </div>
+                </div>
+            </footer>
+            <!-- /Footer -->
         </div>
-
-        <!-- Footer -->
-        <footer class="footer container-fluid pl-30 pr-30">
-            <div class="row">
-                <div class="col-sm-12">
-                    <p>2018 &copy; Zapily. Pampered by Hencework</p>
-                </div>
-            </div>
-        </footer>
-        <!-- /Footer -->
-
     </div>
     <!-- /Main Content -->
 
@@ -1000,29 +957,34 @@
 
 <!-- JavaScript -->
 
-<form method="post" id="LogOut_Session" action="ServletDwmpc">
-    <input type="hidden" name="command" value="LogOut Session">
-    <input type="hidden" name="action" value="Sign Out Session">
-</form>
-<script>
-    function LogOut(){
-        document.getElementById("LogOut_Session").submit();
-    }
-</script>
+<!-- /#wrapper -->
 
+<!-- JavaScript -->
 
 <!-- jQuery -->
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
-<script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
+
 <script src="dist/js/modal-data.js"></script>
 
-<!-- Bootstrap Touchspin JavaScript -->
-<script src="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+<!-- Piety JavaScript -->
+<script src="vendors/bower_components/peity/jquery.peity.min.js"></script>
+<script src="dist/js/peity-data.js"></script>
 
+<!-- Slimscroll JavaScript -->
+<script src="dist/js/jquery.slimscroll.js"></script>
+
+<!-- Owl JavaScript -->
+<script src="vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+
+<!-- Switchery JavaScript -->
+<script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
+
+<!-- Init JavaScript -->
+<script src="dist/js/init.js"></script>
+<script src="dist/js/toast-data.js"></script>
 
 <!-- Data table JavaScript -->
 <script src="vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
@@ -1036,54 +998,11 @@
 <script src="vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script src="dist/js/export-table-data.js"></script>
 
-<!-- Slimscroll JavaScript -->
-<script src="dist/js/jquery.slimscroll.js"></script>
-
-<!-- EChartJS JavaScript -->
-<script src="vendors/bower_components/echarts/dist/echarts-en.min.js"></script>
-<script src="vendors/echarts-liquidfill.min.js"></script>
-<script src="vendors/ecStat.min.js"></script>
-
-<!-- Toast JavaScript -->
-<script src="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
-
-<!-- Progressbar Animation JavaScript -->
-<script src="vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
-<script src="vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
-
-<!-- Fancy Dropdown JS -->
-<script src="dist/js/dropdown-bootstrap-extended.js"></script>
-
-<!-- Sparkline JavaScript -->
-<script src="vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
-
-<!-- Owl JavaScript -->
-<script src="vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-
-<!-- Calender JavaScripts -->
-<script src="vendors/bower_components/moment/min/moment.min.js"></script>
-<script src="vendors/jquery-ui.min.js"></script>
-<script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-<script src="dist/js/fullcalendar-data.js"></script>
-
-<!-- Switchery JavaScript -->
-<script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
-
 <!-- Bootstrap Select JavaScript -->
-<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-
-<!-- Init JavaScript -->
-<script src="dist/js/dashboard4-data.js"></script>
-<script src="dist/js/init.js"></script>
-<script src="dist/js/toast-data.js"></script>
-
-<!-- Sweet-Alert  -->
-<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-<script src="dist/js/sweetalert-data.js"></script>
-
-
+<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>
 
 
 </body>
 
 </html>
+
