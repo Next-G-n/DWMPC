@@ -1,40 +1,30 @@
 package com.dwmpc.controller;
-import javax.servlet.annotation.MultipartConfig;
 
 import com.dwmpc.model.DAO.ConnectionUtil;
-import com.dwmpc.controller.otp;
-import com.dwmpc.model.DAO.hash;
 import com.dwmpc.model.bean.*;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.annotation.Resource;
-import javax.servlet.*;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import javax.servlet.annotation.*;
 import javax.sql.DataSource;
 import java.io.*;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.security.NoSuchProviderException;
-import java.security.SecureRandom;
-import java.sql.Timestamp;
-import java.util.List;
-
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Objects;
-
-import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
-
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 @WebServlet(name = "ServletDwmpc", value = "/ServletDwmpc")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 14, // 10 MB
@@ -44,7 +34,6 @@ import javax.crypto.spec.PBEKeySpec;
 
 
 public class ServletDwmpc extends HttpServlet {
-    private otp Otp;
 
     private ConnectionUtil connectionUtil;
     @Resource(name = "jdbc/Dwmpc_aws")
@@ -181,7 +170,7 @@ public class ServletDwmpc extends HttpServlet {
 
     private void Forgot_Password(HttpServletRequest request, HttpServletResponse response)throws Exception {
         String email=request.getParameter("email");
-        Otp.emailVerification(email);
+        otp.emailVerification(email);
     }
 
     private void setReportWaste(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -487,10 +476,10 @@ public class ServletDwmpc extends HttpServlet {
         }else {
             if(UserType.equals("Client")){
                 session.setAttribute("ErrorEmail",userReg);
-                this.getServletContext().getRequestDispatcher("signup.jsp").forward(request, response);
+                this.getServletContext().getRequestDispatcher("/signup.jsp").forward(request, response);
             }else{
                 session.setAttribute("ErrorEmail",userReg);
-                this.getServletContext().getRequestDispatcher("Officer-Registration-Form.jsp").forward(request, response);
+                this.getServletContext().getRequestDispatcher("/Officer-Registration-Form.jsp").forward(request, response);
             }
 
         }

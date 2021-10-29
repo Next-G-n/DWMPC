@@ -6,62 +6,35 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>DWMPC</title>
-    <meta name="description" content="Zapily is a Dashboard & Admin Site Responsive Template by hencework." />
+    <title>DWMPC || Administration's Table</title>
+    <meta name="description" content="Waste Management System." />
     <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Zapily Admin, Zapilyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
-    <meta name="author" content="hencework"/>
-
-    <!-- jquery-steps css -->
-    <link rel="stylesheet" href="vendors/bower_components/jquery.steps/demo/css/jquery.steps.css">
-
-    <!--alerts CSS -->
-    <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
-
+    <meta name="Next-gen" content="hencework"/>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="icon.ico">
     <link rel="icon" href="icon.ico" type="image/x-icon">
-
-    <!-- Data table CSS -->
-    <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-
-    <!-- Toast CSS -->
-    <link href="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
 
     <!-- bootstrap-select CSS -->
     <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
 
-    <!-- Calendar CSS -->
-    <link href="vendors/bower_components/fullcalendar/dist/fullcalendar.css" rel="stylesheet" type="text/css"/>
 
-    <!-- bootstrap-touchspin CSS -->
-    <link href="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Data table CSS -->
+    <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
 
 
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
-    <style>
-        #example_paginate, #example_info{
-            display: none;
-        }
-        .pa-01:hover {
-            cursor: pointer;
-            background-color: #f6f7f6;
-        }
-        .bg-dark-green:hover{
-            cursor: pointer;
-            background-color: #5a896f;
-        }
-    </style>
+
 </head>
 
 <body>
-<!-- Preloader -->
+<!--Preloader-->
 <div class="preloader-it">
     <div class="la-anim-1"></div>
 </div>
-<!-- /Preloader -->
-<div class="wrapper theme-1-active pimary-color-green">
+<!--/Preloader-->
+<div class="wrapper theme-1-active pimary-color-gold">
 
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -767,121 +740,111 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Companies Registered</h5>
+                    <h5 class="txt-dark">timeline</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="CompanyInfo.jsp">Home</a></li>
-                        <li class="active"><span>Companies Registered</span></li>
+                        <li><a href="Home.jsp">Home</a></li>
+                        <li class="active"><span>Contact-us</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
-
             <!-- Row -->
             <div class="row">
-                <c:set var="countDate" scope="page" value="0" />
-                <c:forEach var="tempCompany" items="${All_companies}">
-                    <c:url var="CompanyDetailsLink" value="ServletDwmpc">
-                        <c:param name="command" value="getCompany"/>
-                        <c:param name="company_id" value="${tempCompany.company_Id}"/>
-                        <c:param name="UserType" value="Client"/>
-                    </c:url>
-                    <c:set value="${countDate+1}" scope="page" var="countDate"/>
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                        <div class="panel panel-warning contact-card card-view">
-                            <div class="panel-heading">
-                                <div class="pull-left">
-                                    <div class="pull-left user-img-wrap mr-15">
-                                        <img class="card-user-img img-circle pull-left" src="img/user.png" alt="user"/>
+                <div class="col-lg-12">
+                    <div class="panel panel-default card-view">
+                        <div class="panel-body">
+                            <ul class="timeline">
+                                <li>
+                                    <div class="timeline-badge bg-yellow">
+                                        <i class="icon-layers" ></i>
                                     </div>
-                                    <div class="pull-left user-detail-wrap">
-											<span class="block card-user-name">
-                                                    ${tempCompany.company_Name}
-                                            </span>
-                                        <span class="block card-user-desn">
-                                                ${tempCompany.company_Status}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="pull-right">
-                                    <a class="pull-left inline-block mr-15" href="#">
-                                        <i class="zmdi zmdi-edit txt-light"></i>
-                                    </a>
-                                    <a class="pull-left inline-block mr-15" href="#">
-                                        <i class="zmdi zmdi-delete txt-light"></i>
-                                    </a>
-                                    <div class="pull-left inline-block dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert txt-light"></i></a>
-                                        <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Full Info</a></li>
-                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Send Message</a></li>
-                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Follow</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="panel-wrapper collapse in" onclick="location.href='${CompanyDetailsLink}'">
-                                <div class="panel-body row">
-                                    <div class="user-others-details pl-15 pr-15">
-                                        <div class="mb-15">
-                                            <i class="zmdi zmdi-email-open inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.email}</span>
+                                    <div class="timeline-panel pa-30">
+                                        <div class="timeline-heading">
+                                            <h6 class="mb-15">1 september 15</h6>
                                         </div>
-                                        <div class="mb-15">
-                                            <i class="zmdi zmdi-phone inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.telephone}</span>
-                                        </div>
-                                        <div class="mb-15">
-                                            <i class="zmdi zmdi-print inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.fax_Number}</span>
-                                        </div>
-                                        <div class="mb-15">
-                                            <i class="zmdi zmdi-my-location inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.region_Town_Village}, ${tempCompany.ward}, ${tempCompany.plot_Number}</span>
-                                        </div>
-                                        <div class="mb-15">
-                                            <i class="zmdi zmdi-local-post-office inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.street_Address}</span>
-                                        </div>
-                                        <div>
-                                            <i class="zmdi zmdi zmdi-bookmark inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.phone_Number}</span>
+                                        <div class="timeline-body">
+                                            <h4 class="mb-5">pogody</h4>
+                                            <p class="lead head-font mb-20">Responsive html5 template</p>
+                                            <p>Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.</p>
                                         </div>
                                     </div>
-                                    <hr class="light-grey-hr mt-20 mb-20"/>
-                                    <div class="emp-detail pl-15 pr-15">
-                                        <div class="mb-5">
-                                            <span class="inline-block capitalize-font mr-5">joininig date:</span>
-                                            <span class="txt-dark">${tempCompany.date_Unix}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                </li>
 
-                </c:forEach>
-                <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="panel panel-warning card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <h6 style="text-align: center" class="panel-title block txt-light">No Companies Registered</h6>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div  class="panel-wrapper collapse in">
-                            <div  class="panel-body">
-                                <img src="img/sweetalert/alert4.png" alt="alert" class="img-responsive model_img" id="sa-close">
-                            </div>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge bg-pink">
+                                        <i class="icon-magnifier-add" ></i>
+                                    </div>
+                                    <div class="timeline-panel pa-30">
+                                        <div class="timeline-heading">
+                                            <h6 class="mb-15">23 March 16</h6>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <h4 class=" mb-5">Beavis</h4>
+                                            <p class="lead  mb-20">HTML5 Coming Soon Template</p>
+                                            <p>Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="timeline-badge bg-red">
+                                        <i class="icon-briefcase" ></i>
+                                    </div>
+                                    <div class="timeline-panel pa-30">
+                                        <div class="timeline-heading">
+                                            <h6 class="mb-15">23 March 16</h6>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <h4 class=" mb-5">Felix</h4>
+                                            <p class="lead  mb-20">Personal Blogging PSD Template</p>
+                                            <p>Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge bg-blue">
+                                        <i class="icon-social-stumbleupon" ></i>
+                                    </div>
+                                    <div class="timeline-panel pa-30">
+                                        <div class="timeline-heading">
+                                            <h6 class="mb-15">11 August 16</h6>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <h4 class=" mb-5">Beryl</h4>
+                                            <p class="lead  mb-20">Responsive HTML5 Coming Soon</p>
+                                            <p>Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="timeline-badge bg-green">
+                                        <i class="icon-flag" ></i>
+                                    </div>
+                                    <div class="timeline-panel pa-30">
+                                        <div class="timeline-heading">
+                                            <h6 class="mb-15">11 August 16</h6>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <h4 class=" mb-5">Cinnabar</h4>
+                                            <p class="lead  mb-20">Multipurpose PSD Template</p>
+                                            <p>Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="clearfix no-float"></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Row -->
+            <!-- /Row -->
 
             <!-- form -->
             <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -981,7 +944,6 @@
             <!-- /form -->
 
         </div>
-
         <!-- Footer -->
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
@@ -1000,6 +962,11 @@
 
 <!-- JavaScript -->
 
+<!-- /#wrapper -->
+
+<!-- JavaScript -->
+
+
 <form method="post" id="LogOut_Session" action="ServletDwmpc">
     <input type="hidden" name="command" value="LogOut Session">
     <input type="hidden" name="action" value="Sign Out Session">
@@ -1016,13 +983,26 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
 <script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
+<script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
 <script src="dist/js/modal-data.js"></script>
 
-<!-- Bootstrap Touchspin JavaScript -->
-<script src="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+<!-- Piety JavaScript -->
+<script src="vendors/bower_components/peity/jquery.peity.min.js"></script>
+<script src="dist/js/peity-data.js"></script>
 
+<!-- Slimscroll JavaScript -->
+<script src="dist/js/jquery.slimscroll.js"></script>
+
+<!-- Owl JavaScript -->
+<script src="vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+
+<!-- Switchery JavaScript -->
+<script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
+
+<!-- Init JavaScript -->
+<script src="dist/js/init.js"></script>
+<script src="dist/js/toast-data.js"></script>
 
 <!-- Data table JavaScript -->
 <script src="vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
@@ -1036,52 +1016,8 @@
 <script src="vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script src="dist/js/export-table-data.js"></script>
 
-<!-- Slimscroll JavaScript -->
-<script src="dist/js/jquery.slimscroll.js"></script>
-
-<!-- EChartJS JavaScript -->
-<script src="vendors/bower_components/echarts/dist/echarts-en.min.js"></script>
-<script src="vendors/echarts-liquidfill.min.js"></script>
-<script src="vendors/ecStat.min.js"></script>
-
-<!-- Toast JavaScript -->
-<script src="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
-
-<!-- Progressbar Animation JavaScript -->
-<script src="vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
-<script src="vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
-
-<!-- Fancy Dropdown JS -->
-<script src="dist/js/dropdown-bootstrap-extended.js"></script>
-
-<!-- Sparkline JavaScript -->
-<script src="vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
-
-<!-- Owl JavaScript -->
-<script src="vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-
-<!-- Calender JavaScripts -->
-<script src="vendors/bower_components/moment/min/moment.min.js"></script>
-<script src="vendors/jquery-ui.min.js"></script>
-<script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-<script src="dist/js/fullcalendar-data.js"></script>
-
-<!-- Switchery JavaScript -->
-<script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
-
 <!-- Bootstrap Select JavaScript -->
-<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-
-<!-- Init JavaScript -->
-<script src="dist/js/dashboard4-data.js"></script>
-<script src="dist/js/init.js"></script>
-<script src="dist/js/toast-data.js"></script>
-
-<!-- Sweet-Alert  -->
-<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-<script src="dist/js/sweetalert-data.js"></script>
-
-
+<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>
 
 
 </body>

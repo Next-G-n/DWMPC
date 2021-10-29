@@ -315,7 +315,7 @@ public class ConnectionUtil {
 
                     long unixSeconds = Long.parseLong(date);
                     Date dateinMi = new Date(unixSeconds*1000L);
-                    SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
                     sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT-4"));
 
                     Timestamp timestamp = new Timestamp(unixSeconds);
@@ -882,7 +882,7 @@ public class ConnectionUtil {
                 String date=myRs.getString("dateUnix");
                     if(!date.equals("There is Null")){
                         long unixSeconds = Long.parseLong(date);
-                        SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd MM yyyy");
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy");
                         sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+2"));
 
                         Timestamp timestamp = new Timestamp(unixSeconds);

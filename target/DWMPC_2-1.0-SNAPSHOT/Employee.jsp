@@ -1,4 +1,10 @@
-
+<%--
+  Created by IntelliJ IDEA.
+  User: NITRO5
+  Date: 9/6/2021
+  Time: 5:36 PM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -6,62 +12,31 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>DWMPC</title>
+    <title>DWMPC || Employee Registration Form</title>
     <meta name="description" content="Zapily is a Dashboard & Admin Site Responsive Template by hencework." />
     <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Zapily Admin, Zapilyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
     <meta name="author" content="hencework"/>
 
-    <!-- jquery-steps css -->
-    <link rel="stylesheet" href="vendors/bower_components/jquery.steps/demo/css/jquery.steps.css">
-
-    <!--alerts CSS -->
-    <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
-
-
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="icon.ico">
     <link rel="icon" href="icon.ico" type="image/x-icon">
-
-    <!-- Data table CSS -->
-    <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-
-    <!-- Toast CSS -->
-    <link href="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
+    <!-- vector map CSS -->
+    <link href="vendors/bower_components/jquery-wizard.js/css/wizard.css" rel="stylesheet" type="text/css"/>
 
     <!-- bootstrap-select CSS -->
     <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
 
-    <!-- Calendar CSS -->
-    <link href="vendors/bower_components/fullcalendar/dist/fullcalendar.css" rel="stylesheet" type="text/css"/>
-
-    <!-- bootstrap-touchspin CSS -->
-    <link href="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css"/>
-
-
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
-    <style>
-        #example_paginate, #example_info{
-            display: none;
-        }
-        .pa-01:hover {
-            cursor: pointer;
-            background-color: #f6f7f6;
-        }
-        .bg-dark-green:hover{
-            cursor: pointer;
-            background-color: #5a896f;
-        }
-    </style>
 </head>
 
 <body>
-<!-- Preloader -->
+<!--Preloader-->
 <div class="preloader-it">
     <div class="la-anim-1"></div>
 </div>
-<!-- /Preloader -->
-<div class="wrapper theme-1-active pimary-color-green">
+<!--/Preloader-->
+<div class="wrapper theme-1-active pimary-color-gold">
 
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -767,200 +742,187 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Companies Registered</h5>
+                    <h5 class="txt-dark"></h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="CompanyInfo.jsp">Home</a></li>
-                        <li class="active"><span>Companies Registered</span></li>
+                        <li><a href="${pageContext.request.contextPath}/Home.jsp">Dashboard</a></li>
+                        <li><a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Company Information</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Employee-Table.jsp">Employee Table</a></li>
+                        <li class="active"><span>Company Registration Form</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
+                <!-- Row -->
+
             </div>
             <!-- /Title -->
-
-            <!-- Row -->
             <div class="row">
-                <c:set var="countDate" scope="page" value="0" />
-                <c:forEach var="tempCompany" items="${All_companies}">
-                    <c:url var="CompanyDetailsLink" value="ServletDwmpc">
-                        <c:param name="command" value="getCompany"/>
-                        <c:param name="company_id" value="${tempCompany.company_Id}"/>
-                        <c:param name="UserType" value="Client"/>
-                    </c:url>
-                    <c:set value="${countDate+1}" scope="page" var="countDate"/>
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                        <div class="panel panel-warning contact-card card-view">
-                            <div class="panel-heading">
-                                <div class="pull-left">
-                                    <div class="pull-left user-img-wrap mr-15">
-                                        <img class="card-user-img img-circle pull-left" src="img/user.png" alt="user"/>
-                                    </div>
-                                    <div class="pull-left user-detail-wrap">
-											<span class="block card-user-name">
-                                                    ${tempCompany.company_Name}
-                                            </span>
-                                        <span class="block card-user-desn">
-                                                ${tempCompany.company_Status}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="pull-right">
-                                    <a class="pull-left inline-block mr-15" href="#">
-                                        <i class="zmdi zmdi-edit txt-light"></i>
-                                    </a>
-                                    <a class="pull-left inline-block mr-15" href="#">
-                                        <i class="zmdi zmdi-delete txt-light"></i>
-                                    </a>
-                                    <div class="pull-left inline-block dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert txt-light"></i></a>
-                                        <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Full Info</a></li>
-                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Send Message</a></li>
-                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Follow</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="panel-wrapper collapse in" onclick="location.href='${CompanyDetailsLink}'">
-                                <div class="panel-body row">
-                                    <div class="user-others-details pl-15 pr-15">
-                                        <div class="mb-15">
-                                            <i class="zmdi zmdi-email-open inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.email}</span>
-                                        </div>
-                                        <div class="mb-15">
-                                            <i class="zmdi zmdi-phone inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.telephone}</span>
-                                        </div>
-                                        <div class="mb-15">
-                                            <i class="zmdi zmdi-print inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.fax_Number}</span>
-                                        </div>
-                                        <div class="mb-15">
-                                            <i class="zmdi zmdi-my-location inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.region_Town_Village}, ${tempCompany.ward}, ${tempCompany.plot_Number}</span>
-                                        </div>
-                                        <div class="mb-15">
-                                            <i class="zmdi zmdi-local-post-office inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.street_Address}</span>
-                                        </div>
-                                        <div>
-                                            <i class="zmdi zmdi zmdi-bookmark inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.phone_Number}</span>
-                                        </div>
-                                    </div>
-                                    <hr class="light-grey-hr mt-20 mb-20"/>
-                                    <div class="emp-detail pl-15 pr-15">
-                                        <div class="mb-5">
-                                            <span class="inline-block capitalize-font mr-5">joininig date:</span>
-                                            <span class="txt-dark">${tempCompany.date_Unix}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </c:forEach>
-                <div class="col-lg-4 col-md-4 col-xs-12">
+                <div class="col-sm-12">
                     <div class="panel panel-warning card-view">
                         <div class="panel-heading">
                             <div class="pull-left">
-                                <h6 style="text-align: center" class="panel-title block txt-light">No Companies Registered</h6>
+                                <h6 class="panel-title txt-light"><i class="icon-note txt-black"></i>Employee Registration</h6>
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        <div  class="panel-wrapper collapse in">
-                            <div  class="panel-body">
-                                <img src="img/sweetalert/alert4.png" alt="alert" class="img-responsive model_img" id="sa-close">
+
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-wrap">
+                                            <form data-toggle="validator" method="post" action="ServletDwmpc" role="form">
+                                                <input type="hidden" id="command" name="command" class="hidden" value="RegisteringEmployee"/>
+                                                <input type="hidden" id="action" name="action"  class="hidden" value="RegisteringEmployee"/>
+                                                <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
+                                                <input type="hidden" id="Employee_Id" name="Employee Id" class="hidden" value=""/>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-4 col-xs-12 mt-40">
+                                                            <label class="control-label mb-10" for="First_Name"> First Name(required):</label>
+                                                            <input type="text" id="First_Name" name="First Name"  class="form-control required"   required/>
+                                                        </div>
+                                                        <div class="span1"></div>
+                                                        <div class="col-md-4 col-xs-12 mt-40">
+                                                            <label class="control-label mb-10" for="Last_Name"> Last Name(required):</label>
+                                                            <input type="text" id="Last_Name" name="Last Name"  class="form-control required"   required/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-xs-12">
+                                                            <label class="control-label mb-10" for="Job_Title"> Job Title(required):</label>
+                                                            <input type="text" class="form-control required" id="Job_Title" name="Position/job Title" placeholder="Job Title">
+                                                        </div>
+                                                        <div class="span1"></div>
+                                                        <div class="col-md-6 col-xs-12">
+                                                            <label class="control-label mb-10" for="Qualification"> Qualification(required):</label>
+                                                            <input type="text" class="form-control required" id="Qualification" name="Qualification" placeholder="Qualification" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label mb-10" for="Contact">Contact(required):</label>
+                                                    <input type="text" id="Contact" name="Contact" data-mask="+267 99 999 999"  class="form-control required"  required/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="training" class="col-sm-3 control-label">Training in waste Management(required):</label>
+                                                    <select class="selectpicker" id= "training" name="training" data-style="form-control btn-default btn-outline">
+                                                        <option value="Yes">Yes</option>
+                                                        <option value="No">No</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group mb-0" style="float: right">
+                                                    <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">submit</span></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+
+                        <script>
+                            const qtyEl = document.getElementById('quantity');
+                            const valEl = document.getElementById('value');
+                            const totalEl = document.getElementById('autoValue');
+
+                            const setTotal = () => {
+                                let qty = qtyEl.value;
+                                let value = valEl.value;
+                                totalEl.innerHTML = Number(qty) + Number(value);
+                            }
+
+                        </script>
+
                     </div>
                 </div>
-            </div>
-            <!-- Row -->
 
-            <!-- form -->
-            <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h5 class="modal-title" id="myModalLabel">Edit Profile</h5>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Row -->
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="">
-                                        <div class="panel-wrapper collapse in">
-                                            <div class="panel-body pa-0">
-                                                <div class="col-sm-12 col-xs-12">
-                                                    <div class="form-wrap">
-                                                        <form action="#">
-                                                            <div class="form-body overflow-hide">
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10" for="exampleInputuname_1">Name</label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-addon"><i class="icon-user"></i></div>
-                                                                        <input type="text" class="form-control" id="exampleInputuname_1" placeholder="willard bryant">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10" for="exampleInputEmail_1">Email address</label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-addon"><i class="icon-envelope-open"></i></div>
-                                                                        <input type="email" class="form-control" id="exampleInputEmail_1" placeholder="xyz@gmail.com">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10" for="exampleInputContact_1">Contact number</label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-addon"><i class="icon-phone"></i></div>
-                                                                        <input type="email" class="form-control" id="exampleInputContact_1" placeholder="+102 9388333">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10" for="exampleInputpwd_1">Password</label>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-addon"><i class="icon-lock"></i></div>
-                                                                        <input type="password" class="form-control" id="exampleInputpwd_1" placeholder="Enter pwd" value="password">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10">Gender</label>
-                                                                    <div>
-                                                                        <div class="radio">
-                                                                            <input type="radio" name="radio1" id="radio_1" value="option1" checked="">
-                                                                            <label for="radio_1">
-                                                                                M
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="radio">
-                                                                            <input type="radio" name="radio1" id="radio_2" value="option2">
-                                                                            <label for="radio_2">
-                                                                                F
-                                                                            </label>
+                <!-- form -->
+                <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h5 class="modal-title" id="myModalLabel">Edit Profile</h5>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Row -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="">
+                                            <div class="panel-wrapper collapse in">
+                                                <div class="panel-body pa-0">
+                                                    <div class="col-sm-12 col-xs-12">
+                                                        <div class="form-wrap">
+                                                            <form action="#">
+                                                                <div class="form-body overflow-hide">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label mb-10" for="exampleInputuname_1">Name</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-addon"><i class="icon-user"></i></div>
+                                                                            <input type="text" class="form-control" id="exampleInputuname_1" placeholder="willard bryant">
                                                                         </div>
                                                                     </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label mb-10" for="exampleInputEmail_1">Email address</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-addon"><i class="icon-envelope-open"></i></div>
+                                                                            <input type="email" class="form-control" id="exampleInputEmail_1" placeholder="xyz@gmail.com">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label mb-10" for="exampleInputContact_1">Contact number</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-addon"><i class="icon-phone"></i></div>
+                                                                            <input type="email" class="form-control" id="exampleInputContact_1" placeholder="+102 9388333">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label mb-10" for="exampleInputpwd_1">Password</label>
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-addon"><i class="icon-lock"></i></div>
+                                                                            <input type="password" class="form-control" id="exampleInputpwd_1" placeholder="Enter pwd" value="password">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label mb-10">Gender</label>
+                                                                        <div>
+                                                                            <div class="radio">
+                                                                                <input type="radio" name="radio1" id="radio_1" value="option1" checked="">
+                                                                                <label for="radio_1">
+                                                                                    M
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="radio">
+                                                                                <input type="radio" name="radio1" id="radio_2" value="option2">
+                                                                                <label for="radio_2">
+                                                                                    F
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label mb-10">Country</label>
+                                                                        <select class="form-control" data-placeholder="Choose a Category" tabindex="1">
+                                                                            <option value="Category 1">USA</option>
+                                                                            <option value="Category 2">Austrailia</option>
+                                                                            <option value="Category 3">India</option>
+                                                                            <option value="Category 4">UK</option>
+                                                                        </select>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10">Country</label>
-                                                                    <select class="form-control" data-placeholder="Choose a Category" tabindex="1">
-                                                                        <option value="Category 1">USA</option>
-                                                                        <option value="Category 2">Austrailia</option>
-                                                                        <option value="Category 3">India</option>
-                                                                        <option value="Category 4">UK</option>
-                                                                    </select>
+                                                                <div class="form-actions mt-10">
+                                                                    <button type="submit" class="btn btn-success mr-10 mb-30">Update profile</button>
                                                                 </div>
-                                                            </div>
-                                                            <div class="form-actions mt-10">
-                                                                <button type="submit" class="btn btn-success mr-10 mb-30">Update profile</button>
-                                                            </div>
-                                                        </form>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -968,30 +930,28 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success waves-effect" data-dismiss="modal">Save</button>
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-success waves-effect" data-dismiss="modal">Save</button>
-                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
-                        </div>
+                        <!-- /.modal-content -->
                     </div>
-                    <!-- /.modal-content -->
+                    <!-- /.modal-dialog -->
                 </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /form -->
+                <!-- /form -->
 
+            </div>
+            <!-- Footer -->
+            <footer class="footer container-fluid pl-30 pr-30">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>2021 &copy; DWMPC. Created by Next-gen</p>
+                    </div>
+                </div>
+            </footer>
+            <!-- /Footer -->
         </div>
-
-        <!-- Footer -->
-        <footer class="footer container-fluid pl-30 pr-30">
-            <div class="row">
-                <div class="col-sm-12">
-                    <p>2018 &copy; Zapily. Pampered by Hencework</p>
-                </div>
-            </div>
-        </footer>
-        <!-- /Footer -->
-
     </div>
     <!-- /Main Content -->
 
@@ -1000,17 +960,6 @@
 
 <!-- JavaScript -->
 
-<form method="post" id="LogOut_Session" action="ServletDwmpc">
-    <input type="hidden" name="command" value="LogOut Session">
-    <input type="hidden" name="action" value="Sign Out Session">
-</form>
-<script>
-    function LogOut(){
-        document.getElementById("LogOut_Session").submit();
-    }
-</script>
-
-
 <!-- jQuery -->
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -1018,71 +967,29 @@
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
 <script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
-<script src="dist/js/modal-data.js"></script>
-
-<!-- Bootstrap Touchspin JavaScript -->
-<script src="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
-
-
-<!-- Data table JavaScript -->
-<script src="vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="vendors/bower_components/jszip/dist/jszip.min.js"></script>
-<script src="vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
-<script src="vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
-
-<script src="vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
-<script src="vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
-<script src="dist/js/export-table-data.js"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="dist/js/jquery.slimscroll.js"></script>
 
-<!-- EChartJS JavaScript -->
-<script src="vendors/bower_components/echarts/dist/echarts-en.min.js"></script>
-<script src="vendors/echarts-liquidfill.min.js"></script>
-<script src="vendors/ecStat.min.js"></script>
-
-<!-- Toast JavaScript -->
-<script src="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
-
-<!-- Progressbar Animation JavaScript -->
-<script src="vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
-<script src="vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
-
 <!-- Fancy Dropdown JS -->
 <script src="dist/js/dropdown-bootstrap-extended.js"></script>
-
-<!-- Sparkline JavaScript -->
-<script src="vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
 
 <!-- Owl JavaScript -->
 <script src="vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 
-<!-- Calender JavaScripts -->
-<script src="vendors/bower_components/moment/min/moment.min.js"></script>
-<script src="vendors/jquery-ui.min.js"></script>
-<script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-<script src="dist/js/fullcalendar-data.js"></script>
-
 <!-- Switchery JavaScript -->
 <script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
-<!-- Bootstrap Select JavaScript -->
-<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-
 <!-- Init JavaScript -->
-<script src="dist/js/dashboard4-data.js"></script>
 <script src="dist/js/init.js"></script>
 <script src="dist/js/toast-data.js"></script>
+
+<!-- Bootstrap Select JavaScript -->
+<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>
 
 <!-- Sweet-Alert  -->
 <script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <script src="dist/js/sweetalert-data.js"></script>
-
-
-
 
 </body>
 

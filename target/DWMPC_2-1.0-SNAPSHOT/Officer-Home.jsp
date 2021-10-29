@@ -52,6 +52,9 @@
             cursor: pointer;
             background-color: #5a896f;
         }
+        .Yellow{
+            background-color: #FBDE11;
+        }
     </style>
 </head>
 
@@ -787,11 +790,14 @@
                     <c:url var="CompanyDetailsLink" value="ServletDwmpc">
                         <c:param name="command" value="getCompany"/>
                         <c:param name="company_id" value="${tempCompany.company_Id}"/>
-                        <c:param name="UserType" value="Client"/>
+                        <c:param name="UserType" value="${tempCompany.userType}"/>
+                        <c:param name="Apply_id" value="${tempCompany.apply_Id}"/>
+                        <c:param name="vehicle_id" value="${tempCompany.chassis}"/>
+                        <c:param name="delay"  value=""/>
                     </c:url>
                     <c:set value="${countDate+1}" scope="page" var="countDate"/>
                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                        <div class="panel panel-warning contact-card card-view">
+                        <div id="element${countDate}" class="panel panel-warning contact-card card-view">
                             <div class="panel-heading">
                                 <div class="pull-left">
                                     <div class="pull-left user-img-wrap mr-15">
@@ -824,7 +830,7 @@
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
-                            <div class="panel-wrapper collapse in" onclick="location.href='${CompanyDetailsLink}'">
+                            <div class="panel-wrapper collapse in" onclick="Submit${countDate}() ">
                                 <div class="panel-body row">
                                     <div class="user-others-details pl-15 pr-15">
                                         <div class="mb-15">
@@ -855,32 +861,42 @@
                                     <hr class="light-grey-hr mt-20 mb-20"/>
                                     <div class="emp-detail pl-15 pr-15">
                                         <div class="mb-5">
-                                            <span class="inline-block capitalize-font mr-5">joininig date:</span>
-                                            <span class="txt-dark">${tempCompany.date_Unix}</span>
+                                            <span class="inline-block capitalize-font mr-5">Sent :</span>
+                                            <input type="hidden" name="CompanyDate" id="CompanyDate${countDate}" value="${tempCompany.companyDate}">
+                                            <span class="txt-dark" id="GFG_DOWN${countDate}"></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <form id="delay${countDate}" action="ServletDwmpc" method="post">
+                            <input type="hidden" name="command" value="getCompany">
+                            <input type="hidden"  name="company_id" value="${tempCompany.company_Id}">
+                            <input type="hidden"  name="UserType" value="${tempCompany.userType}">
+                            <input type="hidden"  name="Apply_id" value="${tempCompany.apply_Id}">
+                            <input type="hidden"  name="vehicle_id" value="${tempCompany.chassis}">
+                            <input type="hidden" id="delayTime${countDate}" name="delayTime" value="">
+                        </form>
                     </div>
+                    <input type="hidden" onclick="location.href='${CompanyDetailsLink}'">
+                    <script>
+                        function Submit${countDate}(){
+                            document.getElementById("delay${countDate}").submit();
+                            ///document.getElementById("delay${countDate}").click()
+                        }
+                    </script>
 
                 </c:forEach>
-                <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="panel panel-warning card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <h6 style="text-align: center" class="panel-title block txt-light">No Companies Registered</h6>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div  class="panel-wrapper collapse in">
-                            <div  class="panel-body">
-                                <img src="img/sweetalert/alert4.png" alt="alert" class="img-responsive model_img" id="sa-close">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <input type="hidden" id="Count_date" name="dateCount" value="${countDate}"/>
+                <input type="button" onclick="TimeStamp_function()" value="Time" id="btn_time123" style="display: none"/>
             </div>
+            <script>
+                window.onload = function () {
+
+                    document.getElementById('btn_time123').click();
+
+                }
+            </script>
             <!-- Row -->
 
             <!-- form -->
@@ -986,7 +1002,7 @@
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
                 <div class="col-sm-12">
-                    <p>2018 &copy; Zapily. Pampered by Hencework</p>
+                    <p>2021 &copy; DWMPC. Created By Next-gen</p>
                 </div>
             </div>
         </footer>
@@ -1009,7 +1025,6 @@
         document.getElementById("LogOut_Session").submit();
     }
 </script>
-
 
 <!-- jQuery -->
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
@@ -1073,15 +1088,15 @@
 <script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 
 <!-- Init JavaScript -->
-<script src="dist/js/dashboard4-data.js"></script>
 <script src="dist/js/init.js"></script>
+<script src="dist/js/dashboard4-data.js"></script>
 <script src="dist/js/toast-data.js"></script>
 
 <!-- Sweet-Alert  -->
 <script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <script src="dist/js/sweetalert-data.js"></script>
 
-
+<script src="dist/js/TimeStamp.js"></script>
 
 
 </body>
