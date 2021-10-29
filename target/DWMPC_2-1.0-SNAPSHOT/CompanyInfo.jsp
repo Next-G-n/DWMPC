@@ -90,7 +90,11 @@
 			<div id="mobile_only_nav" class="mobile-only-nav pull-right">
 				<ul class="nav navbar-right top-nav pull-right">
 					<li>
+<<<<<<< HEAD:target/DWMPC_2-1.0-SNAPSHOT/CompanyInfo.jsp
 						<a id="open_right_sidebar1" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
+=======
+						<a class="tst2" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
+>>>>>>> d7778a300b871ac8fae8d8de9941d2066dfc260a:src/main/webapp/CompanyInfo.jsp
 					</li>
 					<li class="dropdown app-drp">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
@@ -146,7 +150,7 @@
 						</ul>
 					</li>
 					<li class="dropdown full-width-drp">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
+						<a href="#" class="tst2" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
 						<ul class="dropdown-menu mega-menu pa-0" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
 						</ul>
 					</li>
@@ -296,6 +300,7 @@
 					<a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
 				</li>
 				<li>
+<<<<<<< HEAD:target/DWMPC_2-1.0-SNAPSHOT/CompanyInfo.jsp
 					<a id="open_right_sidebar" href="#" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
 				</li>
 				<li>
@@ -303,6 +308,15 @@
 				</li>
 				<li>
 					<a href="widgets.html"><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+=======
+					<a href="#" id="open_right_sidebar" onclick="document.getElementById('chat_tab_btn').click();" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
+				</li>
+				<li>
+					<a href="#" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+				</li>
+				<li>
+					<a href="#" class="tst2"><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+>>>>>>> d7778a300b871ac8fae8d8de9941d2066dfc260a:src/main/webapp/CompanyInfo.jsp
 				</li>
 				<li><hr class="light-grey-hr mb-10"/></li>
 				<li class="navigation-header">
@@ -337,6 +351,7 @@
 					</li>
 				</c:if>
 				<li>
+<<<<<<< HEAD:target/DWMPC_2-1.0-SNAPSHOT/CompanyInfo.jsp
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="table_dr" class="collapse collapse-level-1 two-col-list">
 						<li>
@@ -390,13 +405,16 @@
 							<a href="glyphicons.html">Glyphicons</a>
 						</li>
 					</ul>
+=======
+					<a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+>>>>>>> d7778a300b871ac8fae8d8de9941d2066dfc260a:src/main/webapp/CompanyInfo.jsp
 				</li>
 				<li>
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="maps_dr" class="collapse collapse-level-1">
-						<li>
-							<a href="vector-map.html">Vector Map</a>
-						</li>
 						<li>
 							<a href="google-map.html">Google Map</a>
 						</li>
@@ -408,10 +426,17 @@
 					<i class="zmdi zmdi-more"></i>
 				</li>
 				<li>
+<<<<<<< HEAD:target/DWMPC_2-1.0-SNAPSHOT/CompanyInfo.jsp
 					<a href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
 				</li>
 				<li>
 					<a href="documentation.html"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
+=======
+					<a href="" class="tst2" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+				</li>
+				<li>
+					<a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
+>>>>>>> d7778a300b871ac8fae8d8de9941d2066dfc260a:src/main/webapp/CompanyInfo.jsp
 				</li>
 				<li>
 					<a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
@@ -439,9 +464,15 @@
 				<li>
 					<div  class="tab-struct custom-tab-1">
 						<ul role="tablist" class="nav nav-tabs" id="right_sidebar_tab">
+<<<<<<< HEAD:target/DWMPC_2-1.0-SNAPSHOT/CompanyInfo.jsp
 							<li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab">Emails</a></li>
 							<li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">Notifications</a></li>
 							<li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="false">todo</a></li>
+=======
+							<li class="active" role="presentation"><a aria-expanded="false"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab" >Emails</a></li>
+							<li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">Notification</a></li>
+							<li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="true">Profile</a></li>
+>>>>>>> d7778a300b871ac8fae8d8de9941d2066dfc260a:src/main/webapp/CompanyInfo.jsp
 						</ul>
 						<div class="tab-content" id="right_sidebar_content">
 							<div  id="chat_tab" class="tab-pane fade active in" role="tabpanel">
@@ -494,7 +525,8 @@
 																<div class="chat-data">
 																	<img class="user-img img-circle" src="img/user2.png" alt="user"/>
 																	<div class="user-data">
-																		<span class="name block capitalize-font">Madalyn Rascon</span>
+                                                                    <span class="name block capitalize-font">Madalyn Rascon
+                                                                    </span>
 																		<span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
 																	</div>
 																	<div class="status online"></div>
@@ -775,74 +807,68 @@
 									</div>
 								</div>
 							</div>
+
 							<div  id="todo_tab" class="tab-pane fade" role="tabpanel">
 								<div class="todo-box-wrap">
 									<div class="add-todo">
 										<a href="javascript:void(0)" class="inline-block txt-grey">
 											<i class="zmdi zmdi-more"></i>
 										</a>
+<<<<<<< HEAD:target/DWMPC_2-1.0-SNAPSHOT/CompanyInfo.jsp
 										<span class="inline-block txt-dark">todo list</span>
+=======
+										<span class="inline-block txt-dark">Profile</span>
+>>>>>>> d7778a300b871ac8fae8d8de9941d2066dfc260a:src/main/webapp/CompanyInfo.jsp
 										<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
 										<div class="clearfix"></div>
 									</div>
 									<div class="set-height-wrap">
 										<!-- Todo-List -->
-										<ul class="todo-list nicescroll-bar">
-											<li class="todo-item">
-												<div class="checkbox checkbox-default">
-													<input type="checkbox" id="checkbox01"/>
-													<label for="checkbox01">Record The First Episode</label>
+										<div class="col-xs-12">
+											<div class="panel panel-default card-view  pa-0">
+												<div class="panel-wrapper collapse in">
+													<div class="panel-body  pa-0">
+														<div class="profile-box">
+															<div class="profile-cover-pic">
+																<div class="fileupload btn btn-default">
+																	<span class="btn-text">edit</span>
+																	<input class="upload" type="file">
+																</div>
+																<div class="profile-image-overlay"></div>
+															</div>
+															<div class="profile-info text-center">
+																<div class="profile-img-wrap">
+																	<img class="inline-block mb-10" src="img/mock1.jpg" alt="user"/>
+																	<div class="fileupload btn btn-default">
+																		<span class="btn-text">edit</span>
+																		<input class="upload" type="file">
+																	</div>
+																</div>
+																<h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">${User_Info[0].first_name} ${User_Info[0].last_name}</h5>
+																<h6 class="block capitalize-font pb-20">Client</h6>
+															</div>
+															<div class="social-info">
+																<div class="row">
+																	<div class="col-xs-4 text-center">
+																		<span class="counts block head-font"><span class="counter-anim">${GeneralCount.company}</span></span>
+																		<span class="counts-text block">Companies</span>
+																	</div>
+																	<div class="col-xs-4 text-center">
+																		<span class="counts block head-font"><span class="counter-anim">${GeneralCount.employee}</span></span>
+																		<span class="counts-text block">Employees</span>
+																	</div>
+																	<div class="col-xs-4 text-center">
+																		<span class="counts block head-font"><span class="counter-anim">${GeneralCount.vehicle}</span></span>
+																		<span class="counts-text block">Vehicles</span>
+																	</div>
+																</div>
+																<button class="btn btn-gold btn-block  btn-anim mt-40" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
+															</div>
+														</div>
+													</div>
 												</div>
-											</li>
-											<li>
-												<hr class="light-grey-hr"/>
-											</li>
-											<li class="todo-item">
-												<div class="checkbox checkbox-pink">
-													<input type="checkbox" id="checkbox02"/>
-													<label for="checkbox02">Prepare The Conference Schedule</label>
-												</div>
-											</li>
-											<li>
-												<hr class="light-grey-hr"/>
-											</li>
-											<li class="todo-item">
-												<div class="checkbox checkbox-warning">
-													<input type="checkbox" id="checkbox03" checked/>
-													<label for="checkbox03">Decide The Live Discussion Time</label>
-												</div>
-											</li>
-											<li>
-												<hr class="light-grey-hr"/>
-											</li>
-											<li class="todo-item">
-												<div class="checkbox checkbox-success">
-													<input type="checkbox" id="checkbox04" checked/>
-													<label for="checkbox04">Prepare For The Next Project</label>
-												</div>
-											</li>
-											<li>
-												<hr class="light-grey-hr"/>
-											</li>
-											<li class="todo-item">
-												<div class="checkbox checkbox-danger">
-													<input type="checkbox" id="checkbox05" checked/>
-													<label for="checkbox05">Finish Up AngularJs Tutorial</label>
-												</div>
-											</li>
-											<li>
-												<hr class="light-grey-hr"/>
-											</li>
-											<li class="todo-item">
-												<div class="checkbox checkbox-purple">
-													<input type="checkbox" id="checkbox06" checked/>
-													<label for="checkbox06">Finish Infinity Project</label>
-												</div>
-											</li>
-											<li>
-												<hr class="light-grey-hr"/>
-											</li>
-										</ul>
+											</div>
+										</div>
 										<!-- /Todo-List -->
 									</div>
 								</div>
@@ -853,8 +879,11 @@
 			</ul>
 		</div>
 		<!-- /Right Sidebar Menu -->
+<<<<<<< HEAD:target/DWMPC_2-1.0-SNAPSHOT/CompanyInfo.jsp
 
 		
+=======
+>>>>>>> d7778a300b871ac8fae8d8de9941d2066dfc260a:src/main/webapp/CompanyInfo.jsp
 
         <!-- Main Content -->
 		<div class="page-wrapper">
@@ -957,6 +986,7 @@
 									<input class="inputs" type="hidden" name="User_id" value="${User_Info[0].user_Id}">
 									<input class="inputs" type="hidden" name="company_Id" value="${Company_info.company_Id}">
 
+<<<<<<< HEAD:target/DWMPC_2-1.0-SNAPSHOT/CompanyInfo.jsp
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-6 col-xs-12">
@@ -982,6 +1012,33 @@
                                             </div>
                                             <div class="span1"></div>
                                             <div class="col-md-6 col-xs-12">
+=======
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-12">
+												<label for="Company-name" class="control-label mb-10">Company Name (required):</label>
+												<input type="text" class="form-control" name="Company name" id="Company-name" value="${Company_info.company_Name}" required>
+                                            </div>
+                                            <div class="span1"></div>
+                                            <div class="col-md-6 col-xs-12">
+												<label class="control-label mb-10" for="Status">Status of applicant(required):</label>
+												<select class="selectpicker" id="Status" name="StatusA" data-style="form-control btn-default btn-outline">
+													<option value="Company">Company</option>
+													<option value="Non-Governmental Organisation">Non-Governmental Organisation</option>
+													<option value="Local Government Institution">Local Government Institution</option>
+												</select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-12">
+												<label class="control-label mb-10" for="Street-address">Street Address (required):</label>
+												<input id="Street-address" type="text" name="Street_Address" class="form-control required" value="" required/>
+                                            </div>
+                                            <div class="span1"></div>
+                                            <div class="col-md-6 col-xs-12">
+>>>>>>> d7778a300b871ac8fae8d8de9941d2066dfc260a:src/main/webapp/CompanyInfo.jsp
 												<label class="control-label mb-10" for="Street-address2">Street Address 2 (Optional):</label>
 												<input id="Street-address2" type="text" name="Street_Address2" class="form-control" value=""/>
                                             </div>
@@ -1198,7 +1255,7 @@
 										<div class="container-fluid">
 											<div class="row">
 												<div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
-													<span class="txt-dark block counter"><span class="counter-anim">25</span></span>
+													<span class="txt-dark block counter"><span class="counter-anim">${CountSp.employee}</span></span>
 													<span class="weight-500 uppercase-font block font-13">Employees</span>
 												</div>
 												<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
@@ -1217,7 +1274,7 @@
 										<div class="container-fluid">
 											<div class="row">
 												<div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
-													<span class="txt-dark block counter"><span class="counter-anim">43</span></span>
+													<span class="txt-dark block counter"><span class="counter-anim">${CountSp.vehicle}</span></span>
 													<span class="weight-500 uppercase-font block">Vehicle</span>
 												</div>
 												<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
@@ -1236,7 +1293,11 @@
 										<div class="container-fluid">
 											<div class="row">
 												<div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left txt-light">
+<<<<<<< HEAD:target/DWMPC_2-1.0-SNAPSHOT/CompanyInfo.jsp
 													<span class="block counter"><span class="counter-anim">180</span></span>
+=======
+													<span class="block counter"><span class="counter-anim">${CountSp.company}</span></span>
+>>>>>>> d7778a300b871ac8fae8d8de9941d2066dfc260a:src/main/webapp/CompanyInfo.jsp
 													<span class="weight-500 uppercase-font block">Companies Registered</span>
 												</div>
 												<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
@@ -1287,6 +1348,11 @@
 						<input type="hidden" name="action" value="Sign Out Session">
 					</form>
 
+<<<<<<< HEAD:target/DWMPC_2-1.0-SNAPSHOT/CompanyInfo.jsp
+=======
+
+
+>>>>>>> d7778a300b871ac8fae8d8de9941d2066dfc260a:src/main/webapp/CompanyInfo.jsp
                     <script >
 						function EmployeeTable(){
 							document.getElementById("Employee_info").submit();
@@ -1354,6 +1420,7 @@
 				<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 
 				<script type="text/javascript">
+<<<<<<< HEAD:target/DWMPC_2-1.0-SNAPSHOT/CompanyInfo.jsp
 
 					var form = $('#');
 					form.submit(function () {
@@ -1377,7 +1444,255 @@
 
 					}
 				</script>
+=======
+
+					var form = $('#');
+					form.submit(function () {
+
+						$.ajax({
+							type: form.attr('method'),
+							url: form.attr('action'),
+							data: form.serialize(),
+							success: function (data) {
+								var result=data;
+								$('#content').html(result);
+								updateDiv();
+							}
+						});
+
+						return false;
+					});
+					function updateDiv()
+					{
+						$( "#refresh-script" ).load(window.location.href + " #refresh-script" );
+
+					}
+				</script>
+
 			</div>
+
+			<!-- form -->
+			<div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h5 class="modal-title" id="myModalLabel">Edit Profile</h5>
+						</div>
+						<div class="modal-body">
+							<!-- Row -->
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="">
+										<div class="panel-wrapper collapse in">
+											<div class="panel-body pa-0">
+												<div class="col-sm-12 col-xs-12">
+													<div class="form-wrap">
+														<form method="post" action="ServletDwmpc">
+															<div class="form-body overflow-hide">
+																<div class="form-group">
+																	<input class="inputs" type="hidden" name="command" value="Registering_User">
+																	<input class="inputs" type="hidden" name="User_Type" value="Client">
+																	<input class="inputs" type="hidden" name="action" value="Editing_Client">
+																	<input class="inputs" type="hidden" name="User_Id" value="${User_Info[0].user_Id}">
+
+																	<div class="row">
+																		<div class="col-md-6 col-xs-12">
+																			<label class="control-label mb-10" for="Firstname">First Name:</label>
+																			<input id="Firstname" type="text" name="first_name" class="form-control required" value="${User_Info[0].first_name}" required />
+																		</div>
+																		<div class="span1"></div>
+																		<div class="col-md-6 col-xs-12">
+																			<label class="control-label mb-10" for="Surname">last Name:</label>
+																			<input id="Surname"   type="text" name="last_name"  class="form-control required" value="${User_Info[0].last_name}" required/>
+																		</div>
+																	</div>
+																</div>
+																<div class="form-group">
+																	<div class="row">
+																		<div class="col-md-6 col-xs-12">
+																			<label class="control-label mb-10" for="postalCode">Omang Number (required):</label>
+																			<input id="postalCode" type="text" name="Omang_code"  data-mask="999999999" class="form-control required" value="${User_Info[0].omang}" />
+																		</div>
+																		<div class="span1"></div>
+																		<div class="col-md-6 col-xs-12">
+																			<label class="control-label mb-10" for="phoneNumber2">phone number (required):</label>
+																			<input type="text" id="phoneNumber2"  data-mask="+267 99 999 999" name="phone_number" class="form-control required" value="${User_Info[0].contact}" />
+																		</div>
+																	</div>
+																</div>
+																<div class="form-group">
+																	<div class="row">
+																		<div class="col-md-6 col-xs-12">
+																			<label class="control-label mb-10" for="location_suggestions1">Location (required):</label>
+																			<input type="text" class="form-control" id="Location" name="location" list="location_suggestions" placeholder="Location"  value="${User_Info[0].location}"  required/>
+																			<datalist id="location_suggestions1">
+
+																				<option value="Phiring">
+																				<option value="Phologolo">
+																				<option value="Boitshoko">
+																				<option value="Selemela ">
+																				<option value="Madirelo ">
+																				<option value="Tutume">
+																				<option value="Sebina">
+																				<option value="Phuduhudu  ">
+																				<option value="Inalegolo  ">
+																				<option value="Hukuntsi  ">
+																				<option value="Tshane  ">
+																				<option value="Kang  ">
+																				<option value="kgale View">
+																				<option value="Maleshe  ">
+																				<option value="Maralaleng  ">
+																				<option value="Kokotsha  ">
+																				<option value="Maubelo  ">
+																				<option value="Khwawa  ">
+																				<option value="Draaihoek  ">
+																				<option value="Bray  ">
+																				<option value="Bokspits  ">
+																				<option value="Vaalhoek  ">
+																				<option value="Gachibana  ">
+																				<option value="Bogogobo  ">
+																				<option value="Tsabong  ">
+																				<option value="Middlepits  ">
+																				<option value="Kolonkwane  ">
+																				<option value="Werda  ">
+																				<option value="Qabo  ">
+																				<option value="Qabo  ">
+																				<option value="Kacgae  ">
+																				<option value="New Xanagas">
+																				<option value="Groote Laagte">
+																				<option value="Ncojane  ">
+																				<option value="Makunda">
+																				<option value="Charles Hil">
+																				<option value="West Hanahai">
+																				<option value=" Chobokwane">
+																				<option value="Karakobis">
+																				<option value="Tsootsha">
+																				<option value="Dekar">
+																				<option value="Ghanzi">
+																				<option value="Morutsha  ">
+																				<option value="Katamaga">
+																				<option value="Daonara">
+																				<option value="Xaxaba">
+																				<option value="Pandamatenga">
+																				<option value="Satau">
+																				<option value="Pakarungu ">
+																				<option value="Muchinje">
+																				<option value="Mabele">
+																				<option value="Lesoma  ">
+																				<option value="Lesoma  ">
+																				<option value="Kazungala  ">
+																				<option value="Kasane  ">
+																				<option value="Kachikau  ">
+																				<option value="Kajaja  ">
+																				<option value="Etsha 1  ">
+																				<option value="Eretsha  ">
+																				<option value="Mogomotho  ">
+																				<option value="Xhauga  ">
+																				<option value="Samochema  ">
+																				<option value="Sekondomboro  ">
+																				<option value="Tobere  ">
+																				<option value="Mohembo East  ">
+																				<option value="Xaxa  ">
+																				<option value="Gumare  ">
+																				<option value="Tubu  ">
+																				<option value="Gani  ">
+																				<option value="Nokaneng  ">
+																				<option value="Mohembo West">
+																				<option value="Etsha 13  ">
+																				<option value="Nxaunxau  ">
+																				<option value="Shakawe  ">
+																				<option value="Nxamasere  ">
+																				<option value="Sepopa  ">
+																				<option value="Ikoga  ">
+																				<option value="Kauxwhi  ">
+																				<option value="Etsha 6  ">
+																				<option value="Xakao  ">
+																				<option value="Qangwa  ">
+																				<option value="Mokgacha  ">
+																				<option value="Gonutsuga  ">
+																				<option value="Beetsha  ">
+																				<option value="Seronga  ">
+																				<option value="Ngarange  ">
+																				<option value="Bobonong">
+																				<option value="Chadibe">
+																				<option value="Gweta">
+																				<option value="Letlhakane">
+																				<option value="Maunatlala">
+																				<option value="Mathangwane">
+																				<option value="Mandunyane">
+																				<option value="Mahalapye">
+																				<option value="Mmadinare">
+																				<option value="Mopipi">
+																				<option value="Nata">
+																				<option value="Orapa">
+																				<option value="Palapye">
+																				<option value="Rakops">
+																				<option value="Selibe Phikwe">
+																				<option value="Serowe">
+																				<option value="Shoshong">
+																				<option value="Charles Hills">
+																				<option value="Tshabong">
+																				<option value="Kang">
+																				<option value="Hukuntsi">
+																				<option value="Bokaa">
+																				<option value="Mochudi">
+																				<option value="Letlhakeng">
+																				<option value="Gabane">
+																				<option value="Mmankgodi">
+																				<option value="Mmopane">
+																				<option value="Mogoditshane">
+																				<option value="Molepolole">
+																				<option value="Thamaga">
+																				<option value="Gaborone">
+																				<option value="Masunga">
+																				<option value="Tati Siding">
+																				<option value="Etsha">
+																				<option value="Kasane">
+																				<option value="Maun">
+																				<option value="Okavango Delta">
+																				<option value="Shakawe">
+																				<option value="Gaborone">
+																				<option value="Lobatse">
+																				<option value="Otse">
+																				<option value="Tlokweng">
+																				<option value="Jwaneng">
+																				<option value="Kanye">
+																				<option value="Moshupa">
+																			</datalist>
+																		</div>
+																		<div class="span1"></div>
+																		<div class="col-md-6 col-xs-12">
+																			<label class="control-label mb-10" for="exampleInputEmail">Email :</label>
+																			<input id="exampleInputEmail"  type="email" name="email" class="form-control required" value="${User_Info[0].email}" />
+																		</div>
+
+																	</div>
+																</div>
+															</div>
+															<div class="form-actions mt-10">
+																<button type="submit" id="Profile_Submit" class="btn btn-success mr-10 mb-30">Update profile</button>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" onclick="document.getElementById('Profile_Submit').click()" class="btn btn-success waves-effect" data-dismiss="modal">Save</button>
+							<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+>>>>>>> d7778a300b871ac8fae8d8de9941d2066dfc260a:src/main/webapp/CompanyInfo.jsp
+			</div>
+			<!-- /form -->
 
 			<!-- Footer -->
 			<footer class="footer container-fluid pl-30 pr-30">
@@ -1468,6 +1783,13 @@
 	<script src="dist/js/sweetalert-data.js"></script>
 	<script src="dist/js/toast-data.js"></script>
 
+<<<<<<< HEAD:target/DWMPC_2-1.0-SNAPSHOT/CompanyInfo.jsp
+=======
+
+
+
+
+>>>>>>> d7778a300b871ac8fae8d8de9941d2066dfc260a:src/main/webapp/CompanyInfo.jsp
 
 
 

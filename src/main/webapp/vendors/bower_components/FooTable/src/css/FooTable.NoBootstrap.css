@@ -139,6 +139,7 @@
 	text-decoration: none;
 }
 .footable .btn-default {
+	border-radius: 60px;
 	color: #333;
 	background-color: #fff;
 	border-color: #ccc;
