@@ -1008,7 +1008,9 @@
             </div>
             <button  type="button"  alt="alert"  class="img-responsive model_img Company_Alert_Succes" id="employee-alert" style="display: none" onclick=""></button>
 
-            <button style="" id="Error-Email" alt="alert" ></button>
+            <button style="display: none" alt="alert" id="Error-Email">yeys</button>
+            <button style="display: none" alt="alert" id="Error-CompanyName"></button>
+
 
             <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 
@@ -1038,13 +1040,32 @@
                     $("#Region").selectpicker("refresh");
                     document.getElementById('Status').value = document.getElementById('Sta').value;
                     $("#Status").selectpicker("refresh");
-                    document.getElementById("Error-Email").click();
+                  //  document.getElementById("Error-Email").click();
                 }
                 </c:if>
-
-
-
             </script>
+            <c:if test="${ErrorCompanyEmail!=null}">
+                <script>
+                    window.onload = function() {
+                        document.getElementById('Region').value = document.getElementById('Reg').value;
+                        $("#Region").selectpicker("refresh");
+                        document.getElementById('Status').value = document.getElementById('Sta').value;
+                        $("#Status").selectpicker("refresh");
+                        document.getElementById("Error-Email").click();
+                    }
+                </script>
+            </c:if>
+            <c:if test="${ErrorCompanyName!=null}">
+                <script>
+                    window.onload = function() {
+                        document.getElementById('Region').value = document.getElementById('Reg').value;
+                        $("#Region").selectpicker("refresh");
+                        document.getElementById('Status').value = document.getElementById('Sta').value;
+                        $("#Status").selectpicker("refresh");
+                        document.getElementById("Error-CompanyName").click();
+                    }
+                </script>
+            </c:if>
 
             <!-- form -->
             <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -1171,6 +1192,7 @@
     }
 </script>
 
+
 <!-- jQuery -->
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -1179,6 +1201,10 @@
 <script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
 <script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
 
+
+<!-- Sweet-Alert  -->
+<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="dist/js/sweetalert-data.js"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="dist/js/jquery.slimscroll.js"></script>
@@ -1199,10 +1225,9 @@
 <!-- Bootstrap Select JavaScript -->
 <script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>
 
-<!-- Sweet-Alert  -->
-<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-<script src="dist/js/sweetalert-data.js"></script>
+
 
 </body>
+
 
 </html>

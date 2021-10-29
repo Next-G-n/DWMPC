@@ -139,6 +139,7 @@
 	text-decoration: none;
 }
 .footable .btn-default {
+	border-radius: 60px;
 	color: #333;
 	background-color: #fff;
 	border-color: #ccc;
@@ -149,6 +150,7 @@
 .footable .btn-default:active,
 .footable .btn-default.active,
 .footable .open > .dropdown-toggle.btn-default {
+	border-radius: 60px;
 	color: #333;
 	background-color: #e6e6e6;
 	border-color: #adadad;

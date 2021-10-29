@@ -724,6 +724,7 @@
 									</div>
 								</div>
 							</div>
+
 							<div  id="todo_tab" class="tab-pane fade" role="tabpanel">
 								<div class="todo-box-wrap">
 									<div class="add-todo">
@@ -756,22 +757,22 @@
 																		<input class="upload" type="file">
 																	</div>
 																</div>
-																<h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">Kaone Rascon</h5>
+																<h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">${User_Info[0].first_name} ${User_Info[0].last_name}</h5>
 																<h6 class="block capitalize-font pb-20">Client</h6>
 															</div>
 															<div class="social-info">
 																<div class="row">
 																	<div class="col-xs-4 text-center">
-																		<span class="counts block head-font"><span class="counter-anim">45</span></span>
+																		<span class="counts block head-font"><span class="counter-anim">${GeneralCount.company}</span></span>
 																		<span class="counts-text block">Companies</span>
 																	</div>
 																	<div class="col-xs-4 text-center">
-																		<span class="counts block head-font"><span class="counter-anim">206</span></span>
+																		<span class="counts block head-font"><span class="counter-anim">${GeneralCount.employee}</span></span>
 																		<span class="counts-text block">Employees</span>
 																	</div>
 																	<div class="col-xs-4 text-center">
-																		<span class="counts block head-font"><span class="counter-anim">118</span></span>
-																		<span class="counts-text block">Vechiles</span>
+																		<span class="counts block head-font"><span class="counter-anim">${GeneralCount.vehicle}</span></span>
+																		<span class="counts-text block">Vehicles</span>
 																	</div>
 																</div>
 																<button class="btn btn-gold btn-block  btn-anim mt-40" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
@@ -1134,7 +1135,7 @@
 										<div class="container-fluid">
 											<div class="row">
 												<div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
-													<span class="txt-dark block counter"><span class="counter-anim">25</span></span>
+													<span class="txt-dark block counter"><span class="counter-anim">${CountSp.employee}</span></span>
 													<span class="weight-500 uppercase-font block font-13">Employees</span>
 												</div>
 												<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
@@ -1153,7 +1154,7 @@
 										<div class="container-fluid">
 											<div class="row">
 												<div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
-													<span class="txt-dark block counter"><span class="counter-anim">43</span></span>
+													<span class="txt-dark block counter"><span class="counter-anim">${CountSp.vehicle}</span></span>
 													<span class="weight-500 uppercase-font block">Vehicle</span>
 												</div>
 												<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
@@ -1172,7 +1173,7 @@
 										<div class="container-fluid">
 											<div class="row">
 												<div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left txt-light">
-													<span class="block counter"><span class="counter-anim">180</span></span>
+													<span class="block counter"><span class="counter-anim">${CountSp.company}</span></span>
 													<span class="weight-500 uppercase-font block">Companies Registered</span>
 												</div>
 												<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
@@ -1222,6 +1223,8 @@
 						<input type="hidden" name="command" value="LogOut Session">
 						<input type="hidden" name="action" value="Sign Out Session">
 					</form>
+
+
 
                     <script >
 						function EmployeeTable(){
@@ -1313,6 +1316,7 @@
 
 					}
 				</script>
+
 			</div>
 
 			<!-- form -->
@@ -1332,65 +1336,190 @@
 											<div class="panel-body pa-0">
 												<div class="col-sm-12 col-xs-12">
 													<div class="form-wrap">
-														<form action="#">
+														<form method="post" action="ServletDwmpc">
 															<div class="form-body overflow-hide">
 																<div class="form-group">
-																	<label class="control-label mb-10" for="exampleInputuname_1">Name</label>
-																	<div class="input-group">
-																		<div class="input-group-addon"><i class="icon-user"></i></div>
-																		<input type="text" class="form-control" id="exampleInputuname_1" placeholder="willard bryant">
-																	</div>
-																</div>
-																<div class="form-group">
-																	<label class="control-label mb-10" for="exampleInputEmail_1">Email address</label>
-																	<div class="input-group">
-																		<div class="input-group-addon"><i class="icon-envelope-open"></i></div>
-																		<input type="email" class="form-control" id="exampleInputEmail_1" placeholder="xyz@gmail.com">
-																	</div>
-																</div>
-																<div class="form-group">
-																	<label class="control-label mb-10" for="exampleInputContact_1">Contact number</label>
-																	<div class="input-group">
-																		<div class="input-group-addon"><i class="icon-phone"></i></div>
-																		<input type="email" class="form-control" id="exampleInputContact_1" placeholder="+102 9388333">
-																	</div>
-																</div>
-																<div class="form-group">
-																	<label class="control-label mb-10" for="exampleInputpwd_1">Password</label>
-																	<div class="input-group">
-																		<div class="input-group-addon"><i class="icon-lock"></i></div>
-																		<input type="password" class="form-control" id="exampleInputpwd_1" placeholder="Enter pwd" value="password">
-																	</div>
-																</div>
-																<div class="form-group">
-																	<label class="control-label mb-10">Gender</label>
-																	<div>
-																		<div class="radio">
-																			<input type="radio" name="radio1" id="radio_1" value="option1" checked="">
-																			<label for="radio_1">
-																				M
-																			</label>
+																	<input class="inputs" type="hidden" name="command" value="Registering_User">
+																	<input class="inputs" type="hidden" name="User_Type" value="Client">
+																	<input class="inputs" type="hidden" name="action" value="Editing_Client">
+																	<input class="inputs" type="hidden" name="User_Id" value="${User_Info[0].user_Id}">
+
+																	<div class="row">
+																		<div class="col-md-6 col-xs-12">
+																			<label class="control-label mb-10" for="Firstname">First Name:</label>
+																			<input id="Firstname" type="text" name="first_name" class="form-control required" value="${User_Info[0].first_name}" required />
 																		</div>
-																		<div class="radio">
-																			<input type="radio" name="radio1" id="radio_2" value="option2">
-																			<label for="radio_2">
-																				F
-																			</label>
+																		<div class="span1"></div>
+																		<div class="col-md-6 col-xs-12">
+																			<label class="control-label mb-10" for="Surname">last Name:</label>
+																			<input id="Surname"   type="text" name="last_name"  class="form-control required" value="${User_Info[0].last_name}" required/>
 																		</div>
 																	</div>
 																</div>
 																<div class="form-group">
-																	<label class="control-label mb-10">Country</label>
-																	<select class="form-control" data-placeholder="Choose a Category" tabindex="1">
-																		<option value="Category 1">USA</option>
-																		<option value="Category 2">Austrailia</option>
-																		<option value="Category 3">India</option>
-																		<option value="Category 4">UK</option>
-																	</select>
+																	<div class="row">
+																		<div class="col-md-6 col-xs-12">
+																			<label class="control-label mb-10" for="postalCode">Omang Number (required):</label>
+																			<input id="postalCode" type="text" name="Omang_code"  data-mask="999999999" class="form-control required" value="${User_Info[0].omang}" />
+																		</div>
+																		<div class="span1"></div>
+																		<div class="col-md-6 col-xs-12">
+																			<label class="control-label mb-10" for="phoneNumber2">phone number (required):</label>
+																			<input type="text" id="phoneNumber2"  data-mask="+267 99 999 999" name="phone_number" class="form-control required" value="${User_Info[0].contact}" />
+																		</div>
+																	</div>
+																</div>
+																<div class="form-group">
+																	<div class="row">
+																		<div class="col-md-6 col-xs-12">
+																			<label class="control-label mb-10" for="location_suggestions1">Location (required):</label>
+																			<input type="text" class="form-control" id="Location" name="location" list="location_suggestions" placeholder="Location"  value="${User_Info[0].location}"  required/>
+																			<datalist id="location_suggestions1">
+
+																				<option value="Phiring">
+																				<option value="Phologolo">
+																				<option value="Boitshoko">
+																				<option value="Selemela ">
+																				<option value="Madirelo ">
+																				<option value="Tutume">
+																				<option value="Sebina">
+																				<option value="Phuduhudu  ">
+																				<option value="Inalegolo  ">
+																				<option value="Hukuntsi  ">
+																				<option value="Tshane  ">
+																				<option value="Kang  ">
+																				<option value="kgale View">
+																				<option value="Maleshe  ">
+																				<option value="Maralaleng  ">
+																				<option value="Kokotsha  ">
+																				<option value="Maubelo  ">
+																				<option value="Khwawa  ">
+																				<option value="Draaihoek  ">
+																				<option value="Bray  ">
+																				<option value="Bokspits  ">
+																				<option value="Vaalhoek  ">
+																				<option value="Gachibana  ">
+																				<option value="Bogogobo  ">
+																				<option value="Tsabong  ">
+																				<option value="Middlepits  ">
+																				<option value="Kolonkwane  ">
+																				<option value="Werda  ">
+																				<option value="Qabo  ">
+																				<option value="Qabo  ">
+																				<option value="Kacgae  ">
+																				<option value="New Xanagas">
+																				<option value="Groote Laagte">
+																				<option value="Ncojane  ">
+																				<option value="Makunda">
+																				<option value="Charles Hil">
+																				<option value="West Hanahai">
+																				<option value=" Chobokwane">
+																				<option value="Karakobis">
+																				<option value="Tsootsha">
+																				<option value="Dekar">
+																				<option value="Ghanzi">
+																				<option value="Morutsha  ">
+																				<option value="Katamaga">
+																				<option value="Daonara">
+																				<option value="Xaxaba">
+																				<option value="Pandamatenga">
+																				<option value="Satau">
+																				<option value="Pakarungu ">
+																				<option value="Muchinje">
+																				<option value="Mabele">
+																				<option value="Lesoma  ">
+																				<option value="Lesoma  ">
+																				<option value="Kazungala  ">
+																				<option value="Kasane  ">
+																				<option value="Kachikau  ">
+																				<option value="Kajaja  ">
+																				<option value="Etsha 1  ">
+																				<option value="Eretsha  ">
+																				<option value="Mogomotho  ">
+																				<option value="Xhauga  ">
+																				<option value="Samochema  ">
+																				<option value="Sekondomboro  ">
+																				<option value="Tobere  ">
+																				<option value="Mohembo East  ">
+																				<option value="Xaxa  ">
+																				<option value="Gumare  ">
+																				<option value="Tubu  ">
+																				<option value="Gani  ">
+																				<option value="Nokaneng  ">
+																				<option value="Mohembo West">
+																				<option value="Etsha 13  ">
+																				<option value="Nxaunxau  ">
+																				<option value="Shakawe  ">
+																				<option value="Nxamasere  ">
+																				<option value="Sepopa  ">
+																				<option value="Ikoga  ">
+																				<option value="Kauxwhi  ">
+																				<option value="Etsha 6  ">
+																				<option value="Xakao  ">
+																				<option value="Qangwa  ">
+																				<option value="Mokgacha  ">
+																				<option value="Gonutsuga  ">
+																				<option value="Beetsha  ">
+																				<option value="Seronga  ">
+																				<option value="Ngarange  ">
+																				<option value="Bobonong">
+																				<option value="Chadibe">
+																				<option value="Gweta">
+																				<option value="Letlhakane">
+																				<option value="Maunatlala">
+																				<option value="Mathangwane">
+																				<option value="Mandunyane">
+																				<option value="Mahalapye">
+																				<option value="Mmadinare">
+																				<option value="Mopipi">
+																				<option value="Nata">
+																				<option value="Orapa">
+																				<option value="Palapye">
+																				<option value="Rakops">
+																				<option value="Selibe Phikwe">
+																				<option value="Serowe">
+																				<option value="Shoshong">
+																				<option value="Charles Hills">
+																				<option value="Tshabong">
+																				<option value="Kang">
+																				<option value="Hukuntsi">
+																				<option value="Bokaa">
+																				<option value="Mochudi">
+																				<option value="Letlhakeng">
+																				<option value="Gabane">
+																				<option value="Mmankgodi">
+																				<option value="Mmopane">
+																				<option value="Mogoditshane">
+																				<option value="Molepolole">
+																				<option value="Thamaga">
+																				<option value="Gaborone">
+																				<option value="Masunga">
+																				<option value="Tati Siding">
+																				<option value="Etsha">
+																				<option value="Kasane">
+																				<option value="Maun">
+																				<option value="Okavango Delta">
+																				<option value="Shakawe">
+																				<option value="Gaborone">
+																				<option value="Lobatse">
+																				<option value="Otse">
+																				<option value="Tlokweng">
+																				<option value="Jwaneng">
+																				<option value="Kanye">
+																				<option value="Moshupa">
+																			</datalist>
+																		</div>
+																		<div class="span1"></div>
+																		<div class="col-md-6 col-xs-12">
+																			<label class="control-label mb-10" for="exampleInputEmail">Email :</label>
+																			<input id="exampleInputEmail"  type="email" name="email" class="form-control required" value="${User_Info[0].email}" />
+																		</div>
+
+																	</div>
 																</div>
 															</div>
 															<div class="form-actions mt-10">
-																<button type="submit" class="btn btn-success mr-10 mb-30">Update profile</button>
+																<button type="submit" id="Profile_Submit" class="btn btn-success mr-10 mb-30">Update profile</button>
 															</div>
 														</form>
 													</div>
@@ -1402,7 +1531,7 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-success waves-effect" data-dismiss="modal">Save</button>
+							<button type="button" onclick="document.getElementById('Profile_Submit').click()" class="btn btn-success waves-effect" data-dismiss="modal">Save</button>
 							<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
 						</div>
 					</div>
@@ -1500,6 +1629,8 @@
 	<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="dist/js/sweetalert-data.js"></script>
 	<script src="dist/js/toast-data.js"></script>
+
+
 
 
 
