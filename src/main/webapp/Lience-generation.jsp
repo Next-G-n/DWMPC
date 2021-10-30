@@ -300,10 +300,10 @@
                 <a id="open_right_sidebar" href="#" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="profile.jsp" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="widgets.html"><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+                <a href=""><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -311,93 +311,37 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">${CompanyName}</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">My Companies</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                 <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
                     <li class="active" role="presentation">
-                        <a onclick="document.getElementById('Company_information').submit()" data-toggle="tab"  role="tab" aria-expanded="true">Information</a>
+                        <a  data-toggle="tab"  role="tab" href="#Company_info" href="#Company_info2" aria-expanded="true">Information</a>
                     </li>
                     <li >
-                        <a onclick="document.getElementById('Vehicle_info').submit()" aria-expanded="false"  data-toggle="tab" role="tab">Vehicles</a>
+                        <a aria-expanded="false"  data-toggle="tab" role="tab"  href="#Vehicle_info">Vehicles</a>
                     </li>
                     <li>
-                        <a onclick="document.getElementById('Employee_info').submit()">Employees</a>
+                        <a  data-toggle="tab"  role="tab"  aria-expanded="false">Attachments</a>
+                    </li>
+                    <li>
+                        <a href="#">Employees</a>
                     </li>
                 </ul>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
-            <c:if test="${ReportBtn=='Upload'}">
-                <li>
-                    <a href="Monthly-Report.jsp" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-                </li>
-            </c:if>
-            <c:if test="${ReportBtn!='Upload'}">
-                <li>
-                    <a href="javascript:void(0);" class="Report-toast" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-                </li>
-            </c:if>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-                <ul id="table_dr" class="collapse collapse-level-1 two-col-list">
-                    <li>
-                        <a href="basic-table.html">Basic Table</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-table.html">Bootstrap Table</a>
-                    </li>
-                    <li>
-                        <a href="data-table.html">Data Table</a>
-                    </li>
-                    <li>
-                        <a href="export-table.html">Export Table</a>
-                    </li>
-                    <li>
-                        <a href="responsive-data-table.html">RSPV DataTable</a>
-                    </li>
-                    <li>
-                        <a href="responsive-table.html">Responsive Table</a>
-                    </li>
-                    <li>
-                        <a href="editable-table.html">Editable Table</a>
-                    </li>
-                    <li>
-                        <a href="foo-table.html">Foo Table</a>
-                    </li>
-                    <li>
-                        <a href="jsgrid-table.html">Jsgrid Table</a>
-                    </li>
-                </ul>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-                <ul id="icon_dr" class="collapse collapse-level-1">
-                    <li>
-                        <a href="fontawesome.html">Fontawesome</a>
-                    </li>
-                    <li>
-                        <a href="themify.html">Themify</a>
-                    </li>
-                    <li>
-                        <a href="linea-icon.html">Linea</a>
-                    </li>
-                    <li>
-                        <a href="simple-line-icons.html">Simple Line</a>
-                    </li>
-                    <li>
-                        <a href="pe-icon-7.html">Pe-icon-7</a>
-                    </li>
-                    <li>
-                        <a href="glyphicons.html">Glyphicons</a>
-                    </li>
-                </ul>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
+            </li>
+            <li>
+                <a href="filemanager.jsp" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                 <ul id="maps_dr" class="collapse collapse-level-1">
-                    <li>
-                        <a href="vector-map.html">Vector Map</a>
-                    </li>
                     <li>
                         <a href="google-map.html">Google Map</a>
                     </li>
@@ -412,25 +356,12 @@
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="documentation.html"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
+                <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
         </ul>
-        <form method="post" id="Employee_info" action="ServletDwmpc">
-            <input type="hidden" name="command" value="EmployeesDetail">
-            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
-        </form>
-        <form method="post" id="Vehicle_info" action="ServletDwmpc">
-            <input type="hidden" name="command" value="VehicleDetail">
-            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
-        </form>
-        <form method="post" id="Company_information" action="ServletDwmpc">
-            <input type="hidden" name="command" value="getCompany">
-            <input type="hidden" name="UserType" value="Client">
-            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
-        </form>
     </div>
     <!-- /Left Sidebar Menu -->
 
@@ -855,131 +786,265 @@
     </div>
     <!-- /Right Sidebar Menu -->
 
-
-
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container">
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">timeline</h5>
+                    <h5 class="txt-dark"></h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="Home.jsp">Home</a></li>
-                        <li class="active"><span>Contact-us</span></li>
+                        <li><a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Dashboard</a></li>
+                        <li class="active"><span>Officer's Detail Table</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
-            <!-- Row -->
+
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default card-view">
-                        <div class="panel-body">
-                            <ul class="timeline">
-                                <li>
-                                    <div class="timeline-badge bg-yellow">
-                                        <i class="icon-layers" ></i>
-                                    </div>
-                                    <div class="timeline-panel pa-30">
-                                        <div class="timeline-heading">
-                                            <h6 class="mb-15">1 september 15</h6>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <h4 class="mb-5">pogody</h4>
-                                            <p class="lead head-font mb-20">Responsive html5 template</p>
-                                            <p>Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.</p>
-                                        </div>
-                                    </div>
-                                </li>
 
-                                <li class="timeline-inverted">
-                                    <div class="timeline-badge bg-pink">
-                                        <i class="icon-magnifier-add" ></i>
-                                    </div>
-                                    <div class="timeline-panel pa-30">
-                                        <div class="timeline-heading">
-                                            <h6 class="mb-15">23 March 16</h6>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <h4 class=" mb-5">Beavis</h4>
-                                            <p class="lead  mb-20">HTML5 Coming Soon Template</p>
-                                            <p>Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.</p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="timeline-badge bg-red">
-                                        <i class="icon-briefcase" ></i>
-                                    </div>
-                                    <div class="timeline-panel pa-30">
-                                        <div class="timeline-heading">
-                                            <h6 class="mb-15">23 March 16</h6>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <h4 class=" mb-5">Felix</h4>
-                                            <p class="lead  mb-20">Personal Blogging PSD Template</p>
-                                            <p>Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.</p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="timeline-inverted">
-                                    <div class="timeline-badge bg-blue">
-                                        <i class="icon-social-stumbleupon" ></i>
-                                    </div>
-                                    <div class="timeline-panel pa-30">
-                                        <div class="timeline-heading">
-                                            <h6 class="mb-15">11 August 16</h6>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <h4 class=" mb-5">Beryl</h4>
-                                            <p class="lead  mb-20">Responsive HTML5 Coming Soon</p>
-                                            <p>Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.</p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="timeline-badge bg-green">
-                                        <i class="icon-flag" ></i>
-                                    </div>
-                                    <div class="timeline-panel pa-30">
-                                        <div class="timeline-heading">
-                                            <h6 class="mb-15">11 August 16</h6>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <h4 class=" mb-5">Cinnabar</h4>
-                                            <p class="lead  mb-20">Multipurpose PSD Template</p>
-                                            <p>Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.</p>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="clearfix no-float"></li>
-                            </ul>
+                <!-- Bordered Table -->
+                <div class="col-sm-12">
+                    <div class="panel panel-warning card-view">
+                        <div class="panel-heading">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-light">Officer's Detail</h6>
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body">
+                                <div class="table-wrap mt-40">
+
+                                    <div class="table-responsive">
+
+                                        <table  id="example"  data-paging="true" class="table table-hover display  pb-30">
+                                            <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th >First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Email</th>
+                                                <th>Occupation</th>
+                                                <th>Omang</th>
+                                                <th>Contact</th>
+                                                <th>Location</th>
+                                                <th>Add Roles</th>
+                                                <th class="text-nowrap">Action</th>
+
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <c:set var="countOffers" value="0" scope="page"/>
+                                            <c:forEach var="Offers" items="${All_offers}">
+                                                <c:set var="countOffers" value="${countOffers+1}" scope="page"/>
+                                            <tr>
+                                                <td >${countOffers}<a class="Id"  style="display: none">${Offers.user_Id}</a></td>
+                                                <td class="First-Name">${Offers.first_name}</td>
+                                                <td class="Last-Name">${Offers.last_name}</td>
+                                                <td class="Email">${Offers.email}</td>
+                                                <td class="Occupation">${Offers.user_type}</td>
+                                                <td class="Omang">${Offers.omang}</td>
+                                                <td class="Contact">${Offers.contact}</td>
+                                                <td class="Location">${Offers.location}</td>
+                                                <td class="Add-Roles">${Offers.addRoles}</td>
+                                                <td class="text-nowrap"><span class="pencil-Edit" id="${countOffers}" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Officer-Registration-modal"> <a  class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a></span> <a href="#"  data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a> </td>
+                                            </tr>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
+
+                                    <div id="Officer-Registration-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    <h5 class="modal-title" id="myLargeModalLabel">Editing Officer Information for <a id="OfficerName">$Name</a></h5>
+                                                </div><form action="ServletDwmpc" method="post">
+                                                <div class="modal-body">
+                                                    <input type="hidden" name="User_Id" id="ID">
+                                                    <input type="hidden" name="command" value="Registering_User">
+                                                    <input type="hidden" name="action" value="Editing_Offers">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-xs-12 mt-40">
+                                                                <label class="control-label mb-10" for="First_Name"> First Name(required):</label>
+                                                                <input type="text" id="First_Name" name="first_name"  class="form-control required"   required/>
+                                                            </div>
+                                                            <div class="span1"></div>
+                                                            <div class="col-md-6 col-xs-12 mt-40">
+                                                                <label class="control-label mb-10" for="Last_Name"> Last Name(required):</label>
+                                                                <input type="text" id="Last_Name" name="last_name"  class="form-control required"   required/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-xs-12">
+                                                                <label class="control-label mb-10" for="Email"> Email(required):</label>
+                                                                <input type="email" id="Email" name="email"  class="form-control required"   required/>
+                                                            </div>
+                                                            <div class="span1"></div>
+                                                            <div class="col-md-6 col-xs-12">
+                                                                <label class="control-label mb-10" for="Occupation"> Occupation(required):</label>
+                                                                <select id="Occupation" name="User_Type" class="selectpicker" data-style="form-control btn-default btn-outline">
+                                                                    <option value="Compliance Officer">Compliance Officer</option>
+                                                                    <option value="Waste Management Officer">Waste Management Officer</option>
+                                                                    <option value="Regional Coordinate">Regional Coordinate</option>
+                                                                    <option value="Waste Management Officer Compliance Headquarters">Waste Management Officer Compliance Headquarters</option>
+                                                                    <option value="Head of Division Headquarters">Head of Division Headquarters</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-xs-12">
+                                                                <label class="control-label mb-10" for="Omang"> Omang(required):</label>
+                                                                <input type="text" id="Omang" data-mask="999999999" name="Omang_code"  class="form-control required"  required/>
+                                                            </div>
+                                                            <div class="span1"></div>
+                                                            <div class="col-md-6 col-xs-12">
+                                                                <label class="control-label mb-10" for="Contact">Contact(required):</label>
+                                                                <input type="text" id="Contact"  data-mask="+267 99 999 999" name="phone_number"  class="form-control required"  required/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-xs-12">
+                                                        <label class="control-label mb-10" for="Branch_Location"> Branch Location (required):</label>
+                                                        <select id="Branch_Location" name="location" class="selectpicker" data-style="form-control btn-default btn-outline">
+                                                            <option value="Francistown Branch">Francistown Branch</option>
+                                                            <option value="Gaborone Branch">Gaborone Branch</option>
+                                                            <option value="Chobe Branch">Chobe Branch</option>
+                                                            <option value="kgalagadi Branch">kgalagadi Branch</option>
+                                                        </select>
+                                                            </div>
+                                                            <div class="span1"></div>
+                                                            <div class="col-md-6 col-xs-12">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label mb-10">Add Roles</label>
+                                                            <select id="Add_Roles" name="add_Roles" class="selectpicker" multiple data-style="form-control btn-default btn-outline">
+                                                                <option value="Compliance Officer">Compliance Officer</option>
+                                                                <option value="Waste Management Officer">Waste Management Officer</option>
+                                                                <option value="Regional Coordinate">Regional Coordinate</option>
+                                                                <option value="Waste Management Officer Compliance Headquarters">Waste Management Officer Compliance Headquarters</option>
+                                                                <option value="Head of Division Headquarters">Head of Division Headquarters</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Save Changes</span></button>
+                                                </div>
+                                            </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        let tableRowElement;
+                                        function toggleModal(element) {
+
+                                            tableRowElement = element.parentElement.parentElement;
+                                            const id = tableRowElement.getElementsByClassName('Id')[0].innerHTML;
+                                            const First_Name = tableRowElement.getElementsByClassName('First-Name')[0].innerHTML;
+                                            const Last_Name = tableRowElement.getElementsByClassName('Last-Name')[0].innerHTML;
+                                            const Email = tableRowElement.getElementsByClassName('Email')[0].innerHTML;
+                                            const Occupation = tableRowElement.getElementsByClassName('Occupation')[0].innerHTML;
+                                            const Omang = tableRowElement.getElementsByClassName('Omang')[0].innerHTML;
+                                            const Contact = tableRowElement.getElementsByClassName('Contact')[0].innerHTML;
+                                            const Location = tableRowElement.getElementsByClassName('Location')[0].innerHTML;
+                                            const Add_Roles = tableRowElement.getElementsByClassName('Add-Roles')[0].innerHTML;
+
+                                            const add_Roles = Add_Roles.split(", ");
+                                            let add_Roles2 = "";
+                                            alert(add_Roles);
+                                            let add_Roles1 = [];
+                                            for ( i = 0; i < add_Roles.length; i++) {
+                                                alert("This '"+add_Roles[i].replace(/\s/g, '')+"'")
+                                                switch (add_Roles[i].replace(/\s/g, '')) {
+                                                    case "CO":
+                                                        add_Roles2 = "Compliance Officer";
+                                                        break;
+                                                    case "WMO":
+                                                        add_Roles2 = "Waste Management Officer";
+                                                        break;
+                                                    case "RC":
+                                                        add_Roles2 = "Regional Coordinate";
+                                                        break;
+                                                    case "WMOCH":
+                                                        add_Roles2 = "Waste Management Officer Compliance Headquarters";
+                                                        break;
+                                                    case "HDH":
+                                                        add_Roles2 = "Head of Division Headquarters";
+                                                        break;
+                                                }
+                                                add_Roles1.push(add_Roles2);
+                                            }
+                                            alert(add_Roles1)
+                                            // const add_Roles1=add_Roles2.slice(0, -1);
+                                            //  const add_Roles1="'Compliance Officer', 'Waste Management Officer'"
+                                            document.getElementById("ID").value = id;
+                                            document.getElementById('First_Name').value = First_Name;
+                                            document.getElementById('Last_Name').value = Last_Name;
+                                            document.getElementById('OfficerName').innerHTML = First_Name + " " + Last_Name;
+                                            document.getElementById('Email').value = Email;
+                                            document.getElementById('Occupation').value = Occupation;
+                                            $("#Occupation").selectpicker("refresh");
+                                            document.getElementById('Omang').value = Omang;
+                                            document.getElementById('Contact').value = Contact;
+                                            document.getElementById('Branch_Location').value = Location;
+                                            $("#Branch_Location").selectpicker("refresh");
+
+                                            document.getElementById('Add_Roles').value = add_Roles1[i];
+                                            $("#Add_Roles").selectpicker("refresh");
+
+                                        }
+
+
+                                    </script>
+
+                                </div>
+
+                                </br>
+                                <div style="float: right" class="row">
+                                    <button type="button" onclick="location.href='Officer-Registration-Form.jsp';" data-toggle="modal" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Add New Vehicle</span></button>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
-            </div>
-            <!-- /Row -->
+                <!-- /Bordered Table -->
 
-        </div>
-        <!-- Footer -->
-        <footer class="footer container-fluid pl-30 pr-30">
-            <div class="row">
-                <div class="col-sm-12">
-                    <p>2018 &copy; Zapily. Pampered by Hencework</p>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer container-fluid pl-30 pr-30">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>2021 &copy; Created by Next-gen</p>
+                    </div>
                 </div>
-            </div>
-        </footer>
-        <!-- /Footer -->
-
+            </footer>
+            <!-- /Footer -->
+        </div>
     </div>
     <!-- /Main Content -->
 

@@ -1303,6 +1303,9 @@
       type: form.attr('method'),
       url: form.attr('action'),
       data: form.serialize(),
+      fail: function (data){
+
+      },
       success: function (data) {
       }
     });

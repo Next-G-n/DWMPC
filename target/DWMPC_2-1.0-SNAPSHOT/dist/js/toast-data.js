@@ -34,12 +34,12 @@ $(document).ready(function() {
         $.toast().reset('all');
 		$("body").removeAttr('class');
 		$.toast({
-            heading: 'Still Under Development',
+            heading: 'Server not responding',
             text: 'Use the predefined ones, or specify a custom position object.',
             position: 'top-right',
             loaderBg:'#ff2a00',
             icon: 'warning',
-            hideAfter: 3900,
+            hideAfter: 3500, 
             stack: 6
         });
 		return false;

@@ -132,7 +132,7 @@ var zapily = function(){
 	});
 	
 	/*Sidebar Navigation*/
-	$(document).on('click', '#toggle_nav_btn,#open_right_sidebar ,#open_profile,#setting_panel_btn', function (e) {
+	$(document).on('click', '#toggle_nav_btn,#open_right_sidebar ,#open_email,#setting_panel_btn', function (e) {
 		$(".dropdown.open > .dropdown-toggle").dropdown("toggle");
 		return false;
 
@@ -143,7 +143,7 @@ var zapily = function(){
 		return false;
 	});
 	
-	$(document).on('click', '#open_right_sidebar ,#open_profile', function (e) {
+	$(document).on('click', '#open_right_sidebar ,#open_email', function (e) {
 		$wrapper.toggleClass('open-right-sidebar').removeClass('open-setting-panel');
 		return false;
 	
