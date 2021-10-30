@@ -250,6 +250,7 @@ public class ServletDwmpc extends HttpServlet {
         String UserType = request.getParameter("UserType");
         String Branch=request.getParameter("Branch");
         Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
+        System.out.print("yes");
 
             String Company_Id=request.getParameter("company_id");
             officerAction setAction=new officerAction(User_id,Apply_id,action,delay_Time);
