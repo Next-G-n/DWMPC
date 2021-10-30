@@ -782,89 +782,89 @@
 
             <!-- Row -->
             <div class="row">
-<c:set var="countDate" scope="page" value="0" />
-<c:forEach var="tempCompany" items="${All_companies}">
-    <c:url var="CompanyDetailsLink" value="ServletDwmpc">
-        <c:param name="command" value="getCompany"/>
-        <c:param name="company_id" value="${tempCompany.company_Id}"/>
-        <c:param name="UserType" value="Client"/>
-    </c:url>
-    <c:set value="${countDate+1}" scope="page" var="countDate"/>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="panel panel-warning contact-card card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <div class="pull-left user-img-wrap mr-15">
-                                    <img class="card-user-img img-circle pull-left" src="img/user.png" alt="user"/>
-                                </div>
-                                <div class="pull-left user-detail-wrap">
+                <c:set var="countDate" scope="page" value="0" />
+                <c:forEach var="tempCompany" items="${All_companies}">
+                    <c:url var="CompanyDetailsLink" value="ServletDwmpc">
+                        <c:param name="command" value="getCompany"/>
+                        <c:param name="company_id" value="${tempCompany.company_Id}"/>
+                        <c:param name="UserType" value="Client"/>
+                    </c:url>
+                    <c:set value="${countDate+1}" scope="page" var="countDate"/>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="panel panel-warning contact-card card-view">
+                            <div class="panel-heading">
+                                <div class="pull-left">
+                                    <div class="pull-left user-img-wrap mr-15">
+                                        <img class="card-user-img img-circle pull-left" src="img/user.png" alt="user"/>
+                                    </div>
+                                    <div class="pull-left user-detail-wrap">
 											<span class="block card-user-name">
                                                     ${tempCompany.company_Name}
-											</span>
-                                    <span class="block card-user-desn">
-                                            ${tempCompany.company_Status}
-											</span>
+                                            </span>
+                                        <span class="block card-user-desn">
+                                                ${tempCompany.company_Status}
+                                        </span>
+                                    </div>
                                 </div>
+                                <div class="pull-right">
+                                    <a class="pull-left inline-block mr-15" href="#">
+                                        <i class="zmdi zmdi-edit txt-light"></i>
+                                    </a>
+                                    <a class="pull-left inline-block mr-15" href="#">
+                                        <i class="zmdi zmdi-delete txt-light"></i>
+                                    </a>
+                                    <div class="pull-left inline-block dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert txt-light"></i></a>
+                                        <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
+                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Full Info</a></li>
+                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Send Message</a></li>
+                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Follow</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
-                            <div class="pull-right">
-                                <a class="pull-left inline-block mr-15" href="#">
-                                    <i class="zmdi zmdi-edit txt-light"></i>
-                                </a>
-                                <a class="pull-left inline-block mr-15" href="#">
-                                    <i class="zmdi zmdi-delete txt-light"></i>
-                                </a>
-                                <div class="pull-left inline-block dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert txt-light"></i></a>
-                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Full Info</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Send Message</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Follow</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="panel-wrapper collapse in" onclick="location.href='${CompanyDetailsLink}'">
-                            <div class="panel-body row">
-                                <div class="user-others-details pl-15 pr-15">
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-email-open inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.email}</span>
+                            <div class="panel-wrapper collapse in" onclick="location.href='${CompanyDetailsLink}'">
+                                <div class="panel-body row">
+                                    <div class="user-others-details pl-15 pr-15">
+                                        <div class="mb-15">
+                                            <i class="zmdi zmdi-email-open inline-block mr-10"></i>
+                                            <span class="inline-block txt-dark">${tempCompany.email}</span>
+                                        </div>
+                                        <div class="mb-15">
+                                            <i class="zmdi zmdi-phone inline-block mr-10"></i>
+                                            <span class="inline-block txt-dark">${tempCompany.telephone}</span>
+                                        </div>
+                                        <div class="mb-15">
+                                            <i class="zmdi zmdi-print inline-block mr-10"></i>
+                                            <span class="inline-block txt-dark">${tempCompany.fax_Number}</span>
+                                        </div>
+                                        <div class="mb-15">
+                                            <i class="zmdi zmdi-my-location inline-block mr-10"></i>
+                                            <span class="inline-block txt-dark">${tempCompany.region_Town_Village}, ${tempCompany.ward}, ${tempCompany.plot_Number}</span>
+                                        </div>
+                                        <div class="mb-15">
+                                            <i class="zmdi zmdi-local-post-office inline-block mr-10"></i>
+                                            <span class="inline-block txt-dark">${tempCompany.street_Address}</span>
+                                        </div>
+                                        <div>
+                                            <i class="zmdi zmdi zmdi-bookmark inline-block mr-10"></i>
+                                            <span class="inline-block txt-dark">${tempCompany.phone_Number}</span>
+                                        </div>
                                     </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-phone inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.telephone}</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-print inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.fax_Number}</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-my-location inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.region_Town_Village}, ${tempCompany.ward}, ${tempCompany.plot_Number}</span>
-                                    </div>
-                                    <div class="mb-15">
-                                        <i class="zmdi zmdi-local-post-office inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.street_Address}</span>
-                                    </div>
-                                    <div>
-                                        <i class="zmdi zmdi zmdi-bookmark inline-block mr-10"></i>
-                                        <span class="inline-block txt-dark">${tempCompany.phone_Number}</span>
-                                    </div>
-                                </div>
-                                <hr class="light-grey-hr mt-20 mb-20"/>
-                                <div class="emp-detail pl-15 pr-15">
-                                    <div class="mb-5">
-                                        <span class="inline-block capitalize-font mr-5">joininig date:</span>
-                                        <span class="txt-dark">${tempCompany.date_Unix}</span>
+                                    <hr class="light-grey-hr mt-20 mb-20"/>
+                                    <div class="emp-detail pl-15 pr-15">
+                                        <div class="mb-5">
+                                            <span class="inline-block capitalize-font mr-5">joininig date:</span>
+                                            <span class="txt-dark">${tempCompany.date_Unix}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-</c:forEach>
+                </c:forEach>
                 <div class="col-lg-4 col-md-4 col-xs-12">
                     <div class="panel panel-warning card-view">
                         <div class="panel-heading">
