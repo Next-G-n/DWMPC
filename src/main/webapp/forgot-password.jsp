@@ -53,7 +53,7 @@
 												<input type="hidden" id="ForgotForm" name="command" value="Forget Password">
 												<div class="form-group">
 													<label class="control-label mb-10" for="exampleInputEmail_2">Email address</label>
-													<input type="email" class="form-control" required="" id="exampleInputEmail_2" placeholder="Enter email">
+													<input  name="email" type="email" class="form-control" required="" id="exampleInputEmail_2" placeholder="Enter email">
 												</div>
 												
 												<div class="form-group text-center">
