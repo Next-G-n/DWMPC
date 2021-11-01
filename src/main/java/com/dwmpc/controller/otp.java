@@ -10,7 +10,7 @@ public class otp {
     public static final String ACCOUNT_SID =("AC3fcd212cb95e2eb0a7cace746bc66dec");
     public static final String AUTH_TOKEN = ("488c43f866c001bc2b4aa13e95708e50");
 
-    public void emailVerification(String email) {
+    public static void emailVerification(String email) {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Verification verification = Verification.creator(
                         "VA28bbadab49fc07332a28fdcdcb1beb30",

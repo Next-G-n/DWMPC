@@ -44,7 +44,7 @@ import javax.crypto.spec.PBEKeySpec;
 
 
 public class ServletDwmpc extends HttpServlet {
-    private otp Otp;
+
 
     private ConnectionUtil connectionUtil;
     @Resource(name = "jdbc/Dwmpc_aws")
@@ -181,7 +181,7 @@ public class ServletDwmpc extends HttpServlet {
 
     private void Forgot_Password(HttpServletRequest request, HttpServletResponse response)throws Exception {
         String email=request.getParameter("email");
-        Otp.emailVerification(email);
+        otp.emailVerification(email);
     }
 
     private void setReportWaste(HttpServletRequest request, HttpServletResponse response) throws Exception{
