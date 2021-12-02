@@ -11,9 +11,11 @@ public class company_personnel {
     String Qualification;
     String Trained_In_Waste_Management;
     String Employee_Status;
-    String Date_Unix;
+    String Delete_Date;
+    String Contact;
 
-    public company_personnel(int company_Personnel_Id, int company_Id, String first_Name, String last_Name, String job_Title, String qualification, String trained_In_Waste_Management, String employee_Status, String date_Unix) {
+
+    public company_personnel(int company_Personnel_Id, int company_Id, String first_Name, String last_Name, String job_Title, String qualification, String trained_In_Waste_Management, String employee_Status, String contact) {
         Company_Personnel_Id = company_Personnel_Id;
         Company_Id = company_Id;
         First_Name = first_Name;
@@ -22,11 +24,29 @@ public class company_personnel {
         Qualification = qualification;
         Trained_In_Waste_Management = trained_In_Waste_Management;
         Employee_Status = employee_Status;
-        Date_Unix = date_Unix;
+        Contact=contact;
+    }
+
+    public company_personnel(int company_Personnel_Id, String first_Name, String last_Name, String job_Title, String qualification, String trained_In_Waste_Management,String contact) {
+        Company_Personnel_Id = company_Personnel_Id;
+        First_Name = first_Name;
+        Last_Name = last_Name;
+        Job_Title = job_Title;
+        Qualification = qualification;
+        Trained_In_Waste_Management = trained_In_Waste_Management;
+        Contact=contact;
     }
 
     public int getCompany_Personnel_Id() {
         return Company_Personnel_Id;
+    }
+
+    public String getContact() {
+        return Contact;
+    }
+
+    public void setContact(String contact) {
+        Contact = contact;
     }
 
     public void setCompany_Personnel_Id(int company_Personnel_Id) {
@@ -89,12 +109,14 @@ public class company_personnel {
         Employee_Status = employee_Status;
     }
 
-    public String getDate_Unix() {
-        return Date_Unix;
+  
+
+    public String getDelete_Date() {
+        return Delete_Date;
     }
 
-    public void setDate_Unix(String date_Unix) {
-        Date_Unix = date_Unix;
+    public void setDelete_Date(String delete_Date) {
+        Delete_Date = delete_Date;
     }
 
     @Override
@@ -108,7 +130,8 @@ public class company_personnel {
                 ", Qualification='" + Qualification + '\'' +
                 ", Trained_In_Waste_Management='" + Trained_In_Waste_Management + '\'' +
                 ", Employee_Status='" + Employee_Status + '\'' +
-                ", Date_Unix='" + Date_Unix + '\'' +
+
+                ", Delete_Date=" + Delete_Date +
                 '}';
     }
 }

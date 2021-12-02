@@ -1,39 +1,30 @@
 package com.dwmpc.controller;
-import javax.servlet.annotation.MultipartConfig;
 
 import com.dwmpc.model.DAO.ConnectionUtil;
-import com.dwmpc.model.DAO.hash;
 import com.dwmpc.model.bean.*;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.annotation.Resource;
-import javax.servlet.*;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import javax.servlet.annotation.*;
 import javax.sql.DataSource;
 import java.io.*;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.security.NoSuchProviderException;
-import java.security.SecureRandom;
-import java.sql.Timestamp;
-import java.util.List;
-
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Objects;
-
-import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
-
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 @WebServlet(name = "ServletDwmpc", value = "/ServletDwmpc")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 14, // 10 MB
@@ -115,7 +106,7 @@ public class ServletDwmpc extends HttpServlet {
                     User_Registration(request,response);
                     break;
                 case "Login":
-                    Login(request,response);
+                    Login(request,response,"None");
                     break;
                 case "Company Registration":
                     registerCompany(request,response);
@@ -164,6 +155,9 @@ public class ServletDwmpc extends HttpServlet {
                 case "Report Waste Type":
                     setReportWaste(request,response);
                     break;
+                case "Forget Password":
+                    Forgot_Password(request,response);
+                    break;
             }
             // listStudents(request, response);
         }
@@ -172,6 +166,11 @@ public class ServletDwmpc extends HttpServlet {
             exc.printStackTrace();
 
         }
+    }
+
+    private void Forgot_Password(HttpServletRequest request, HttpServletResponse response)throws Exception {
+        String email=request.getParameter("email");
+        otp.emailVerification(email);
     }
 
     private void setReportWaste(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -251,6 +250,7 @@ public class ServletDwmpc extends HttpServlet {
         String UserType = request.getParameter("UserType");
         String Branch=request.getParameter("Branch");
         Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
+        System.out.print("yes");
 
             String Company_Id=request.getParameter("company_id");
             officerAction setAction=new officerAction(User_id,Apply_id,action,delay_Time);
@@ -316,25 +316,33 @@ public class ServletDwmpc extends HttpServlet {
         if (session.getAttribute("All_companies") != null){
             session.removeAttribute("All_companies");
         }
+        if (session.getAttribute("GeneralCount") != null){
+            session.removeAttribute("GeneralCount");
+        }
+        if (session.getAttribute("CountSp") != null){
+            session.removeAttribute("CountSp");
+        }
         System.out.println("Log Out test");
         response.sendRedirect("login.jsp");
     }
 
-    private void Login(HttpServletRequest request, HttpServletResponse response) throws Exception,NoSuchAlgorithmException, InvalidKeySpecException {
-        String Email = request.getParameter("email");
-        String Password = request.getParameter("password").trim();
+    private void Login(HttpServletRequest request, HttpServletResponse response, String Login) throws Exception,NoSuchAlgorithmException, InvalidKeySpecException {
+        String Email = request.getParameter("email").trim();
         String userType="Unknown";
         String Branch="None";
         String action="Login";
+        List<user> userlg=null;
+        if(!Login.equals("Editing_Client")){
+            String Password = request.getParameter("password").trim();
+            userlg = connectionUtil.loginUser(Email, Password,action);
+        }else{
+            userlg = connectionUtil.loginUser(Email, "None",action);
+        }
+
+
         //String securePassword = generateStorngPasswordHash(Password);
-        System.out.println(Password);
-        String securePassword= hash.setHash(Password);
 
-        String test=hashPassword(Password);
 
-        System.out.println("testing :"+test);
-
-        List<user> userlg = connectionUtil.loginUser(Email, Password,action);
         HttpSession session=request.getSession();
         session.setAttribute("User_Info", userlg);
 
@@ -346,7 +354,7 @@ public class ServletDwmpc extends HttpServlet {
 
             if (userlg.get(0).getUser_type().equals("Administrator")) {
                 action = "Admin";
-                List<user> userlg2 = connectionUtil.loginUser(Email, securePassword, action);
+                List<user> userlg2 = connectionUtil.loginUser(Email, "securePassword", action);
                 session.setAttribute("All_offers", userlg2);
                 request.getRequestDispatcher("Admin-Table.jsp").forward(request, response);
 
@@ -354,6 +362,9 @@ public class ServletDwmpc extends HttpServlet {
                 userType = "Client";
 
                 List<company_Information> CompanyInfo = connectionUtil.getAllCompanies(user_id, userType, Branch);
+
+                CountGeneral count=connectionUtil.CountGe(user_id);
+                session.setAttribute("GeneralCount", count);
 
                 if (!CompanyInfo.isEmpty()) {
                     session.setAttribute("All_companies", CompanyInfo);
@@ -438,6 +449,9 @@ public class ServletDwmpc extends HttpServlet {
                 add_Roles1= String.valueOf(sb);
             }
             userReg=new user(user_id,firstName,lastName,email,UserType,omang,contacting,add_Roles1,location);
+        }else if(action.equals("Editing_Client")){
+
+            userReg=new user(user_id,firstName,lastName,email,UserType,"None",omang,contacting,location,"just");
         }else{
             userReg=new user(user_id,firstName,lastName,email,UserType,securePassword,omang,contacting,location,"just");
         }
@@ -445,35 +459,28 @@ public class ServletDwmpc extends HttpServlet {
        String msg=connectionUtil.registerUser(userReg,action);
 
         HttpSession session=request.getSession();
+        System.out.println("Action :"+action);
 
-        action="Registration";
         if(msg.equals("Successful")){
-            List<user> userlg = connectionUtil.loginUser(email, securePassword,action);
-            session.setAttribute("User_Info", userlg);
-
-            if(UserType.equals("Client")){
-                List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(userlg.get(0).getUser_Id(),"Client",userlg.get(0).getLocation());
-                if(CompanyInfo.get(0).getCompany_Name()!=null){
-                    session.setAttribute("All_companies", CompanyInfo);
-                }
-                RequestDispatcher dispatcher = request.getRequestDispatcher("Home.jsp");
-                dispatcher.forward(request, response);
-            }else{
-                action="Admin";
-                String Email="null";
-                List<user> userlg2 = connectionUtil.loginUser(Email, securePassword,action);
+            if(action.equals("Editing_Offers")){
+                action = "Admin";
+                List<user> userlg2 = connectionUtil.loginUser(email,"Undefined", action);
                 session.setAttribute("All_offers", userlg2);
                 request.getRequestDispatcher("Admin-Table.jsp").forward(request, response);
-
+            }else if(action.equals("Editing_Client")){
+                Login(request,response,"Editing_Client");
+            }else{
+                Login(request,response,"None");
             }
+
 
         }else {
             if(UserType.equals("Client")){
                 session.setAttribute("ErrorEmail",userReg);
-                this.getServletContext().getRequestDispatcher("signup.jsp").forward(request, response);
+                this.getServletContext().getRequestDispatcher("/signup.jsp").forward(request, response);
             }else{
                 session.setAttribute("ErrorEmail",userReg);
-                this.getServletContext().getRequestDispatcher("Officer-Registration-Form.jsp").forward(request, response);
+                this.getServletContext().getRequestDispatcher("/Officer-Registration-Form.jsp").forward(request, response);
             }
 
         }
@@ -520,18 +527,29 @@ public class ServletDwmpc extends HttpServlet {
 
         if(getCurrentCompanyID.getCompany_Name().equals("Error Email")){
             session.setAttribute("Company_Info_Form", registerCompany);
+            session.setAttribute("ErrorCompanyEmail", "Email");
             response.sendRedirect("companyForm.jsp");
 
+        }else if(getCurrentCompanyID.getCompany_Name().equals("Error Name")){
+            session.setAttribute("Company_Info_Form", registerCompany);
+            session.setAttribute("ErrorCompanyName", "Company Name");
+            response.sendRedirect("companyForm.jsp");
         }else{
 
             if (session.getAttribute("Company_Info_Form") != null){
                 session.removeAttribute("Company_Info_Form");
             }
+            if (session.getAttribute("ErrorCompanyName") != null){
+                session.removeAttribute("ErrorCompanyName");
+            }
+            if (session.getAttribute("ErrorCompanyEmail") != null){
+                session.removeAttribute("ErrorCompanyEmail");
+            }
             List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(id,"Client","None");
             session.setAttribute("All_companies", CompanyInfo);
 
             if(action.equals("Registration")) {
-                connectionUtil.ReportUptodate(getCurrentCompanyID.getCompany_Id(),"null","Registration");
+                connectionUtil.ReportUptodate(getCurrentCompanyID.getCompany_Id(),"There is Null","Registration");
                 connectionUtil.ReportTableCreation(getCurrentCompanyID.getCompany_Name());
                 int Report_id=connectionUtil.getReportWaste_lastRow(getCurrentCompanyID.getCompany_Name());
                 session.setAttribute("Report_id",Report_id);
@@ -586,6 +604,14 @@ public class ServletDwmpc extends HttpServlet {
 
         company_Information FirstCompanyDetails=connectionUtil.getCompanyDetails(Company_id);
         session.setAttribute("Company_info", FirstCompanyDetails);
+
+        CountGeneral count=connectionUtil.CountSp(Company_id);
+        session.setAttribute("CountSp", count);
+
+        CountGeneral count2=connectionUtil.CountGe(FirstCompanyDetails.getUser_Id());
+        session.setAttribute("GeneralCount", count2);
+
+
         if(userType.equals("Client")){
 
             getCompanyName(request,response,FirstCompanyDetails.getCompany_Name());
