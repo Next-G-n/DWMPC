@@ -311,6 +311,7 @@
         <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
+<<<<<<< HEAD
         <a href="#" id="open_right_sidebar" onclick="document.getElementById('chat_tab_btn').click();" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
       </li>
       <li>
@@ -318,6 +319,15 @@
       </li>
       <li>
         <a href="#" class="tst2"><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+=======
+        <a id="open_right_sidebar" href="#" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
+      </li>
+      <li>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+      </li>
+      <li>
+        <a href="widgets.html"><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
       </li>
       <li><hr class="light-grey-hr mb-10"/></li>
       <li class="navigation-header">
@@ -352,15 +362,77 @@
         </li>
       </c:if>
       <li>
+<<<<<<< HEAD
         <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
       </li>
       <li>
         <a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+=======
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+        <ul id="table_dr" class="collapse collapse-level-1 two-col-list">
+          <li>
+            <a href="basic-table.html">Basic Table</a>
+          </li>
+          <li>
+            <a href="bootstrap-table.html">Bootstrap Table</a>
+          </li>
+          <li>
+            <a href="data-table.html">Data Table</a>
+          </li>
+          <li>
+            <a href="export-table.html">Export Table</a>
+          </li>
+          <li>
+            <a href="responsive-data-table.html">RSPV DataTable</a>
+          </li>
+          <li>
+            <a href="responsive-table.html">Responsive Table</a>
+          </li>
+          <li>
+            <a href="editable-table.html">Editable Table</a>
+          </li>
+          <li>
+            <a href="foo-table.html">Foo Table</a>
+          </li>
+          <li>
+            <a href="jsgrid-table.html">Jsgrid Table</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+        <ul id="icon_dr" class="collapse collapse-level-1">
+          <li>
+            <a href="fontawesome.html">Fontawesome</a>
+          </li>
+          <li>
+            <a href="themify.html">Themify</a>
+          </li>
+          <li>
+            <a href="linea-icon.html">Linea</a>
+          </li>
+          <li>
+            <a href="simple-line-icons.html">Simple Line</a>
+          </li>
+          <li>
+            <a href="pe-icon-7.html">Pe-icon-7</a>
+          </li>
+          <li>
+            <a href="glyphicons.html">Glyphicons</a>
+          </li>
+        </ul>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
       </li>
       <li>
         <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
         <ul id="maps_dr" class="collapse collapse-level-1">
           <li>
+<<<<<<< HEAD
+=======
+            <a href="vector-map.html">Vector Map</a>
+          </li>
+          <li>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
             <a href="google-map.html">Google Map</a>
           </li>
         </ul>
@@ -371,10 +443,17 @@
         <i class="zmdi zmdi-more"></i>
       </li>
       <li>
+<<<<<<< HEAD
         <a href="" class="tst2" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
         <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
+=======
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+      </li>
+      <li>
+        <a href="documentation.html"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
       </li>
       <li>
         <a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>

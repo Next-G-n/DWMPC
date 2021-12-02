@@ -723,6 +723,7 @@
 									</div>
 								</div>
 							</div>
+<<<<<<< HEAD
 						</div>
 
 						<div  id="todo_tab" class="tab-pane fade" role="tabpanel">
@@ -752,6 +753,26 @@
 														<div class="profile-info text-center">
 															<div class="profile-img-wrap">
 																<img class="inline-block mb-10" src="img/mock1.jpg" alt="user"/>
+=======
+							<div  id="todo_tab" class="tab-pane fade" role="tabpanel">
+								<div class="todo-box-wrap">
+									<div class="add-todo">
+										<a href="javascript:void(0)" class="inline-block txt-grey">
+											<i class="zmdi zmdi-more"></i>
+										</a>
+										<span class="inline-block txt-dark">Profile</span>
+										<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
+										<div class="clearfix"></div>
+									</div>
+									<div class="set-height-wrap">
+										<!-- Todo-List -->
+										<div class="col-xs-12">
+											<div class="panel panel-default card-view  pa-0">
+												<div class="panel-wrapper collapse in">
+													<div class="panel-body  pa-0">
+														<div class="profile-box">
+															<div class="profile-cover-pic">
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
 																<div class="fileupload btn btn-default">
 																	<span class="btn-text">edit</span>
 																	<input class="upload" type="file">
@@ -766,6 +787,7 @@
 																	<span class="counts block head-font"><span class="counter-anim">${GeneralCount.company}</span></span>
 																	<span class="counts-text block">Companies</span>
 																</div>
+<<<<<<< HEAD
 																<div class="col-xs-4 text-center">
 																	<span class="counts block head-font"><span class="counter-anim">${GeneralCount.employee}</span></span>
 																	<span class="counts-text block">Employees</span>
@@ -773,6 +795,25 @@
 																<div class="col-xs-4 text-center">
 																	<span class="counts block head-font"><span class="counter-anim">${GeneralCount.vehicle}</span></span>
 																	<span class="counts-text block">Vehicles</span>
+=======
+																<h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">Kaone Rascon</h5>
+																<h6 class="block capitalize-font pb-20">Client</h6>
+															</div>
+															<div class="social-info">
+																<div class="row">
+																	<div class="col-xs-4 text-center">
+																		<span class="counts block head-font"><span class="counter-anim">45</span></span>
+																		<span class="counts-text block">Companies</span>
+																	</div>
+																	<div class="col-xs-4 text-center">
+																		<span class="counts block head-font"><span class="counter-anim">206</span></span>
+																		<span class="counts-text block">Employees</span>
+																	</div>
+																	<div class="col-xs-4 text-center">
+																		<span class="counts block head-font"><span class="counter-anim">118</span></span>
+																		<span class="counts-text block">Vechiles</span>
+																	</div>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
 																</div>
 															</div>
 															<button class="btn btn-gold btn-block  btn-anim mt-40" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
@@ -1125,6 +1166,7 @@
 					</div>
 				</div>
 
+<<<<<<< HEAD
 				<button  type="button"  alt="alert"  class="img-responsive model_img Company_Alert_Succes" style="display: none" id="employee-alert" onclick=""></button>
 
 				<div id="Company_info2"  class="tab-pane fade in active col-lg-3 col-md-6 col-sm-12 col-xs-12">
@@ -1140,12 +1182,31 @@
 											</div>
 											<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
 												<i class="icon-people data-right-rep-icon txt-light-grey"></i>
+=======
+					<button  type="button"  alt="alert"  class="img-responsive model_img Company_Alert_Succes" style="display: none" id="employee-alert" onclick=""></button>
+
+					<div id="Company_info2"  class="tab-pane fade in active col-lg-3 col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-default card-view pa-01 pa-0" onclick="EmployeeTable();" >
+							<div class="panel-wrapper collapse in">
+								<div class="panel-body pa-0">
+									<div class="sm-data-box">
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
+													<span class="txt-dark block counter"><span class="counter-anim">25</span></span>
+													<span class="weight-500 uppercase-font block font-13">Employees</span>
+												</div>
+												<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+													<i class="icon-people data-right-rep-icon txt-light-grey"></i>
+												</div>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+<<<<<<< HEAD
 					</div>
 					<div class="panel panel-default card-view pa-01 pa-0" onclick="VehicleTable()">
 						<div class="panel-wrapper collapse in">
@@ -1159,12 +1220,28 @@
 											</div>
 											<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
 												<i class="fa fa-truck data-right-rep-icon txt-light-grey"></i>
+=======
+						<div class="panel panel-default card-view pa-01 pa-0" onclick="VehicleTable()">
+							<div class="panel-wrapper collapse in">
+								<div class="panel-body pa-0">
+									<div class="sm-data-box">
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
+													<span class="txt-dark block counter"><span class="counter-anim">43</span></span>
+													<span class="weight-500 uppercase-font block">Vehicle</span>
+												</div>
+												<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+													<i class="fa fa-truck data-right-rep-icon txt-light-grey"></i>
+												</div>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+<<<<<<< HEAD
 					</div>
 					<div class="panel panel-default card-view pa-0  bg-warning">
 						<div class="panel-wrapper collapse in">
@@ -1178,6 +1255,21 @@
 											</div>
 											<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
 												<i class="icon-layers data-right-rep-icon txt-light"></i>
+=======
+						<div class="panel panel-default card-view pa-0  bg-warning">
+							<div class="panel-wrapper collapse in">
+								<div class="panel-body pa-0">
+									<div class="sm-data-box">
+										<div class="container-fluid">
+											<div class="row">
+												<div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left txt-light">
+													<span class="block counter"><span class="counter-anim">180</span></span>
+													<span class="weight-500 uppercase-font block">Companies Registered</span>
+												</div>
+												<div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+													<i class="icon-layers data-right-rep-icon txt-light"></i>
+												</div>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
 											</div>
 										</div>
 									</div>
@@ -1224,6 +1316,7 @@
 					<input type="hidden" name="action" value="Sign Out Session">
 				</form>
 
+<<<<<<< HEAD
 
 
 				<script >
@@ -1243,6 +1336,53 @@
 						const Street_Address = document.getElementsByClassName('Street-Address')[0].innerHTML;
 						<c:if test='${Company_info.street_Address2!=""}'>
 						const Street_Address2 = document.getElementsByClassName('Street-Address2')[0].innerHTML;
+=======
+                    <script >
+						function EmployeeTable(){
+							document.getElementById("Employee_info").submit();
+						}
+						function VehicleTable(){
+							document.getElementById("Vehicle_info").submit();
+						}
+						function LogOut(){
+							document.getElementById("LogOut_Session").submit();
+						}
+                        function toggleModal() {
+
+                            const Region = document.getElementsByClassName('Region')[0].innerHTML;
+                            const Email = document.getElementsByClassName('Email')[0].innerHTML;
+                            const Street_Address = document.getElementsByClassName('Street-Address')[0].innerHTML;
+							<c:if test='${Company_info.street_Address2!=""}'>
+                            const Street_Address2 = document.getElementsByClassName('Street-Address2')[0].innerHTML;
+							</c:if>
+                            const Company_status = document.getElementsByClassName('Company-status')[0].innerHTML;
+                            const Location = document.getElementsByClassName('Location')[0].innerHTML;
+                            const Contact = document.getElementsByClassName('Contact')[0].innerHTML;
+                            const Fax = document.getElementsByClassName('Fax')[0].innerHTML;
+
+                            //const Contact2=Contact.replace("+267 ","");
+
+
+                            document.getElementById('Region').value = Region;
+                            document.getElementById('Company_Email').value = Email;
+                            document.getElementById('Street-address').value = Street_Address;
+                            <c:if test='${Company_info.street_Address2!=""}'>
+                            document.getElementById('Street-address2').value = Street_Address2;
+							</c:if>
+                            document.getElementById('Status').value = Company_status;
+                            $("#Company-status").selectpicker("refresh");
+                            document.getElementById('Plot_Number').value = Location.split(",")[1];
+                            document.getElementById('Ward').value = Location.split(",")[2];
+                            document.getElementById('City').value = Location.split(",")[0];
+                            document.getElementById('telephone').value =  Contact.split(",")[1];
+                            document.getElementById('phoneNumber').value = Contact.split(",")[0];
+                            document.getElementById('fax').value = Fax;
+                        }
+						<c:if test="${All_Employee.isEmpty()}">
+						window.onload = function(){
+							document.getElementById('employee-alert').click();
+						}
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
 						</c:if>
 						const Company_status = document.getElementsByClassName('Company-status')[0].innerHTML;
 						const Location = document.getElementsByClassName('Location')[0].innerHTML;
@@ -1287,7 +1427,6 @@
 						document.getElementById('Fax').value = "";
 					}
 				</script>
-
 			</div>
 			<!-- /Row -->
 			<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -1308,6 +1447,7 @@
 						}
 					});
 
+<<<<<<< HEAD
 					return false;
 				});
 				function updateDiv()
@@ -1366,9 +1506,83 @@
 																	<div class="col-md-6 col-xs-12">
 																		<label class="control-label mb-10" for="phoneNumber2">phone number (required):</label>
 																		<input type="text" id="phoneNumber2"  data-mask="+267 99 999 999" name="phone_number" class="form-control required" value="${User_Info[0].contact}" />
+=======
+			<!-- form -->
+			<div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h5 class="modal-title" id="myModalLabel">Edit Profile</h5>
+						</div>
+						<div class="modal-body">
+							<!-- Row -->
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="">
+										<div class="panel-wrapper collapse in">
+											<div class="panel-body pa-0">
+												<div class="col-sm-12 col-xs-12">
+													<div class="form-wrap">
+														<form action="#">
+															<div class="form-body overflow-hide">
+																<div class="form-group">
+																	<label class="control-label mb-10" for="exampleInputuname_1">Name</label>
+																	<div class="input-group">
+																		<div class="input-group-addon"><i class="icon-user"></i></div>
+																		<input type="text" class="form-control" id="exampleInputuname_1" placeholder="willard bryant">
 																	</div>
 																</div>
+																<div class="form-group">
+																	<label class="control-label mb-10" for="exampleInputEmail_1">Email address</label>
+																	<div class="input-group">
+																		<div class="input-group-addon"><i class="icon-envelope-open"></i></div>
+																		<input type="email" class="form-control" id="exampleInputEmail_1" placeholder="xyz@gmail.com">
+																	</div>
+																</div>
+																<div class="form-group">
+																	<label class="control-label mb-10" for="exampleInputContact_1">Contact number</label>
+																	<div class="input-group">
+																		<div class="input-group-addon"><i class="icon-phone"></i></div>
+																		<input type="email" class="form-control" id="exampleInputContact_1" placeholder="+102 9388333">
+																	</div>
+																</div>
+																<div class="form-group">
+																	<label class="control-label mb-10" for="exampleInputpwd_1">Password</label>
+																	<div class="input-group">
+																		<div class="input-group-addon"><i class="icon-lock"></i></div>
+																		<input type="password" class="form-control" id="exampleInputpwd_1" placeholder="Enter pwd" value="password">
+																	</div>
+																</div>
+																<div class="form-group">
+																	<label class="control-label mb-10">Gender</label>
+																	<div>
+																		<div class="radio">
+																			<input type="radio" name="radio1" id="radio_1" value="option1" checked="">
+																			<label for="radio_1">
+																				M
+																			</label>
+																		</div>
+																		<div class="radio">
+																			<input type="radio" name="radio1" id="radio_2" value="option2">
+																			<label for="radio_2">
+																				F
+																			</label>
+																		</div>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
+																	</div>
+																</div>
+																<div class="form-group">
+																	<label class="control-label mb-10">Country</label>
+																	<select class="form-control" data-placeholder="Choose a Category" tabindex="1">
+																		<option value="Category 1">USA</option>
+																		<option value="Category 2">Austrailia</option>
+																		<option value="Category 3">India</option>
+																		<option value="Category 4">UK</option>
+																	</select>
+																</div>
 															</div>
+<<<<<<< HEAD
 															<div class="form-group">
 																<div class="row">
 																	<div class="col-md-6 col-xs-12">
@@ -1516,6 +1730,10 @@
 																	</div>
 
 																</div>
+=======
+															<div class="form-actions mt-10">
+																<button type="submit" class="btn btn-success mr-10 mb-30">Update profile</button>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
 															</div>
 														</div>
 														<div class="form-actions mt-10">
@@ -1529,6 +1747,13 @@
 								</div>
 							</div>
 						</div>
+<<<<<<< HEAD
+=======
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success waves-effect" data-dismiss="modal">Save</button>
+							<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+						</div>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
 					</div>
 					<div class="modal-footer">
 						<button type="button" onclick="document.getElementById('Profile_Submit').click()" class="btn btn-success waves-effect" data-dismiss="modal">Save</button>
@@ -1629,8 +1854,6 @@
 <script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <script src="dist/js/sweetalert-data.js"></script>
 <script src="dist/js/toast-data.js"></script>
-
-
 
 
 

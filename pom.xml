@@ -57,6 +57,7 @@
             <version>1.4.1</version>
             <scope>provided</scope> <!-- add this only if code will run in a java container (i.e. tomcat, etc)-->
         </dependency>
+<<<<<<< HEAD
         <dependency>
             <groupId>com.twilio.sdk</groupId>
             <artifactId>twilio</artifactId>
@@ -68,6 +69,8 @@
             <artifactId>sendgrid-java</artifactId>
             <version>4.7.5</version>
         </dependency>
+=======
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
     </dependencies>
 
     <build>

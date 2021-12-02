@@ -1303,9 +1303,12 @@
       type: form.attr('method'),
       url: form.attr('action'),
       data: form.serialize(),
+<<<<<<< HEAD
       fail: function (data){
 
       },
+=======
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
       success: function (data) {
       }
     });

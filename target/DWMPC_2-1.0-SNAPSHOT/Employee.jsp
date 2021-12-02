@@ -43,7 +43,11 @@
         <div class="mobile-only-brand pull-left">
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
+<<<<<<< HEAD
                     <a href="${pageContext.request.contextPath}/Home.jsp">
+=======
+                    <a href="${pageContext.request.contextPath}/CompanyInfo.jsp">
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
                         <img class="brand-img" src="img/logo2.png" alt="brand"/>
                     </a>
                 </div>
@@ -63,7 +67,11 @@
         <div id="mobile_only_nav" class="mobile-only-nav pull-right">
             <ul class="nav navbar-right top-nav pull-right">
                 <li>
+<<<<<<< HEAD
                     <a class="tst2" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
+=======
+                    <a id="" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
                 </li>
                 <li class="dropdown app-drp">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
@@ -119,8 +127,104 @@
                     </ul>
                 </li>
                 <li class="dropdown full-width-drp">
+<<<<<<< HEAD
                     <a href="#" class="tst2" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
                     <ul class="dropdown-menu mega-menu pa-0" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+=======
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
+                    <ul class="dropdown-menu mega-menu pa-0" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                        <li class="product-nicescroll-bar row">
+                            <ul class="pa-20">
+                                <li class="col-md-3 col-xs-6 col-menu-list">
+                                    <a href="javascript:void(0);"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                                    <hr class="light-grey-hr ma-0"/>
+                                    <ul>
+                                        <li>
+                                            <a href="${pageContext.request.contextPath}/CompanyInfo.jsp">Analytical</a>
+                                        </li>
+                                        <li>
+                                            <a href="index2.html">Demographic</a>
+                                        </li>
+                                        <li>
+                                            <a href="index3.html">Project</a>
+                                        </li>
+                                        <li>
+                                            <a href="index4.html">Hospital</a>
+                                        </li>
+                                        <li>
+                                            <a href="index5.html">HRM</a>
+                                        </li>
+                                        <li>
+                                            <a href="index6.html">Real Estate</a>
+                                        </li>
+                                        <li>
+                                            <a href="profile.html">profile</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="col-md-3 col-xs-6 col-menu-list">
+                                    <a href="javascript:void(0);">
+                                        <div class="pull-left">
+                                            <i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span>
+                                        </div>
+                                        <div class="pull-right"><span class="label label-gold">hot</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                    <hr class="light-grey-hr ma-0"/>
+                                    <ul>
+                                        <li>
+                                            <a href="e-commerce.html">Dashboard</a>
+                                        </li>
+                                        <li>
+                                            <a href="product.html">Products</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-detail.html">Product Detail</a>
+                                        </li>
+                                        <li>
+                                            <a href="add-products.html">Add Product</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-orders.html">Orders</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-cart.html">Cart</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-checkout.html">Checkout</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="col-md-6 col-xs-12 preview-carousel">
+                                    <a href="javascript:void(0);"><div class="pull-left"><span class="right-nav-text">latest products</span></div><div class="clearfix"></div></a>
+                                    <hr class="light-grey-hr ma-0"/>
+                                    <div class="product-carousel owl-carousel owl-theme text-center">
+                                        <a href="#">
+                                            <img src="img/chair.jpg" alt="chair">
+                                            <span>Circle chair</span>
+                                        </a>
+                                        <a href="#">
+                                            <img src="img/chair2.jpg" alt="chair">
+                                            <span>square chair</span>
+                                        </a>
+                                        <a href="#">
+                                            <img src="img/chair3.jpg" alt="chair">
+                                            <span>semi circle chair</span>
+                                        </a>
+                                        <a href="#">
+                                            <img src="img/chair4.jpg" alt="chair">
+                                            <span>wooden chair</span>
+                                        </a>
+                                        <a href="#">
+                                            <img src="img/chair2.jpg" alt="chair">
+                                            <span>square chair</span>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
                     </ul>
                 </li>
                 <li class="dropdown alert-drp">
@@ -269,6 +373,7 @@
                 <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
+<<<<<<< HEAD
                 <a id="open_right_sidebar" href="#" onclick="document.getElementById('chat_tab_btn').click();" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
             </li>
             <li>
@@ -276,6 +381,15 @@
             </li>
             <li>
                 <a href="" class="tst2" ><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+=======
+                <a id="open_right_sidebar" href="#" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+            </li>
+            <li>
+                <a href="widgets.html"><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -283,7 +397,25 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
+<<<<<<< HEAD
                 <a href="${pageContext.request.contextPath}/companyForm.jsp" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">Add Company</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+=======
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">My Companies</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
+                    <li class="active" role="presentation">
+                        <a  data-toggle="tab"  role="tab" href="#Company_info" href="#Company_info2" aria-expanded="true">Information</a>
+                    </li>
+                    <li >
+                        <a aria-expanded="false"  data-toggle="tab" role="tab"  href="#Vehicle_info">Vehicles</a>
+                    </li>
+                    <li>
+                        <a  data-toggle="tab"  role="tab"  aria-expanded="false">Attachments</a>
+                    </li>
+                    <li>
+                        <a href="#">Employees</a>
+                    </li>
+                </ul>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
@@ -292,15 +424,77 @@
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
+<<<<<<< HEAD
                 <a href="javascript:void(0);"  class="tst2" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="" class="tst2" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+=======
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <ul id="table_dr" class="collapse collapse-level-1 two-col-list">
+                    <li>
+                        <a href="basic-table.html">Basic Table</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-table.html">Bootstrap Table</a>
+                    </li>
+                    <li>
+                        <a href="data-table.html">Data Table</a>
+                    </li>
+                    <li>
+                        <a href="export-table.html">Export Table</a>
+                    </li>
+                    <li>
+                        <a href="responsive-data-table.html">RSPV DataTable</a>
+                    </li>
+                    <li>
+                        <a href="responsive-table.html">Responsive Table</a>
+                    </li>
+                    <li>
+                        <a href="editable-table.html">Editable Table</a>
+                    </li>
+                    <li>
+                        <a href="foo-table.html">Foo Table</a>
+                    </li>
+                    <li>
+                        <a href="jsgrid-table.html">Jsgrid Table</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <ul id="icon_dr" class="collapse collapse-level-1">
+                    <li>
+                        <a href="fontawesome.html">Fontawesome</a>
+                    </li>
+                    <li>
+                        <a href="themify.html">Themify</a>
+                    </li>
+                    <li>
+                        <a href="linea-icon.html">Linea</a>
+                    </li>
+                    <li>
+                        <a href="simple-line-icons.html">Simple Line</a>
+                    </li>
+                    <li>
+                        <a href="pe-icon-7.html">Pe-icon-7</a>
+                    </li>
+                    <li>
+                        <a href="glyphicons.html">Glyphicons</a>
+                    </li>
+                </ul>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                 <ul id="maps_dr" class="collapse collapse-level-1">
                     <li>
+<<<<<<< HEAD
+=======
+                        <a href="vector-map.html">Vector Map</a>
+                    </li>
+                    <li>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
                         <a href="google-map.html">Google Map</a>
                     </li>
                 </ul>
@@ -311,6 +505,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
+<<<<<<< HEAD
                 <a href="javascript:void(0);" class="tst2" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
@@ -318,6 +513,15 @@
             </li>
             <li>
                 <a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+=======
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+            </li>
+            <li>
+                <a href="documentation.html"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
             </li>
         </ul>
     </div>
@@ -329,9 +533,15 @@
             <li>
                 <div  class="tab-struct custom-tab-1">
                     <ul role="tablist" class="nav nav-tabs" id="right_sidebar_tab">
+<<<<<<< HEAD
                         <li class="active" role="presentation"><a aria-expanded="false"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab" >Emails</a></li>
                         <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">Notification</a></li>
                         <li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="true">Profile</a></li>
+=======
+                        <li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab">chat</a></li>
+                        <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">messages</a></li>
+                        <li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="false">todo</a></li>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
                     </ul>
                     <div class="tab-content" id="right_sidebar_content">
                         <div  id="chat_tab" class="tab-pane fade active in" role="tabpanel">
@@ -384,8 +594,12 @@
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle" src="img/user2.png" alt="user"/>
                                                                 <div class="user-data">
+<<<<<<< HEAD
                                                                     <span class="name block capitalize-font">Madalyn Rascon
                                                                     </span>
+=======
+                                                                    <span class="name block capitalize-font">Madalyn Rascon</span>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
                                                                     <span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
                                                                 </div>
                                                                 <div class="status online"></div>
@@ -672,12 +886,17 @@
                                     <a href="javascript:void(0)" class="inline-block txt-grey">
                                         <i class="zmdi zmdi-more"></i>
                                     </a>
+<<<<<<< HEAD
                                     <span class="inline-block txt-dark">Profile</span>
+=======
+                                    <span class="inline-block txt-dark">todo list</span>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
                                     <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="set-height-wrap">
                                     <!-- Todo-List -->
+<<<<<<< HEAD
                                     <div class="col-xs-12">
                                         <div class="panel panel-default card-view  pa-0">
                                             <div class="panel-wrapper collapse in">
@@ -723,6 +942,64 @@
                                             </div>
                                         </div>
                                     </div>
+=======
+                                    <ul class="todo-list nicescroll-bar">
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-default">
+                                                <input type="checkbox" id="checkbox01"/>
+                                                <label for="checkbox01">Record The First Episode</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-pink">
+                                                <input type="checkbox" id="checkbox02"/>
+                                                <label for="checkbox02">Prepare The Conference Schedule</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-warning">
+                                                <input type="checkbox" id="checkbox03" checked/>
+                                                <label for="checkbox03">Decide The Live Discussion Time</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-success">
+                                                <input type="checkbox" id="checkbox04" checked/>
+                                                <label for="checkbox04">Prepare For The Next Project</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-danger">
+                                                <input type="checkbox" id="checkbox05" checked/>
+                                                <label for="checkbox05">Finish Up AngularJs Tutorial</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                        <li class="todo-item">
+                                            <div class="checkbox checkbox-purple">
+                                                <input type="checkbox" id="checkbox06" checked/>
+                                                <label for="checkbox06">Finish Infinity Project</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <hr class="light-grey-hr"/>
+                                        </li>
+                                    </ul>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
                                     <!-- /Todo-List -->
                                 </div>
                             </div>
@@ -843,6 +1120,7 @@
 
                     </div>
                 </div>
+<<<<<<< HEAD
 
                 <!-- form -->
                 <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -941,6 +1219,8 @@
                 </div>
                 <!-- /form -->
 
+=======
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
             </div>
             <!-- Footer -->
             <footer class="footer container-fluid pl-30 pr-30">
@@ -982,7 +1262,10 @@
 
 <!-- Init JavaScript -->
 <script src="dist/js/init.js"></script>
+<<<<<<< HEAD
 <script src="dist/js/toast-data.js"></script>
+=======
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
 
 <!-- Bootstrap Select JavaScript -->
 <script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>

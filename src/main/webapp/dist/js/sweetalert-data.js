@@ -85,17 +85,6 @@ $(function() {
             return false;
         });
 
-        $('#Error-CompanyName').on('click',function(e){
-            swal({
-                title: "Failed to Register",
-                type: "warning",
-                text: "The  Company Name you used Exist",
-                timer: 2000,
-                showConfirmButton: false
-            });
-            return false;
-        });
-
 
 
     $('#Revoking-Officer').on('click',function(e){
@@ -110,19 +99,6 @@ $(function() {
             },function (){
                 // window.open('Employees.jsp', '_parent');
                 document.getElementById("Revoking").submit();
-            });
-            return false;
-        });
-        $('#alert-Sent').on('click',function(e){
-            swal({
-                title: "Email Successful Sent",
-                type: "success",
-                text: "Go to your email to reset your Password",
-                confirmButtonColor: "#8BC34A",
-                confirmButtonText: "Login"
-            },function (){
-                // window.open('Employees.jsp', '_parent');
-                window.open('login.jsp', '_parent');
             });
             return false;
         });
@@ -222,8 +198,6 @@ $(function() {
         });
 		return false;
     });
-
-
 
 
     },

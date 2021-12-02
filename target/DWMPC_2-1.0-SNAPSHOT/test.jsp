@@ -327,7 +327,11 @@
                 <a id="open_right_sidebar"  href="todo_tab" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
             </li>
             <li>
+<<<<<<< HEAD
                 <a id="open_profile" onclick="document.getElementById('todo_tab_btn').click();"  data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+=======
+                <a id="open_email" onclick="document.getElementById('todo_tab_btn').click();"  data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
             </li>
             <li>
                 <a href=""><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
@@ -380,7 +384,11 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
+<<<<<<< HEAD
                 <a href="" class="tst2" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+=======
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
             </li>
             <li>
                 <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
@@ -767,12 +775,18 @@
                                                                     <input class="upload" type="file">
                                                                 </div>
                                                             </div>
+<<<<<<< HEAD
                                                             <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">Kaone Rascon</h5>
                                                             <h6 class="block capitalize-font pb-20">Client</h6>
+=======
+                                                            <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">Madalyn Rascon</h5>
+                                                            <h6 class="block capitalize-font pb-20">Developer Geek</h6>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
                                                         </div>
                                                         <div class="social-info">
                                                             <div class="row">
                                                                 <div class="col-xs-4 text-center">
+<<<<<<< HEAD
                                                                     <span class="counts block head-font"><span class="counter-anim">45</span></span>
                                                                     <span class="counts-text block">Companies</span>
                                                                 </div>
@@ -783,6 +797,18 @@
                                                                 <div class="col-xs-4 text-center">
                                                                     <span class="counts block head-font"><span class="counter-anim">118</span></span>
                                                                     <span class="counts-text block">Vechiles</span>
+=======
+                                                                    <span class="counts block head-font"><span class="counter-anim">345</span></span>
+                                                                    <span class="counts-text block">post</span>
+                                                                </div>
+                                                                <div class="col-xs-4 text-center">
+                                                                    <span class="counts block head-font"><span class="counter-anim">246</span></span>
+                                                                    <span class="counts-text block">followers</span>
+                                                                </div>
+                                                                <div class="col-xs-4 text-center">
+                                                                    <span class="counts block head-font"><span class="counter-anim">898</span></span>
+                                                                    <span class="counts-text block">tweets</span>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
                                                                 </div>
                                                             </div>
                                                             <button class="btn btn-gold btn-block  btn-anim mt-40" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
@@ -1081,7 +1107,10 @@
 <!-- Init JavaScript -->
 <script src="dist/js/init.js"></script>
 <script src="dist/js/dashboard4-data.js"></script>
+<<<<<<< HEAD
 <script src="dist/js/toast-data.js"></script>
+=======
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
 
 <!-- Sweet-Alert  -->
 <script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>

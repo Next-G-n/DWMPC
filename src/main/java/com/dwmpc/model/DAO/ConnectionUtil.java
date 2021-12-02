@@ -89,12 +89,6 @@ public class ConnectionUtil {
 
 
         }catch (SQLIntegrityConstraintViolationException e){
-            System.out.println("This is error: "+e);
-            String ErrorSql= String.valueOf(e);
-            if(ErrorSql.contains("Email_UNIQUE")){
-                error ="Error Email";
-            }
-
             error="You have "+e;
             System.out.println("This "+error);
         } finally {
@@ -123,7 +117,6 @@ public class ConnectionUtil {
                 myStmt = myConn.prepareStatement(sql);
             } else {
                 em="Users";
-
                 sql = "select * from user where Email=?";
                 myStmt = myConn.prepareStatement(sql);
                 myStmt.setString(1, email);
@@ -141,7 +134,9 @@ public class ConnectionUtil {
                 String contact = myRS.getString("Contact");
                 String location = myRS.getString("Location");
                 String PasswordOG = myRS.getString("Password");
+                boolean matched = hash.validatePassword(password, PasswordOG);
 
+                System.out.println(matched);
                 user login2;
 
 
@@ -150,18 +145,14 @@ public class ConnectionUtil {
                         String addRoles = myRS.getString("Add Roles");
                         login2 = new user(id, firstName, lastName, email, userType, omang, contact, addRoles, location);
                         login.add(login2);
-                    } else if(password.equals("None")){
+                    } else {
                         login2 = new user(id, firstName, lastName, email, userType, password, omang, contact, location, "just");
                         login.add(login2);
-                    }else {
-                        boolean matched = hash.validatePassword(password, PasswordOG);
-                        login2 = new user(id, firstName, lastName, email, userType, password, omang, contact, location, "just");
-                        login.add(login2);
-                        if (!matched && !em.equals("Admin")) {
-                            login.clear();
-                        }
                     }
-
+                if (!matched && !em.equals("Admin")) {
+                  login.clear();
+                  System.out.println("thiiswwwww");
+                }
 
 
             }
@@ -251,9 +242,6 @@ public class ConnectionUtil {
             String ErrorSql= String.valueOf(sqlI);
             if(ErrorSql.contains("Email_UNIQUE")){
                 viewRegisteredCompany=new company_Information("Error Email");
-            }
-            if(ErrorSql.contains("Name_UNIQUE")){
-                viewRegisteredCompany=new company_Information("Error Name");
             }
         }finally {
             close(myConn,myStmt,myRS);
@@ -848,7 +836,7 @@ public class ConnectionUtil {
             myConn = dataSource.getConnection();
             String sql2;
                     if(action.equals("Registration")){
-                        sql2="INSERT INTO `dwmpc`.`MonthlyReport_Statue` (`Company_Id`,`dateUnix`) VALUES ("+company_id+",'"+applicationDate+"');";
+                        sql2="INSERT INTO `dwmpc`.`MonthlyReport_Statue` (`Company_Id`,`dateUnix`) VALUES ("+company_id+","+applicationDate+");";
                     }else{
                 sql2="UPDATE `dwmpc`.`MonthlyReport_Statue` SET  `dateUnix` = '"+applicationDate+"' WHERE (`Company_Id` = '"+company_id+"');";
             }
@@ -880,7 +868,7 @@ public class ConnectionUtil {
             while(myRs.next()) {
                 //retrieve data from the result set
                 String date=myRs.getString("dateUnix");
-                    if(!date.equals("There is Null")){
+                    if(!date.equals("null")){
                         long unixSeconds = Long.parseLong(date);
                         SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy");
                         sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT+2"));
@@ -1038,111 +1026,5 @@ public class ConnectionUtil {
         }
         System.out.println("Return :"+report_id);
         return report_id;
-    }
-
-    public CountGeneral CountGe(int user_id) throws Exception {
-        Connection myConn=null;
-        ResultSet myRs=null;
-        PreparedStatement myStmt=null;
-        CountGeneral countGeneral;
-        int numberCompany=0;
-        int numberVehicle=0;
-        int numberEmployee=0;
-
-        try {
-            myConn=dataSource.getConnection();
-            String sql ="SELECT * FROM company_information where `User Id`="+user_id;
-            myStmt=myConn.prepareStatement(sql);
-            myRs=myStmt.executeQuery();
-
-            //process result set
-            while(myRs.next()) {
-                int companyId=myRs.getInt("Company Id");
-
-
-
-                sql="SELECT COUNT(*) FROM vehicle where `Company Id`="+companyId;
-                myStmt=myConn.prepareStatement(sql);
-                myRs=myStmt.executeQuery();
-                while(myRs.next()) {
-                    int number=myRs.getInt("COUNT(*)");
-                    numberVehicle=numberVehicle+number;
-                }
-                sql="SELECT COUNT(*) FROM company_personnel where `Company Id`="+companyId;
-                myStmt=myConn.prepareStatement(sql);
-                myRs=myStmt.executeQuery();
-                while(myRs.next()) {
-                    int number=myRs.getInt("COUNT(*)");
-                    numberEmployee=numberEmployee+number;
-                }
-
-
-            }
-            sql="SELECT COUNT(*) FROM company_information where `User Id`="+user_id;
-            myStmt=myConn.prepareStatement(sql);
-            myRs=myStmt.executeQuery();
-            while(myRs.next()) {
-                numberCompany=myRs.getInt("COUNT(*)");
-            }
-            System.out.println("Company: "+numberCompany+" Vehicle :"+numberVehicle+" Employee: "+numberEmployee);
-            countGeneral=new CountGeneral(numberCompany,numberVehicle,numberEmployee);
-
-        }finally {
-
-            close(myConn,myStmt,myRs);
-
-        }
-        return countGeneral;
-    }
-
-    public CountGeneral CountSp(int company_id)throws Exception{
-        Connection myConn=null;
-        ResultSet myRs=null;
-        PreparedStatement myStmt=null;
-        CountGeneral countGeneral;
-        int numberCompany=0;
-        int numberVehicle=0;
-        int numberEmployee=0;
-
-        try {
-            myConn=dataSource.getConnection();
-            String sql ="SELECT * FROM company_information where `Company Id`="+company_id;
-            myStmt=myConn.prepareStatement(sql);
-            myRs=myStmt.executeQuery();
-
-            //process result set
-            while(myRs.next()) {
-                int user_id=myRs.getInt("User Id");
-
-                sql="SELECT COUNT(*) FROM company_information where `User Id`="+user_id;
-                myStmt=myConn.prepareStatement(sql);
-                myRs=myStmt.executeQuery();
-                while(myRs.next()) {
-                    numberCompany=myRs.getInt("COUNT(*)");
-                }
-
-            }
-            sql="SELECT COUNT(*) FROM vehicle where `Company Id`="+company_id;
-            myStmt=myConn.prepareStatement(sql);
-            myRs=myStmt.executeQuery();
-            while(myRs.next()) {
-                numberVehicle=myRs.getInt("COUNT(*)");
-            }
-            sql="SELECT COUNT(*) FROM company_personnel where `Company Id`="+company_id;
-            myStmt=myConn.prepareStatement(sql);
-            myRs=myStmt.executeQuery();
-            while(myRs.next()) {
-                numberEmployee=myRs.getInt("COUNT(*)");
-            }
-
-            System.out.println("Company: "+numberCompany+" Vehicle :"+numberVehicle+" Employee: "+numberEmployee);
-            countGeneral=new CountGeneral(numberCompany,numberVehicle,numberEmployee);
-
-        }finally {
-
-            close(myConn,myStmt,myRs);
-
-        }
-        return countGeneral;
     }
 }

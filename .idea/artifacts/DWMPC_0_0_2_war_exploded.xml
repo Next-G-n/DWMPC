@@ -6,7 +6,6 @@
         <exploded>true</exploded>
         <module>DWMPC_0.0.2</module>
         <packaging>war</packaging>
-        <unpackNestedArchives>false</unpackNestedArchives>
       </options>
     </properties>
     <root id="root">
@@ -19,6 +18,7 @@
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.11.4" />
           <element id="library" level="project" name="Maven: javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1" />
           <element id="library" level="project" name="Maven: org.mindrot:jbcrypt:0.3m" />
+<<<<<<< HEAD
           <element id="library" level="project" name="Maven: com.twilio.sdk:twilio:8.20.0" />
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.15" />
           <element id="library" level="project" name="Maven: commons-io:commons-io:2.7" />
@@ -38,6 +38,8 @@
           <element id="library" level="project" name="Maven: com.sendgrid:sendgrid-java:4.7.5" />
           <element id="library" level="project" name="Maven: com.sendgrid:java-http-client:4.3.7" />
           <element id="library" level="project" name="Maven: org.bouncycastle:bcprov-jdk15on:1.69" />
+=======
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
         </element>
       </element>
       <element id="directory" name="META-INF">

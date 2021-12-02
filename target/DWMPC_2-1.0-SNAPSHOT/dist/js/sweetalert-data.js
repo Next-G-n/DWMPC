@@ -85,6 +85,7 @@ $(function() {
             return false;
         });
 
+<<<<<<< HEAD
         $('#Error-CompanyName').on('click',function(e){
             swal({
                 title: "Failed to Register",
@@ -96,6 +97,8 @@ $(function() {
             return false;
         });
 
+=======
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
 
 
     $('#Revoking-Officer').on('click',function(e){
@@ -113,6 +116,7 @@ $(function() {
             });
             return false;
         });
+<<<<<<< HEAD
         $('#alert-Sent').on('click',function(e){
             swal({
                 title: "Email Successful Sent",
@@ -126,6 +130,8 @@ $(function() {
             });
             return false;
         });
+=======
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
 
     $('#employee-alert').on('click',function(e){
             swal({
@@ -224,8 +230,11 @@ $(function() {
     });
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
     },
     //init
     $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert;

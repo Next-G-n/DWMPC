@@ -864,7 +864,84 @@
                         </div>
                     </div>
 
+<<<<<<< HEAD
                 </c:forEach>
+=======
+</c:forEach>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="panel panel-warning contact-card card-view">
+                        <div class="panel-heading">
+                            <div class="pull-left">
+                                <div class="pull-left user-img-wrap mr-15">
+                                    <img class="card-user-img img-circle pull-left" src="img/user.png" alt="user"/>
+                                </div>
+                                <div class="pull-left user-detail-wrap">
+											<span class="block card-user-name">
+												Clay Masse
+											</span>
+                                    <span class="block card-user-desn">
+												Government
+											</span>
+                                </div>
+                            </div>
+                            <div class="pull-right">
+                                <a class="pull-left inline-block mr-15" href="#">
+                                    <i class="zmdi zmdi-edit txt-light"></i>
+                                </a>
+                                <a class="pull-left inline-block mr-15" href="#">
+                                    <i class="zmdi zmdi-delete txt-light"></i>
+                                </a>
+                                <div class="pull-left inline-block dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert txt-light"></i></a>
+                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
+                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Full Info</a></li>
+                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Send Message</a></li>
+                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Follow</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body row">
+                                <div class="user-others-details pl-15 pr-15">
+                                    <div class="mb-15">
+                                        <i class="zmdi zmdi-email-open inline-block mr-10"></i>
+                                        <span class="inline-block txt-dark">markh@example.com</span>
+                                    </div>
+                                    <div class="mb-15">
+                                        <i class="zmdi zmdi-phone inline-block mr-10"></i>
+                                        <span class="inline-block txt-dark">+267 72445241</span>
+                                    </div>
+                                    <div class="mb-15">
+                                        <i class="zmdi zmdi-print inline-block mr-10"></i>
+                                        <span class="inline-block txt-dark">360 876 876</span>
+                                    </div>
+                                    <div class="mb-15">
+                                        <i class="zmdi zmdi-my-location inline-block mr-10"></i>
+                                        <span class="inline-block txt-dark">Francistown, Monarch Area 4, Monarch Area 4</span>
+                                    </div>
+                                    <div class="mb-15">
+                                        <i class="zmdi zmdi-local-post-office inline-block mr-10"></i>
+                                        <span class="inline-block txt-dark">PO Box 20715</span>
+                                    </div>
+                                    <div>
+                                        <i class="zmdi zmdi zmdi-bookmark inline-block mr-10"></i>
+                                        <span class="inline-block txt-dark">Company</span>
+                                    </div>
+                                </div>
+                                <hr class="light-grey-hr mt-20 mb-20"/>
+                                <div class="emp-detail pl-15 pr-15">
+                                    <div class="mb-5">
+                                        <span class="inline-block capitalize-font mr-5">joininig date:</span>
+                                        <span class="txt-dark">12-10-2014</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+>>>>>>> 29aedc206b03fca845db573cd4b788e67ae6e0df
                 <div class="col-lg-4 col-md-4 col-xs-12">
                     <div class="panel panel-warning card-view">
                         <div class="panel-heading">

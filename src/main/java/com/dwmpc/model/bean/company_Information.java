@@ -10,66 +10,16 @@ public class company_Information {
     String Street_Address;
     String Street_Address2;
     String Region_Town_Village;
-    String Region;
     String Plot_Number;
     String Ward;
-    String Telephone;
-    String Fax_Number;
-    String Phone_Number;
-    String Company_Status;
+    int Telephone;
+    int Fax_Number;
+    int Phone_Number;
     String Date_Unix;
     String Company_License_Status;
-    String CompanyDate;
-    String UserType;
-    String Chassis;
-    String Apply_Id;
+    String Company_Status;
 
-    public company_Information(int company_Id, int user_Id, String company_Name) {
-        Company_Id = company_Id;
-        User_Id = user_Id;
-        Company_Name = company_Name;
-    }
-
-    public company_Information(String company_Name) {
-        Company_Name = company_Name;
-    }
-
-    public company_Information(int company_Id, int user_Id, String company_Name, String email, String region_Town_Village, String plot_Number, String ward, String telephone, String fax_Number, String phone_Number, String company_Status, String date_Unix, String street_Address, String companyDate, String userType, String chassis, String apply_Id) {
-        Company_Id = company_Id;
-        User_Id = user_Id;
-        Company_Name = company_Name;
-        Email = email;
-        Region_Town_Village = region_Town_Village;
-        Plot_Number = plot_Number;
-        Ward = ward;
-        Telephone = telephone;
-        Fax_Number = fax_Number;
-        Phone_Number = phone_Number;
-        Company_Status = company_Status;
-        Date_Unix = date_Unix;
-        Street_Address = street_Address;
-        CompanyDate=companyDate;
-        UserType=userType;
-        Chassis=chassis;
-        Apply_Id=apply_Id;
-    }
-    public company_Information(int company_Id, int user_Id, String company_Name, String email, String region_Town_Village, String plot_Number, String ward, String telephone, String fax_Number, String phone_Number, String company_Status, String date_Unix, String street_Address) {
-        Company_Id = company_Id;
-        User_Id = user_Id;
-        Company_Name = company_Name;
-        Email = email;
-        Region_Town_Village = region_Town_Village;
-        Plot_Number = plot_Number;
-        Ward = ward;
-        Telephone = telephone;
-        Fax_Number = fax_Number;
-        Phone_Number = phone_Number;
-        Company_Status = company_Status;
-        Date_Unix = date_Unix;
-        Street_Address = street_Address;
-    }
-
-    public company_Information(int company_Id, int user_Id, String company_Name, String email, String street_Address, String street_Address2, String region_Town_Village, String region, String plot_Number, String ward, String telephone, String fax_Number, String phone_Number, String company_Status, String date_Unix, String company_License_Status) {
+    public company_Information(int company_Id, int user_Id, String company_Name, String email, String street_Address, String street_Address2, String region_Town_Village, String plot_Number, String ward, int telephone, int fax_Number, int phone_Number, String date_Unix, String company_License_Status, String company_Status) {
         Company_Id = company_Id;
         User_Id = user_Id;
         Company_Name = company_Name;
@@ -77,47 +27,14 @@ public class company_Information {
         Street_Address = street_Address;
         Street_Address2 = street_Address2;
         Region_Town_Village = region_Town_Village;
-        Region = region;
         Plot_Number = plot_Number;
         Ward = ward;
         Telephone = telephone;
         Fax_Number = fax_Number;
         Phone_Number = phone_Number;
-        Company_Status = company_Status;
         Date_Unix = date_Unix;
         Company_License_Status = company_License_Status;
-    }
-
-    public String getChassis() {
-        return Chassis;
-    }
-
-    public void setChassis(String chassis) {
-        Chassis = chassis;
-    }
-
-    public String getApply_Id() {
-        return Apply_Id;
-    }
-
-    public void setApply_Id(String apply_Id) {
-        Apply_Id = apply_Id;
-    }
-
-    public String getUserType() {
-        return UserType;
-    }
-
-    public void setUserType(String userType) {
-        UserType = userType;
-    }
-
-    public String getCompanyDate() {
-        return CompanyDate;
-    }
-
-    public void setCompanyDate(String companyDate) {
-        CompanyDate = companyDate;
+        Company_Status = company_Status;
     }
 
     public int getCompany_Id() {
@@ -176,14 +93,6 @@ public class company_Information {
         Region_Town_Village = region_Town_Village;
     }
 
-    public String getRegion() {
-        return Region;
-    }
-
-    public void setRegion(String region) {
-        Region = region;
-    }
-
     public String getPlot_Number() {
         return Plot_Number;
     }
@@ -200,36 +109,28 @@ public class company_Information {
         Ward = ward;
     }
 
-    public String getTelephone() {
+    public int getTelephone() {
         return Telephone;
     }
 
-    public void setTelephone(String telephone) {
+    public void setTelephone(int telephone) {
         Telephone = telephone;
     }
 
-    public String getFax_Number() {
+    public int getFax_Number() {
         return Fax_Number;
     }
 
-    public void setFax_Number(String fax_Number) {
+    public void setFax_Number(int fax_Number) {
         Fax_Number = fax_Number;
     }
 
-    public String getPhone_Number() {
+    public int getPhone_Number() {
         return Phone_Number;
     }
 
-    public void setPhone_Number(String phone_Number) {
+    public void setPhone_Number(int phone_Number) {
         Phone_Number = phone_Number;
-    }
-
-    public String getCompany_Status() {
-        return Company_Status;
-    }
-
-    public void setCompany_Status(String company_Status) {
-        Company_Status = company_Status;
     }
 
     public String getDate_Unix() {
@@ -248,6 +149,14 @@ public class company_Information {
         Company_License_Status = company_License_Status;
     }
 
+    public String getCompany_Status() {
+        return Company_Status;
+    }
+
+    public void setCompany_Status(String company_Status) {
+        Company_Status = company_Status;
+    }
+
     @Override
     public String toString() {
         return "company_Information{" +
@@ -258,15 +167,15 @@ public class company_Information {
                 ", Street_Address='" + Street_Address + '\'' +
                 ", Street_Address2='" + Street_Address2 + '\'' +
                 ", Region_Town_Village='" + Region_Town_Village + '\'' +
-                ", Region='" + Region + '\'' +
                 ", Plot_Number='" + Plot_Number + '\'' +
                 ", Ward='" + Ward + '\'' +
                 ", Telephone=" + Telephone +
                 ", Fax_Number=" + Fax_Number +
                 ", Phone_Number=" + Phone_Number +
-                ", Company_Status='" + Company_Status + '\'' +
                 ", Date_Unix='" + Date_Unix + '\'' +
                 ", Company_License_Status='" + Company_License_Status + '\'' +
+                ", Company_Status='" + Company_Status + '\'' +
                 '}';
     }
+
 }
