@@ -264,12 +264,16 @@ public class ServletDwmpc extends HttpServlet {
         String UserType = request.getParameter("UserType");
         String Branch=request.getParameter("Branch");
         Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
+        String companyEmail=request.getParameter("company_email");
+        String companyPhone=request.getParameter("company_phone");
+
 
             String Company_Id=request.getParameter("company_id");
             officerAction setAction=new officerAction(User_id,Apply_id,action,delay_Time);
             System.out.println("Apply id: "+Apply_id);
-            connectionUtil.OfficersActions(setAction,UserType,Vehicle_id,Company_Id);
+            connectionUtil.OfficersActions(setAction,UserType,Vehicle_id,Company_Id,companyEmail,companyPhone);
             HttpSession session=request.getSession();
+
 
 
             if(UserType.equals("Waste Management Officer")){

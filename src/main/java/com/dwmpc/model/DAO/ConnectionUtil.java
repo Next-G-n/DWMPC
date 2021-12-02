@@ -1,5 +1,7 @@
 package com.dwmpc.model.DAO;
 
+import com.dwmpc.controller.SendEmail;
+import com.dwmpc.controller.twiltest;
 import com.dwmpc.model.bean.*;
 
 import javax.sql.DataSource;
@@ -706,13 +708,12 @@ public class ConnectionUtil {
 
     }
 
-    public void OfficersActions(officerAction setAction, String userType,String vehicle_id,String Company_id)throws Exception {
+    public void OfficersActions(officerAction setAction, String userType,String vehicle_id,String Company_id,String companyEmail,String companyPhone)throws Exception {
         Connection myConn=null;
         PreparedStatement myStmt=null;
         try {
             myConn=dataSource.getConnection();
             String sql=null;
-
                 sql = "INSERT INTO `officer_action` (`User Id`, `Application Status Id`, `Action Taken`, `Delay Time`)" +
                         " VALUES (?,?,?,?)";
                 myStmt = myConn.prepareStatement(sql);
@@ -727,6 +728,8 @@ public class ConnectionUtil {
                     switch (userType){
                         case "Compliance Officer":
                             nextApprove="Waste Management Officer";
+                            SendEmail.sentEmail(companyEmail);
+                            twiltest.sendSms(companyPhone);
                             level="Stage 2";
                             break;
                         case "Waste Management Officer":

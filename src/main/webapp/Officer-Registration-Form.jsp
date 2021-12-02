@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +21,10 @@
 
   <!-- Bootstrap Dropify CSS -->
   <link href="vendors/bower_components/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css"/>
+
+  <!--alerts CSS -->
+  <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
 
   <!-- Custom CSS -->
   <link href="dist/css/style.css" rel="stylesheet" type="text/css">
@@ -774,12 +780,12 @@
                             <input type="hidden" name="password" value="2021">
                             <div class="col-md-6 col-xs-12 mt-40">
                               <label class="control-label mb-10" for="First_Name"> First Name(required):</label>
-                              <input type="text" id="First_Name" name="first_name"  class="form-control required"   required/>
+                              <input type="text" id="First_Name" name="first_name"  class="form-control required" value="${ErrorEmail.first_name}"   required/>
                             </div>
                             <div class="span1"></div>
                             <div class="col-md-6 col-xs-12 mt-40">
                               <label class="control-label mb-10" for="Last_Name"> Last Name(required):</label>
-                              <input type="text" id="Last_Name" name="last_name"  class="form-control required"   required/>
+                              <input type="text" id="Last_Name" name="last_name"  class="form-control required"  value="${ErrorEmail.last_name}"  required/>
                             </div>
                           </div>
                         </div>
@@ -787,12 +793,12 @@
                           <div class="row">
                             <div class="col-md-6 col-xs-12">
                               <label class="control-label mb-10" for="Email"> Email(required):</label>
-                              <input type="email" id="Email" name="email"  class="form-control required"   required/>
+                              <input type="email" id="Email" name="email"  class="form-control required" value="${ErrorEmail.email}"   required/>
                             </div>
                             <div class="span1"></div>
                             <div class="col-md-6 col-xs-12">
-                              <label class="control-label mb-10" for="Occupation"> Occupation(required):</label>
-                              <select id="Occupation" name="User_Type" class="selectpicker" data-style="form-control btn-default btn-outline">
+                              <label class="control-label mb-10"  for="Occupation"> Occupation(required):</label>
+                              <select id="Occupation" name="User_Type" class="selectpicker"  data-style="form-control btn-default btn-outline">
                                 <option value="Compliance Officer">Compliance Officer</option>
                                 <option value="Waste Management Officer">Waste Management Officer</option>
                                 <option value="Regional Coordinate">Regional Coordinate</option>
@@ -806,18 +812,18 @@
                           <div class="row">
                             <div class="col-md-6 col-xs-12">
                               <label class="control-label mb-10" for="Omang"> Omang(required):</label>
-                              <input type="text" id="Omang" name="Omang_code" data-mask="999999999"  class="form-control required"  required/>
+                              <input type="text" id="Omang" name="Omang_code" data-mask="999999999"  value="${ErrorEmail.omang}" class="form-control required"  required/>
                             </div>
                             <div class="span1"></div>
                             <div class="col-md-6 col-xs-12">
                               <label class="control-label mb-10" for="Contact">Contact(required):</label>
-                              <input type="tel" id="Contact" data-mask="+267 99 999 999" name="phone_number"  class="form-control required"  required/>
+                              <input type="tel" id="Contact" data-mask="+267 99 999 999" name="phone_number"  value="${ErrorEmail.contact}" class="form-control required"  required/>
                             </div>
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="control-label mb-10" for="Branch_Location"> Branch Location (required):</label>
-                          <select id="Branch_Location" name="location" class="selectpicker" data-style="form-control btn-default btn-outline">
+                          <select id="Branch_Location" name="location" class="selectpicker" data-style="form-control btn-default btn-outline"  >
                             <option value="Francistown Branch">Francistown Branch</option>
                             <option value="Gaborone Branch">Gaborone Branch</option>
                             <option value="Chobe Branch">Chobe Branch</option>
@@ -952,6 +958,15 @@
 <!-- /#wrapper -->
 
 <!-- JavaScript -->
+<button style="display: block" id="Error-Email" alt="alert" >testing</button>
+
+<c:if test="${ErrorEmail!=null}">
+  <script>
+    window.onload = function() {
+      document.getElementById("Error-Email").click();
+    }
+  </script>
+</c:if>
 
 <form method="post" id="LogOut_Session" action="ServletDwmpc">
   <input type="hidden" name="command" value="LogOut Session">
@@ -993,6 +1008,10 @@
 
 <!-- Bootstrap Daterangepicker JavaScript -->
 <script src="vendors/bower_components/dropify/dist/js/dropify.min.js"></script>
+
+<!-- Sweet-Alert  -->
+<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="dist/js/sweetalert-data.js"></script>
 
 <!-- Form Flie Upload Data JavaScript -->
 <script src="dist/js/form-file-upload-data.js"></script>

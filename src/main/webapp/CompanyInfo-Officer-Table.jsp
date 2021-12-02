@@ -91,50 +91,8 @@
                     <a class="tst2" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
                 </li>
                 <li class="dropdown app-drp">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
+                    <a href="#"  class="tst2" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
                     <ul class="dropdown-menu app-dropdown" data-dropdown-in="slideInRight" data-dropdown-out="flipOutX">
-                        <li>
-                            <div class="app-nicescroll-bar">
-                                <ul class="app-icon-wrap pa-10">
-                                    <li>
-                                        <a href="weather.html" class="connection-item">
-                                            <i class="zmdi zmdi-cloud-outline txt-info"></i>
-                                            <span class="block">weather</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="inbox.jsp" class="connection-item">
-                                            <i class="zmdi zmdi-email-open txt-success"></i>
-                                            <span class="block">e-mail</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="calendar.html" class="connection-item">
-                                            <i class="zmdi zmdi-calendar-check txt-primary"></i>
-                                            <span class="block">calendar</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="vector-map.html" class="connection-item">
-                                            <i class="zmdi zmdi-map txt-danger"></i>
-                                            <span class="block">map</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="chats.html" class="connection-item">
-                                            <i class="zmdi zmdi-comment-outline txt-warning"></i>
-                                            <span class="block">chat</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="contact-card.html" class="connection-item">
-                                            <i class="zmdi zmdi-assignment-account"></i>
-                                            <span class="block">contact</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
                         <li>
                             <div class="app-box-bottom-wrap">
                                 <hr class="light-grey-hr ma-0"/>
@@ -244,39 +202,6 @@
                 </li>
                 <li class="dropdown auth-drp">
                     <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
-                    <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
-                        <li>
-                            <a href="profile.html"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="zmdi zmdi-card"></i><span>my balance</span></a>
-                        </li>
-                        <li>
-                            <a href="inbox.jsp"><i class="zmdi zmdi-email"></i><span>Inbox</span></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="zmdi zmdi-settings"></i><span>Settings</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="sub-menu show-on-hover">
-                            <a href="#" class="dropdown-toggle pr-0 level-2-drp"><i class="zmdi zmdi-check text-success"></i> available</a>
-                            <ul class="dropdown-menu open-left-side">
-                                <li>
-                                    <a href="#"><i class="zmdi zmdi-check text-success"></i><span>available</span></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="zmdi zmdi-circle-o text-warning"></i><span>busy</span></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="zmdi zmdi-minus-circle-outline text-danger"></i><span>offline</span></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </div>
@@ -691,6 +616,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div  id="todo_tab" class="tab-pane fade" role="tabpanel">
                             <div class="todo-box-wrap">
                                 <div class="add-todo">
@@ -723,22 +649,33 @@
                                                                     <input class="upload" type="file">
                                                                 </div>
                                                             </div>
-                                                            <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">Kaone Rascon</h5>
-                                                            <h6 class="block capitalize-font pb-20">Client</h6>
+                                                            <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">${User_Info[0].first_name} ${User_Info[0].last_name}</h5>
+                                                            <a class="dropdown-toggle weight-500" id="examplePanelDropdown" data-toggle="dropdown" href="#" aria-expanded="false" role="button">
+                                                                <h6 class="block capitalize-font pb-20">Client</h6>
+                                                                <i class=" icon-user-follow inline-block mr-5"></i>
+                                                            </a>
+                                                            <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
+                                                                <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i> D officer</a></li>
+                                                                <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i> Division M</a></li>
+                                                                <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i> Admin</a></li>
+                                                                <li class="divider" role="presentation"></li>
+                                                                <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-settings" aria-hidden="true"></i> Person</a></li>
+                                                            </ul>
+
                                                         </div>
                                                         <div class="social-info">
                                                             <div class="row">
                                                                 <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">45</span></span>
+                                                                    <span class="counts block head-font"><span class="counter-anim">${GeneralCount.company}</span></span>
                                                                     <span class="counts-text block">Companies</span>
                                                                 </div>
                                                                 <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">206</span></span>
+                                                                    <span class="counts block head-font"><span class="counter-anim">${GeneralCount.employee}</span></span>
                                                                     <span class="counts-text block">Employees</span>
                                                                 </div>
                                                                 <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">118</span></span>
-                                                                    <span class="counts-text block">Vechiles</span>
+                                                                    <span class="counts block head-font"><span class="counter-anim">${GeneralCount.vehicle}</span></span>
+                                                                    <span class="counts-text block">Vehicles</span>
                                                                 </div>
                                                             </div>
                                                             <button class="btn btn-gold btn-block  btn-anim mt-40" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
@@ -852,6 +789,8 @@
                     <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
                     <input type="hidden" name="Branch" value="${User_Info[0].location}">
                     <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+                    <input type="hidden" name="company_email" value="${Company_info.email}">
+                    <input type="hidden" name="company_phone" value="${Company_info.phone_Number}">
                 </form>
                 <form method="post" id="Declining" action="ServletDwmpc">
                     <input type="hidden" name="command" value="Officers Action">
@@ -860,6 +799,8 @@
                     <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
                     <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
                     <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+                    <input type="hidden" name="company_email" value="${Company_info.email}">
+                    <input type="hidden" name="company_phone" value="${Company_info.phone_Number}">
                 </form>
 
                 <form method="post" id="Revoking" action="ServletDwmpc">
@@ -869,6 +810,8 @@
                     <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
                     <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
                     <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+                    <input type="hidden" name="company_email" value="${Company_info.email}">
+                    <input type="hidden" name="company_phone" value="${Company_info.phone_Number}">
                 </form>
 
                 <form method="post" id="Employee_info" action="ServletDwmpc">
