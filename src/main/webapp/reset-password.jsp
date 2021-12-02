@@ -11,12 +11,11 @@
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="favicon.ico">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		<!--alerts CSS -->
-		<link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
-
-
+		
 		<!-- vector map CSS -->
 		<link href="vendors/bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		
+		
 		
 		<!-- Custom CSS -->
 		<link href="dist/css/style.css" rel="stylesheet" type="text/css">
@@ -29,6 +28,7 @@
 		<!--/Preloader-->
 		
 		<div class="wrapper pa-0">
+			
 			<!-- Main Content -->
 			<div class="page-wrapper pa-0 ma-0 auth-page">
 				<div class="container-fluid">
@@ -39,51 +39,35 @@
 								<div class="row">
 									<div class="col-sm-12 col-xs-12">
 										<div class="sp-logo-wrap text-center pa-0 mb-30">
-											<a href="${pageContext.request.contextPath}/Home.jsp">
-												<img class="brand-img mr-10" src="img/logo.png" alt="brand"/>
-												<span class="brand-text">Zapily</span>
+											<a href="login.jsp">
+												<img class="brand-img mr-10" src="img/logo2.png" alt="brand"/>
 											</a>
 										</div>
 										<div class="mb-30">
-											<h3 class="text-center txt-dark mb-10">Need help with your password?</h3>
-											<h6 class="text-center txt-grey nonecase-font">Enter the email you use for Zapily, and we’ll help you create a new password.</h6>
+											<h3 class="text-center txt-dark mb-10">Reset Password</h3>
 										</div>	
 										<div class="form-wrap">
-											<form id="ForgotForm" action="ServletDwmpc" method="post">
+											<form action="ServletDwmpc">
 												<input type="hidden" name="command" value="Forget Password">
+												<input type="hidden" name="action" value="changing">
 												<div class="form-group">
-													<label class="control-label mb-10" for="exampleInputEmail_2">Email address</label>
-													<input type="email" name="email" class="form-control" required="" id="exampleInputEmail_2" placeholder="Enter email">
+													<label class="pull-left control-label mb-10" for="exampleInputpwd_1">Old Password</label>
+													<input type="password" class="form-control" required="" id="exampleInputpwd_1" placeholder="Enter pwd">
 												</div>
-												
+												<div class="form-group">
+													<label class="pull-left control-label mb-10" for="exampleInputpwd_2">New Password</label>
+													<input type="password" class="form-control" name="password" required="" id="exampleInputpwd_2" placeholder="Enter New pwd">
+													<div class="help-block">Minimum of 6 characters</div>
+												</div>
+												<div class="form-group">
+													<label class="pull-left control-label mb-10" for="exampleInputpwd_3">Confirm Password</label>
+													<input type="password" class="form-control" required="" id="exampleInputpwd_3" data-match="#exampleInputpwd_2" data-match-error="Whoops, these don't match" placeholder="Re-Enter pwd">
+													<div class="help-block with-errors"></div>
+												</div>
 												<div class="form-group text-center">
-													<button type="submit" class="btn btn-warning btn-rounded">Reset</button>
+													<button type="submit" class="btn btn-success btn-rounded">Reset</button>
 												</div>
 											</form>
-											<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-
-											<button style="display: block" alt="alert" id="alert-Sent"></button>
-
-											<script type="text/javascript">
-												var form = $('#ForgotForm');
-												form.submit(function () {
-
-													alert("this ")
-													$.ajax({
-														type: form.attr('method'),
-														url: form.attr('action'),
-														data: form.serialize(),
-														fail: function (data){
-
-														},
-														success: function (data) {
-															document.getElementById("alert-Sent").click()
-														}
-													});
-
-													return false;
-												});
-											</script>
 										</div>
 									</div>	
 								</div>
@@ -95,6 +79,7 @@
 				
 			</div>
 			<!-- /Main Content -->
+		
 		</div>
 		<!-- /#wrapper -->
 		
@@ -106,12 +91,8 @@
 		<!-- Bootstrap Core JavaScript -->
 		<script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
-
-		<!-- Sweet-Alert  -->
-		<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-		<script src="dist/js/sweetalert-data.js"></script>
-
-
+		<script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
+		
 		<!-- Slimscroll JavaScript -->
 		<script src="dist/js/jquery.slimscroll.js"></script>
 		

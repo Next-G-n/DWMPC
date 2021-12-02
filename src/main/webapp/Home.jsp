@@ -691,6 +691,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div  id="todo_tab" class="tab-pane fade" role="tabpanel">
                             <div class="todo-box-wrap">
                                 <div class="add-todo">
@@ -723,22 +724,22 @@
                                                                     <input class="upload" type="file">
                                                                 </div>
                                                             </div>
-                                                            <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">Kaone Rascon</h5>
+                                                            <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">${User_Info[0].first_name} ${User_Info[0].last_name}</h5>
                                                             <h6 class="block capitalize-font pb-20">Client</h6>
                                                         </div>
                                                         <div class="social-info">
                                                             <div class="row">
                                                                 <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">45</span></span>
+                                                                    <span class="counts block head-font"><span class="counter-anim">${GeneralCount.company}</span></span>
                                                                     <span class="counts-text block">Companies</span>
                                                                 </div>
                                                                 <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">206</span></span>
+                                                                    <span class="counts block head-font"><span class="counter-anim">${GeneralCount.employee}</span></span>
                                                                     <span class="counts-text block">Employees</span>
                                                                 </div>
                                                                 <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">118</span></span>
-                                                                    <span class="counts-text block">Vechiles</span>
+                                                                    <span class="counts block head-font"><span class="counter-anim">${GeneralCount.vehicle}</span></span>
+                                                                    <span class="counts-text block">Vehicles</span>
                                                                 </div>
                                                             </div>
                                                             <button class="btn btn-gold btn-block  btn-anim mt-40" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
@@ -875,7 +876,7 @@
                         </div>
                         <div  class="panel-wrapper collapse in">
                             <div  class="panel-body">
-                                <img src="img/sweetalert/alert4.png" alt="alert" class="img-responsive model_img" id="sa-close">
+                                <img src="img/sweetalert/alert4.png" alt="alert" class="img-responsive model_img" onclick="location.href='companyForm.jsp'">
                             </div>
                         </div>
                     </div>

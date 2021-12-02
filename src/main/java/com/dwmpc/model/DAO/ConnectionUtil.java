@@ -145,12 +145,7 @@ public class ConnectionUtil {
                 user login2;
 
 
-                    if (action.equals("Admin")) {
-                        System.out.println("testing ");
-                        String addRoles = myRS.getString("Add Roles");
-                        login2 = new user(id, firstName, lastName, email, userType, omang, contact, addRoles, location);
-                        login.add(login2);
-                    } else if(password.equals("None")){
+                     if(password.equals("None")){
                         login2 = new user(id, firstName, lastName, email, userType, password, omang, contact, location, "just");
                         login.add(login2);
                     }else {

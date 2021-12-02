@@ -20,6 +20,10 @@
 		<!-- jquery-steps css -->
 		<link rel="stylesheet" href="vendors/bower_components/jquery.steps/demo/css/jquery.steps.css">
 
+		<!--alerts CSS -->
+		<link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
+
 
 
 		<!-- Custom CSS -->
@@ -76,18 +80,18 @@
 																			<div class="row">
 																				<div class="col-md-6 col-xs-12">
 																					<label class="control-label mb-10" for="firstName">first name (required):</label>
-																					<input id="firstName" type="text" name="first_name" class="form-control required" value="" />
+																					<input id="firstName" type="text" name="first_name" class="form-control required" value="${ErrorEmail.first_name}" />
 																				</div>
 																				<div class="span1"></div>
 																				<div class="col-md-6 col-xs-12">
 																					<label class="control-label mb-10" for="lastName">last name (required):</label>
-																					<input id="lastName" type="text" name="last_name" class="form-control required" value="" />
+																					<input id="lastName" type="text" name="last_name" class="form-control required" value="${ErrorEmail.last_name}" />
 																				</div>
 																			</div>
 																		</div>
 																		<div class="form-group">
 																			<label class="control-label mb-10" for="exampleInputEmail">Email (required):</label>
-																			<input id="exampleInputEmail"  type="email" name="email" class="form-control required" value="" />
+																			<input id="exampleInputEmail"  type="email" name="email" class="form-control required" value="${ErrorEmail.email}" />
 																		</div>
 																		<div class="form-group">
 																			<label class="control-label mb-10" for="password-2">Password (required):</label>
@@ -109,15 +113,15 @@
 
 																		<div class="form-group">
 																			<label class="control-label mb-10" for="postalCode">Omang Number (required):</label>
-																			<input id="postalCode" type="text" name="Omang_code"  data-mask="999999999" class="form-control required" value="" />
+																			<input id="postalCode" type="text" name="Omang_code"  data-mask="999999999" class="form-control required" value="${ErrorEmail.omang}" />
 																		</div>
 																		<div class="form-group">
 																			<label class="control-label mb-10" for="phoneNumber">phone number (required):</label>
-																			<input type="text" id="phoneNumber"  data-mask="+267 99 999 999" name="phone_number" class="form-control required" value="" />
+																			<input type="text" id="phoneNumber"  data-mask="+267 99 999 999" name="phone_number" class="form-control required" value="${ErrorEmail.contact}" />
 																		</div>
 																		<div class="form-group">
 																			<label class="control-label mb-10" for="Location">Location (required):</label>
-																			<input type="text" class="form-control" id="Location" name="location" list="location_suggestions" placeholder="Location"   required/>
+																			<input type="text" class="form-control" id="Location" name="location" list="location_suggestions" placeholder="Location"  value="${ErrorEmail.location}" required/>
 																			<datalist id="location_suggestions">
 
 																				<option value="Phiring">
@@ -254,9 +258,9 @@
 																			</datalist>
 																		</div>
 																		<div class="form-group mb-0">
-																			<div class="checkbox checkbox-success">
+																			<div class="checkbox checkbox-warning">
 																				<input id="checkbox_1" type="checkbox">
-																				<label for="checkbox_1">Billing address is same as shipping address.</label>
+																				<label for="checkbox_1">I agree with terms and conditions.</label>
 																			</div>
 																		</div>
 																	</div>
@@ -266,12 +270,12 @@
 														</form>
 												</div>
 											</div>
-											<button style="display: none" id="Error-Login" alt="alert" >testing</button>
+											<button style="display: none" id="Error-Email" alt="alert" >testing</button>
 
-											<c:if test="${LoginError!=null}">
+											<c:if test="${ErrorEmail!=null}">
 												<script>
 													window.onload = function() {
-														document.getElementById("Error-Login").click();
+														document.getElementById("Error-Email").click();
 													}
 												</script>
 											</c:if>
@@ -302,10 +306,13 @@
 		
 		<!-- Slimscroll JavaScript -->
 		<script src="dist/js/jquery.slimscroll.js"></script>
+
+		<!-- Sweet-Alert  -->
+		<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="dist/js/sweetalert-data.js"></script>
 		
 		<!-- Init JavaScript -->
 		<script src="dist/js/init.js"></script>
-
 		<script src="dist/js/TabForm.js"></script>
 
 		<!-- Form Wizard JavaScript -->

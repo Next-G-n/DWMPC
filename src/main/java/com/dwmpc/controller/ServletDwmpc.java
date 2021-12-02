@@ -169,6 +169,9 @@ public class ServletDwmpc extends HttpServlet {
                 case "Forget Password":
                     Forgot_Password(request,response);
                     break;
+                case "":
+                    Forgot_Password(request,response);
+                    break;
             }
             // listStudents(request, response);
         }
@@ -487,10 +490,10 @@ public class ServletDwmpc extends HttpServlet {
         }else {
             if(UserType.equals("Client")){
                 session.setAttribute("ErrorEmail",userReg);
-                this.getServletContext().getRequestDispatcher("signup.jsp").forward(request, response);
+                this.getServletContext().getRequestDispatcher("/signup.jsp").forward(request, response);
             }else{
                 session.setAttribute("ErrorEmail",userReg);
-                this.getServletContext().getRequestDispatcher("Officer-Registration-Form.jsp").forward(request, response);
+                this.getServletContext().getRequestDispatcher("/Officer-Registration-Form.jsp").forward(request, response);
             }
 
         }
