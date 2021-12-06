@@ -68,7 +68,7 @@
         <div class="mobile-only-brand pull-left">
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
-                    <a href="${pageContext.request.contextPath}/Home.jsp">
+                    <a href="${pageContext.request.contextPath}/Officer-Home.jsp">
                         <img class="brand-img" src="img/logo2.png" alt="brand"/>
                     </a>
                 </div>
@@ -233,7 +233,18 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/companyForm.jsp" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">Add Company</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">${CompanyName}</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
+                    <li class="active" role="presentation">
+                        <a onclick="document.getElementById('Company_information').submit()" data-toggle="tab"  role="tab" aria-expanded="true">Information</a>
+                    </li>
+                    <li >
+                        <a onclick="document.getElementById('Vehicle_info').submit()" aria-expanded="false"  data-toggle="tab" role="tab">Vehicles</a>
+                    </li>
+                    <li>
+                        <a onclick="document.getElementById('Employee_info').submit()">Employees</a>
+                    </li>
+                </ul>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
@@ -771,14 +782,100 @@
                                     </table>
                                 </c:if>
 
-                                <button type="button" alt="alert" id="Approving-Officer" style="float: right" class="btn btn-primary btn-anim btn-rounded"><i class="fa fa-pencil"></i><span class="btn-text">Approve</span></button>
-                                <button type="button" alt="alert" id="Declining-Officer"  style="float: right; margin-right: 5px" class="btn btn-primary btn-anim btn-rounded"><i class="fa  fa-building-o"></i><span class="btn-text">Decline</span></button>
+                                <button type="button" alt="alert" id="Approving-Officer" style="float: right" class="btn btn-primary btn-anim btn-rounded"><i class="fa fa-check"></i><span class="btn-text">Approve</span></button>
+                                <button type="button" alt="alert" id="Declining-Officer"  style="float: right; margin-right: 5px" class="btn btn-danger btn-anim btn-rounded"><i class="fa  fa-times"></i><span class="btn-text">Decline</span></button>
                                 <button type="button" alt="alert" id="Revoking-Officer"   style="float: right; margin-right: 5px" class="btn btn-primary btn-anim btn-rounded"><i class="fa  fa-building-o"></i><span class="btn-text">Revoke</span></button>
                             </div>
-
                         </div>
                     </div>
 
+                </div>
+
+
+                <div id="Company_info2"  class="tab-pane fade in active col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <div class="panel panel-default card-view pa-01 pa-0" onclick="EmployeeTable();" >
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0">
+                                <div class="sm-data-box">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
+                                                <span class="txt-dark block counter"><span class="counter-anim">${CountSp.employee}</span></span>
+                                                <span class="weight-500 uppercase-font block font-13">Employees</span>
+                                            </div>
+                                            <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+                                                <i class="icon-people data-right-rep-icon txt-light-grey"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default card-view pa-01 pa-0" onclick="location.href='Vehicle-Table-officer.jsp';">
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0">
+                                <div class="sm-data-box">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
+                                                <span class="txt-dark block counter"><span class="counter-anim">${CountSp.vehicle}</span></span>
+                                                <span class="weight-500 uppercase-font block">Vehicle</span>
+                                            </div>
+                                            <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+                                                <i class="fa fa-truck data-right-rep-icon txt-light-grey"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default card-view pa-0  bg-warning">
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0">
+                                <div class="sm-data-box">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left txt-light">
+                                                <span class="block counter"><span class="counter-anim">${CountSp.company}</span></span>
+                                                <span class="weight-500 uppercase-font block">Companies Registered</span>
+                                            </div>
+                                            <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+                                                <i class="icon-layers data-right-rep-icon txt-light"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel card-view">
+                        <div class="panel-heading small-panel-heading relative">
+                            <div class="pull-left">
+                                <h6 class="panel-title">Hospital Revenue</h6>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="head-overlay"></div>
+                        </div>
+                        <div class="panel-wrapper collapse  in">
+                            <div class="panel-body row pa-01 pa-0">
+                                <div class="sm-data-box">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-center pl-0 pr-0  data-wrap-left">
+                                                <span class="block"><i class="zmdi zmdi-trending-up txt-success font-18 mr-5"></i><span class="weight-500 uppercase-font">growth</span></span>
+                                                <span class="txt-dark block counter">$<span class="counter-anim">15,678</span></span>
+                                            </div>
+                                            <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+                                                <div id="sparkline_1" class="sp-small-chart" ></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <form method="post" id="Approving" action="ServletDwmpc">
@@ -786,7 +883,7 @@
                     <input type="hidden" name="action" value="Approving">
                     <input type="hidden" name="Apply_id" value="${Apply_id}">
                     <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
-                    <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
+                    <input type="hidden" name="UserType" value="${currentUser}">
                     <input type="hidden" name="Branch" value="${User_Info[0].location}">
                     <input type="hidden" name="company_id" value="${Company_info.company_Id}">
                     <input type="hidden" name="company_email" value="${Company_info.email}">
@@ -797,7 +894,7 @@
                     <input type="hidden" name="action" value="Decline">
                     <input type="hidden" name="Apply_id" value="${Apply_id}">
                     <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
-                    <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
+                    <input type="hidden" name="UserType" value="${currentUser}">
                     <input type="hidden" name="company_id" value="${Company_info.company_Id}">
                     <input type="hidden" name="company_email" value="${Company_info.email}">
                     <input type="hidden" name="company_phone" value="${Company_info.phone_Number}">
@@ -808,7 +905,7 @@
                     <input type="hidden" name="action" value="Revoke">
                     <input type="hidden" name="Apply_id" value="${Apply_id}">
                     <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
-                    <input type="hidden" name="UserType" value="${User_Info[0].user_type}">
+                    <input type="hidden" name="UserType" value="${add_Roles.current}">
                     <input type="hidden" name="company_id" value="${Company_info.company_Id}">
                     <input type="hidden" name="company_email" value="${Company_info.email}">
                     <input type="hidden" name="company_phone" value="${Company_info.phone_Number}">

@@ -688,13 +688,10 @@
                                         <i class="icon-layers" ></i>
                                     </div>
                                     <div class="timeline-panel pa-30">
-                                        <div class="timeline-heading">
-                                            <h6 class="mb-15">1 september 15</h6>
-                                        </div>
                                         <div class="timeline-body">
-                                            <h4 class="mb-5">pogody</h4>
-                                            <p class="lead head-font mb-20">Responsive html5 template</p>
-                                            <p>Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.</p>
+                                            <h4 class="mb-5">About Us</h4>
+                                            <p class="lead head-font mb-20">Department of Waste Management and Pollution Control</p>
+                                            <p>The Department of Waste Management and Pollution Control, (DWMPC) is mandated to prevent and control pollution of the environment through the formulation of waste management policies, regulating and monitoring of the waste sector.</p>
                                         </div>
                                     </div>
                                 </li>
@@ -704,13 +701,13 @@
                                         <i class="icon-magnifier-add" ></i>
                                     </div>
                                     <div class="timeline-panel pa-30">
-                                        <div class="timeline-heading">
-                                            <h6 class="mb-15">23 March 16</h6>
-                                        </div>
                                         <div class="timeline-body">
-                                            <h4 class=" mb-5">Beavis</h4>
-                                            <p class="lead  mb-20">HTML5 Coming Soon Template</p>
-                                            <p>Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.</p>
+                                            <h4 class=" mb-5">Location</h4>
+                                            <p class="lead  mb-20">DWMPC Gaborone Regional Office</p>
+                                            <p>Plot 20576, Magochanyama</p>
+                                            <p>Rd, Block 3 Industrial</p>
+                                            <p>Private Bag BR123 Gaborone</p>
+                                            <p>Botswana</p>
                                         </div>
                                     </div>
                                 </li>
@@ -724,9 +721,13 @@
                                             <h6 class="mb-15">23 March 16</h6>
                                         </div>
                                         <div class="timeline-body">
-                                            <h4 class=" mb-5">Felix</h4>
-                                            <p class="lead  mb-20">Personal Blogging PSD Template</p>
-                                            <p>Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.</p>
+                                            <h4 class=" mb-5">Contacts</h4>
+                                            <p class="lead  mb-20">Additional contact information</p>
+                                            <p><i class="zmdi zmdi-globe-alt" style="margin-right: 10px;"></i></i>http://www.mewt.gov.bw./DWMPC/indez.php</p>
+                                            <p><i class="zmdi zmdi-phone" style="margin-right: 10px;"></i>390 9953</p>
+                                            <p><i class="zmdi zmdi-phone" style="margin-right: 10px;"></i>371 6800</p>
+                                            <p><i class="zmdi zmdi-email" style="margin-right: 10px;"></i>wmpc@gov.bw</p>
+                                        </div>
                                         </div>
                                     </div>
                                 </li>
@@ -736,13 +737,14 @@
                                         <i class="icon-social-stumbleupon" ></i>
                                     </div>
                                     <div class="timeline-panel pa-30">
-                                        <div class="timeline-heading">
-                                            <h6 class="mb-15">11 August 16</h6>
-                                        </div>
                                         <div class="timeline-body">
-                                            <h4 class=" mb-5">Beryl</h4>
-                                            <p class="lead  mb-20">Responsive HTML5 Coming Soon</p>
-                                            <p>Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.</p>
+                                            <h4 class=" mb-5">Contacts</h4>
+                                            <p class="lead  mb-20">DWMPC Francistown Regional Office</p>
+                                            <p>Plot 2576, CBD</p>
+                                            <p>Tati Industrial, Private</p>
+                                            <p>Private Bag BR123 Francistown</p>
+                                            <p>+267 241 2885</p>
+                                            <p>Botswana</p>
                                         </div>
                                     </div>
                                 </li>
@@ -752,13 +754,13 @@
                                         <i class="icon-flag" ></i>
                                     </div>
                                     <div class="timeline-panel pa-30">
-                                        <div class="timeline-heading">
-                                            <h6 class="mb-15">11 August 16</h6>
-                                        </div>
                                         <div class="timeline-body">
-                                            <h4 class=" mb-5">Cinnabar</h4>
-                                            <p class="lead  mb-20">Multipurpose PSD Template</p>
-                                            <p>Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.</p>
+                                            <h4 class=" mb-5">Contacts</h4>
+                                            <p class="lead  mb-20">Technical Support </p>
+                                            <p><i class="zmdi zmdi-time" style="margin-right: 10px;"></i>07:30 – 16:30, Monday to Friday, except Public Holidays.</p>
+                                            <p><i class="zmdi zmdi-phone" style="margin-right: 10px;"></i>371 6800</p>
+                                            <p><i class="zmdi zmdi-phone" style="margin-right: 10px;"></i>246 6790</p>
+                                            <p><i class="zmdi zmdi-email" style="margin-right: 10px;"></i>ICTwmpc@gov.bw</p>
                                         </div>
                                     </div>
                                 </li>

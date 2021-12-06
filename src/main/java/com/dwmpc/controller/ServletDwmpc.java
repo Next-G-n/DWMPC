@@ -19,6 +19,7 @@ import java.nio.file.StandardCopyOption;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 import java.security.MessageDigest;
@@ -169,8 +170,8 @@ public class ServletDwmpc extends HttpServlet {
                 case "Forget Password":
                     Forgot_Password(request,response);
                     break;
-                case "":
-                    Forgot_Password(request,response);
+                case "Switch User":
+                    switchUser(request,response);
                     break;
             }
             // listStudents(request, response);
@@ -182,9 +183,60 @@ public class ServletDwmpc extends HttpServlet {
         }
     }
 
-    private void Forgot_Password(HttpServletRequest request, HttpServletResponse response)throws Exception {
+    private void switchUser(HttpServletRequest request, HttpServletResponse response)throws Exception {
+        HttpSession session=request.getSession();
+        int user_id= Integer.parseInt(request.getParameter("userId"));
+        String userType=request.getParameter("userType");
+        String Branch=request.getParameter("branch");
+
+        connectionUtil.currentUserType(userType,user_id);
+        System.out.println("me "+userType);
+        List<company_Information> CompanyInfo = connectionUtil.getAllCompanies(user_id, userType, Branch);
+
+        add_RolesSwitch(user_id,request);
+
+        session.setAttribute("All_companies", CompanyInfo);
+
+        request.getRequestDispatcher("Officer-Home.jsp").forward(request, response);
+    }
+
+    private void Forgot_Password(HttpServletRequest request, HttpServletResponse response) {
         String email=request.getParameter("email");
         otp.emailVerification(email);
+    }
+
+    public String add_RolesSwitch(int user_id, HttpServletRequest request) throws Exception {
+        System.out.println("add roles is run :"+user_id);
+        HttpSession session=request.getSession();
+        Add_statues add_statues=connectionUtil.getAdditionalRole(user_id);
+        String co="Nothing"; String wmo="Nothing"; String rc="Nothing"; String wmoch="Nothing";String hdh="Nothing";
+        if(!add_statues.getAdd_Roles().equals("Nothing")){
+            String add_Roles=add_statues.getAdd_Roles();
+            String[] add_Role2=add_Roles.split(", ");
+            for(int i=0; i<add_Role2.length; ++i){
+                switch (add_Role2[i].replaceAll("\\s", "")) {
+                    case "CO":
+                        co = "Compliance Officer";
+                        break;
+                    case "WMO":
+                        wmo = "Waste Management Officer";
+                        break;
+                    case "RC":
+                        rc = "Regional Coordinate";
+                        break;
+                    case "WMOCH":
+                        wmoch = "Waste Management Officer Compliance Headquarters";
+                        break;
+                    case "HDH":
+                        hdh = "Head of Division Headquarters";
+                        break;
+                }
+            }
+        }
+        System.out.println("this me"+add_statues.getDefault1());
+        Add_Role add_role=new Add_Role(co,wmo,rc,wmoch,hdh,add_statues.getCurrent(),add_statues.getDefault1());
+        session.setAttribute("add_Roles", add_role);
+        return add_statues.getCurrent();
     }
 
     private void setReportWaste(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -276,6 +328,8 @@ public class ServletDwmpc extends HttpServlet {
 
 
 
+
+
             if(UserType.equals("Waste Management Officer")){
                 System.out.println("This works");
                 String Affi=request.getParameter("own");
@@ -295,14 +349,31 @@ public class ServletDwmpc extends HttpServlet {
                 }
                 connectionUtil.registerInspection(User_id,general,hazardus,Additional);
                 List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(User_id,UserType,Branch);
+                if (session.getAttribute("All_Vehicles") != null){
+                    session.removeAttribute("All_Vehicles");
+                }
                 session.setAttribute("All_companies", CompanyInfo);
-            }
+            }else if(UserType.equals("Head of Division Headquarters") && action.equals("Approving")){
+                Calendar calendar = Calendar.getInstance();
+                Calendar calendar1=Calendar.getInstance();
+                calendar.add(Calendar.MONTH, 8);
+                String strDateFormat = "dd MMMMM yyyy"; //Date format is Specified
+                SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat);
+                String LicencedDate=objSDF.format(calendar1.getTime());
+                String ExpiryDate=objSDF.format(calendar.getTime());
+                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                String ApplicationDate= String.valueOf(timestamp.getTime());
+                license license=new license(0,Vehicle_id,ApplicationDate,LicencedDate,ExpiryDate,"WasteType");
+                connectionUtil.setLicenseInformation(license);
+
+        }
 
             List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(User_id,UserType,Branch);
-            if(!CompanyInfo.isEmpty()){
-                System.out.println("Compamy Name :"+CompanyInfo.get(0).getCompany_Name());
+        if (session.getAttribute("All_Vehicles") != null){
+            session.removeAttribute("All_Vehicles");
+        }
                 session.setAttribute("All_companies", CompanyInfo);
-            }
+
             request.getRequestDispatcher("Officer-Home.jsp").forward(request, response);
     }
 
@@ -339,6 +410,9 @@ public class ServletDwmpc extends HttpServlet {
         if (session.getAttribute("CountSp") != null){
             session.removeAttribute("CountSp");
         }
+        if (session.getAttribute("add_Roles") != null){
+            session.removeAttribute("add_Roles");
+        }
         System.out.println("Log Out test");
         response.sendRedirect("login.jsp");
     }
@@ -371,15 +445,13 @@ public class ServletDwmpc extends HttpServlet {
 
             if (userlg.get(0).getUser_type().equals("Administrator")) {
                 action = "Admin";
-                List<user> userlg2 = connectionUtil.loginUser(Email, "securePassword", action);
+                List<user> userlg2 = connectionUtil.loginUser(Email, "None", action);
                 session.setAttribute("All_offers", userlg2);
                 request.getRequestDispatcher("Admin-Table.jsp").forward(request, response);
 
             } else if (userlg.get(0).getUser_type().equals("Client")) {
                 userType = "Client";
-
                 List<company_Information> CompanyInfo = connectionUtil.getAllCompanies(user_id, userType, Branch);
-
                 CountGeneral count=connectionUtil.CountGe(user_id);
                 session.setAttribute("GeneralCount", count);
 
@@ -389,11 +461,11 @@ public class ServletDwmpc extends HttpServlet {
                // response.getWriter().println("Client");
                 request.getRequestDispatcher("Home.jsp").forward(request, response);
             } else {
-                userType = userlg.get(0).getUser_type();
                 Branch = userlg.get(0).getLocation();
-                List<company_Information> CompanyInfo = connectionUtil.getAllCompanies(user_id, userType, Branch);
-
-                System.out.println("officer");
+                add_RolesSwitch(user_id,request);
+                String userType1=add_RolesSwitch(user_id,request);
+                List<company_Information> CompanyInfo = connectionUtil.getAllCompanies(user_id, userType1, Branch);
+                System.out.println("officer Type:"+userType1);
                 if (!CompanyInfo.isEmpty()) {
                     session.setAttribute("All_companies", CompanyInfo);
                 }
@@ -427,12 +499,12 @@ public class ServletDwmpc extends HttpServlet {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         int user_id=0;
-        if(!action.equals("Registration")){
-            user_id= Integer.parseInt(request.getParameter("User_Id"));
-
-        }else{
+        if(action.equals("Registration") || action.equals("Registration_Officer")){
             String password=request.getParameter("password");
             securePassword= generateStorngPasswordHash(password);
+        }else{
+            user_id= Integer.parseInt(request.getParameter("User_Id"));
+
         }
         user userReg;
         if(action.equals("Editing_Offers")){
@@ -479,9 +551,9 @@ public class ServletDwmpc extends HttpServlet {
         System.out.println("Action :"+action);
 
         if(msg.equals("Successful")){
-            if(action.equals("Editing_Offers")){
+            if(action.equals("Editing_Offers") || action.equals("Registration_Officer")){
                 action = "Admin";
-                List<user> userlg2 = connectionUtil.loginUser(email,"Undefined", action);
+                List<user> userlg2 = connectionUtil.loginUser(email,"None", action);
                 session.setAttribute("All_offers", userlg2);
                 request.getRequestDispatcher("Admin-Table.jsp").forward(request, response);
             }else if(action.equals("Editing_Client")){
@@ -502,6 +574,7 @@ public class ServletDwmpc extends HttpServlet {
 
         }
     }
+
 
 
 
@@ -617,6 +690,7 @@ public class ServletDwmpc extends HttpServlet {
         HttpSession session=request.getSession();
         int Company_id= Integer.parseInt(request.getParameter("company_id"));
         String userType= request.getParameter("UserType");
+
         System.out.println("This "+userType);
 
         company_Information FirstCompanyDetails=connectionUtil.getCompanyDetails(Company_id);
@@ -640,22 +714,39 @@ public class ServletDwmpc extends HttpServlet {
             session.setAttribute("Report_id",Report_id);
             request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
         }else if(userType.equals("Waste Management Officer")) {
+            int userId= Integer.parseInt(request.getParameter("userID"));
+            String userType1=add_RolesSwitch(userId,request);
+            System.out.println("User is get info as :"+userType);
+
+            session.setAttribute("currentUser",userType1);
             Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
             Vehicle_id=request.getParameter("vehicle_id");
             delay_Time=request.getParameter("delayTime");
             List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(Vehicle_id,"Waste Management Officer");
-            session.setAttribute("All_Vehicles",getVehicleDetail);
             session.setAttribute("Apply_id",Apply_id);
+            if (session.getAttribute("All_Vehicles") != null){
+                session.removeAttribute("All_Vehicles");
+            }
+            session.setAttribute("All_Vehicles",getVehicleDetail);
             request.getRequestDispatcher("WMO-Inspection-Form.jsp").forward(request, response);
         }else{
+            int userId= Integer.parseInt(request.getParameter("userID"));
+            String userType1=add_RolesSwitch(userId,request);
+
+            session.setAttribute("currentUser",userType1);
+            System.out.println("Nshathisi :"+userType1);
             Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
             Vehicle_id=request.getParameter("vehicle_id");
             delay_Time=request.getParameter("delayTime");
             System.out.println("This is well :"+delay_Time);
             System.out.println("This "+userType);
             List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(Vehicle_id,"Waste Management Officer");
-            session.setAttribute("All_Vehicles",getVehicleDetail);
+
             session.setAttribute("Apply_id",Apply_id);
+            if (session.getAttribute("All_Vehicles") != null){
+                session.removeAttribute("All_Vehicles");
+            }
+            session.setAttribute("All_Vehicles",getVehicleDetail);
             request.getRequestDispatcher("CompanyInfo-Officer-Table.jsp").forward(request, response);
         }
 

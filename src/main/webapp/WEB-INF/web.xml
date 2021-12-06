@@ -5,36 +5,7 @@
          version="4.0">
 
 
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>app</web-resource-name>
-            <url-pattern>/Vehicle-Form.jsp</url-pattern>
-            <url-pattern>/Vehicle-Table.jsp</url-pattern>
-            <url-pattern>/profile.jsp</url-pattern>
-            <url-pattern>/companyForm.jsp</url-pattern>
-            <url-pattern>/CompanyInfo.jsp</url-pattern>
-            <url-pattern>/Contact-Us.jsp</url-pattern>
-            <url-pattern>/Employee.jsp</url-pattern>
-            <url-pattern>/Employee-form.jsp</url-pattern>
-            <url-pattern>/forgot-password.jsp</url-pattern>
-            <url-pattern>/Monthly-Report.jsp</url-pattern>
-            <url-pattern>/Officer-Home.jsp</url-pattern>
-            <url-pattern>/Officer-Registration-Form.jsp</url-pattern>
-            <url-pattern>/Home.jsp</url-pattern>
-            <url-pattern>/CompanyInfo.jsp</url-pattern>
-            <url-pattern>/CompanyInfo-Officer-Table.jsp</url-pattern>
-            <url-pattern>/CompanyForm2.jsp</url-pattern>
-            <url-pattern>/Attachments.jsp</url-pattern>
-        </web-resource-collection>
 
-        <auth-constraint>
-
-        </auth-constraint>
-
-    </security-constraint>
-    <error-page>
-        <location>/login.jsp</location>
-    </error-page>
 
 
 </web-app>

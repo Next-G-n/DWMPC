@@ -71,7 +71,7 @@
         <div class="mobile-only-brand pull-left">
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
-                    <a href="${pageContext.request.contextPath}/Home.jsp">
+                    <a href="${pageContext.request.contextPath}/Officer-Home.jsp">
                         <img class="brand-img" src="img/logo2.png" alt="brand"/>
                     </a>
                 </div>
@@ -652,18 +652,76 @@
                                                                     <input class="upload" type="file">
                                                                 </div>
                                                             </div>
-                                                            <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">${User_Info[0].first_name} ${User_Info[0].last_name}</h5>
+
+                                                            <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">${User_Info[0].first_name} ${User_Info[0].last_name} </h5>
                                                             <a class="dropdown-toggle weight-500" id="examplePanelDropdown" data-toggle="dropdown" href="#" aria-expanded="false" role="button">
-                                                                <h6 class="block capitalize-font pb-20">Client</h6>
+                                                            <c:if test="${add_Roles.current==null}">
+                                                                <h6 class="block capitalize-font pb-20">${User_Info[0].user_type}</h6>
+                                                            </c:if>
+                                                            <c:if test="${add_Roles.current!=null}">
+                                                                <h6 class="block capitalize-font pb-20">${add_Roles.current}</h6>
                                                                 <i class=" icon-user-follow inline-block mr-5"></i>
+                                                            </c:if>
+
                                                             </a>
-                                                            <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                                                <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i> D officer</a></li>
-                                                                <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i> Division M</a></li>
-                                                                <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i> Admin</a></li>
-                                                                <li class="divider" role="presentation"></li>
-                                                                <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-settings" aria-hidden="true"></i> Person</a></li>
-                                                            </ul>
+                                                            <c:if test="${add_Roles.current!=null}">
+                                                                <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
+                                                                        <li onclick="document.getElementById('${add_Roles.og}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>${add_Roles.og}</a></li>
+                                                                    <c:if test="${add_Roles.co!='Nothing'}">
+                                                                        <li onclick="document.getElementById('${add_Roles.co}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>${add_Roles.co}</a></li>
+                                                                    </c:if>
+                                                                    <c:if test="${add_Roles.wmo!='Nothing'}">
+                                                                        <li onclick="document.getElementById('${add_Roles.wmo}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>${add_Roles.wmo}</a></li>
+                                                                    </c:if>
+                                                                    <c:if test="${add_Roles.rc!='Nothing'}">
+                                                                        <li  role="presentation"><a onclick="document.getElementById('${add_Roles.rc}').submit()" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>${add_Roles.rc}</a></li>
+                                                                    </c:if>
+                                                                    <c:if test="${add_Roles.wmoch!='Nothing'}">
+                                                                        <li onclick="document.getElementById('${add_Roles.wmoch}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>${add_Roles.wmoch}</a></li>
+                                                                    </c:if>
+                                                                    <c:if test="${add_Roles.hdh!='Nothing'}">
+                                                                        <li onclick="document.getElementById('${add_Roles.hdh}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>${add_Roles.hdh}</a></li>
+                                                                    </c:if>
+                                                                </ul>
+                                                            </c:if>
+
+                                                            <form method="post" id="${add_Roles.og}" action="ServletDwmpc">
+                                                                <input type="hidden" name="command" value="Switch User">
+                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                                                <input type="hidden" name="userType" value="${add_Roles.og}">
+                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                                                            </form>
+
+                                                            <form method="post" id="${add_Roles.co}" action="ServletDwmpc">
+                                                                <input type="hidden" name="command" value="Switch User">
+                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                                                <input type="hidden" name="userType" value="${add_Roles.co}">
+                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                                                            </form>
+                                                            <form method="post" id="${add_Roles.rc}" action="ServletDwmpc">
+                                                                <input type="hidden" name="command" value="Switch User">
+                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                                                <input type="hidden" name="userType" value="${add_Roles.rc}">
+                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                                                            </form>
+                                                            <form method="post" id="${add_Roles.wmoch}" action="ServletDwmpc">
+                                                                <input type="hidden" name="command" value="Switch User">
+                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                                                <input type="hidden" name="userType" value="${add_Roles.wmoch}">
+                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                                                            </form>
+                                                            <form method="post" id="${add_Roles.wmo}" action="ServletDwmpc">
+                                                                <input type="hidden" name="command" value="Switch User">
+                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                                                <input type="hidden" name="userType" value="${add_Roles.wmo}">
+                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                                                            </form>
+                                                            <form method="post" id="${add_Roles.hdh}" action="ServletDwmpc">
+                                                                <input type="hidden" name="command" value="Switch User">
+                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                                                <input type="hidden" name="userType" value="${add_Roles.hdh}">
+                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                                                            </form>
 
                                                         </div>
                                                         <div class="social-info">
@@ -707,16 +765,8 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Companies Registered</h5>
+                    <h5 class="txt-dark">Application</h5>
                 </div>
-                <!-- Breadcrumb -->
-                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                    <ol class="breadcrumb">
-                        <li><a href="CompanyInfo.jsp">Home</a></li>
-                        <li class="active"><span>Companies Registered</span></li>
-                    </ol>
-                </div>
-                <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
 
@@ -727,9 +777,10 @@
                     <c:url var="CompanyDetailsLink" value="ServletDwmpc">
                         <c:param name="command" value="getCompany"/>
                         <c:param name="company_id" value="${tempCompany.company_Id}"/>
-                        <c:param name="UserType" value="${tempCompany.userType}"/>
+                        <c:param name="UserType" value="${add_Roles.current}"/>
                         <c:param name="Apply_id" value="${tempCompany.apply_Id}"/>
                         <c:param name="vehicle_id" value="${tempCompany.chassis}"/>
+                        <c:param name="userID" value="${User_Info[0].user_Id}"/>
                         <c:param name="delay"  value=""/>
                     </c:url>
                     <c:set value="${countDate+1}" scope="page" var="countDate"/>
@@ -780,7 +831,7 @@
                                         </div>
                                         <div class="mb-15">
                                             <i class="zmdi zmdi-print inline-block mr-10"></i>
-                                            <span class="inline-block txt-dark">${tempCompany.fax_Number}</span>
+                                            <span class="inline-block txt-dark">${tempCompany.fax_Number}</span>${User_Info[0].user_Id}
                                         </div>
                                         <div class="mb-15">
                                             <i class="zmdi zmdi-my-location inline-block mr-10"></i>
@@ -809,7 +860,8 @@
                         <form id="delay${countDate}" action="ServletDwmpc" method="post">
                             <input type="hidden" name="command" value="getCompany">
                             <input type="hidden"  name="company_id" value="${tempCompany.company_Id}">
-                            <input type="hidden"  name="UserType" value="${tempCompany.userType}">
+                            <input type="hidden"  name="UserType" value="${add_Roles.current}">
+                            <input type="hidden"  name="userID" value="${User_Info[0].user_Id}">
                             <input type="hidden"  name="Apply_id" value="${tempCompany.apply_Id}">
                             <input type="hidden"  name="vehicle_id" value="${tempCompany.chassis}">
                             <input type="hidden" id="delayTime${countDate}" name="delayTime" value="">

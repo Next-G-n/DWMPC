@@ -77,7 +77,7 @@
           </ul>
         </li>
         <li class="dropdown alert-drp">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
+          <a href="#" class="dropdown-toggle" class="tst2" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
           <ul  class="dropdown-menu alert-dropdown" data-dropdown-in="bounceIn" data-dropdown-out="bounceOut">
             <li>
               <div class="notification-box-head-wrap">
@@ -95,8 +95,8 @@
                       <i class="zmdi zmdi-flag"></i>
                     </div>
                     <div class="sl-content">
-												<span class="inline-block capitalize-font  pull-left truncate head-notifications">
-												New subscription created</span>
+						<span class="inline-block capitalize-font  pull-left truncate head-notifications">
+						New subscription created</span>
                       <span class="inline-block font-11  pull-right notifications-time">2pm</span>
                       <div class="clearfix"></div>
                       <p class="truncate">Your customer subscribed for the basic plan. The customer will pay $25 per month.</p>
@@ -1069,10 +1069,12 @@
               </div>
 
             </div>
+             <c:if test="${Vehicles.status=='Pending'}">
             <div class="modal-footer">
               <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Done</span></button>
             </div>
+             </c:if>
           </form>
           </div>
         </div>

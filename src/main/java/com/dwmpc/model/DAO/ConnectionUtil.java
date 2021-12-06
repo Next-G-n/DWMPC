@@ -21,6 +21,38 @@ public class ConnectionUtil {
 
     }
 
+    public void setLicenseInformation(license license)throws Exception {
+        Connection myConn=null;
+        ResultSet myRs=null;
+        PreparedStatement myStmt=null;
+        String license_Number = null;
+        String Waste_Type=null;
+        try {
+            String sql=null;
+            myConn=dataSource.getConnection();
+            sql ="Select * from vehicle where `Chase_Number`='"+license.getLicense_Number()+"'";
+            myStmt=myConn.prepareStatement(sql);
+            myRs=myStmt.executeQuery();
+            while(myRs.next()) {
+                license_Number=myRs.getString("Carrier Number");
+                Waste_Type = myRs.getString("Waste Type");
+            }
+            sql="INSERT INTO `dwmpc`.`license` (`License Number`, `Date Unix`, `Expiry Date`, `License Type`, `Start Date`) VALUES (?,?,?,?,?)";
+            myStmt=myConn.prepareStatement(sql);
+            myStmt.setString(1,license_Number);
+            myStmt.setString(2, license.getDate_Unix());
+            myStmt.setString(3, license.getExpiry_Date());
+            myStmt.setString(4, Waste_Type);
+            myStmt.setString(5, license.getStart_Date());
+            myStmt.execute();
+
+
+        }catch (Exception e){
+
+        }
+
+    }
+
     private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
 
         try {
@@ -45,11 +77,12 @@ public class ConnectionUtil {
     public String registerUser(user userReg,String action) throws Exception{
         Connection myConn=null;
         PreparedStatement myStmt=null;
+        ResultSet myRs=null;
         String error="Successful";
         try {
             myConn = dataSource.getConnection();
             String sql2;
-            if(action.equals("Registration")){
+            if(action.equals("Registration")||action.equals("Registration_Officer")){
                 sql2= "Insert user (`First Name`, `Last Name`, `Email`, `User Type`, `Password`, `Omang`, `Contact`,`Location`) values(?,?,?,?,?,?,?,?)";
                 myStmt = myConn.prepareStatement(sql2);
                 myStmt.setString(1, userReg.getFirst_name());
@@ -61,6 +94,19 @@ public class ConnectionUtil {
                 myStmt.setString(7, userReg.getContact());
                 myStmt.setString(8, userReg.getLocation());
                 myStmt.execute();
+                if(!userReg.getUser_type().equals("Client")){
+                    int user_id=0;
+                    String sql4="Select `User Id` from user where `Email`='"+userReg.getEmail()+"'";
+                    myStmt = myConn.prepareStatement(sql4);
+                    myRs=myStmt.executeQuery();
+                    while (myRs.next()) {
+                        user_id=myRs.getInt("User Id");
+                    }
+                        String sql3 = "INSERT INTO `dwmpc`.`add_role` (`user id`, `add roles`, `current role`, `default role`) VALUES('" +user_id+ "','Nothing','"+userReg.getUser_type()+"','"+userReg.getUser_type()+"')";
+                        myStmt = myConn.prepareStatement(sql3);
+                        myStmt.execute();
+
+                }
             }else if(action.equals("Editing_Offers")){
                 sql2= "Update user set `First Name`=?, `Last Name`=?, `Email`=?, `User Type`=?, `Omang`=?, `Contact`=?,`Location`=?" +
                         ", `Add Roles`=? where `User Id`=?";
@@ -75,6 +121,17 @@ public class ConnectionUtil {
                 myStmt.setString(8, userReg.getAddRoles());
                 myStmt.setInt(9, userReg.getUser_Id());
                 myStmt.execute();
+                    String sql3="Update `dwmpc`.`add_role` set  `add roles`=?, `current role`=?, `default role`=? where `user id`='"+userReg.getUser_Id()+"'";
+                    myStmt = myConn.prepareStatement(sql3);
+                if (userReg.getAddRoles()!=null){
+                    myStmt.setString(1, userReg.getAddRoles());
+                  }else {
+                    myStmt.setString(1, "Nothing");
+                }
+                    myStmt.setString(2, userReg.getUser_type());
+                    myStmt.setString(3, userReg.getUser_type());
+                    myStmt.execute();
+
             } else if(action.equals("Editing_Client")){
                 sql2= "Update user set `First Name`=?, `Last Name`=?, `Email`=?, `User Type`=?, `Omang`=?, `Contact`=?,`Location`=? where `User Id`=?";
                 myStmt = myConn.prepareStatement(sql2);
@@ -118,6 +175,7 @@ public class ConnectionUtil {
         try {
             myConn = dataSource.getConnection();
             String sql;
+
             if (action.equals("Admin")) {
                 System.out.println("thiss this");
                 em="Admin";
@@ -125,7 +183,6 @@ public class ConnectionUtil {
                 myStmt = myConn.prepareStatement(sql);
             } else {
                 em="Users";
-
                 sql = "select * from user where Email=?";
                 myStmt = myConn.prepareStatement(sql);
                 myStmt.setString(1, email);
@@ -147,10 +204,13 @@ public class ConnectionUtil {
                 user login2;
 
 
+
                      if(password.equals("None")){
-                        login2 = new user(id, firstName, lastName, email, userType, password, omang, contact, location, "just");
+                         String addRoles = myRS.getString("Add Roles");
+                        login2 = new user(id, firstName, lastName, email, userType, password, omang, contact, location, addRoles);
                         login.add(login2);
                     }else {
+                         System.out.println("Password "+password);
                         boolean matched = hash.validatePassword(password, PasswordOG);
                         login2 = new user(id, firstName, lastName, email, userType, password, omang, contact, location, "just");
                         login.add(login2);
@@ -182,7 +242,7 @@ public class ConnectionUtil {
             String sql2=null;
             if(action.equals("Registration")){
                 sql2="INSERT INTO `company_information` (`User Id`, " +
-                        "`Company Name`, `Company Email`, `Street Address`,`Street Address2`, `Region`, `City/Town/Village`, " +
+                        "`Company_Name`, `Company_Email`, `Street Address`,`Street Address2`, `Region`, `City/Town/Village`, " +
                         "`Plot Number`, `Ward`, `Telephone`, `Fax Number`, `Phone Number`, `Date Unix`," +
                         " `Company License Status`, `Company Status`, `Current Status`) VALUES (?,?,?,?,?" +
                         ",?,?,?,?,?" +
@@ -208,8 +268,8 @@ public class ConnectionUtil {
                 myStmt.setString(16,"UpToDate" );
             }else {
                 System.out.println("www");
-                sql2="Update `company_information` set  `Company Name`='"+registerCompany.getCompany_Name()+"'," +
-                        " `Company Email`='"+registerCompany.getEmail()+"', " +
+                sql2="Update `company_information` set  `Company_Name`='"+registerCompany.getCompany_Name()+"'," +
+                        " `Company_Email`='"+registerCompany.getEmail()+"', " +
                         " `Street Address`='"+registerCompany.getStreet_Address()+"', " +
                         "`Street Address2`='"+registerCompany.getStreet_Address2()+"', " +
                         "`Region`='"+registerCompany.getRegion()+"', `City/Town/Village`='"+registerCompany.getRegion_Town_Village()+"'," +
@@ -235,7 +295,7 @@ public class ConnectionUtil {
             myRS=myStmt.executeQuery();
             while(myRS.next()){
                 int id=myRS.getInt("Company Id");
-                String companyName=myRS.getString("Company Name");
+                String companyName=myRS.getString("Company_Name");
                 viewRegisteredCompany=getCompanyDetails(id);
                 System.out.println(" This is the company Id :"+id);
             }
@@ -264,6 +324,7 @@ public class ConnectionUtil {
             ResultSet myRs=null;
             PreparedStatement myStmt=null;
 
+
             try {
                 //get a connectio
                 String sql=null;
@@ -273,12 +334,13 @@ public class ConnectionUtil {
                     sql ="Select * from company_information where `User Id`="+userId+";";
                 }else{
 
-                    System.out.println("application_status" +Branch);
+                    System.out.println("application_status " +userType);
                     sql ="SELECT * FROM application_status a left join vehicle v on" +
-                            " a.`Chase Number`=v.`Chase Number` left join company_information c on " +
+                            " a.`Chase Number`=v.`Chase_Number` left join company_information c on " +
                             "v.`Company Id`=c.`Company Id` where a.`Current Office`='"+userType+"' and " +
                             "a.`Status Of Application`='UptoDate' and c.`Region`='"+Branch+"' and not v.`StatusV`='Company is Revoked';";
                 }
+                System.out.println("application_status " +sql);
 
                 myStmt=myConn.prepareStatement(sql);
                 myRs=myStmt.executeQuery();
@@ -287,8 +349,8 @@ public class ConnectionUtil {
                 while(myRs.next()) {
                     //retrieve data from the result set
                     int id=myRs.getInt("Company Id");
-                    String companyName=myRs.getString("Company Name");
-                    String Com_email = myRs.getString("Company Email");
+                    String companyName=myRs.getString("Company_Name");
+                    String Com_email = myRs.getString("Company_Email");
                     String City_Town_Village = myRs.getString("City/Town/Village");
                     String plot_number = myRs.getString("Plot Number");
                     String ward = myRs.getString("Ward");
@@ -362,8 +424,8 @@ public class ConnectionUtil {
 
     //retrieve data from the result set111
     int id = myRs.getInt("User Id");
-    String companyName = myRs.getString("Company Name");
-    String Com_email = myRs.getString("Company Email");
+    String companyName = myRs.getString("Company_Name");
+    String Com_email = myRs.getString("Company_Email");
     String Street_address = myRs.getString("Street Address");
     String street_address_line1 = myRs.getString("Street Address2");
     String City_Town_Village = myRs.getString("City/Town/Village");
@@ -473,10 +535,10 @@ public class ConnectionUtil {
             myConn=dataSource.getConnection();
             String sql=null;
             if(action.equals("EditingVehicle")){
-                sql ="update vehicle set `Chase Number`=?, `Vehicle Type`=?," +
+                sql ="update vehicle set `Chase_Number`=?, `Vehicle Type`=?," +
                         " `Unladen Weight`=?, `Waste Type`=?, `Annual Quantity`=?," +
                         " `Type Of Waste Covered During Transportation`=?, `Carrier Number`=?" +
-                        " where `Chase Number`=?";
+                        " where `Chase_Number`=?";
                 myStmt=myConn.prepareStatement(sql);
                 myStmt.setString(1,vehicleRegistration.getChase_number());
                 myStmt.setString(2,vehicleRegistration.getVehicle_type());
@@ -488,7 +550,7 @@ public class ConnectionUtil {
                 myStmt.setString(8,vehicleRegistration.getChase_number());
 
             }else if(action.equals("RegisteringVehicle")){
-                sql ="INSERT INTO `vehicle` (`Chase Number`, `Company Id`, `Vehicle Type`," +
+                sql ="INSERT INTO `vehicle` (`Chase_Number`, `Company Id`, `Vehicle Type`," +
                         " `Unladen Weight`, `Waste Type`, `Annual Quantity`, `Type Of Waste Covered During Transportation`," +
                         " `Carrier Number`, `BA Permit`, `Certification Of Cooperation`, `Payment Receipt`, `Facility Licence`," +
                         " `Hazardous Waste`, `Training On Health And Safety`, `Fire Fighting And First Aid`, `Health And Environment`, " +
@@ -523,12 +585,12 @@ public class ConnectionUtil {
                     sql ="update vehicle set `Affidavit`=? ,`BA Permit`=?," +
                             " `Payment Receipt`=?, `Facility Licence`=?," +
                             " `PrDP_att`=?, `Blue_Book`=?" +
-                            " where `Chase Number`=?";
+                            " where `Chase_Number`=?";
                 }else{
                     sql ="update vehicle set `Road_Worthiness`=?, `Certification Of Cooperation`=?," +
                             " `Hazardous Waste`=?, `Training On Health And Safety`=?,  " +
                             "  `Fire Fighting And First Aid`=?  `Health And Environment`=?" +
-                            " where `Chase Number`=?";
+                            " where `Chase_Number`=?";
                 }
                 myStmt=myConn.prepareStatement(sql);
                 myStmt.setString(1,vehicleRegistration.getRoad_Wortiness());
@@ -566,7 +628,7 @@ public class ConnectionUtil {
             myConn=dataSource.getConnection();
             String sql;
             if(User_type.equals("Waste Management Officer")){
-                sql ="Select * from vehicle where `Chase Number`='"+company_id+"'";
+                sql ="Select * from vehicle where `Chase_Number`='"+company_id+"'";
             }else{
                 int Company_id= Integer.parseInt(company_id);
                 sql ="Select * from vehicle where `Company Id`="+Company_id;
@@ -577,7 +639,7 @@ public class ConnectionUtil {
             //process result set
             while(myRs.next()) {
                 //retrieve data from the result set
-                String chase_number=myRs.getString("Chase Number");
+                String chase_number=myRs.getString("Chase_Number");
                 String Vehicle_Type=myRs.getString("Vehicle Type");
                 String Unladen=myRs.getString("Unladen Weight");
                 String Waste_Type=myRs.getString("Waste Type");
@@ -609,7 +671,7 @@ public class ConnectionUtil {
         try {
             System.out.println("this is Chassis :"+chassis_no+" 11");
             myConn = dataSource.getConnection();
-            String sql = "Select * from vehicle where `Chase Number`='" +chassis_no+"'";
+            String sql = "Select * from vehicle where `Chase_Number`='" +chassis_no+"'";
             myStmt = myConn.prepareStatement(sql);
             myRs = myStmt.executeQuery();
             System.out.println("this is Chassis :"+chassis_no+" 22");
@@ -664,7 +726,7 @@ public class ConnectionUtil {
             //process result set
             while(myRs.next()) {
                 //retrieve data from the result set
-                String chase_number=myRs.getString("Chase Number");
+                String chase_number=myRs.getString("Chase_Number");
                 String Carrier_NO=myRs.getString("Carrier Number");
 
 
@@ -695,7 +757,7 @@ public class ConnectionUtil {
             myStmt.setString(4, ApplicationDate);
             myStmt.setString(5, "UptoDate");
             myStmt.execute();
-            sql2="update vehicle set `StatusV`=? where `Chase Number`='"+s+"'";
+            sql2="update vehicle set `StatusV`=? where `Chase_Number`='"+s+"'";
             myStmt=myConn.prepareStatement(sql2);
             myStmt.setString(1,"stage 1");
             myStmt.execute();
@@ -725,10 +787,11 @@ public class ConnectionUtil {
                 if(setAction.getAction_Taken().equals("Approving")) {
                     String nextApprove=null;
                     String level=null;
+                    System.out.println("Officer :"+userType);
                     switch (userType){
                         case "Compliance Officer":
                             nextApprove="Waste Management Officer";
-                            SendEmail.sentEmail(companyEmail);
+                           // SendEmail.sentEmail(companyEmail);
                             twiltest.sendSms(companyPhone);
                             level="Stage 2";
                             break;
@@ -768,12 +831,12 @@ public class ConnectionUtil {
                     myStmt = myConn.prepareStatement(sql);
                     myStmt.execute();
                     sql = "update vehicle set `StatusV` ='"+level+
-                            "' where `Chase Number`='"+vehicle_id+"'";
+                            "' where `Chase_Number`='"+vehicle_id+"'";
                     myStmt = myConn.prepareStatement(sql);
                     myStmt.execute();
                 }else if(setAction.getAction_Taken().equals("Decline")){
                     sql = "update vehicle set `StatusV` ='Fix info"+
-                            "' where `Chase Number`='"+vehicle_id+"'";
+                            "' where `Chase_Number`='"+vehicle_id+"'";
                     myStmt = myConn.prepareStatement(sql);
                     myStmt.execute();
                     sql = "update application_status set `Status Of Application` ='Fix info"+
@@ -1005,6 +1068,7 @@ public class ConnectionUtil {
     }
 
     public int getReportWaste_lastRow(String company_name) throws Exception {
+
         Connection myConn=null;
         ResultSet myRs=null;
         PreparedStatement myStmt=null;
@@ -1142,5 +1206,51 @@ public class ConnectionUtil {
 
         }
         return countGeneral;
+    }
+
+    public Add_statues getAdditionalRole(int user_id) throws Exception{
+        Add_statues add_statues = null;
+        Connection myConn=null;
+        ResultSet myRs=null;
+        PreparedStatement myStmt=null;
+        CountGeneral countGeneral;
+
+        try {
+            //get a connectio
+
+            myConn=dataSource.getConnection();
+            String sql ="select * from dwmpc.`add_role` where `user id`="+user_id+" ;";
+            myStmt=myConn.prepareStatement(sql);
+            myRs=myStmt.executeQuery();
+
+            //process result set
+            while(myRs.next()) {
+
+               String  add_Roles=myRs.getString("add roles");
+                String  current=myRs.getString("current role");
+                String  default1=myRs.getString("default role");
+               add_statues=new Add_statues(user_id,add_Roles,current,default1);
+            }
+        }finally {
+
+            close(myConn,myStmt,myRs);
+
+        }
+        return add_statues;
+
+    }
+
+    public void currentUserType(String userType, int user_id) throws Exception {
+        Connection myConn=null;
+        PreparedStatement myStmt=null;
+        try {
+            System.out.println("This Error");
+            myConn = dataSource.getConnection();
+            String sql2 = "UPDATE `dwmpc`.`add_role` SET `current role` = '"+userType+"' WHERE `user id` = "+user_id+"";
+            myStmt = myConn.prepareStatement(sql2);
+            myStmt.execute();
+        }finally {
+            close(myConn,myStmt,null);
+        }
     }
 }

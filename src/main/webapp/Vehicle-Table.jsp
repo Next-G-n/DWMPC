@@ -28,11 +28,6 @@
   <link href="dist/css/style.css" rel="stylesheet" type="text/css">
 
 
-  <style>
-    .dt-buttons{
-      display: none;
-    }
-  </style>
 </head>
 
 <body>
@@ -216,13 +211,13 @@
         <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">${CompanyName}</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
         <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
           <li class="active" role="presentation">
-            <a onclick="document.getElementById('Company_information').submit()" data-toggle="tab"  role="tab" aria-expanded="true">Information</a>
+            <a onclick="document.getElementById('Company_information').submit()" data-toggle="tab"  role="tab" aria-expanded="false">Information</a>
           </li>
           <li >
-            <a onclick="document.getElementById('Vehicle_info').submit()" aria-expanded="false"  data-toggle="tab" role="tab">Vehicles</a>
+            <a onclick="document.getElementById('Vehicle_info').submit()" aria-expanded="true"  data-toggle="tab" role="tab">Vehicles</a>
           </li>
           <li>
-            <a onclick="document.getElementById('Employee_info').submit()">Employees</a>
+            <a onclick="document.getElementById('Employee_info').submit()" aria-expanded="false"  data-toggle="tab" role="tab">Employees</a>
           </li>
         </ul>
       </li>
@@ -739,7 +734,7 @@
                         <th>Type of Vehicle</th>
                         <th>Unleaded Weight</th>
                         <th>Type of waste</th>
-                        <th>Anual Quantity</th>
+                        <th>Annual Quantity</th>
                         <th>Carrier Number</th>
                         <th>Vehicle Ownership</th>
                         <th>Status</th>
@@ -752,7 +747,6 @@
                       <c:set var="countVehicles" value="0" scope="page"/>
                       <c:forEach var="Vehicles" items="${All_Vehicles}">
                         <c:set var="countVehicles" value="${countVehicles+1}" scope="page"/>
-
                         <tr>
                           <td class="Count">${countVehicles}</td>
                           <td class="Chassis-Number">${Vehicles.chase_number}</td>

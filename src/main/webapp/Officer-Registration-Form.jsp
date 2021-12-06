@@ -776,7 +776,8 @@
                         <div class="form-group">
                           <div class="row">
                             <input type="hidden" name="command" value="Registering_User">
-                            <input type="hidden" name="action" value="Registration">
+                            <input type="hidden" name="action" value="Registration_Officer">
+                            <input type="hidden" name="email2" value="${User_Info[0].email}">
                             <input type="hidden" name="password" value="2021">
                             <div class="col-md-6 col-xs-12 mt-40">
                               <label class="control-label mb-10" for="First_Name"> First Name(required):</label>

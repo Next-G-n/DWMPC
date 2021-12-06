@@ -844,10 +844,8 @@
 
                                             const add_Roles = Add_Roles.split(", ");
                                             let add_Roles2 = "";
-                                            alert(add_Roles);
                                             let add_Roles1 = [];
                                             for ( i = 0; i < add_Roles.length; i++) {
-                                                alert("This '"+add_Roles[i].replace(/\s/g, '')+"'")
                                                 switch (add_Roles[i].replace(/\s/g, '')) {
                                                     case "CO":
                                                         add_Roles2 = "Compliance Officer";
@@ -867,7 +865,7 @@
                                                 }
                                                 add_Roles1.push(add_Roles2);
                                             }
-                                            alert(add_Roles1)
+
                                             // const add_Roles1=add_Roles2.slice(0, -1);
                                             //  const add_Roles1="'Compliance Officer', 'Waste Management Officer'"
                                             document.getElementById("ID").value = id;

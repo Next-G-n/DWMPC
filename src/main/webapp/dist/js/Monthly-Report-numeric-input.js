@@ -12,6 +12,7 @@ $.fn.numericInputExample = function () {
                 dataRows.each(function () {
                     var row = $(this);
                     total += parseFloat(row.children().eq(column).text());
+
                 });
                 footer.children().eq(column).text(total);
             }
@@ -29,7 +30,6 @@ $.fn.numericInputExample = function () {
 
             var row = $(this);
             total += parseFloat(row.children().eq(column).text());
-
             var convertedIntoArray = [];
 
             $('table#edit_datable_1 tr').each(function () {
@@ -82,6 +82,7 @@ $.fn.numericInputExample = function () {
         } else {
             $('.alert').hide();
             footer.children().eq(column).text(total);
+
         }
     }).on('validate', function (evt, value) {
         var cell = $(this),

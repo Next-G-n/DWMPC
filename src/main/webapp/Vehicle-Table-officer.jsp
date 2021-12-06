@@ -1,27 +1,36 @@
+
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>DWMPC || Vehicle Registration Form</title>
-    <meta name="description" content="Zapily is a Dashboard & Admin Site Responsive Template by hencework." />
+    <title>DWMPC || Company Vehicles</title>
+    <meta name="description" content="Waste Management System." />
     <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Zapily Admin, Zapilyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
-    <meta name="author" content="hencework"/>
+    <meta name="Next-gen" content="hencework"/>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="icon.ico">
     <link rel="icon" href="icon.ico" type="image/x-icon">
-    <!-- vector map CSS -->
-    <link href="vendors/bower_components/jquery-wizard.js/css/wizard.css" rel="stylesheet" type="text/css"/>
 
     <!-- bootstrap-select CSS -->
     <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
 
-    <!-- Bootstrap Dropify CSS -->
-    <link href="vendors/bower_components/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Data table CSS -->
+    <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+
+    <!--alerts CSS -->
+    <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
 
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+
+
 </head>
 
 <body>
@@ -37,7 +46,7 @@
         <div class="mobile-only-brand pull-left">
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
-                    <a href="${pageContext.request.contextPath}/Home.jsp">
+                    <a href="${pageContext.request.contextPath}/Officer-Home.jsp">
                         <img class="brand-img" src="img/logo2.png" alt="brand"/>
                     </a>
                 </div>
@@ -205,31 +214,24 @@
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">${CompanyName}</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                 <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
                     <li class="active" role="presentation">
-                        <a onclick="document.getElementById('Company_information').submit()" data-toggle="tab"  role="tab" aria-expanded="true">Information</a>
+                        <a onclick="document.getElementById('Company_information').submit()" data-toggle="tab"  role="tab" aria-expanded="false">Information</a>
                     </li>
                     <li >
-                        <a onclick="document.getElementById('Vehicle_info').submit()" aria-expanded="false"  data-toggle="tab" role="tab">Vehicles</a>
+                        <a onclick="document.getElementById('Vehicle_info').submit()" aria-expanded="true"  data-toggle="tab" role="tab">Vehicles</a>
                     </li>
                     <li>
-                        <a onclick="document.getElementById('Employee_info').submit()">Employees</a>
+                        <a onclick="document.getElementById('Employee_info').submit()" aria-expanded="false" data-toggle="tab" role="tab">Employees</a>
                     </li>
                 </ul>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
-            <c:if test="${ReportBtn=='Upload'}">
-                <li>
-                    <a href="Monthly-Report.jsp" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-file-text mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-                </li>
-            </c:if>
-            <c:if test="${ReportBtn!='Upload'}">
-                <li>
-                    <a href="javascript:void(0);" class="Report-toast" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-file-text mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-                </li>
-            </c:if>
             <li>
-                <a href="javascript:void(0);" class="tst2"class="tst2"class="tst2" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" class="Report-toast" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-file-text mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" data-toggle="collapse" class="tst2" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" class="tst2" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
@@ -685,7 +687,6 @@
     <!-- /Right Sidebar Menu -->
 
 
-
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container">
@@ -697,392 +698,162 @@
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="${pageContext.request.contextPath}/Home.jsp">Dashboard</a></li>
-                        <li><a href="${pageContext.request.contextPath}/Vehicle-Table.jsp">Vehicle Table</a></li>
-                        <li class="active"><span>Vehicle Registration Form</span></li>
+                        <li><a href="${pageContext.request.contextPath}/Officer-Home.jsp">Dashboard</a></li>
+                        <li class="active"><span>Company Vehicles</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
-                <!-- Row -->
-
             </div>
             <!-- /Title -->
+
             <div class="row">
+
+                <!-- Bordered Table -->
                 <div class="col-sm-12">
                     <div class="panel panel-warning card-view">
                         <div class="panel-heading">
                             <div class="pull-left">
-                                <h6 class="panel-title txt-light">Vehicle Registration</h6>
+                                <h6 class="panel-title txt-light">Vehicle Details</h6>
                             </div>
                             <div class="clearfix"></div>
                         </div>
-
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-wrap">
-                                            <form data-toggle="validator" role="form" action="ServletDwmpc" method="post" enctype="multipart/form-data">
+                                <div class="table-wrap mt-40">
+                                    <div class="table-responsive">
 
-                                                <input type="hidden" id="command" name="command" class="hidden" value="RegisteringVehicle"/>
-                                                <input type="hidden" id="action" name="action"  class="hidden" value="RegisteringVehicle"/>
-                                                <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
-                                                <input type="hidden" name="CompanyName" class="hidden" value="${Company_info.company_Name}"/>
-                                                <input type="hidden"  name="addAction"  class="hidden" value="Both"/>
+                                        <table  id="example"  data-paging="true" class="table table-hover display  pb-30">
+                                            <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th >Chase Number</th>
+                                                <th>Type of Vehicle</th>
+                                                <th>Unleaded Weight</th>
+                                                <th>Type of waste</th>
+                                                <th>Annual Quantity</th>
+                                                <th>Carrier Number</th>
+                                                <th>Vehicle Ownership</th>
+                                                <th class="text-nowrap">Action</th>
 
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Vehicle_Type">Vehicle Type (required):</label>
-                                                            <input id="Vehicle_Type" type="text" name="vehicle_Type" class="form-control required" value="" required/>
-                                                        </div>
-                                                        <div class="span1"></div>
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Chassis_Number">Chassis Number(required):</label>
-                                                            <input id="Chassis_Number" type="text" name="Chassis_Number" class="form-control" value="" required/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Unladen_Weight">Unladen Weight (required):</label>
-                                                            <input id="Unladen_Weight" type="text" name="Unladen_Weight" class="form-control required" value="" required/>
-                                                        </div>
-                                                        <div class="span1"></div>
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Registration_Number"> Vehicle Registration Number(required):</label>
-                                                            <input id="Registration_Number" type="text" name="Registration_Number" class="form-control" value="" required/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label for="Your_Vehicle" class="control-label mb-10"> This Your Vehicle?(required):</label>
-                                                            <select id="Your_Vehicle" name="Your_Vehicle" onchange="test2()" class="selectpicker" data-style="form-control btn-default btn-outline">
-                                                                <option value="Yes">Yes, I am the owner.</option>
-                                                                <option value="No">No, I borrowed it.</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="span1"></div>
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label for="Waste_Type" class="control-label mb-10"> Type Of Waste Transported(required):</label>
-                                                            <select id="Waste_Type" name="Waste_Type" class="selectpicker" data-style="form-control btn-default btn-outline">
-                                                                <option value="Bio waste">Bio Waste</option>
-                                                                <option value="Chemical waste">Chemical Waste</option>
-                                                                <option value="Hazardous waste">Hazardous Waste</option>
-                                                                <option value="Clinical Waste">Clinical Waste</option>
-                                                                <option value="Domestic Waste">Domestic Waste</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Annual_Quatity">Annual Quantity(required):</label>
-                                                            <input id="Annual_Quatity" type="text" name="Annual_Quatity" class="form-control required" value="" required/>
-                                                        </div>
-                                                        <div class="span1"></div>
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Transportation">Type of Waste Covered During Transportation(required):</label>
-                                                            <input id="Transportation" type="text" name="Transportation" class="form-control" value="" required/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Vehicle_Attachment">Vehicle and Company Attachment(required):</label>
-                                                            <button href="#Vehicle-Attachment" data-toggle="modal" id="Vehicle_Attachment" class="btn btn-default btn-block btn-outline btn-anim"><i class="icon-paper-clip"></i><span class="btn-text">Upload Attactments</span></button>
-                                                        </div>
-                                                        <div class="span1"></div>
-                                                        <div class="col-md-6 col-xs-12">
-                                                            <label class="control-label mb-10" for="Certificate_Attachment">Type of Waste Covered During Transportation(required):</label>
-                                                            <button href="#Certificate-Attachment" data-toggle="modal" id="Certificate_Attachment" class="btn btn-default btn-block btn-outline btn-anim"><i class="icon-paper-clip"></i><span class="btn-text">Upload Certificates</span></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-0">
-                                                    <div class="checkbox checkbox-success">
-                                                        <input type="checkbox" id="Vehicle_items" data-error="Please agree before proceeding" required>
-                                                        <label for="Vehicle_items">I agree that all the items listed here, a present with in Vehicle.</label>
-                                                        <div class="help-block with-errors"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-0" style="float: right">
-                                                    <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">submit</span></button>
-                                                </div>
 
-                                                <div id="Vehicle-Attachment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                <h5 class="modal-title">Upload All The Following </h5>
-                                                            </div>
-                                                            <div class="modal-body">
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <c:set var="countVehicles" value="0" scope="page"/>
+                                            <c:forEach var="Vehicles" items="${All_Vehicles}">
+                                                <c:set var="countVehicles" value="${countVehicles+1}" scope="page"/>
 
-                                                                <div class="form-group">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 col-xs-12 mt-40">
-                                                                            <label class="control-label mb-10" for="Payment_Receipt"> Payment Receipt(required):</label>
-                                                                            <input type="file" id="Payment_Receipt" name="Payment receipt" class="dropify"  required/>
-                                                                        </div>
-                                                                        <div class="span1"></div>
-                                                                        <div class="col-md-6 col-xs-12 mt-40">
-                                                                            <label class="control-label mb-10" for="BA_Permit"> BA Permit(required):</label>
-                                                                            <input type="file" id="BA_Permit" name="BA permit" class="dropify"  required/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 col-xs-12 Hazardous box">
-                                                                            <label class="control-label mb-10" for="PrDP"> PrDP 'H' For Hazardous Waste(required):</label>
-                                                                            <input type="file" id="PrDP" name="PrDP 'H' For Hazardous Waste" class="dropify"  required/>
-                                                                        </div>
-                                                                        <div class="span1"></div>
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="Registration_Book">Motor Vehicle Registration Book(required):</label>
-                                                                            <input type="file" id="Registration_Book" name="Motor_Vehicle_Registration_Book" class="dropify"  required/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                <tr>
+                                                    <td class="Count">${countVehicles}</td>
+                                                    <td class="Chassis-Number">${Vehicles.chase_number}</td>
+                                                    <td class="Vehicle-Type">${Vehicles.vehicle_type}</td>
+                                                    <td class="Weight">${Vehicles.unladen_Weight}</td>
+                                                    <td class="Waste-Type">${Vehicles.waste_Type}</td>
+                                                    <td class="Annual-Quantity">${Vehicles.annual_Quantity}</td>
+                                                    <td class="Registration-Number">${Vehicles.carrie_number}</td>
+                                                    <td class="Vehicle-Ownership">${Vehicles.own}</td>
+                                                    <td class="text-nowrap">
+                                                        <span id="${Vehicles.chase_number}" onclick="VehicleAttachments(this.id)"> <a   data-toggle="tooltip" data-original-title="Attachments"> <i class="fa fa-file-pdf-o text-warning"></i> </a> </span></td>
+                                                </tr>
+                                            </c:forEach>
 
-                                                                <div class="form-group">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="Facility"> Facility Licence[For all Recyclers](required):</label>
-                                                                            <input type="file" id="Facility" name="Facility Licence" class="dropify"  required/>
-                                                                        </div>
-                                                                        <div class="span1"></div>
-                                                                        <div id="affidavit1" class="col-md-6 col-xs-12 No box">
-                                                                            <label class="control-label mb-10" for="Affidavit"> Affidavit for Borrowed Vehicle(required):</label>
-                                                                            <input type="file" id="Affidavit" name="affidavit" class="dropify"  required/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                            </tbody>
+                                        </table>
 
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Done</span></button>
-                                                            </div>
+                                        <form method="post" id="Vehicle_Att" action="ServletDwmpc">
+                                            <input type="hidden" name="command" value="VehicleAttachments">
+                                            <input type="hidden" id="chassis_No" name="chassis_No" value="">
+                                        </form>
+                                        <form method="post" id="Approving" action="ServletDwmpc">
+                                            <input type="hidden" name="command" value="Officers Action">
+                                            <input type="hidden" name="action" value="Approving">
+                                            <input type="hidden" name="Apply_id" value="${Apply_id}">
+                                            <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
+                                            <input type="hidden" name="UserType" value="${currentUser}">
+                                            <input type="hidden" name="Branch" value="${User_Info[0].location}">
+                                            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+                                            <input type="hidden" name="company_email" value="${Company_info.email}">
+                                            <input type="hidden" name="company_phone" value="${Company_info.phone_Number}">
+                                        </form>
+                                        <form method="post" id="Declining" action="ServletDwmpc">
+                                            <input type="hidden" name="command" value="Officers Action">
+                                            <input type="hidden" name="action" value="Decline">
+                                            <input type="hidden" name="Apply_id" value="${Apply_id}">
+                                            <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
+                                            <input type="hidden" name="UserType" value="${currentUser}">
+                                            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+                                            <input type="hidden" name="company_email" value="${Company_info.email}">
+                                            <input type="hidden" name="company_phone" value="${Company_info.phone_Number}">
+                                        </form>
 
-                                                        </div>
-                                                    </div>
-                                                </div>
 
-                                                <div id="Certificate-Attachment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                <h5 class="modal-title">Upload The Following Certificates</h5>
-                                                            </div>
-                                                            <div class="modal-body">
 
-                                                                <div class="form-group">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="Health_and_Safety"> Health and Safety(required):</label>
-                                                                            <input type="file" id="Health_and_Safety" name="Health and Safety" class="dropify"  required/>
-                                                                        </div>
-                                                                        <div class="span1"></div>
-                                                                        <div class="col-md-6 col-xs-12 Hazardous box">
-                                                                            <label class="control-label mb-10" for="hazardous_waste">hazardous waste(required):</label>
-                                                                            <input type="file" id="hazardous_waste" name="hazardous waste" class="dropify"  required/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="FF_FA">Fire Fighting and First Aid(required):</label>
-                                                                            <input type="file" id="FF_FA" name="Fire fighting and First Aid" class="dropify"  required/>
-                                                                        </div>
-                                                                        <div class="span1"></div>
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="Environment">Health and Environment(required):</label>
-                                                                            <input type="file" id="Environment" name="Health and Environment" class="dropify"  required/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="Roadwortiness"> Certification Of Roadwortiness (required):</label>
-                                                                            <input type="file" id="Roadwortiness" name="Certification_of_roadwortiness" class="dropify"  required/>
-                                                                        </div>
-                                                                        <div class="span1"></div>
-                                                                        <div class="col-md-6 col-xs-12">
-                                                                            <label class="control-label mb-10" for="Cooperation">Certification of Cooperation(required):</label>
-                                                                            <input type="file" id="Cooperation" name="Certification of cooperation" class="dropify"  required/>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                    </div>
 
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Done</span></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    <script>
+                                        let tableRowElement;
 
-                                            </form>
-
-                                            <script>
-                                                function test2(){
-
+                                        function checkboxes(){
+                                            alert("thi")
+                                            var inputElems = document.getElementsByTagName("test"),
+                                                count = 0;
+                                            for (var i=0; i<inputElems.length; i++) {
+                                                if (inputElems[i].type === "checkbox" && inputElems[i].checked === true){
+                                                    count++;
+                                                    alert(count);
                                                 }
-                                                $('#Your_Vehicle').bind('change', function(event) {
+                                            }}
+                                        function studCheck() {
+                                            let total = document.querySelectorAll('input[type="checkbox"]:checked').length;
+                                            var number=Number(total)+Number(4)
+                                            alert("count :"+number)
+                                            document.getElementById("totalStudents").innerHTML = "Total students Present: " + total;
+                                        }
 
-                                                    var i= $('#Your_Vehicle').val();
+                                        function VehicleAttachments(chassis_No){
 
-                                                    if(i==="Yes") // equal to a selection option
-                                                    {
-                                                        alert("Cicked")
-                                                        $('#affidavit1').hide();
-                                                        document.getElementById("affidavit1").style.display = "none";
-                                                    }
-                                                    else if(i==="No")
-                                                    {
-                                                        $('#affidavit1').show(); // show the other one
-                                                        document.getElementById("affidavit1").style.display = "block";
-                                                    }
-                                                });
-                                                $(document).ready(function(){
-                                                    $('#Your_Vehicle').on('change', function(){
-                                                        alert("yyy")
-                                                        var demovalue = $(this).val();
-                                                        if(demovalue ==="Yes"){
-                                                            alert("this Word")
-                                                            $("#affidavit1").hide();
-                                                        }else {
-                                                            $("#affidavit1").show();
-                                                        }
-                                                    });
-                                                });
-                                            </script>
-                                        </div>
-                                    </div>
+                                            document.getElementById("chassis_No").value=chassis_No;
+                                            document.getElementById("Vehicle_Att").submit();
+                                        }
+                                        function test(chassis_No){
+                                            alert("worked"+chassis_No)
+                                        }
+                                        function handleCheckbox(){
+                                            var inputElems = document.getElementsByTagName("input"),
+                                                count = 0;
+                                            for (var i=0; i<inputElems.length; i++) {
+                                                if (inputElems[i].type === "checkbox" && inputElems[i].checked === true){
+                                                    count++;
+                                                    document.getElementById("Number_Checked").value=count;
+                                                    alert(count);
+                                                }
+                                            }}
+
+                                    </script>
+
+                                </div>
+
+                                </br>
+                                <div style="float: right" class="row">
+                                    <button type="button" alt="alert" id="Approving-Officer" style="float: right" class="btn btn-primary btn-anim btn-rounded"><i class="fa fa-check"></i><span class="btn-text">Approve</span></button>
+                                    <button type="button" alt="alert" id="Declining-Officer"  style="float: right; margin-right: 5px" class="btn btn-danger btn-anim btn-rounded"><i class="fa  fa-times"></i><span class="btn-text">Decline</span></button>
                                 </div>
                             </div>
+
                         </div>
 
-
-
                     </div>
-
                 </div>
+                <!-- /Bordered Table -->
 
-                <!-- form -->
-                <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h5 class="modal-title" id="myModalLabel">Edit Profile</h5>
-                            </div>
-                            <div class="modal-body">
-                                <!-- Row -->
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="">
-                                            <div class="panel-wrapper collapse in">
-                                                <div class="panel-body pa-0">
-                                                    <div class="col-sm-12 col-xs-12">
-                                                        <div class="form-wrap">
-                                                            <form action="#">
-                                                                <div class="form-body overflow-hide">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label mb-10" for="exampleInputuname_1">Name</label>
-                                                                        <div class="input-group">
-                                                                            <div class="input-group-addon"><i class="icon-user"></i></div>
-                                                                            <input type="text" class="form-control" id="exampleInputuname_1" placeholder="willard bryant">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="control-label mb-10" for="exampleInputEmail_1">Email address</label>
-                                                                        <div class="input-group">
-                                                                            <div class="input-group-addon"><i class="icon-envelope-open"></i></div>
-                                                                            <input type="email" class="form-control" id="exampleInputEmail_1" placeholder="xyz@gmail.com">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="control-label mb-10" for="exampleInputContact_1">Contact number</label>
-                                                                        <div class="input-group">
-                                                                            <div class="input-group-addon"><i class="icon-phone"></i></div>
-                                                                            <input type="email" class="form-control" id="exampleInputContact_1" placeholder="+102 9388333">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="control-label mb-10" for="exampleInputpwd_1">Password</label>
-                                                                        <div class="input-group">
-                                                                            <div class="input-group-addon"><i class="icon-lock"></i></div>
-                                                                            <input type="password" class="form-control" id="exampleInputpwd_1" placeholder="Enter pwd" value="password">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="control-label mb-10">Gender</label>
-                                                                        <div>
-                                                                            <div class="radio">
-                                                                                <input type="radio" name="radio1" id="radio_1" value="option1" checked="">
-                                                                                <label for="radio_1">
-                                                                                    M
-                                                                                </label>
-                                                                            </div>
-                                                                            <div class="radio">
-                                                                                <input type="radio" name="radio1" id="radio_2" value="option2">
-                                                                                <label for="radio_2">
-                                                                                    F
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="control-label mb-10">Country</label>
-                                                                        <select class="form-control" data-placeholder="Choose a Category" tabindex="1">
-                                                                            <option value="Category 1">USA</option>
-                                                                            <option value="Category 2">Austrailia</option>
-                                                                            <option value="Category 3">India</option>
-                                                                            <option value="Category 4">UK</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-actions mt-10">
-                                                                    <button type="submit" class="btn btn-success mr-10 mb-30">Update profile</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-success waves-effect" data-dismiss="modal">Save</button>
-                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <!-- /form -->
 
             </div>
+
             <!-- Footer -->
             <footer class="footer container-fluid pl-30 pr-30">
                 <div class="row">
                     <div class="col-sm-12">
-                        <p>2021 &copy; DWMPC. Created by Next-gen</p>
+                        <p>2018 &copy; DWMPC. Created by Next-gen</p>
                     </div>
                 </div>
             </footer>
@@ -1096,28 +867,24 @@
 
 <!-- JavaScript -->
 
-<form method="post" id="LogOut_Session" action="ServletDwmpc">
-    <input type="hidden" name="command" value="LogOut Session">
-    <input type="hidden" name="action" value="Sign Out Session">
-</form>
-<script>
-    function LogOut(){
-        document.getElementById("LogOut_Session").submit();
-    }
-</script>
+<!-- /#wrapper -->
+
+<!-- JavaScript -->
 
 <!-- jQuery -->
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
+
+<script src="dist/js/modal-data.js"></script>
+
+<!-- Piety JavaScript -->
+<script src="vendors/bower_components/peity/jquery.peity.min.js"></script>
+<script src="dist/js/peity-data.js"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="dist/js/jquery.slimscroll.js"></script>
-
-<!-- Fancy Dropdown JS -->
-<script src="dist/js/dropdown-bootstrap-extended.js"></script>
 
 <!-- Owl JavaScript -->
 <script src="vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
@@ -1129,15 +896,24 @@
 <script src="dist/js/init.js"></script>
 <script src="dist/js/toast-data.js"></script>
 
+<!-- Data table JavaScript -->
+<script src="vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="vendors/bower_components/jszip/dist/jszip.min.js"></script>
+<script src="vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
+<script src="vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
+
+<script src="vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="dist/js/export-table-data.js"></script>
+
 <!-- Bootstrap Select JavaScript -->
 <script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>
 
-<!-- Bootstrap Daterangepicker JavaScript -->
-<script src="vendors/bower_components/dropify/dist/js/dropify.min.js"></script>
-
-<!-- Form Flie Upload Data JavaScript -->
-<script src="dist/js/form-file-upload-data.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Sweet-Alert  -->
+<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="dist/js/sweetalert-data.js"></script>
 
 </body>
 

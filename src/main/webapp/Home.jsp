@@ -651,16 +651,73 @@
                                                             </div>
                                                             <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">${User_Info[0].first_name} ${User_Info[0].last_name}</h5>
                                                                   <a class="dropdown-toggle weight-500" id="examplePanelDropdown" data-toggle="dropdown" href="#" aria-expanded="false" role="button">
-                                                                     <h6 class="block capitalize-font pb-20">Client</h6>
-                                                                      <i class=" icon-user-follow inline-block mr-5"></i>
-                                                                    </a>
-                                                            <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                                                <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i> D officer</a></li>
-                                                                <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i> Division M</a></li>
-                                                                <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i> Admin</a></li>
-                                                                <li class="divider" role="presentation"></li>
-                                                                <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-settings" aria-hidden="true"></i> Person</a></li>
-                                                            </ul>
+                                                                      <c:if test="${add_Roles.current==null}">
+                                                                          <h6 class="block capitalize-font pb-20">${User_Info[0].user_type}</h6>
+                                                                      </c:if>
+                                                                      <c:if test="${add_Roles.current!=null}">
+                                                                          <h6 class="block capitalize-font pb-20">${add_Roles.current}</h6>
+                                                                          <i class=" icon-user-follow inline-block mr-5"></i>
+                                                                      </c:if>
+
+                                                                  </a>
+                                                            <c:if test="${add_Roles.current!=null}">
+                                                                <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
+                                                                    <li onclick="document.getElementById('${add_Roles.og}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>${add_Roles.og}</a></li>
+                                                                    <c:if test="${add_Roles.co!='Nothing'}">
+                                                                        <li onclick="document.getElementById('${add_Roles.co}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>${add_Roles.co}</a></li>
+                                                                    </c:if>
+                                                                    <c:if test="${add_Roles.wmo!='Nothing'}">
+                                                                        <li onclick="document.getElementById('${add_Roles.wmo}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>${add_Roles.wmo}</a></li>
+                                                                    </c:if>
+                                                                    <c:if test="${add_Roles.rc!='Nothing'}">
+                                                                        <li  role="presentation"><a onclick="document.getElementById('${add_Roles.rc}').submit()" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>${add_Roles.rc}</a></li>
+                                                                    </c:if>
+                                                                    <c:if test="${add_Roles.wmoch!='Nothing'}">
+                                                                        <li onclick="document.getElementById('${add_Roles.wmoch}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>${add_Roles.wmoch}</a></li>
+                                                                    </c:if>
+                                                                    <c:if test="${add_Roles.hdh!='Nothing'}">
+                                                                        <li onclick="document.getElementById('${add_Roles.hdh}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>${add_Roles.hdh}</a></li>
+                                                                    </c:if>
+                                                                </ul>
+                                                            </c:if>
+
+                                                            <form method="post" id="${add_Roles.og}" action="ServletDwmpc">
+                                                                <input type="hidden" name="command" value="Switch User">
+                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                                                <input type="hidden" name="userType" value="${add_Roles.og}">
+                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                                                            </form>
+
+                                                            <form method="post" id="${add_Roles.co}" action="ServletDwmpc">
+                                                                <input type="hidden" name="command" value="Switch User">
+                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                                                <input type="hidden" name="userType" value="${add_Roles.co}">
+                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                                                            </form>
+                                                            <form method="post" id="${add_Roles.rc}" action="ServletDwmpc">
+                                                                <input type="hidden" name="command" value="Switch User">
+                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                                                <input type="hidden" name="userType" value="${add_Roles.rc}">
+                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                                                            </form>
+                                                            <form method="post" id="${add_Roles.wmoch}" action="ServletDwmpc">
+                                                                <input type="hidden" name="command" value="Switch User">
+                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                                                <input type="hidden" name="userType" value="${add_Roles.wmoch}">
+                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                                                            </form>
+                                                            <form method="post" id="${add_Roles.wmo}" action="ServletDwmpc">
+                                                                <input type="hidden" name="command" value="Switch User">
+                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                                                <input type="hidden" name="userType" value="${add_Roles.wmo}">
+                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                                                            </form>
+                                                            <form method="post" id="${add_Roles.hdh}" action="ServletDwmpc">
+                                                                <input type="hidden" name="command" value="Switch User">
+                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                                                <input type="hidden" name="userType" value="${add_Roles.hdh}">
+                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                                                            </form>
 
                                                         </div>
                                                         <div class="social-info">
@@ -681,6 +738,7 @@
                                                             <button class="btn btn-gold btn-block  btn-anim mt-40" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
                                                         </div>
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>
