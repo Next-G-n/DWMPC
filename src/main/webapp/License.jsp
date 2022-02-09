@@ -1,43 +1,32 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: NITRO5
-  Date: 9/7/2021
-  Time: 10:36 AM
-  To change this template use File | Settings | File Templates.
---%>
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>DWMPC || Employee Table</title>
-    <meta name="description" content="Waste Management System." />
+    <title>DWMPC || Vehicle Registration Form</title>
+    <meta name="description" content="Zapily is a Dashboard & Admin Site Responsive Template by hencework." />
     <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Zapily Admin, Zapilyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
-    <meta name="Next-gen" content="hencework"/>
+    <meta name="author" content="hencework"/>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="icon.ico">
     <link rel="icon" href="icon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+    <!-- Data table CSS -->
+    <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+    <!-- vector map CSS -->
+    <link href="vendors/bower_components/jquery-wizard.js/css/wizard.css" rel="stylesheet" type="text/css"/>
 
     <!-- bootstrap-select CSS -->
     <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
 
-    <!--alerts CSS -->
-    <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
-
-
-    <!-- Data table CSS -->
-    <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-
+    <!-- Bootstrap Dropify CSS -->
+    <link href="vendors/bower_components/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
-
-
 </head>
 
 <body>
@@ -53,7 +42,7 @@
         <div class="mobile-only-brand pull-left">
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
-                    <a href="${pageContext.request.contextPath}/Officer-Home.jsp">
+                    <a href="${pageContext.request.contextPath}/Home.jsp">
                         <img class="brand-img" src="img/logo2.png" alt="brand"/>
                     </a>
                 </div>
@@ -102,10 +91,10 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a class="active" href="Officer-Home.jsp" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="#" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -113,24 +102,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">${CompanyName}</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-                <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
-                    <li class="active" role="presentation">
-                        <a onclick="location.href='CompanyInfo-Officer-Table.jsp'" data-toggle="tab"  role="tab" aria-expanded="true">Information</a>
-                    </li>
-                    <li >
-                        <a onclick="location.href='Vehicle-Table-officer.jsp'" aria-expanded="false"  data-toggle="tab" role="tab">Vehicles</a>
-                    </li>
-                    <li>
-                        <a onclick="document.getElementById('Employee_info').submit()">Employees</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-file-text mr-20"></i><span class="right-nav-text">Licenced Vehicle</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -144,6 +116,19 @@
                 <a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
         </ul>
+        <form method="post" id="Employee_info" action="ServletDwmpc">
+            <input type="hidden" name="command" value="EmployeesDetail">
+            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+        </form>
+        <form method="post" id="Vehicle_info" action="ServletDwmpc">
+            <input type="hidden" name="command" value="VehicleDetail">
+            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+        </form>
+        <form method="post" id="Company_information" action="ServletDwmpc">
+            <input type="hidden" name="command" value="getCompany">
+            <input type="hidden" name="UserType" value="Client">
+            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+        </form>
     </div>
     <!-- /Left Sidebar Menu -->
 
@@ -247,205 +232,124 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark"></h5>
+                    <h5 class="txt-dark">Export</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="${pageContext.request.contextPath}/Officer-Home.jsp">Home</a></li>
-                        <li class="active"><span>Employee Table</span></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#"><span>table</span></a></li>
+                        <li class="active"><span>Export</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
 
+            <!-- Row -->
             <div class="row">
-
-                <!-- Bordered Table -->
-                <div class="tab-pane fade in active tab-content col-lg-9 col-md-6 col-sm-12 col-xs-12">
-                    <div class="panel panel-warning card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <h6 class="panel-title txt-light">Employee Details</h6>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
+                <div class="col-sm-12">
+                    <div class="panel panel-default card-view">
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
-                                <div class="table-wrap mt-40">
+                                <div class="table-wrap">
                                     <div class="table-responsive">
-
-                                        <table  id="example"  data-paging="true" class="table table-striped display  pb-30">
+                                        <table id="example" class="table table-hover display  pb-30" >
                                             <thead>
                                             <tr>
-                                                <th>ID</th>
-                                                <th >First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Job Title</th>
-                                                <th>Qualification</th>
-                                                <th>Training in waste Management</th>
-                                                <th>Contact</th>
-
-
+                                                <th>Company Name</th>
+                                                <th>License Number</th>
+                                                <th>License Type</th>
+                                                <th>Start date</th>
+                                                <th>Exp Date</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <c:forEach var="Employee" items="${All_Employee}">
-                                                <c:set var="countEmployee" value="${countEmployee+1}" scope="page"/>
+                                            <c:set var="countRows_Licence" value="0" scope="page"/>
+                                            <c:forEach var="Licence_Table" items="${Licence_Table}">
+                                                <c:set var="countRows_Licence" value="${countRows_Licence+1}" scope="page"/>
 
-                                                <tr>
-                                                    <td class="Employee_Id">${Employee.company_Personnel_Id}</td>
-                                                    <td class="First_Name">${Employee.first_Name}</td>
-                                                    <td class="Last_Name">${Employee.last_Name}</td>
-                                                    <td class="Job_Title">${Employee.job_Title}</td>
-                                                    <td class="Qualification">${Employee.qualification}</td>
-                                                    <td class="training">${Employee.trained_In_Waste_Management}</td>
-                                                    <td class="Contact">${Employee.contact}</td>
-                                                </tr>
+                                            <tr>
+                                                <td>${Licence_Table.company_Name}</td>
+                                                <td>${Licence_Table.carrier_Number}</td>
+                                                <td>${Licence_Table.licence_type}</td>
+                                                <td>${Licence_Table.start_date}</td>
+                                                <td>${Licence_Table.end_date}</td>
+                                                <td>${Licence_Table.status}</td>
+                                                <td class="text-nowrap"><a data-toggle="modal" data-target="#Revoking${countRows_Licence}" class="mr-25"  data-original-title="Revoke"> <i class="zmdi zmdi-flag text-danger m-r-10"></i> </a> </td>
+
+
+                                            </tr>
+
+                                                <form method="post" id="Revoking${countRows_Licence}" action="ServletDwmpc">
+
+                                                </form>
+
+                                                <div class="modal fade" id="Revoking${countRows_Licence}" tabindex="-1" role="dialog">
+                                                    <div class="modal-dialog" >
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                <h5 class="modal-title" id="">Revoking Vehicle ${Licence_Table.carrier_Number}</h5>
+                                                            </div>
+                                                            <form method="post" action="ServletDwmpc">
+                                                                <div class="modal-body">
+                                                                    <div class="form-group" >
+                                                                        <label for="message-text" class="control-label mb-10">Reason for The Revoking Licence:</label>
+                                                                        <textarea class="form-control" name="reason" id="message-text"></textarea>
+                                                                        <input type="hidden" name="command" value="Officers Action">
+                                                                        <input type="hidden" name="action" value="Revoke">
+                                                                        <input type="hidden" name="Apply_id" value="${Licence_Table.applyId}">
+                                                                        <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
+                                                                        <input type="hidden" name="UserType" value="${add_Roles.current}">
+                                                                        <input type="hidden" name="User_Type" value="${add_Roles.current}">
+                                                                        <input type="hidden" name="company_id" value="${Licence_Table.companyId}">
+                                                                        <input type="hidden" name="company_email" value="${Licence_Table.companyEmail}">
+                                                                        <input type="hidden" name="company_phone" value="${Licence_Table.companyPhoneNumber}">
+                                                                        <input type="hidden" name="license_Number" value="${Licence_Table.licence_number}">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default btn-anim btn-rounded" data-dismiss="modal"><i class="fa  fa-times"></i><span class="btn-text">Close</span></button>
+                                                                    <button type="submit"  class="btn btn-danger btn-anim btn-rounded"><i class="zmdi zmdi-flag m-r-10"></i><span class="btn-text">Decline</span></button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </c:forEach>
-
                                             </tbody>
+
                                         </table>
 
-
-                                    </div>
-
-                                </div>
-
-                                </br>
-                                <div style="float: right; margin-right:20px;" class="row">
-                                    <button type="button" alt="alert" id="Approving-Officer" style="float: right" class="btn btn-primary btn-anim btn-rounded"><i class="fa fa-check"></i><span class="btn-text">Approve</span></button>
-                                    <button type="button" alt="alert" id="Declining-Officer"  style="float: right; margin-right: 5px" class="btn btn-danger btn-anim btn-rounded"><i class="fa  fa-times"></i><span class="btn-text">Decline</span></button>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div id="Company_info2"  class="tab-pane fade in active col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                    <div class="panel panel-default card-view pa-01 pa-0" onclick="EmployeeTable();" >
-                        <div class="panel-wrapper collapse in">
-                            <div class="panel-body pa-0">
-                                <div class="sm-data-box">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
-                                                <span class="txt-dark block counter"><span class="counter-anim">${CountSp.employee}</span></span>
-                                                <span class="weight-500 uppercase-font block font-13">Employees</span>
-                                            </div>
-                                            <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
-                                                <i class="icon-people data-right-rep-icon txt-light-grey"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default card-view pa-01 pa-0" onclick="location.href='Vehicle-Table-officer.jsp';">
-                        <div class="panel-wrapper collapse in">
-                            <div class="panel-body pa-0">
-                                <div class="sm-data-box">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
-                                                <span class="txt-dark block counter"><span class="counter-anim">${CountSp.vehicle}</span></span>
-                                                <span class="weight-500 uppercase-font block">Vehicle</span>
-                                            </div>
-                                            <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
-                                                <i class="fa fa-truck data-right-rep-icon txt-light-grey"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default card-view pa-0  bg-warning" onclick="location.href='CompanyInfo-Officer-Table.jsp';">
-                        <div class="panel-wrapper collapse in">
-                            <div class="panel-body pa-0">
-                                <div class="sm-data-box">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left txt-light">
-                                                <span class="block counter"><span class="counter-anim">${CountSp.company}</span></span>
-                                                <span class="weight-500 uppercase-font block">Companies Registered</span>
-                                            </div>
-                                            <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
-                                                <i class="icon-layers data-right-rep-icon txt-light"></i>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <form method="post" id="Employee_info" action="ServletDwmpc">
-                    <input type="hidden" name="command" value="EmployeesDetail">
-                    <input type="hidden" name="company_id" value="${Company_info.company_Id}">
-                    <input type="hidden" name="User_Type" value="${User_Info[0].user_type}">
-                </form>
-
-                <script>
-                    function EmployeeTable(){
-                        document.getElementById("Employee_info").submit();
-                    }
-                    function VehicleTable(){
-                        document.getElementById("Vehicle_info").submit();
-                    }
-                    function LogOut(){
-                        document.getElementById("LogOut_Session").submit();
-                    }
-                </script>
-                <!-- /Bordered Table -->
-
             </div>
-
-            <!-- Footer -->
-            <footer class="footer container-fluid pl-30 pr-30">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <p>2018 &copy; DWMPC. Created by Next-gen</p>
-                    </div>
-                </div>
-            </footer>
-            <!-- /Footer -->
+            <!-- /Row -->
         </div>
+
+        <!-- Footer -->
+        <footer class="footer container-fluid pl-30 pr-30">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>2021 &copy; DWMPC. Created by Next-gen</p>
+                </div>
+            </div>
+        </footer>
+        <!-- /Footer -->
+
     </div>
     <!-- /Main Content -->
 
-    <form method="post" id="Approving" action="ServletDwmpc">
-        <input type="hidden" name="command" value="Officers Action">
-        <input type="hidden" name="action" value="Approving">
-        <input type="hidden" name="Apply_id" value="${Apply_id}">
-        <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
-        <input type="hidden" name="UserType" value="${currentUser}">
-        <input type="hidden" name="Branch" value="${User_Info[0].location}">
-        <input type="hidden" name="company_id" value="${Company_info.company_Id}">
-        <input type="hidden" name="company_email" value="${Company_info.email}">
-        <input type="hidden" name="company_phone" value="${Company_info.phone_Number}">
-    </form>
-    <form method="post" id="Declining" action="ServletDwmpc">
-        <input type="hidden" name="command" value="Officers Action">
-        <input type="hidden" name="action" value="Decline">
-        <input type="hidden" name="Apply_id" value="${Apply_id}">
-        <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
-        <input type="hidden" name="UserType" value="${currentUser}">
-        <input type="hidden" name="company_id" value="${Company_info.company_Id}">
-        <input type="hidden" name="company_email" value="${Company_info.email}">
-        <input type="hidden" name="company_phone" value="${Company_info.phone_Number}">
-    </form>
-
 </div>
-<!-- /#wrapper -->
-
-<!-- JavaScript -->
-
 <!-- /#wrapper -->
 
 <!-- JavaScript -->
@@ -529,8 +433,6 @@
 <script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <script src="dist/js/sweetalert-data.js"></script>
 
-
 </body>
 
 </html>
-

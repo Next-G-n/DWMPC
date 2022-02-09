@@ -61,7 +61,7 @@
     <div class="la-anim-1"></div>
 </div>
 <!-- /Preloader -->
-<div class="wrapper theme-1-active pimary-color-green">
+<div class="wrapper theme-1-active pimary-color-pink">
 
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -92,14 +92,6 @@
                 </li>
                 <li class="dropdown app-drp">
                     <a href="#"  class="tst2" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
-                    <ul class="dropdown-menu app-dropdown" data-dropdown-in="slideInRight" data-dropdown-out="flipOutX">
-                        <li>
-                            <div class="app-box-bottom-wrap">
-                                <hr class="light-grey-hr ma-0"/>
-                                <a class="block text-center read-all" href="javascript:void(0)"> more </a>
-                            </div>
-                        </li>
-                    </ul>
                 </li>
                 <li class="dropdown full-width-drp">
                     <a href="#" class="tst2" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
@@ -107,101 +99,10 @@
                     </ul>
                 </li>
                 <li class="dropdown alert-drp">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
-                    <ul  class="dropdown-menu alert-dropdown" data-dropdown-in="bounceIn" data-dropdown-out="bounceOut">
-                        <li>
-                            <div class="notification-box-head-wrap">
-                                <span class="notification-box-head pull-left inline-block">notifications</span>
-                                <a class="txt-danger pull-right clear-notifications inline-block" href="javascript:void(0)"> clear all </a>
-                                <div class="clearfix"></div>
-                                <hr class="light-grey-hr ma-0"/>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="streamline message-nicescroll-bar">
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-green">
-                                            <i class="zmdi zmdi-flag"></i>
-                                        </div>
-                                        <div class="sl-content">
-												<span class="inline-block capitalize-font  pull-left truncate head-notifications">
-												New subscription created</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">2pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">Your customer subscribed for the basic plan. The customer will pay $25 per month.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-yellow">
-                                            <i class="zmdi zmdi-trending-down"></i>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications txt-warning">Server #2 not responding</span>
-                                            <span class="inline-block font-11 pull-right notifications-time">1pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">Some technical error occurred needs to be resolved.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-blue">
-                                            <i class="zmdi zmdi-email"></i>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications">2 new messages</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">4pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate"> The last payment for your G Suite Basic subscription failed.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="sl-avatar">
-                                            <img class="img-responsive" src="img/avatar.jpg" alt="avatar"/>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">1pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-red">
-                                            <i class="zmdi zmdi-storage"></i>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications txt-danger">99% server space occupied.</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">1pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">consectetur, adipisci velit.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="notification-box-bottom-wrap">
-                                <hr class="light-grey-hr ma-0"/>
-                                <a class="block text-center read-all" href="javascript:void(0)"> read all </a>
-                                <div class="clearfix"></div>
-                            </div>
-                        </li>
-                    </ul>
+                    <a href="#" class="dropdown-toggle" class="tst2" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
+                    <a href="#" class="tst2" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
                 </li>
             </ul>
         </div>
@@ -212,20 +113,14 @@
     <div class="fixed-sidebar-left">
         <ul class="nav navbar-nav side-nav nicescroll-bar">
             <li class="navigation-header">
-                <span>User Information</span>
+                <span>Main</span>
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
                 <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a id="open_right_sidebar" class="tst2" href="#" onclick="document.getElementById('chat_tab_btn').click();" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
-            </li>
-            <li>
                 <a href="" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="" class="tst2" ><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -241,30 +136,14 @@
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
-            <li>
-                <a href="javascript:void(0);"  class="tst2" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="" class="tst2" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-                <ul id="maps_dr" class="collapse collapse-level-1">
-                    <li>
-                        <a href="google-map.html">Google Map</a>
-                    </li>
-                </ul>
-            </li>
+
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
                 <span>featured</span>
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" class="tst2" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
+                <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
@@ -279,9 +158,7 @@
             <li>
                 <div  class="tab-struct custom-tab-1">
                     <ul role="tablist" class="nav nav-tabs" id="right_sidebar_tab">
-                        <li class="active" role="presentation"><a aria-expanded="false"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab" class="tst2">Emails</a></li>
-                        <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false" class="tst2">Notification</a></li>
-                        <li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="true">Profile</a></li>
+                        <li role="presentation" class=""><a  data-toggle="tab" style="text-align: center" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="true">Profile</a></li>
                     </ul>
                     <div class="tab-content" id="right_sidebar_content">
                         <div  id="chat_tab" class="tab-pane fade active in" role="tabpanel">
@@ -294,324 +171,6 @@
                                         <span class="inline-block txt-dark">users</span>
                                         <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
                                         <div class="clearfix"></div>
-                                    </div>
-                                    <form role="search" class="chat-search pl-15 pr-15 pb-15">
-                                        <div class="input-group">
-                                            <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search">
-                                            <span class="input-group-btn">
-												<button type="button" class="btn  btn-default"><i class="zmdi zmdi-search"></i></button>
-												</span>
-                                        </div>
-                                    </form>
-                                    <div id="chat_list_scroll">
-                                        <div class="nicescroll-bar">
-                                            <ul class="chat-list-wrap">
-                                                <li class="chat-list">
-                                                    <div class="chat-body">
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle" src="img/user.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Clay Masse</span>
-                                                                    <span class="time block truncate txt-grey">No one saves us but ourselves.</span>
-                                                                </div>
-                                                                <div class="status away"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle" src="img/user1.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Evie Ono</span>
-                                                                    <span class="time block truncate txt-grey">Unity is strength</span>
-                                                                </div>
-                                                                <div class="status offline"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle" src="img/user2.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Madalyn Rascon
-                                                                    </span>
-                                                                    <span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
-                                                                </div>
-                                                                <div class="status online"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle" src="img/user3.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Mitsuko Heid</span>
-                                                                    <span class="time block truncate txt-grey">I’m thankful.</span>
-                                                                </div>
-                                                                <div class="status online"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle" src="img/user.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Ezequiel Merideth</span>
-                                                                    <span class="time block truncate txt-grey">Patience is bitter.</span>
-                                                                </div>
-                                                                <div class="status offline"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle" src="img/user1.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Jonnie Metoyer</span>
-                                                                    <span class="time block truncate txt-grey">Genius is eternal patience.</span>
-                                                                </div>
-                                                                <div class="status online"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle" src="img/user2.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Angelic Lauver</span>
-                                                                    <span class="time block truncate txt-grey">Every burden is a blessing.</span>
-                                                                </div>
-                                                                <div class="status away"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle" src="img/user3.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Priscila Shy</span>
-                                                                    <span class="time block truncate txt-grey">Wise to resolve, and patient to perform.</span>
-                                                                </div>
-                                                                <div class="status online"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle" src="img/user4.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Linda Stack</span>
-                                                                    <span class="time block truncate txt-grey">Our patience will achieve more than our force.</span>
-                                                                </div>
-                                                                <div class="status away"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="recent-chat-box-wrap">
-                                    <div class="recent-chat-wrap">
-                                        <div class="panel-heading ma-0">
-                                            <div class="goto-back">
-                                                <a  id="goto_back" href="javascript:void(0)" class="inline-block txt-grey">
-                                                    <i class="zmdi zmdi-chevron-left"></i>
-                                                </a>
-                                                <span class="inline-block txt-dark">ryan</span>
-                                                <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-more"></i></a>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </div>
-                                        <div class="panel-wrapper collapse in">
-                                            <div class="panel-body pa-0">
-                                                <div class="chat-content">
-                                                    <ul class="nicescroll-bar pt-20">
-                                                        <li class="friend">
-                                                            <div class="friend-msg-wrap">
-                                                                <img class="user-img img-circle block pull-left" src="img/user.png" alt="user"/>
-                                                                <div class="msg pull-left">
-                                                                    <p>Hello Jason, how are you, it's been a long time since we last met?</p>
-                                                                    <div class="msg-per-detail text-right">
-                                                                        <span class="msg-time txt-grey">2:30 PM</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="self mb-10">
-                                                            <div class="self-msg-wrap">
-                                                                <div class="msg block pull-right"> Oh, hi Sarah I'm have got a new job now and is going great.
-                                                                    <div class="msg-per-detail text-right">
-                                                                        <span class="msg-time txt-grey">2:31 pm</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="self">
-                                                            <div class="self-msg-wrap">
-                                                                <div class="msg block pull-right">  How about you?
-                                                                    <div class="msg-per-detail text-right">
-                                                                        <span class="msg-time txt-grey">2:31 pm</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="friend">
-                                                            <div class="friend-msg-wrap">
-                                                                <img class="user-img img-circle block pull-left" src="img/user.png" alt="user"/>
-                                                                <div class="msg pull-left">
-                                                                    <p>Not too bad.</p>
-                                                                    <div class="msg-per-detail  text-right">
-                                                                        <span class="msg-time txt-grey">2:35 pm</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="input-group">
-                                                    <input type="text" id="input_msg_send" name="send-msg" class="input-msg-send form-control" placeholder="Type something">
-                                                    <div class="input-group-btn emojis">
-                                                        <div class="dropup">
-                                                            <button type="button" class="btn  btn-default  dropdown-toggle" data-toggle="dropdown" ><i class="zmdi zmdi-mood"></i></button>
-                                                            <ul class="dropdown-menu dropdown-menu-right">
-                                                                <li><a href="javascript:void(0)">Action</a></li>
-                                                                <li><a href="javascript:void(0)">Another action</a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="javascript:void(0)">Separated link</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="input-group-btn attachment">
-                                                        <div class="fileupload btn  btn-default"><i class="zmdi zmdi-attachment-alt"></i>
-                                                            <input type="file" class="upload">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="messages_tab" class="tab-pane fade" role="tabpanel">
-                            <div class="message-box-wrap">
-                                <div class="msg-search">
-                                    <a href="javascript:void(0)" class="inline-block txt-grey">
-                                        <i class="zmdi zmdi-more"></i>
-                                    </a>
-                                    <span class="inline-block txt-dark">messages</span>
-                                    <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-search"></i></a>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="set-height-wrap">
-                                    <div class="streamline message-box nicescroll-bar">
-                                        <a href="javascript:void(0)">
-                                            <div class="sl-item unread-message">
-                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="img/user.png" alt="avatar"/>
-                                                </div>
-                                                <div class="sl-content">
-                                                    <span class="inline-block capitalize-font   pull-left message-per">Clay Masse</span>
-                                                    <span class="inline-block font-11  pull-right message-time">12:28 AM</span>
-                                                    <div class="clearfix"></div>
-                                                    <span class=" truncate message-subject"> message sent via your monster market profile</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem ipsu messm quia dolor sit amet, consectetur, adipisci velit</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="sl-item">
-                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="img/user1.png" alt="avatar"/>
-                                                </div>
-                                                <div class="sl-content">
-                                                    <span class="inline-block capitalize-font   pull-left message-per">Evie Ono</span>
-                                                    <span class="inline-block font-11  pull-right message-time">1 Feb</span>
-                                                    <div class="clearfix"></div>
-                                                    <span class=" truncate message-subject">Pogody theme support</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="sl-item">
-                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="img/user2.png" alt="avatar"/>
-                                                </div>
-                                                <div class="sl-content">
-                                                    <span class="inline-block capitalize-font   pull-left message-per">Madalyn Rascon</span>
-                                                    <span class="inline-block font-11  pull-right message-time">31 Jan</span>
-                                                    <div class="clearfix"></div>
-                                                    <span class=" truncate message-subject">Congratulations from design nominees</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="sl-item unread-message">
-                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="img/user3.png" alt="avatar"/>
-                                                </div>
-                                                <div class="sl-content">
-                                                    <span class="inline-block capitalize-font   pull-left message-per">Ezequiel Merideth</span>
-                                                    <span class="inline-block font-11  pull-right message-time">29 Jan</span>
-                                                    <div class="clearfix"></div>
-                                                    <span class=" truncate message-subject"> item support message</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="sl-item unread-message">
-                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="img/user4.png" alt="avatar"/>
-                                                </div>
-                                                <div class="sl-content">
-                                                    <span class="inline-block capitalize-font   pull-left message-per">Jonnie Metoyer</span>
-                                                    <span class="inline-block font-11  pull-right message-time">27 Jan</span>
-                                                    <div class="clearfix"></div>
-                                                    <span class=" truncate message-subject">Help with beavis contact form</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="sl-item">
-                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="img/user.png" alt="avatar"/>
-                                                </div>
-                                                <div class="sl-content">
-                                                    <span class="inline-block capitalize-font   pull-left message-per">Priscila Shy</span>
-                                                    <span class="inline-block font-11  pull-right message-time">19 Jan</span>
-                                                    <div class="clearfix"></div>
-                                                    <span class=" truncate message-subject">Your uploaded theme is been selected</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="sl-item">
-                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="img/user1.png" alt="avatar"/>
-                                                </div>
-                                                <div class="sl-content">
-                                                    <span class="inline-block capitalize-font   pull-left message-per">Linda Stack</span>
-                                                    <span class="inline-block font-11  pull-right message-time">13 Jan</span>
-                                                    <div class="clearfix"></div>
-                                                    <span class=" truncate message-subject"> A new rating has been received</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                                                </div>
-                                            </div>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -649,96 +208,29 @@
                                                                     <input class="upload" type="file">
                                                                 </div>
                                                             </div>
-                                                            <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">${User_Info[0].first_name} ${User_Info[0].last_name}</h5>
-                                                                  <a class="dropdown-toggle weight-500" id="examplePanelDropdown" data-toggle="dropdown" href="#" aria-expanded="false" role="button">
-                                                                      <c:if test="${add_Roles.current==null}">
-                                                                          <h6 class="block capitalize-font pb-20">${User_Info[0].user_type}</h6>
-                                                                      </c:if>
-                                                                      <c:if test="${add_Roles.current!=null}">
-                                                                          <h6 class="block capitalize-font pb-20">${add_Roles.current}</h6>
-                                                                          <i class=" icon-user-follow inline-block mr-5"></i>
-                                                                      </c:if>
-
-                                                                  </a>
-                                                            <c:if test="${add_Roles.current!=null}">
-                                                                <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                                                    <li onclick="document.getElementById('${add_Roles.og}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>${add_Roles.og}</a></li>
-                                                                    <c:if test="${add_Roles.co!='Nothing'}">
-                                                                        <li onclick="document.getElementById('${add_Roles.co}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>${add_Roles.co}</a></li>
-                                                                    </c:if>
-                                                                    <c:if test="${add_Roles.wmo!='Nothing'}">
-                                                                        <li onclick="document.getElementById('${add_Roles.wmo}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>${add_Roles.wmo}</a></li>
-                                                                    </c:if>
-                                                                    <c:if test="${add_Roles.rc!='Nothing'}">
-                                                                        <li  role="presentation"><a onclick="document.getElementById('${add_Roles.rc}').submit()" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>${add_Roles.rc}</a></li>
-                                                                    </c:if>
-                                                                    <c:if test="${add_Roles.wmoch!='Nothing'}">
-                                                                        <li onclick="document.getElementById('${add_Roles.wmoch}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>${add_Roles.wmoch}</a></li>
-                                                                    </c:if>
-                                                                    <c:if test="${add_Roles.hdh!='Nothing'}">
-                                                                        <li onclick="document.getElementById('${add_Roles.hdh}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>${add_Roles.hdh}</a></li>
-                                                                    </c:if>
-                                                                </ul>
-                                                            </c:if>
-
-                                                            <form method="post" id="${add_Roles.og}" action="ServletDwmpc">
-                                                                <input type="hidden" name="command" value="Switch User">
-                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
-                                                                <input type="hidden" name="userType" value="${add_Roles.og}">
-                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
-                                                            </form>
-
-                                                            <form method="post" id="${add_Roles.co}" action="ServletDwmpc">
-                                                                <input type="hidden" name="command" value="Switch User">
-                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
-                                                                <input type="hidden" name="userType" value="${add_Roles.co}">
-                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
-                                                            </form>
-                                                            <form method="post" id="${add_Roles.rc}" action="ServletDwmpc">
-                                                                <input type="hidden" name="command" value="Switch User">
-                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
-                                                                <input type="hidden" name="userType" value="${add_Roles.rc}">
-                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
-                                                            </form>
-                                                            <form method="post" id="${add_Roles.wmoch}" action="ServletDwmpc">
-                                                                <input type="hidden" name="command" value="Switch User">
-                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
-                                                                <input type="hidden" name="userType" value="${add_Roles.wmoch}">
-                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
-                                                            </form>
-                                                            <form method="post" id="${add_Roles.wmo}" action="ServletDwmpc">
-                                                                <input type="hidden" name="command" value="Switch User">
-                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
-                                                                <input type="hidden" name="userType" value="${add_Roles.wmo}">
-                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
-                                                            </form>
-                                                            <form method="post" id="${add_Roles.hdh}" action="ServletDwmpc">
-                                                                <input type="hidden" name="command" value="Switch User">
-                                                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
-                                                                <input type="hidden" name="userType" value="${add_Roles.hdh}">
-                                                                <input type="hidden" name="branch" value="${User_Info[0].location}">
-                                                            </form>
-
+                                                            <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">Kaone Rascon</h5>
+                                                            <h6 class="block capitalize-font pb-20">Client</h6>
                                                         </div>
                                                         <div class="social-info">
                                                             <div class="row">
-                                                                <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">${GeneralCount.company}</span></span>
-                                                                    <span class="counts-text block">Companies</span>
-                                                                </div>
-                                                                <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">${GeneralCount.employee}</span></span>
-                                                                    <span class="counts-text block">Employees</span>
-                                                                </div>
-                                                                <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">${GeneralCount.vehicle}</span></span>
-                                                                    <span class="counts-text block">Vehicles</span>
+                                                                <div class="row">
+                                                                    <div class="col-xs-4 text-center">
+                                                                        <span class="counts block head-font"><span class="counter-anim">${GeneralCount.company}</span></span>
+                                                                        <span class="counts-text block">Companies</span>
+                                                                    </div>
+                                                                    <div class="col-xs-4 text-center">
+                                                                        <span class="counts block head-font"><span class="counter-anim">${GeneralCount.employee}</span></span>
+                                                                        <span class="counts-text block">Employees</span>
+                                                                    </div>
+                                                                    <div class="col-xs-4 text-center">
+                                                                        <span class="counts block head-font"><span class="counter-anim">${GeneralCount.vehicle}</span></span>
+                                                                        <span class="counts-text block">Vehicles</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <button class="btn btn-gold btn-block  btn-anim mt-40" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -753,8 +245,6 @@
         </ul>
     </div>
     <!-- /Right Sidebar Menu -->
-
-
 
     <!-- Main Content -->
     <div class="page-wrapper">
@@ -860,6 +350,7 @@
                 </div>
 
 </c:forEach>
+                <c:if test="${All_companies==null}">
                 <div class="col-lg-4 col-md-4 col-xs-12">
                     <div class="panel panel-warning card-view">
                         <div class="panel-heading">
@@ -870,11 +361,13 @@
                         </div>
                         <div  class="panel-wrapper collapse in">
                             <div  class="panel-body">
+                                <i class="added" style="text-align: center"><i class="zmdi zmdi-plus mr-20"></i>Add New Company</i>
                                 <img src="img/sweetalert/alert4.png" alt="alert" class="img-responsive model_img" onclick="location.href='companyForm.jsp'">
                             </div>
                         </div>
                     </div>
                 </div>
+                </c:if>
             </div>
             <!-- Row -->
 
@@ -981,7 +474,7 @@
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
                 <div class="col-sm-12">
-                    <p>2018 &copy; Zapily. Pampered by Hencework</p>
+                    <p>2021 &copy; DWMPC. Created by Next-gen</p>
                 </div>
             </div>
         </footer>

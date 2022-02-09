@@ -2313,7 +2313,7 @@ button.fc-agendaWeek-button, .fc-prev-button, .fc-next-button, .fc-today-button 
   bottom: 0;
   z-index: 100;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.35);
-  background-image: url("../../img/sidebar4.jpg");
+  background-image: url("../../img/sidebar4.png");
   border-right: 1px solid #dedede;
   -webkit-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
@@ -2762,7 +2762,7 @@ a#toggle_mobile_nav {
   .wrapper.theme-1-active.pimary-color-yellow .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-2-active.pimary-color-yellow .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-3-active.pimary-color-yellow .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-4-active.pimary-color-yellow .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-5-active.pimary-color-yellow .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-6-active.pimary-color-yellow .fixed-sidebar-left .side-nav > li > a.active {
     color: #487C5F; }
   .wrapper.theme-1-active.pimary-color-pink .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-2-active.pimary-color-pink .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-3-active.pimary-color-pink .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-4-active.pimary-color-pink .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-5-active.pimary-color-pink .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-6-active.pimary-color-pink .fixed-sidebar-left .side-nav > li > a.active {
-    color: #e7368d; }
+    color: #efefef; }
   .wrapper.theme-1-active.pimary-color-orange .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-2-active.pimary-color-orange .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-3-active.pimary-color-orange .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-4-active.pimary-color-orange .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-5-active.pimary-color-orange .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-6-active.pimary-color-orange .fixed-sidebar-left .side-nav > li > a.active {
     color: #ff6300; }
   .wrapper.theme-1-active.pimary-color-gold .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-2-active.pimary-color-gold .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-3-active.pimary-color-gold .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-4-active.pimary-color-gold .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-5-active.pimary-color-gold .fixed-sidebar-left .side-nav > li > a.active, .wrapper.theme-6-active.pimary-color-gold .fixed-sidebar-left .side-nav > li > a.active {
@@ -7486,4 +7486,5 @@ ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
 .step.active_one{
   display: block;
 }
+
 /*# sourceMappingURL=style.css.map */

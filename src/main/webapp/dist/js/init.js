@@ -145,6 +145,7 @@ var zapily = function(){
 	
 	$(document).on('click', '#open_right_sidebar ,#open_profile', function (e) {
 		$wrapper.toggleClass('open-right-sidebar').removeClass('open-setting-panel');
+
 		return false;
 	
 	});

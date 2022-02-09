@@ -39,7 +39,7 @@
     <div class="la-anim-1"></div>
 </div>
 <!--/Preloader-->
-<div class="wrapper theme-1-active pimary-color-gold">
+<div class="wrapper theme-1-active pimary-color-pink">
 
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -70,14 +70,6 @@
                 </li>
                 <li class="dropdown app-drp">
                     <a href="#"  class="tst2" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
-                    <ul class="dropdown-menu app-dropdown" data-dropdown-in="slideInRight" data-dropdown-out="flipOutX">
-                        <li>
-                            <div class="app-box-bottom-wrap">
-                                <hr class="light-grey-hr ma-0"/>
-                                <a class="block text-center read-all" href="javascript:void(0)"> more </a>
-                            </div>
-                        </li>
-                    </ul>
                 </li>
                 <li class="dropdown full-width-drp">
                     <a href="#" class="tst2" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
@@ -85,101 +77,10 @@
                     </ul>
                 </li>
                 <li class="dropdown alert-drp">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
-                    <ul  class="dropdown-menu alert-dropdown" data-dropdown-in="bounceIn" data-dropdown-out="bounceOut">
-                        <li>
-                            <div class="notification-box-head-wrap">
-                                <span class="notification-box-head pull-left inline-block">notifications</span>
-                                <a class="txt-danger pull-right clear-notifications inline-block" href="javascript:void(0)"> clear all </a>
-                                <div class="clearfix"></div>
-                                <hr class="light-grey-hr ma-0"/>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="streamline message-nicescroll-bar">
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-green">
-                                            <i class="zmdi zmdi-flag"></i>
-                                        </div>
-                                        <div class="sl-content">
-												<span class="inline-block capitalize-font  pull-left truncate head-notifications">
-												New subscription created</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">2pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">Your customer subscribed for the basic plan. The customer will pay $25 per month.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-yellow">
-                                            <i class="zmdi zmdi-trending-down"></i>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications txt-warning">Server #2 not responding</span>
-                                            <span class="inline-block font-11 pull-right notifications-time">1pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">Some technical error occurred needs to be resolved.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-blue">
-                                            <i class="zmdi zmdi-email"></i>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications">2 new messages</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">4pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate"> The last payment for your G Suite Basic subscription failed.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="sl-avatar">
-                                            <img class="img-responsive" src="img/avatar.jpg" alt="avatar"/>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">1pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-red">
-                                            <i class="zmdi zmdi-storage"></i>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications txt-danger">99% server space occupied.</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">1pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">consectetur, adipisci velit.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="notification-box-bottom-wrap">
-                                <hr class="light-grey-hr ma-0"/>
-                                <a class="block text-center read-all" href="javascript:void(0)"> read all </a>
-                                <div class="clearfix"></div>
-                            </div>
-                        </li>
-                    </ul>
+                    <a href="#" class="dropdown-toggle" class="tst2" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
+                    <a href="#" class="tst2" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
                 </li>
             </ul>
         </div>
@@ -190,20 +91,14 @@
     <div class="fixed-sidebar-left">
         <ul class="nav navbar-nav side-nav nicescroll-bar">
             <li class="navigation-header">
-                <span>User Information</span>
+                <span>Main</span>
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a class="active" href="Officer-Home.jsp" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="#" id="open_right_sidebar" class="tst2" onclick="document.getElementById('chat_tab_btn').click();" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="#" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="#" class="tst2"><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+                <a href="" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -214,35 +109,21 @@
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">${CompanyName}</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                 <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
                     <li class="active" role="presentation">
-                        <a onclick="document.getElementById('Company_information').submit()" data-toggle="tab"  role="tab" aria-expanded="false">Information</a>
+                        <a onclick="location.href='CompanyInfo-Officer-Table.jsp'" data-toggle="tab"  role="tab" aria-expanded="true">Information</a>
                     </li>
                     <li >
-                        <a onclick="document.getElementById('Vehicle_info').submit()" aria-expanded="true"  data-toggle="tab" role="tab">Vehicles</a>
+                        <a onclick="location.href='Vehicle-Table-officer.jsp'" aria-expanded="false"  data-toggle="tab" role="tab">Vehicles</a>
                     </li>
                     <li>
-                        <a onclick="document.getElementById('Employee_info').submit()" aria-expanded="false" data-toggle="tab" role="tab">Employees</a>
+                        <a onclick="document.getElementById('Employee_info').submit()">Employees</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-file-text mr-20"></i><span class="right-nav-text">Licenced Vehicle</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="javascript:void(0);" class="Report-toast" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-file-text mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" class="tst2" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" class="tst2" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" class="tst2" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-                <ul id="maps_dr" class="collapse collapse-level-1">
-                    <li>
-                        <a href="google-map.html">Google Map</a>
-                    </li>
-                </ul>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -250,28 +131,12 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="" class="tst2" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
+                <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">About Us</span></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
         </ul>
-        <form method="post" id="Employee_info" action="ServletDwmpc">
-            <input type="hidden" name="command" value="EmployeesDetail">
-            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
-        </form>
-        <form method="post" id="Vehicle_info" action="ServletDwmpc">
-            <input type="hidden" name="command" value="VehicleDetail">
-            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
-        </form>
-        <form method="post" id="Company_information" action="ServletDwmpc">
-            <input type="hidden" name="command" value="getCompany">
-            <input type="hidden" name="UserType" value="Client">
-            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
-        </form>
     </div>
     <!-- /Left Sidebar Menu -->
 
@@ -698,7 +563,7 @@
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="${pageContext.request.contextPath}/Officer-Home.jsp">Dashboard</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Officer-Home.jsp">Home</a></li>
                         <li class="active"><span>Company Vehicles</span></li>
                     </ol>
                 </div>
@@ -709,7 +574,7 @@
             <div class="row">
 
                 <!-- Bordered Table -->
-                <div class="col-sm-12">
+                <div class="tab-pane fade in active tab-content col-lg-9 col-md-6 col-sm-12 col-xs-12">
                     <div class="panel panel-warning card-view">
                         <div class="panel-heading">
                             <div class="pull-left">
@@ -763,6 +628,7 @@
                                         <form method="post" id="Vehicle_Att" action="ServletDwmpc">
                                             <input type="hidden" name="command" value="VehicleAttachments">
                                             <input type="hidden" id="chassis_No" name="chassis_No" value="">
+                                            <input type="hidden" name="User_Type" value="${User_Info[0].user_type}">
                                         </form>
                                         <form method="post" id="Approving" action="ServletDwmpc">
                                             <input type="hidden" name="command" value="Officers Action">
@@ -785,8 +651,6 @@
                                             <input type="hidden" name="company_email" value="${Company_info.email}">
                                             <input type="hidden" name="company_phone" value="${Company_info.phone_Number}">
                                         </form>
-
-
 
                                     </div>
 
@@ -834,7 +698,7 @@
                                 </div>
 
                                 </br>
-                                <div style="float: right" class="row">
+                                <div style="float: right; margin-right:20px" class="row">
                                     <button type="button" alt="alert" id="Approving-Officer" style="float: right" class="btn btn-primary btn-anim btn-rounded"><i class="fa fa-check"></i><span class="btn-text">Approve</span></button>
                                     <button type="button" alt="alert" id="Declining-Officer"  style="float: right; margin-right: 5px" class="btn btn-danger btn-anim btn-rounded"><i class="fa  fa-times"></i><span class="btn-text">Decline</span></button>
                                 </div>
@@ -844,6 +708,89 @@
 
                     </div>
                 </div>
+
+                <div id="Company_info2"  class="tab-pane fade in active col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                    <div class="panel panel-default card-view pa-01 pa-0" onclick="EmployeeTable();" >
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0">
+                                <div class="sm-data-box">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
+                                                <span class="txt-dark block counter"><span class="counter-anim">${CountSp.employee}</span></span>
+                                                <span class="weight-500 uppercase-font block font-13">Employees</span>
+                                            </div>
+                                            <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+                                                <i class="icon-people data-right-rep-icon txt-light-grey"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default card-view pa-01 pa-0" onclick="location.href='Vehicle-Table-officer.jsp';">
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0">
+                                <div class="sm-data-box">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
+                                                <span class="txt-dark block counter"><span class="counter-anim">${CountSp.vehicle}</span></span>
+                                                <span class="weight-500 uppercase-font block">Vehicle</span>
+                                            </div>
+                                            <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+                                                <i class="fa fa-truck data-right-rep-icon txt-light-grey"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default card-view pa-0  bg-warning" onclick="location.href='CompanyInfo-Officer-Table.jsp';">
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0">
+                                <div class="sm-data-box">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left txt-light">
+                                                <span class="block counter"><span class="counter-anim">${CountSp.company}</span></span>
+                                                <span class="weight-500 uppercase-font block">Companies Registered</span>
+                                            </div>
+                                            <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+                                                <i class="icon-layers data-right-rep-icon txt-light"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form method="post" id="LogOut_Session" action="ServletDwmpc">
+                    <input type="hidden" name="command" value="LogOut Session">
+                    <input type="hidden" name="action" value="Sign Out Session">
+                </form>
+
+                <form method="post" id="Employee_info" action="ServletDwmpc">
+                    <input type="hidden" name="command" value="EmployeesDetail">
+                    <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+                    <input type="hidden" name="User_Type" value="${User_Info[0].user_type}">
+                </form>
+
+                <script>
+                    function EmployeeTable(){
+                        document.getElementById("Employee_info").submit();
+                    }
+                    function VehicleTable(){
+                        document.getElementById("Vehicle_info").submit();
+                    }
+                    function LogOut(){
+                        document.getElementById("LogOut_Session").submit();
+                    }
+                </script>
                 <!-- /Bordered Table -->
 
 

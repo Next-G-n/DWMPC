@@ -20,6 +20,26 @@ public class ConnectionUtil {
         dataSource=theDataSource;
 
     }
+    public void updateLicenseInformation(String companyId) throws Exception{
+        Connection myConn=null;
+        ResultSet myRs=null;
+        PreparedStatement myStmt=null;
+        try{
+            myConn=dataSource.getConnection();
+            String sql;
+            sql="SET SQL_SAFE_UPDATES=0;";
+            myStmt=myConn.prepareStatement(sql);
+            myStmt.execute();
+            sql="UPDATE `dwmpc`.`license` SET `Status` = 'Revoked' WHERE `companyId` = '"+companyId+"';";
+            myStmt=myConn.prepareStatement(sql);
+            myStmt.execute();
+            sql="SET SQL_SAFE_UPDATES=1;";
+            myStmt=myConn.prepareStatement(sql);
+            myStmt.execute();
+        }finally {
+
+        }
+    }
 
     public void setLicenseInformation(license license)throws Exception {
         Connection myConn=null;
@@ -27,23 +47,75 @@ public class ConnectionUtil {
         PreparedStatement myStmt=null;
         String license_Number = null;
         String Waste_Type=null;
+
+
+
+        vehicle vehicle=VehicleDetailForLicense(license.getLicense_Number());
+
+        String wasteCode=vehicle.getWaste_Type();
+        String wasteCodeFinal=null;
+
+        switch (wasteCode){
+            case "Bio waste":
+                wasteCodeFinal="BiW01";
+                break;
+            case "Chemical waste":
+                wasteCodeFinal="ChW02";
+                break;
+            case "Hazardous waste":
+                wasteCodeFinal="HaW03";
+                break;
+            case "Clinical Waste":
+                wasteCodeFinal="ClW04";
+                break;
+            case "Domestic Waste":
+                wasteCodeFinal="DoW05";
+                break;
+        }
+
+
+
+        String carrierNumber=vehicle.getCarrie_number();
+        String carrierNo = "";     //substring containing first 4 characters
+        String carrierLetters="";
+
+        if (carrierNumber.length() > 4)
+        {
+            carrierNo = carrierNumber.substring(1, 4);
+            carrierLetters=carrierNumber.substring(4,7);
+
+        }
+
+        String carrierLettersCode=carrierLetters.toUpperCase();
+        StringBuffer sbr = new StringBuffer(carrierNo);
+
+
+        StringBuffer finalCarrierCode=sbr.reverse();
+
+
+
         try {
             String sql=null;
             myConn=dataSource.getConnection();
             sql ="Select * from vehicle where `Chase_Number`='"+license.getLicense_Number()+"'";
             myStmt=myConn.prepareStatement(sql);
             myRs=myStmt.executeQuery();
+            String companyId=null;
             while(myRs.next()) {
                 license_Number=myRs.getString("Carrier Number");
                 Waste_Type = myRs.getString("Waste Type");
+                companyId = myRs.getString("Company Id");
             }
-            sql="INSERT INTO `dwmpc`.`license` (`License Number`, `Date Unix`, `Expiry Date`, `License Type`, `Start Date`) VALUES (?,?,?,?,?)";
+            sql="INSERT INTO `dwmpc`.`license` (`License_Number`, `Date Unix`, `Expiry_Date`, `License_Type`, `Start_Date`, `Registration_Number`,`Status`,`companyId`) VALUES (?,?,?,?,?,?,?,?)";
             myStmt=myConn.prepareStatement(sql);
-            myStmt.setString(1,license_Number);
+            myStmt.setString(1,carrierLettersCode+finalCarrierCode+ vehicle.getCompany_Id()+wasteCodeFinal);
             myStmt.setString(2, license.getDate_Unix());
             myStmt.setString(3, license.getExpiry_Date());
             myStmt.setString(4, Waste_Type);
             myStmt.setString(5, license.getStart_Date());
+            myStmt.setString(6,license_Number);
+            myStmt.setString(7,"UpToDate");
+            myStmt.setString(8,companyId);
             myStmt.execute();
 
 
@@ -164,8 +236,6 @@ public class ConnectionUtil {
 
     }
 
-
-
     public List<user> loginUser(String email, String password,String action) throws Exception{
         List<user> login=new ArrayList<>();
         Connection myConn=null;
@@ -207,7 +277,8 @@ public class ConnectionUtil {
 
                      if(password.equals("None")){
                          String addRoles = myRS.getString("Add Roles");
-                        login2 = new user(id, firstName, lastName, email, userType, password, omang, contact, location, addRoles);
+                         System.out.println("Add_Roles "+addRoles);
+                        login2 = new user(id, firstName, lastName, email, userType, omang, contact, addRoles,location);
                         login.add(login2);
                     }else {
                          System.out.println("Password "+password);
@@ -240,6 +311,7 @@ public class ConnectionUtil {
         try {
             myConn=dataSource.getConnection();
             String sql2=null;
+            System.out.println("Action "+action);
             if(action.equals("Registration")){
                 sql2="INSERT INTO `company_information` (`User Id`, " +
                         "`Company_Name`, `Company_Email`, `Street Address`,`Street Address2`, `Region`, `City/Town/Village`, " +
@@ -340,10 +412,11 @@ public class ConnectionUtil {
                             "v.`Company Id`=c.`Company Id` where a.`Current Office`='"+userType+"' and " +
                             "a.`Status Of Application`='UptoDate' and c.`Region`='"+Branch+"' and not v.`StatusV`='Company is Revoked';";
                 }
-                System.out.println("application_status " +sql);
+
 
                 myStmt=myConn.prepareStatement(sql);
                 myRs=myStmt.executeQuery();
+                System.out.println("application_status " +myStmt);
 
                 //process result set
                 while(myRs.next()) {
@@ -525,11 +598,12 @@ public class ConnectionUtil {
         return getEmployees;
     }
 
-    public void registerVehicle(vehicle vehicleRegistration,String action,String addAction) throws Exception {
+    public String registerVehicle(vehicle vehicleRegistration,String action,String addAction) throws Exception {
         Connection myConn=null;
         // Statement myStmt=null;
         ResultSet myRs=null;
         PreparedStatement myStmt=null;
+        String errorMsg = "Success";
         try {
             //get a connection
             myConn=dataSource.getConnection();
@@ -607,12 +681,24 @@ public class ConnectionUtil {
 
             myStmt.execute();
 
-        }finally {
+        }catch (SQLIntegrityConstraintViolationException sqlError) {
+            String error=sqlError.toString();
+            if(error.contains("for key 'vehicle.PRIMARY'")){
+                errorMsg="Chasse Number Error";
+            }else if(error.contains("for key 'vehicle.Carrier Number_UNIQUE'")){
+               // errorMsg="Registration Number Error";
+                errorMsg="Chasse Number Error";
+            }
+
+
+        }finally
+         {
             // close JDBC objects
 
             close(myConn,myStmt,myRs);
 
         }
+        return errorMsg;
     }
 
     public List<vehicle> getVehicleDetails(String company_id,String User_type) throws Exception {
@@ -626,7 +712,7 @@ public class ConnectionUtil {
             //get a connectio
 
             myConn=dataSource.getConnection();
-            String sql;
+            String sql = null;
             if(User_type.equals("Waste Management Officer")){
                 sql ="Select * from vehicle where `Chase_Number`='"+company_id+"'";
             }else{
@@ -639,18 +725,8 @@ public class ConnectionUtil {
             //process result set
             while(myRs.next()) {
                 //retrieve data from the result set
-                String chase_number=myRs.getString("Chase_Number");
-                String Vehicle_Type=myRs.getString("Vehicle Type");
-                String Unladen=myRs.getString("Unladen Weight");
-                String Waste_Type=myRs.getString("Waste Type");
-                String Annual=myRs.getString("Annual Quantity");
-                String Transportation=myRs.getString("Type Of Waste Covered During Transportation");
-                String Carrier_NO=myRs.getString("Carrier Number");
-                String Own=myRs.getString("Owner");
-                String Status=myRs.getString("StatusV");
+               vehicle setVehicleDetail=VehicleDetail(myRs);
 
-                vehicle setVehicleDetail=new vehicle(chase_number,Vehicle_Type,Unladen,Waste_Type,Annual,Transportation,Carrier_NO,Own,Status);
-                System.out.println("Problem is Here :"+Status);
                 getVehicleDetail.add(setVehicleDetail);
             }
         }finally {
@@ -660,6 +736,48 @@ public class ConnectionUtil {
         }
         return getVehicleDetail;
 
+    }
+
+    public vehicle VehicleDetailForLicense(String  chase_number) throws Exception{
+        vehicle setVehicleDetail=null;
+        Connection myConn=null;
+        ResultSet myRs=null;
+        PreparedStatement myStmt=null;
+        try {
+            //get a connectio
+
+            myConn=dataSource.getConnection();
+            String sql ="Select * from vehicle where `Chase_Number`='"+chase_number+"'";
+            myStmt=myConn.prepareStatement(sql);
+            myRs=myStmt.executeQuery();
+
+        while(myRs.next()) {
+            //retrieve data from the result set
+            setVehicleDetail=VehicleDetail(myRs);
+
+        }
+
+        }finally {
+
+            close(myConn,myStmt,myRs);
+
+        }
+        return setVehicleDetail;
+    }
+
+
+    public vehicle VehicleDetail(ResultSet myRs) throws SQLException {
+        String chase_number=myRs.getString("Chase_Number");
+        String Vehicle_Type=myRs.getString("Vehicle Type");
+        String Unladen=myRs.getString("Unladen Weight");
+        String Waste_Type=myRs.getString("Waste Type");
+        String Annual=myRs.getString("Annual Quantity");
+        String Transportation=myRs.getString("Type Of Waste Covered During Transportation");
+        String Carrier_NO=myRs.getString("Carrier Number");
+        String Own=myRs.getString("Owner");
+        String Status=myRs.getString("StatusV");
+        System.out.println("Problem is Here :"+Status);
+        return new vehicle(chase_number,Vehicle_Type,Unladen,Waste_Type,Annual,Transportation,Carrier_NO,Own,Status);
     }
 
     public vehicle getAttachments(String chassis_no) throws Exception {
@@ -719,7 +837,7 @@ public class ConnectionUtil {
             //get a connectio
 
             myConn=dataSource.getConnection();
-            String sql ="Select * from vehicle where `Company Id`="+company_id+" and `StatusV`='Pending'";
+            String sql ="Select * from vehicle where `Company Id`="+company_id+" and `StatusV` in ('Pending','Declined')";
             myStmt=myConn.prepareStatement(sql);
             myRs=myStmt.executeQuery();
 
@@ -787,11 +905,10 @@ public class ConnectionUtil {
                 if(setAction.getAction_Taken().equals("Approving")) {
                     String nextApprove=null;
                     String level=null;
-                    System.out.println("Officer :"+userType);
                     switch (userType){
                         case "Compliance Officer":
                             nextApprove="Waste Management Officer";
-                           // SendEmail.sentEmail(companyEmail);
+                            SendEmail.sentEmail(companyEmail);
                             twiltest.sendSms(companyPhone);
                             level="Stage 2";
                             break;
@@ -821,7 +938,6 @@ public class ConnectionUtil {
 
                     Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                     String ApplicationDate= String.valueOf(timestamp.getTime());
-
                     System.out.println("This testing Approve :"+setAction.getApplication_Status_Id());
                     System.out.println("This testing Current Office :"+nextApprove);
                         sql = "update application_status set `Level` ='"+level+"' " +
@@ -835,11 +951,11 @@ public class ConnectionUtil {
                     myStmt = myConn.prepareStatement(sql);
                     myStmt.execute();
                 }else if(setAction.getAction_Taken().equals("Decline")){
-                    sql = "update vehicle set `StatusV` ='Fix info"+
+                    sql = "update vehicle set `StatusV` ='Declined"+
                             "' where `Chase_Number`='"+vehicle_id+"'";
                     myStmt = myConn.prepareStatement(sql);
                     myStmt.execute();
-                    sql = "update application_status set `Status Of Application` ='Fix info"+
+                    sql = "update application_status set `Status Of Application` ='Declined"+
                             "' where `Chase Number`='"+vehicle_id+"'";
                     myStmt = myConn.prepareStatement(sql);
                     myStmt.execute();
@@ -847,6 +963,7 @@ public class ConnectionUtil {
                     sql = "update company_information set `Current Status` ='Company is Revoked" +
                             "' where `Company Id`='" + Company_id + "'";
                     myStmt = myConn.prepareStatement(sql);
+                    System.out.println("See then code :"+myStmt);
                     myStmt.execute();
                     sql = "update vehicle set `StatusV` ='Company is Revoked"+
                             "' where `Company Id`='" + Company_id + "'";
@@ -1253,4 +1370,81 @@ public class ConnectionUtil {
             close(myConn,myStmt,null);
         }
     }
+
+    public List<Licence_Table> getAllLicense() throws Exception{
+        List<Licence_Table> licence_tables=new ArrayList<>();
+        Connection myConn=null;
+        ResultSet myRs=null;
+        PreparedStatement myStmt=null;
+
+        try {
+            //get a connection
+            myConn=dataSource.getConnection();
+            String sql ="SELECT * FROM dwmpc.license g left join vehicle v on g.`Registration_Number`=v.`Carrier Number`left join application_status a on a.`Chase Number`=v.`Chase_Number` left join company_information c on c.`Company Id`=v.`Company Id`  GROUP BY `License Id` ORDER BY `License Id`";
+            myStmt=myConn.prepareStatement(sql);
+            myRs=myStmt.executeQuery();
+
+            //process result set
+            while(myRs.next()) {
+
+                Licence_Table licence_table=getAllLicenseWhileLoop(myRs);
+                licence_tables.add(licence_table);
+
+            }
+        }finally {
+
+            close(myConn,myStmt,myRs);
+
+        }
+        return licence_tables;
+    }
+
+    public Licence_Table getAllLicenseWhileLoop(ResultSet myRs) throws Exception{
+            //retrieve data from the result set
+
+        String License_Number = myRs.getString("License_Number");
+        String start_date = myRs.getString("Start_Date");
+        String end_date = myRs.getString("Expiry_Date");
+        String Licence_type = myRs.getString("License_Type");
+        String status = myRs.getString("Status");
+        String company_Name = myRs.getString("Company_Name");
+        String Registration_Number = myRs.getString("Registration_Number");
+        String companyEmail = myRs.getString("Company_Email");
+        String company_id = myRs.getString("Company Id");
+        String company_phone = myRs.getString("Phone Number");
+        String apply_id = myRs.getString("Application Status Id");
+
+
+        return new Licence_Table(Registration_Number, start_date, end_date, Licence_type, status, company_Name, License_Number,companyEmail,company_phone,company_id,apply_id);
+
+        }
+
+
+    public Licence_Table getAllLicenseSearch(String license_Number) throws Exception {
+        Licence_Table licence_table=null;
+        Connection myConn = null;
+        ResultSet myRs = null;
+        PreparedStatement myStmt = null;
+
+        try {
+            myConn=dataSource.getConnection();
+            String sql ="SELECT * FROM dwmpc.license g left join vehicle v on g.`Registration_Number`=v.`Carrier Number` left join company_information c on c.`Company Id`=v.`Company Id` where g.`License_Number`= '"+license_Number+"' ;";
+            myStmt=myConn.prepareStatement(sql);
+            myRs=myStmt.executeQuery();
+
+            while(myRs.next()) {
+
+                licence_table=getAllLicenseWhileLoop(myRs);
+
+            }
+
+        }finally {
+
+            close(myConn,myStmt,myRs);
+
+        }
+        return licence_table;
+
+    }
+
 }

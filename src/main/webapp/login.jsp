@@ -80,12 +80,15 @@
 												<div class="form-group">
 													<div class="checkbox checkbox-success pr-10 pull-left">
 														<input id="checkbox_2" type="checkbox">
-														<label for="checkbox_2"> Keep me logged in</label>
+														<label for="checkbox_2">Keep me logged in</label>
 													</div>
 													<div class="clearfix"></div>
 												</div>
 												<div class="form-group text-center">
 													<button type="submit" class="btn btn-primary btn-anim"><i class="fa fa-sign-in"></i><span class="btn-text">Login</span></button>
+												</div>
+												<div class="form-group text-center">
+													<button type="button" onclick="window.open('License Search.jsp', '_parent');" href="/CompanyInfo.jsp" class="btn btn-primary btn-anim"><i class="fa fa-sign-in"></i><span class="btn-text">Search for Licence</span></button>
 												</div>
 											</form>
 														<button style="display: none" id="Error-Login" alt="alert" >testing</button>

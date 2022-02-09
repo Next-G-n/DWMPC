@@ -2,6 +2,7 @@ package com.dwmpc.controller;
 import javax.servlet.annotation.MultipartConfig;
 
 import com.dwmpc.model.DAO.ConnectionUtil;
+import com.dwmpc.controller.SendEmail;
 import com.dwmpc.controller.otp;
 import com.dwmpc.model.DAO.hash;
 import com.dwmpc.model.bean.*;
@@ -133,7 +134,6 @@ public class ServletDwmpc extends HttpServlet {
                     getEmployees(request,response);
                     break;
                 case "kill Session":
-
                     Stop_Session(request,response);
                     break;
                 case "RegisteringVehicle":
@@ -162,7 +162,6 @@ public class ServletDwmpc extends HttpServlet {
                     break;
                 case "Delay":
                     delay_Time=request.getParameter("delayTime");
-                    System.out.println("this good :"+delay_Time);
                     break;
                 case "Report Waste Type":
                     setReportWaste(request,response);
@@ -170,17 +169,42 @@ public class ServletDwmpc extends HttpServlet {
                 case "Forget Password":
                     Forgot_Password(request,response);
                     break;
+                case "getAllLicenceVehicle":
+                    getAllLicenceVehicle(request,response);
+                    break;
                 case "Switch User":
                     switchUser(request,response);
+                    break;
+                case "Search License":
+                    searchLicenseVehicle(request,response);
                     break;
             }
             // listStudents(request, response);
         }
-
         catch (Exception exc) {
             exc.printStackTrace();
 
         }
+    }
+
+    private void getAllLicenceVehicle(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpSession session=request.getSession();
+        String user_type =request.getParameter("User_Type");
+        if(!user_type.equals("Client")){
+            List<Licence_Table> licence_tables=connectionUtil.getAllLicense();
+            session.setAttribute("Licence_Table", licence_tables);
+            request.getRequestDispatcher("License.jsp").forward(request, response);
+        }
+    }
+
+    private void searchLicenseVehicle(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        HttpSession session=request.getSession();
+        String license_Number =request.getParameter("license_Number");
+        Licence_Table licence_table= connectionUtil.getAllLicenseSearch(license_Number);
+        session.setAttribute("Licence_Detail", licence_table);
+        request.getRequestDispatcher("License Search.jsp").forward(request, response);
+        //RequestDispatcher dispatcher = request.getRequestDispatcher(request.getContextPath()+"/License Search.jsp");
+       // dispatcher.forward(request, response);
     }
 
     private void switchUser(HttpServletRequest request, HttpServletResponse response)throws Exception {
@@ -309,7 +333,6 @@ public class ServletDwmpc extends HttpServlet {
         }
     }
 
-
     private void OfficerActions(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String action=request.getParameter("action");
         int User_id = Integer.parseInt(request.getParameter("User Id"));
@@ -317,20 +340,32 @@ public class ServletDwmpc extends HttpServlet {
         String Branch=request.getParameter("Branch");
         Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
         String companyEmail=request.getParameter("company_email");
+        String reg=null;
+        if(!action.equals("Revoke")){
+           reg=request.getParameter("registration Number");
+        }
+
+
+        String reason=null;
+        if(action.equals("Decline")) {
+            reason = request.getParameter("reason");
+            String msg=SendEmail.sentDeclineEmail(companyEmail,reason,reg,action);
+           System.out.println("message : "+msg);
+        }else if(action.equals("Revoke")){
+            reason = request.getParameter("reason");
+            reg=request.getParameter("license_Number");
+            String lien2= "License Number "+reg;
+            String msg=SendEmail.sentDeclineEmail(companyEmail,reason,lien2,action);
+            System.out.println("message : "+msg);
+            delay_Time="Revoking";
+        }
         String companyPhone=request.getParameter("company_phone");
-
-
-            String Company_Id=request.getParameter("company_id");
-            officerAction setAction=new officerAction(User_id,Apply_id,action,delay_Time);
-            System.out.println("Apply id: "+Apply_id);
-            connectionUtil.OfficersActions(setAction,UserType,Vehicle_id,Company_Id,companyEmail,companyPhone);
-            HttpSession session=request.getSession();
-
-
-
-
-
-            if(UserType.equals("Waste Management Officer")){
+        String Company_Id=request.getParameter("company_id");
+        officerAction setAction=new officerAction(User_id,Apply_id,action,delay_Time);
+        System.out.println("Apply id: "+Apply_id);
+        connectionUtil.OfficersActions(setAction,UserType,Vehicle_id,Company_Id,companyEmail,companyPhone);
+        HttpSession session=request.getSession();
+        if(UserType.equals("Waste Management Officer")){
                 System.out.println("This works");
                 String Affi=request.getParameter("own");
                 String hazardous_waste=request.getParameter("hazardous_waste");
@@ -347,12 +382,7 @@ public class ServletDwmpc extends HttpServlet {
                 }else {
                     Additional="Not Needed";
                 }
-                connectionUtil.registerInspection(User_id,general,hazardus,Additional);
-                List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(User_id,UserType,Branch);
-                if (session.getAttribute("All_Vehicles") != null){
-                    session.removeAttribute("All_Vehicles");
-                }
-                session.setAttribute("All_companies", CompanyInfo);
+                connectionUtil.registerInspection(Apply_id,general,hazardus,Additional);
             }else if(UserType.equals("Head of Division Headquarters") && action.equals("Approving")){
                 Calendar calendar = Calendar.getInstance();
                 Calendar calendar1=Calendar.getInstance();
@@ -365,21 +395,21 @@ public class ServletDwmpc extends HttpServlet {
                 String ApplicationDate= String.valueOf(timestamp.getTime());
                 license license=new license(0,Vehicle_id,ApplicationDate,LicencedDate,ExpiryDate,"WasteType");
                 connectionUtil.setLicenseInformation(license);
-
         }
-
-            List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(User_id,UserType,Branch);
+         List<company_Information> CompanyInfo=connectionUtil.getAllCompanies(User_id,UserType,Branch);
         if (session.getAttribute("All_Vehicles") != null){
             session.removeAttribute("All_Vehicles");
         }
-                session.setAttribute("All_companies", CompanyInfo);
-
+        session.setAttribute("All_companies", CompanyInfo);
+        if(action.equals("Revoke")) {
+            String company_id=request.getParameter("company_id");
+            connectionUtil.updateLicenseInformation(company_id);
+            getAllLicenceVehicle(request,response);
+        }else {
             request.getRequestDispatcher("Officer-Home.jsp").forward(request, response);
+        }
     }
-
-
     // Register and Login
-
     private void Logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session=request.getSession();
         System.out.println("Log Out");
@@ -474,7 +504,6 @@ public class ServletDwmpc extends HttpServlet {
             }
         }else{
             user ErrorSession=new user(Email);
-
             session.setAttribute("LoginError",ErrorSession);
             //response.getWriter().println("Error");
             this.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
@@ -574,10 +603,6 @@ public class ServletDwmpc extends HttpServlet {
 
         }
     }
-
-
-
-
     // Company Info
     private void registerCompany(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session=request.getSession();
@@ -656,6 +681,9 @@ public class ServletDwmpc extends HttpServlet {
             List<company_personnel> employees=connectionUtil.getAllEmployees(getCurrentCompanyID.getCompany_Id());
             session.setAttribute("All_Employee",employees);
 
+            CountGeneral count=connectionUtil.CountSp(getCurrentCompanyID.getCompany_Id());
+            session.setAttribute("CountSp", count);
+
             //request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
             response.sendRedirect("CompanyInfo.jsp");
         }
@@ -712,12 +740,12 @@ public class ServletDwmpc extends HttpServlet {
             session.setAttribute("ReportBtn",ClientReport);
             int Report_id=connectionUtil.getReportWaste_lastRow(companyName);
             session.setAttribute("Report_id",Report_id);
+            //response.sendRedirect("CompanyInfo.jsp");
             request.getRequestDispatcher("CompanyInfo.jsp").forward(request, response);
         }else if(userType.equals("Waste Management Officer")) {
             int userId= Integer.parseInt(request.getParameter("userID"));
             String userType1=add_RolesSwitch(userId,request);
             System.out.println("User is get info as :"+userType);
-
             session.setAttribute("currentUser",userType1);
             Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
             Vehicle_id=request.getParameter("vehicle_id");
@@ -734,7 +762,6 @@ public class ServletDwmpc extends HttpServlet {
             String userType1=add_RolesSwitch(userId,request);
 
             session.setAttribute("currentUser",userType1);
-            System.out.println("Nshathisi :"+userType1);
             Apply_id= Integer.parseInt(request.getParameter("Apply_id"));
             Vehicle_id=request.getParameter("vehicle_id");
             delay_Time=request.getParameter("delayTime");
@@ -752,18 +779,22 @@ public class ServletDwmpc extends HttpServlet {
 
 
     }
-
-
-
     // Employee info
     private void getEmployees(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session=request.getSession();
 
         int Company_id= Integer.parseInt(request.getParameter("company_id"));
+        String user_type=request.getParameter("User_Type");
         System.out.println("well  :"+Company_id);
         List<company_personnel> employees=connectionUtil.getAllEmployees(Company_id);
         session.setAttribute("All_Employee",employees);
-        response.sendRedirect("Employee-Table.jsp");
+
+        if(user_type.equals("Client")){
+            response.sendRedirect("Employee-Table.jsp");
+        }else{
+            response.sendRedirect("Employee-Table-Office.jsp");
+        }
+
 
     }
 
@@ -789,14 +820,15 @@ public class ServletDwmpc extends HttpServlet {
         company_personnel companyPersonnel = new company_personnel(Employee_Id,Company_id,firstName, lastName, position, qualification, training,Employee_Status,Contact);
         connectionUtil.EmployeeRegistration(companyPersonnel,action);
 
+        CountGeneral count=connectionUtil.CountSp(Company_id);
+        session.setAttribute("CountSp", count);
+
 
         List<company_personnel> employees=connectionUtil.getAllEmployees(Company_id);
         session.setAttribute("All_Employee",employees);
         response.sendRedirect("Employee-Table.jsp");
 
     }
-
-
 
     // Vehicle info
     private void registerVehicle(HttpServletRequest request, HttpServletResponse response)throws Exception {
@@ -1047,20 +1079,53 @@ public class ServletDwmpc extends HttpServlet {
         }
 
 
-        connectionUtil.registerVehicle(vehicleRegistration,action,addAction);
+        String msg=connectionUtil.registerVehicle(vehicleRegistration,action,addAction);
 
-        List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(String.valueOf(company_id),"Client");
-        List<vehicle> getUnAppliedVehicle=connectionUtil.getPendingApplication(company_id);
         HttpSession session = request.getSession();
-        if(addAction.equals("Both")){
-            session.setAttribute("Pending",getUnAppliedVehicle);
-            session.setAttribute("All_Vehicles",getVehicleDetail);
-            response.sendRedirect("Vehicle-Table.jsp");
+        System.out.println("msg "+msg);
+        if(!msg.equals("Chasse Number Error")){
+            List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(String.valueOf(company_id),"Client");
+            List<vehicle> getUnAppliedVehicle=connectionUtil.getPendingApplication(company_id);
+            CountGeneral count=connectionUtil.CountSp(company_id);
+            session.setAttribute("CountSp", count);
+
+            if (session.getAttribute("vehicle_ID_error") != null){
+                session.removeAttribute("vehicle_ID_error");
+            }
+            if (session.getAttribute("Registration_Number_error") != null){
+                session.removeAttribute("Registration_Number_error");
+            }
+            if (session.getAttribute("All_Vehicles22") != null){
+                session.removeAttribute("All_Vehicles22");
+            }
+
+            if(addAction.equals("Both")){
+                session.setAttribute("Pending",getUnAppliedVehicle);
+                session.setAttribute("All_Vehicles",getVehicleDetail);
+                response.sendRedirect("Vehicle-Table.jsp");
+            }else{
+                getAttachment=connectionUtil.getAttachments(chase_id);
+                session.setAttribute("Attachments",getAttachment);
+                response.sendRedirect("Attachments.jsp");
+            }
         }else{
-            getAttachment=connectionUtil.getAttachments(chase_id);
-            session.setAttribute("Attachments",getAttachment);
-            response.sendRedirect("Attachments.jsp");
+            System.out.println("Error Message is: "+msg);
+            session.setAttribute("All_Vehicles22",vehicleRegistration);
+            if(msg.equals("Chasse Number Error")){
+                if (session.getAttribute("Registration_Number_error") != null){
+                    session.removeAttribute("Registration_Number_error");
+                }
+                session.setAttribute("vehicle_ID_error","Error");
+            }else {
+                if (session.getAttribute("vehicle_ID_error") != null){
+                    session.removeAttribute("vehicle_ID_error");
+                }
+                session.setAttribute("Registration_Number_error","Error");
+            }
+
+            response.sendRedirect("Vehicle-Form.jsp");
         }
+
 
 
     }
@@ -1071,7 +1136,12 @@ public class ServletDwmpc extends HttpServlet {
         List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(Company_id,"Client");
         List<vehicle> getUnAppliedVehicle=connectionUtil.getPendingApplication(Integer.parseInt(Company_id));
         session.setAttribute("All_Vehicles",getVehicleDetail);
-        session.setAttribute("Pending",getUnAppliedVehicle);
+        if(getUnAppliedVehicle.isEmpty()){
+            session.removeAttribute("Pending");
+        }else{
+            session.setAttribute("Pending",getUnAppliedVehicle);
+        }
+
         response.sendRedirect("Vehicle-Table.jsp");
     }
 
@@ -1232,10 +1302,16 @@ public class ServletDwmpc extends HttpServlet {
     private void getAttachments(HttpServletRequest request, HttpServletResponse response) throws Exception{
         HttpSession session=request.getSession();
         String chassis_No= request.getParameter("chassis_No");
+        String user_type=request.getParameter("chassis_No");
         System.out.println("this chassis :"+chassis_No);
         getAttachment=connectionUtil.getAttachments(chassis_No);
         session.setAttribute("Attachments",getAttachment);
-        response.sendRedirect("Attachments.jsp");
+        if(user_type.equals("Client")){
+            response.sendRedirect("Attachments.jsp");
+        }else{
+            response.sendRedirect("Attachments-Officer.jsp");
+        }
+
     }
 
     private void LicenseApplication(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -1243,25 +1319,18 @@ public class ServletDwmpc extends HttpServlet {
         if (Checked != null) {
             for (int i = 0; i < Checked.length; i++)
             {
-                System.out.println ("<b>"+Checked[i]+"<b>");
                 connectionUtil.ApplyForLicence(Checked[i]);
             }
         }
         getVehicle(request,response);
 
     }
-
-
     //Un-Used
     private void Stop_Session(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         session.removeAttribute("Successful_Registration_Alert");
         response.sendRedirect("CompanyInfo.jsp");
     }
-
-
-
-
     //Add salt
     //Add salt
 

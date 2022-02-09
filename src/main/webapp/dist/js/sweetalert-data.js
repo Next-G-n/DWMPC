@@ -65,8 +65,8 @@ $(function() {
                 type: "warning",
                 text: "You are about to Decline this Company's Vehicle",
                 showCancelButton: true,
-                confirmButtonColor: "#8BC34A",
-                confirmButtonText: "Yes, Approve",
+                confirmButtonColor: "red",
+                confirmButtonText: "Yes, Decline",
                 closeOnCancel: true
             },function (){
                 // window.open('Employees.jsp', '_parent');
@@ -79,6 +79,29 @@ $(function() {
                 title: "Failed to Register",
                 type: "warning",
                 text: "The Email you used Exist",
+                timer: 3000,
+                showConfirmButton: false
+            });
+            return false;
+        });
+
+
+        $('#vehicle-ID-error').on('click',function(e){
+            swal({
+                title: "Vehicle Register Fail",
+                type: "warning",
+                text: "The Chassis Number you used Exist",
+                timer: 3000,
+                showConfirmButton: false
+            });
+            return false;
+        });
+
+        $('#Registration-Number-error').on('click',function(e){
+            swal({
+                title: "Vehicle Register Fail",
+                type: "warning",
+                text: "The Register Number you used Exist",
                 timer: 3000,
                 showConfirmButton: false
             });
