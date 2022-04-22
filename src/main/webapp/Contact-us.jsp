@@ -34,7 +34,7 @@
     <div class="la-anim-1"></div>
 </div>
 <!--/Preloader-->
-<div class="wrapper theme-1-active pimary-color-gold">
+<div class="wrapper theme-1-active">
 
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -65,14 +65,6 @@
                 </li>
                 <li class="dropdown app-drp">
                     <a href="#"  class="tst2" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
-                    <ul class="dropdown-menu app-dropdown" data-dropdown-in="slideInRight" data-dropdown-out="flipOutX">
-                        <li>
-                            <div class="app-box-bottom-wrap">
-                                <hr class="light-grey-hr ma-0"/>
-                                <a class="block text-center read-all" href="javascript:void(0)"> more </a>
-                            </div>
-                        </li>
-                    </ul>
                 </li>
                 <li class="dropdown full-width-drp">
                     <a href="#" class="tst2" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
@@ -80,101 +72,10 @@
                     </ul>
                 </li>
                 <li class="dropdown alert-drp">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
-                    <ul  class="dropdown-menu alert-dropdown" data-dropdown-in="bounceIn" data-dropdown-out="bounceOut">
-                        <li>
-                            <div class="notification-box-head-wrap">
-                                <span class="notification-box-head pull-left inline-block">notifications</span>
-                                <a class="txt-danger pull-right clear-notifications inline-block" href="javascript:void(0)"> clear all </a>
-                                <div class="clearfix"></div>
-                                <hr class="light-grey-hr ma-0"/>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="streamline message-nicescroll-bar">
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-green">
-                                            <i class="zmdi zmdi-flag"></i>
-                                        </div>
-                                        <div class="sl-content">
-												<span class="inline-block capitalize-font  pull-left truncate head-notifications">
-												New subscription created</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">2pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">Your customer subscribed for the basic plan. The customer will pay $25 per month.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-yellow">
-                                            <i class="zmdi zmdi-trending-down"></i>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications txt-warning">Server #2 not responding</span>
-                                            <span class="inline-block font-11 pull-right notifications-time">1pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">Some technical error occurred needs to be resolved.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-blue">
-                                            <i class="zmdi zmdi-email"></i>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications">2 new messages</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">4pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate"> The last payment for your G Suite Basic subscription failed.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="sl-avatar">
-                                            <img class="img-responsive" src="img/avatar.jpg" alt="avatar"/>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">1pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-red">
-                                            <i class="zmdi zmdi-storage"></i>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications txt-danger">99% server space occupied.</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">1pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">consectetur, adipisci velit.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="notification-box-bottom-wrap">
-                                <hr class="light-grey-hr ma-0"/>
-                                <a class="block text-center read-all" href="javascript:void(0)"> read all </a>
-                                <div class="clearfix"></div>
-                            </div>
-                        </li>
-                    </ul>
+                    <a href="#" class="tst2" class="dropdown-toggle" class="tst2" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">*</span></a>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
+                    <a href="#" class="tst2" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
                 </li>
             </ul>
         </div>
@@ -185,48 +86,19 @@
     <div class="fixed-sidebar-left">
         <ul class="nav navbar-nav side-nav nicescroll-bar">
             <li class="navigation-header">
-                <span>User Information</span>
+                <span>Main</span>
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a id="open_right_sidebar" class="tst2" href="#" onclick="document.getElementById('chat_tab_btn').click();" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
+                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-home mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="" class="tst2" ><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
                 <span>component</span>
                 <i class="zmdi zmdi-more"></i>
-            </li>
-            <li>
-                <a href="${pageContext.request.contextPath}/companyForm.jsp" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">Add Company</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-file-text mr-20"></i><span class="right-nav-text">Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="javascript:void(0);"  class="tst2" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="" class="tst2" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-                <ul id="maps_dr" class="collapse collapse-level-1">
-                    <li>
-                        <a href="google-map.html">Google Map</a>
-                    </li>
-                </ul>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -234,10 +106,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" class="tst2" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
+                <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">About Us</span></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
@@ -276,8 +145,8 @@
 												</span>
                                         </div>
                                     </form>
-                                    <div id="chat_list_scroll">
-                                        <div class="nicescroll-bar">
+                                    <div id="">
+                                        <div class="">
                                             <ul class="chat-list-wrap">
                                                 <li class="chat-list">
                                                     <div class="chat-body">
@@ -657,21 +526,19 @@
     </div>
     <!-- /Right Sidebar Menu -->
 
-
-
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container">
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">timeline</h5>
+                    <h5 class="txt-dark">About Us</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="Home.jsp">Home</a></li>
-                        <li class="active"><span>Contact-us</span></li>
+                        <li class="active"><span>About-us</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -698,7 +565,7 @@
 
                                 <li class="timeline-inverted">
                                     <div class="timeline-badge bg-pink">
-                                        <i class="icon-magnifier-add" ></i>
+                                        <i class="icon-location-pin" ></i>
                                     </div>
                                     <div class="timeline-panel pa-30">
                                         <div class="timeline-body">
@@ -729,16 +596,15 @@
                                             <p><i class="zmdi zmdi-email" style="margin-right: 10px;"></i>wmpc@gov.bw</p>
                                         </div>
                                         </div>
-                                    </div>
                                 </li>
 
                                 <li class="timeline-inverted">
                                     <div class="timeline-badge bg-blue">
-                                        <i class="icon-social-stumbleupon" ></i>
+                                        <i class="icon-location-pin" ></i>
                                     </div>
                                     <div class="timeline-panel pa-30">
                                         <div class="timeline-body">
-                                            <h4 class=" mb-5">Contacts</h4>
+                                            <h4 class=" mb-5">Location</h4>
                                             <p class="lead  mb-20">DWMPC Francistown Regional Office</p>
                                             <p>Plot 2576, CBD</p>
                                             <p>Tati Industrial, Private</p>
@@ -751,7 +617,7 @@
 
                                 <li>
                                     <div class="timeline-badge bg-green">
-                                        <i class="icon-flag" ></i>
+                                        <i class="icon-briefcase" ></i>
                                     </div>
                                     <div class="timeline-panel pa-30">
                                         <div class="timeline-body">
@@ -875,10 +741,10 @@
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
                 <div class="col-sm-12">
-                    <p>2018 &copy; Zapily. Pampered by Hencework</p>
+                    <p>2021 &copy; DWMPC. Created by Next-gen</p>
                 </div>
             </div>
-        </footer>
+            </footer>
         <!-- /Footer -->
 
     </div>

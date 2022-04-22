@@ -686,8 +686,8 @@ public class ConnectionUtil {
             if(error.contains("for key 'vehicle.PRIMARY'")){
                 errorMsg="Chasse Number Error";
             }else if(error.contains("for key 'vehicle.Carrier Number_UNIQUE'")){
-               // errorMsg="Registration Number Error";
-                errorMsg="Chasse Number Error";
+               errorMsg="Registration Number Error";
+               // errorMsg="Register Number Error";
             }
 
 
@@ -1428,7 +1428,7 @@ public class ConnectionUtil {
 
         try {
             myConn=dataSource.getConnection();
-            String sql ="SELECT * FROM dwmpc.license g left join vehicle v on g.`Registration_Number`=v.`Carrier Number` left join company_information c on c.`Company Id`=v.`Company Id` where g.`License_Number`= '"+license_Number+"' ;";
+            String sql ="SELECT * FROM dwmpc.license g left join vehicle v on g.`Registration_Number`=v.`Carrier Number` left join application_status a on a.`Chase Number`=v.`Chase_Number` left join company_information c on c.`Company Id`=v.`Company Id` where g.`License_Number`= '"+license_Number+"' ;";
             myStmt=myConn.prepareStatement(sql);
             myRs=myStmt.executeQuery();
 

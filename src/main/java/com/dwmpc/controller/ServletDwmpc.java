@@ -178,6 +178,10 @@ public class ServletDwmpc extends HttpServlet {
                 case "Search License":
                     searchLicenseVehicle(request,response);
                     break;
+                case "testing":
+                    String Branch=request.getParameter("test_name");
+                    response.getWriter().write(Branch);
+                    break;
             }
             // listStudents(request, response);
         }
@@ -193,7 +197,12 @@ public class ServletDwmpc extends HttpServlet {
         if(!user_type.equals("Client")){
             List<Licence_Table> licence_tables=connectionUtil.getAllLicense();
             session.setAttribute("Licence_Table", licence_tables);
-            request.getRequestDispatcher("License.jsp").forward(request, response);
+            if(!user_type.equals("Administrator")){
+                request.getRequestDispatcher("License.jsp").forward(request, response);
+            }else{
+                request.getRequestDispatcher("License-admin.jsp").forward(request, response);
+            }
+
         }
     }
 
@@ -214,7 +223,7 @@ public class ServletDwmpc extends HttpServlet {
         String Branch=request.getParameter("branch");
 
         connectionUtil.currentUserType(userType,user_id);
-        System.out.println("me "+userType);
+
         List<company_Information> CompanyInfo = connectionUtil.getAllCompanies(user_id, userType, Branch);
 
         add_RolesSwitch(user_id,request);
@@ -1083,7 +1092,14 @@ public class ServletDwmpc extends HttpServlet {
 
         HttpSession session = request.getSession();
         System.out.println("msg "+msg);
-        if(!msg.equals("Chasse Number Error")){
+        String new_msg = null;
+        switch (msg){
+            case "Registration Number Error":
+                new_msg="Chasse Number Error";
+            case "Chasse Number Error":
+                new_msg="Chasse Number Error";
+        }
+        if(!new_msg.equals("Chasse Number Error")){
             List<vehicle> getVehicleDetail=connectionUtil.getVehicleDetails(String.valueOf(company_id),"Client");
             List<vehicle> getUnAppliedVehicle=connectionUtil.getPendingApplication(company_id);
             CountGeneral count=connectionUtil.CountSp(company_id);

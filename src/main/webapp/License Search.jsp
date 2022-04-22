@@ -28,6 +28,7 @@
     <div class="la-anim-1"></div>
 </div>
 <!--/Preloader-->
+<div class="wrapper theme-1-active pimary-color-pink">
 
 <div class="wrapper pa-0">
     <!-- Main Content -->
@@ -51,7 +52,7 @@
                                             <input type="text" name="license_Number" class="form-control" required="" placeholder="Enter License Number...">
                                         </div>
                                         <div class="form-group text-center">
-                                            <button type="submit" class="btn btn-success btn-rounded">Search</button>
+                                            <button type="submit" class="btn btn-primary btn-rounded">Search</button>
                                         </div>
                                         <c:if test="${Licence_Detail.carrier_Number!=''}">
 
@@ -69,38 +70,38 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr>
-                                                    <td><code>License Number</code> </td>
+                                                    <td style="color: #595858"><strong>License Number</strong> </td>
                                                     <td class="Region">${Licence_Detail.licence_number}</td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td><code>License Statue</code> </td>
+                                                    <td style="color: #595858"><strong>License Statue</strong> </td>
                                                     <td class="Region">${Licence_Detail.status}</td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td><code>Company Name</code></td>
+                                                    <td style="color: #595858"><strong>Company Name</strong></td>
                                                     <td class="Email">${Licence_Detail.company_Name}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><code>Company Email</code> </td>
+                                                    <td style="color: #595858"><strong>Company Email</strong> </td>
                                                     <td class="Street-Address">${Licence_Detail.companyEmail}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><code>License Type</code> </td>
+                                                    <td style="color: #595858"><strong>License Type</strong> </td>
                                                     <td class="Street-Address2">${Licence_Detail.licence_type}</td>
                                                 </tr>
 
                                                 <tr>
-                                                    <td><code>Registration Number</code></td>
+                                                    <td style="color: #595858"><strong>Registration Number</strong></td>
                                                     <td class="Company-status">${Licence_Detail.carrier_Number}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><code>Date Licence</code></td>
+                                                    <td style="color: #595858"><strong>Date Licence</strong></td>
                                                     <td class="Location">${Licence_Detail.start_date}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><code>Expiration Date</code></td>
+                                                    <td style="color: #595858"><strong>Expiration Date</strong></td>
                                                     <td class="Location">${Licence_Detail.end_date}</td>
                                                 </tr>
                                                 </tbody>

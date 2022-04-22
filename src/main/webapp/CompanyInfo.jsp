@@ -120,7 +120,7 @@
 					<i class="zmdi zmdi-more"></i>
 				</li>
 				<li>
-					<a class="active" href="javascript:void(0);" class="tst2" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+					<a class="active" href="${pageContext.request.contextPath}/Home.jsp" class="tst2" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
 				</li>
 				<li>
 					<a href="#" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
@@ -352,7 +352,7 @@
 										<p>No Company Registered</p>
 									</c:if>
 									<c:if test="${Company_info!=null}">
-									<button type="button" onclick="toggleModal() " data-target="#Company-information-modal" data-toggle="modal"  style="float: right" class="btn btn-primary btn-anim btn-rounded"><i class="fa fa-pencil"></i><span class="btn-text">Edit</span></button>
+									<button type="button" onclick="toggleModal()" data-target="#Company-information-modal" data-toggle="modal"  style="float: right" class="btn btn-primary btn-anim btn-rounded"><i class="fa fa-pencil"></i><span class="btn-text">Edit</span></button>
 									</c:if>
 									<button type="button" onclick="location.href='companyForm.jsp';"  style="float: right; margin-right: 5px" class="btn btn-primary btn-anim btn-rounded"><i class="fa  fa-building-o"></i><span class="btn-text">Add New Company</span></button>
 							</div>
@@ -712,7 +712,6 @@
 
                             //const Contact2=Contact.replace("+267 ","");
 
-
                             document.getElementById('Region').value = Region;
                             document.getElementById('Company_Email').value = Email;
                             document.getElementById('Street-address').value = Street_Address;
@@ -1007,7 +1006,7 @@
 			<footer class="footer container-fluid pl-30 pr-30">
 				<div class="row">
 					<div class="col-sm-12">
-						<p>2021 &copy; Created by Next-gen</p>
+						<p>2021 &copy; DWMPC. Created by Next-gen</p>
 					</div>
 				</div>
 			</footer>

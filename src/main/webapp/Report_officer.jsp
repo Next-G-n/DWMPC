@@ -1,16 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: NITRO5
-  Date: 10/25/2021
-  Time: 9:01 AM
-  To change this template use File | Settings | File Templates.
---%>
+
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>DWMPC || Lience Generation</title>
+    <title>DWMPC || Company Vehicles</title>
     <meta name="description" content="Waste Management System." />
     <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Zapily Admin, Zapilyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
     <meta name="Next-gen" content="hencework"/>
@@ -26,9 +23,13 @@
     <!-- Data table CSS -->
     <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
 
+    <!--alerts CSS -->
+    <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
 
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+
 
 </head>
 
@@ -38,7 +39,7 @@
     <div class="la-anim-1"></div>
 </div>
 <!--/Preloader-->
-<div class="wrapper theme-1-active pimary-color-gold">
+<div class="wrapper theme-1-active pimary-color-pink">
 
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -68,57 +69,7 @@
                     <a class="tst2" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
                 </li>
                 <li class="dropdown app-drp">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
-                    <ul class="dropdown-menu app-dropdown" data-dropdown-in="slideInRight" data-dropdown-out="flipOutX">
-                        <li>
-                            <div class="app-nicescroll-bar">
-                                <ul class="app-icon-wrap pa-10">
-                                    <li>
-                                        <a href="weather.html" class="connection-item">
-                                            <i class="zmdi zmdi-cloud-outline txt-info"></i>
-                                            <span class="block">weather</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="inbox.jsp" class="connection-item">
-                                            <i class="zmdi zmdi-email-open txt-success"></i>
-                                            <span class="block">e-mail</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="calendar.html" class="connection-item">
-                                            <i class="zmdi zmdi-calendar-check txt-primary"></i>
-                                            <span class="block">calendar</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="vector-map.html" class="connection-item">
-                                            <i class="zmdi zmdi-map txt-danger"></i>
-                                            <span class="block">map</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="chats.html" class="connection-item">
-                                            <i class="zmdi zmdi-comment-outline txt-warning"></i>
-                                            <span class="block">chat</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="contact-card.html" class="connection-item">
-                                            <i class="zmdi zmdi-assignment-account"></i>
-                                            <span class="block">contact</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="app-box-bottom-wrap">
-                                <hr class="light-grey-hr ma-0"/>
-                                <a class="block text-center read-all" href="javascript:void(0)"> more </a>
-                            </div>
-                        </li>
-                    </ul>
+                    <a href="#"  class="tst2" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
                 </li>
                 <li class="dropdown full-width-drp">
                     <a href="#" class="tst2" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
@@ -126,134 +77,10 @@
                     </ul>
                 </li>
                 <li class="dropdown alert-drp">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
-                    <ul  class="dropdown-menu alert-dropdown" data-dropdown-in="bounceIn" data-dropdown-out="bounceOut">
-                        <li>
-                            <div class="notification-box-head-wrap">
-                                <span class="notification-box-head pull-left inline-block">notifications</span>
-                                <a class="txt-danger pull-right clear-notifications inline-block" href="javascript:void(0)"> clear all </a>
-                                <div class="clearfix"></div>
-                                <hr class="light-grey-hr ma-0"/>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="streamline message-nicescroll-bar">
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-green">
-                                            <i class="zmdi zmdi-flag"></i>
-                                        </div>
-                                        <div class="sl-content">
-												<span class="inline-block capitalize-font  pull-left truncate head-notifications">
-												New subscription created</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">2pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">Your customer subscribed for the basic plan. The customer will pay $25 per month.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-yellow">
-                                            <i class="zmdi zmdi-trending-down"></i>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications txt-warning">Server #2 not responding</span>
-                                            <span class="inline-block font-11 pull-right notifications-time">1pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">Some technical error occurred needs to be resolved.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-blue">
-                                            <i class="zmdi zmdi-email"></i>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications">2 new messages</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">4pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate"> The last payment for your G Suite Basic subscription failed.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="sl-avatar">
-                                            <img class="img-responsive" src="img/avatar.jpg" alt="avatar"/>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">1pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <hr class="light-grey-hr ma-0"/>
-                                <div class="sl-item">
-                                    <a href="javascript:void(0)">
-                                        <div class="icon bg-red">
-                                            <i class="zmdi zmdi-storage"></i>
-                                        </div>
-                                        <div class="sl-content">
-                                            <span class="inline-block capitalize-font  pull-left truncate head-notifications txt-danger">99% server space occupied.</span>
-                                            <span class="inline-block font-11  pull-right notifications-time">1pm</span>
-                                            <div class="clearfix"></div>
-                                            <p class="truncate">consectetur, adipisci velit.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="notification-box-bottom-wrap">
-                                <hr class="light-grey-hr ma-0"/>
-                                <a class="block text-center read-all" href="javascript:void(0)"> read all </a>
-                                <div class="clearfix"></div>
-                            </div>
-                        </li>
-                    </ul>
+                    <a href="#" class="dropdown-toggle" class="tst2" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
-                    <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
-                        <li>
-                            <a href="profile.html"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="zmdi zmdi-card"></i><span>my balance</span></a>
-                        </li>
-                        <li>
-                            <a href="inbox.jsp"><i class="zmdi zmdi-email"></i><span>Inbox</span></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="zmdi zmdi-settings"></i><span>Settings</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="sub-menu show-on-hover">
-                            <a href="#" class="dropdown-toggle pr-0 level-2-drp"><i class="zmdi zmdi-check text-success"></i> available</a>
-                            <ul class="dropdown-menu open-left-side">
-                                <li>
-                                    <a href="#"><i class="zmdi zmdi-check text-success"></i><span>available</span></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="zmdi zmdi-circle-o text-warning"></i><span>busy</span></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="zmdi zmdi-minus-circle-outline text-danger"></i><span>offline</span></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#"><i class="zmdi zmdi-power"></i><span>Log Out</span></a>
-                        </li>
-                    </ul>
+                    <a href="#" class="tst2" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
                 </li>
             </ul>
         </div>
@@ -264,20 +91,14 @@
     <div class="fixed-sidebar-left">
         <ul class="nav navbar-nav side-nav nicescroll-bar">
             <li class="navigation-header">
-                <span>User Information</span>
+                <span>Main</span>
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a class="active" href="${pageContext.request.contextPath}/Officer-Home.jsp" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="#" id="open_right_sidebar" onclick="document.getElementById('chat_tab_btn').click();" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-email mr-20"></i><span class="right-nav-text">Emails</span></div><div class="pull-right"><span class="label label-warning">3</span></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="#" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="#" class="tst2"><div class="pull-left"><i class="zmdi zmdi-notifications mr-20"></i><span class="right-nav-text">Notification</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+                <a href="" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -285,13 +106,13 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">${CompanyName}</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-truck mr-20"></i><span class="right-nav-text">${CompanyName}</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                 <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
                     <li class="active" role="presentation">
-                        <a onclick="document.getElementById('Company_information').submit()" data-toggle="tab"  role="tab" aria-expanded="true">Information</a>
+                        <a onclick="location.href='CompanyInfo-Officer-Table.jsp'" data-toggle="tab"  role="tab" aria-expanded="true">Information</a>
                     </li>
                     <li >
-                        <a onclick="document.getElementById('Vehicle_info').submit()" aria-expanded="false"  data-toggle="tab" role="tab">Vehicles</a>
+                        <a onclick="location.href='Vehicle-Table-officer.jsp'" aria-expanded="false"  data-toggle="tab" role="tab">Vehicles</a>
                     </li>
                     <li>
                         <a onclick="document.getElementById('Employee_info').submit()">Employees</a>
@@ -299,31 +120,10 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <c:if test="${ReportBtn=='Upload'}">
-                <li>
-                    <a href="Monthly-Report.jsp" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-                </li>
-            </c:if>
-            <c:if test="${ReportBtn!='Upload'}">
-                <li>
-                    <a href="javascript:void(0);" class="Report-toast" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Give Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-                </li>
-            </c:if>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-trending-up mr-20"></i><span class="right-nav-text">Statistics</span></div><div class="pull-right"><i></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-file-text mr-20"></i><span class="right-nav-text">Licenced Vehicle</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">File Manager</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-                <ul id="maps_dr" class="collapse collapse-level-1">
-                    <li>
-                        <a href="google-map.html">Google Map</a>
-                    </li>
-                </ul>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -331,28 +131,12 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="" class="tst2" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">Settings</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-            </li>
-            <li>
-                <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-phone mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
+                <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">About Us</span></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
         </ul>
-        <form method="post" id="Employee_info" action="ServletDwmpc">
-            <input type="hidden" name="command" value="EmployeesDetail">
-            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
-        </form>
-        <form method="post" id="Vehicle_info" action="ServletDwmpc">
-            <input type="hidden" name="command" value="VehicleDetail">
-            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
-        </form>
-        <form method="post" id="Company_information" action="ServletDwmpc">
-            <input type="hidden" name="command" value="getCompany">
-            <input type="hidden" name="UserType" value="Client">
-            <input type="hidden" name="company_id" value="${Company_info.company_Id}">
-        </form>
     </div>
     <!-- /Left Sidebar Menu -->
 
@@ -779,7 +563,7 @@
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="${pageContext.request.contextPath}/Home.jsp">Dashboard</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Officer-Home.jsp">Home</a></li>
                         <li class="active"><span>Company Vehicles</span></li>
                     </ol>
                 </div>
@@ -789,153 +573,8 @@
 
             <div class="row">
 
-                <!-- Bordered Table -->
-                <div class="col-sm-12">
-                    <div class="panel panel-warning card-view">
-                        <div class="panel-heading">
-                            <div class="pull-left">
-                                <h6 class="panel-title txt-light">Vehicle Details</h6>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="panel-wrapper collapse in">
-                            <div class="panel-body">
-                                <div class="table-wrap mt-40">
-                                    <div class="table-responsive">
+                <iframe title="version2.1" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=c582c2b6-9aac-4cd8-a953-7aa7e418d398&autoAuth=true&ctid=16a0d960-ee74-4f56-a22a-19ae057918b2&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXVrLXNvdXRoLWItcHJpbWFyeS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
 
-                                        <table  id="example"  data-paging="true" class="table table-hover display  pb-30">
-                                            <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th >Chase Number</th>
-                                                <th>Type of Vehicle</th>
-                                                <th>Unleaded Weight</th>
-                                                <th>Type of waste</th>
-                                                <th>Anual Quantity</th>
-                                                <th>Carrier Number</th>
-                                                <th>Vehicle Ownership</th>
-                                                <th>Status</th>
-                                                <th class="text-nowrap">Action</th>
-
-
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="Count"></td>
-                                                    <td class="Chassis-Number"></td>
-                                                    <td class="Vehicle-Type"></td>
-                                                    <td class="Weight"></td>
-                                                    <td class="Waste-Type"></td>
-                                                    <td class="Annual-Quantity"></td>
-                                                    <td class="Registration-Number"></td>
-                                                    <td class="Vehicle-Ownership"></td>
-                                                    <td><span class="label label-danger"></span> </td>
-                                                    <td class="text-nowrap">
-                            <span class="pencil-Edit" id="${countVehicles}" style="" data-toggle="modal" onclick="toggleModal(this, id)" data-target="#Vehicle-information-modal">
-                            <a  class="mr-25" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
-                          </span>
-
-                                                        <span id="${Vehicles.chase_number}" onclick="VehicleAttachments(this.id)"> <a   data-toggle="tooltip" data-original-title="Attachments"> <i class="fa fa-file-pdf-o text-warning"></i> </a> </span></td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-
-                                        <form method="post" id="Vehicle_Att" action="ServletDwmpc">
-                                            <input type="hidden" name="command" value="VehicleAttachments">
-                                            <input type="hidden" id="chassis_No" name="chassis_No" value="">
-                                        </form>
-
-
-                                    </div>
-
-                                    <div id="Vehicle-information-modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    <h5 class="modal-title" id="myLargeModalLabel">Editing Vehicle Information for ${Company_info.company_Name}</h5>
-                                                </div><form action="ServletDwmpc" method="post">
-                                                <div class="modal-body">
-                                                    <input type="hidden" id="command" name="command" class="hidden" value="RegisteringVehicle"/>
-                                                    <input type="hidden" id="action" name="action"  class="hidden" value="EditingVehicle"/>
-                                                    <input type="hidden" name="Company Id" class="hidden" value="${Company_info.company_Id}"/>
-
-
-                                                    <div class="form-group">
-                                                        <label class="control-label mb-10" for="Chassis-Number">Chassis Number(required):</label>
-                                                        <input id="Chassis-Number" type="text" name="Chassis_Number" class="form-control" value="" required/>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-md-6 col-xs-12">
-                                                                <label class="control-label mb-10" for="Weight">Unladen Weight (required):</label>
-                                                                <input id="Weight" type="text" name="Unladen_Weight" class="form-control required" value="" required/>
-                                                            </div>
-                                                            <div class="span1"></div>
-                                                            <div class="col-md-6 col-xs-12">
-                                                                <label class="control-label mb-10" for="Registration-Number"> Vehicle Registration Number(required):</label>
-                                                                <input id="Registration-Number" type="text" name="Registration_Number" class="form-control" value="" required/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-md-6 col-xs-12">
-                                                                <label for="Vehicle-Ownership" class="control-label mb-10"> This Your Vehicle?(required):</label>
-                                                                <select id="Vehicle-Ownership" class="selectpicker" name="Your_Vehicle" data-style="form-control btn-default btn-outline">
-                                                                    <option value="Yes, I am the owner">Yes, I am the owner.</option>
-                                                                    <option value="No, I borrowed it">No, I borrowed it.</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="span1"></div>
-                                                            <div class="col-md-6 col-xs-12">
-                                                                <label for="Waste-Type" class="control-label mb-10"> Type Of Waste Transported(required):</label>
-                                                                <select id="Waste-Type"  name="Waste_Type" class="selectpicker" data-style="form-control btn-default btn-outline">
-                                                                    <option value="Bio Waste">Bio Waste</option>
-                                                                    <option value="Chemical Waste">Chemical Waste</option>
-                                                                    <option value="Hazardous Waste">Hazardous Waste</option>
-                                                                    <option value="Clinical Waste">Clinical Waste</option>
-                                                                    <option value="Domestic Waste">Domestic Waste</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-md-6 col-xs-12">
-                                                                <label class="control-label mb-10" for="Annual-Quantity">Annual Quantity(required):</label>
-                                                                <input id="Annual-Quantity" type="text" name="Annual_Quatity" class="form-control required" value="" required/>
-                                                            </div>
-                                                            <div class="span1"></div>
-                                                            <div class="col-md-6 col-xs-12">
-                                                                <label class="control-label mb-10" for="Vehicle-Type">Vehicle Type (required):</label>
-                                                                <input id="Vehicle-Type" type="text" name="vehicle_Type" class="form-control required" value="" required/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">Save Changes</span></button>
-                                                </div>
-                                            </form>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-                                </br>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- /Bordered Table -->
 
             </div>
 
@@ -1001,8 +640,10 @@
 <!-- Bootstrap Select JavaScript -->
 <script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>
 
+<!-- Sweet-Alert  -->
+<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="dist/js/sweetalert-data.js"></script>
 
 </body>
 
 </html>
-

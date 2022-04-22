@@ -5,5 +5,4 @@
               username="shatty" password="Lorato910"
               driverClassName="com.mysql.cj.jdbc.Driver"
               url="jdbc:mysql://dwmpc-1.ciesishcjgv3.us-east-2.rds.amazonaws.com:3306/dwmpc?user&amp;serverTimezone=UTC"/>
-
 </Context>

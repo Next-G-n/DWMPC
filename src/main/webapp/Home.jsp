@@ -52,6 +52,8 @@
             cursor: pointer;
             background-color: #5a896f;
         }
+        .zmdi-delete:hover{color: red}
+        .pointer {cursor: pointer;}
     </style>
 </head>
 
@@ -99,7 +101,7 @@
                     </ul>
                 </li>
                 <li class="dropdown alert-drp">
-                    <a href="#" class="dropdown-toggle" class="tst2" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
+                    <a href="#" class="tst2" class="dropdown-toggle" class="tst2" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">*</span></a>
                 </li>
                 <li class="dropdown auth-drp">
                     <a href="#" class="tst2" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
@@ -117,7 +119,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a class="active" href="j${pageContext.request.contextPath}/Home.jsp" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
@@ -128,7 +130,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/companyForm.jsp" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">Add Company</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="${pageContext.request.contextPath}/companyForm.jsp" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-truck mr-20"></i><span class="right-nav-text">Add Company</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-file-text mr-20"></i><span class="right-nav-text">Report</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
@@ -143,7 +145,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">Contact Us</span></div><div class="clearfix"></div></a>
+                <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">About Us</span></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
@@ -257,7 +259,7 @@
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="CompanyInfo.jsp">Home</a></li>
+                        <li><a href="Home.jsp">Home</a></li>
                         <li class="active"><span>Companies Registered</span></li>
                     </ol>
                 </div>
@@ -275,18 +277,18 @@
         <c:param name="UserType" value="Client"/>
     </c:url>
     <c:set value="${countDate+1}" scope="page" var="countDate"/>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="panel panel-warning contact-card card-view">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="panel panel-warning contact-card card-view ">
                         <div class="panel-heading">
                             <div class="pull-left">
                                 <div class="pull-left user-img-wrap mr-15">
                                     <img class="card-user-img img-circle pull-left" src="img/user.png" alt="user"/>
                                 </div>
-                                <div class="pull-left user-detail-wrap">
-											<span class="block card-user-name">
+                                <div class="pull-left user-detail-wrap " onclick="location.href='${CompanyDetailsLink}'">
+											<span class="block card-user-name pointer">
                                                     ${tempCompany.company_Name}
 											</span>
-                                    <span class="block card-user-desn">
+                                    <span class="block card-user-desn pointer">
                                             ${tempCompany.company_Status}
 											</span>
                                 </div>
@@ -295,21 +297,13 @@
                                 <a class="pull-left inline-block mr-15" href="#">
                                     <i class="zmdi zmdi-edit txt-light"></i>
                                 </a>
-                                <a class="pull-left inline-block mr-15" href="#">
+                                <a class="pull-left inline-block mr-15 " href="#">
                                     <i class="zmdi zmdi-delete txt-light"></i>
                                 </a>
-                                <div class="pull-left inline-block dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert txt-light"></i></a>
-                                    <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Full Info</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Send Message</a></li>
-                                        <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Follow</a></li>
-                                    </ul>
-                                </div>
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="panel-wrapper collapse in" onclick="location.href='${CompanyDetailsLink}'">
+                        <div class="panel-wrapper collapse in pointer" onclick="location.href='${CompanyDetailsLink}'">
                             <div class="panel-body row">
                                 <div class="user-others-details pl-15 pr-15">
                                     <div class="mb-15">
@@ -470,7 +464,7 @@
 
         </div>
 
-        <!-- Footer -->
+        <!-- Footer -->7\47\
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
                 <div class="col-sm-12">
@@ -500,7 +494,8 @@
 
 
 <!-- jQuery -->
-<script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="vendors/bower_components/jquery/dist/jquery.min.js">
+</script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

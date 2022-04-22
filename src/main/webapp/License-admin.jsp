@@ -13,6 +13,9 @@
   <!-- Favicon -->
   <link rel="shortcut icon" href="icon.ico">
   <link rel="icon" href="icon.ico" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+  <!-- Data table CSS -->
+  <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
   <!-- vector map CSS -->
   <link href="vendors/bower_components/jquery-wizard.js/css/wizard.css" rel="stylesheet" type="text/css"/>
 
@@ -21,10 +24,6 @@
 
   <!-- Bootstrap Dropify CSS -->
   <link href="vendors/bower_components/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css"/>
-
-  <!--alerts CSS -->
-  <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
-
 
   <!-- Custom CSS -->
   <link href="dist/css/style.css" rel="stylesheet" type="text/css">
@@ -43,7 +42,7 @@
     <div class="mobile-only-brand pull-left">
       <div class="nav-header pull-left">
         <div class="logo-wrap">
-          <a href="${pageContext.request.contextPath}/Admin-Table.jsp.jsp">
+          <a href="${pageContext.request.contextPath}/Admin-Table.jsp">
             <img class="brand-img" src="img/logo2.png" alt="brand"/>
           </a>
         </div>
@@ -74,7 +73,7 @@
           </ul>
         </li>
         <li class="dropdown alert-drp">
-          <a href="#" class="tst2" class="dropdown-toggle" class="tst2" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">*</span></a>
+          <a href="#" class="dropdown-toggle" class="tst2" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
         </li>
         <li class="dropdown auth-drp">
           <a href="#" class="tst2" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
@@ -88,14 +87,14 @@
   <div class="fixed-sidebar-left">
     <ul class="nav navbar-nav side-nav nicescroll-bar">
       <li class="navigation-header">
-        <span>Home</span>
+        <span>Main</span>
         <i class="zmdi zmdi-more"></i>
       </li>
       <li>
-        <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+        <a class="active" href="${pageContext.request.contextPath}/Admin-Table.jsp" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li>
-        <a href="" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+        <a href="#" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
       <li><hr class="light-grey-hr mb-10"/></li>
       <li class="navigation-header">
@@ -103,16 +102,8 @@
         <i class="zmdi zmdi-more"></i>
       </li>
       <li>
-        <a href="javascript:document.getElementById('Licence_Vehicle').submit();" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-file-text mr-20"></i><span class="right-nav-text">Licenced Vehicle</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-file-text mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
-      <Form method="post" id="Licence_Vehicle" action="ServletDwmpc">
-        <input name="command" type="hidden" value="getAllLicenceVehicle">
-        <input name="User_Type" type="hidden" value="${User_Info[0].user_type}">
-      </Form>
-      <li>
-        <a href="${pageContext.request.contextPath}/Report_officer.jsp" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
-      </li>
-
       <li><hr class="light-grey-hr mb-10"/></li>
       <li class="navigation-header">
         <span>featured</span>
@@ -125,6 +116,19 @@
         <a href="javascript:void(0);" onclick="LogOut()" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-power mr-20"></i><span class="right-nav-text">Log out</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
       </li>
     </ul>
+    <form method="post" id="Employee_info" action="ServletDwmpc">
+      <input type="hidden" name="command" value="EmployeesDetail">
+      <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+    </form>
+    <form method="post" id="Vehicle_info" action="ServletDwmpc">
+      <input type="hidden" name="command" value="VehicleDetail">
+      <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+    </form>
+    <form method="post" id="Company_information" action="ServletDwmpc">
+      <input type="hidden" name="command" value="getCompany">
+      <input type="hidden" name="UserType" value="Client">
+      <input type="hidden" name="company_id" value="${Company_info.company_Id}">
+    </form>
   </div>
   <!-- /Left Sidebar Menu -->
 
@@ -134,8 +138,6 @@
       <li>
         <div  class="tab-struct custom-tab-1">
           <ul role="tablist" class="nav nav-tabs" id="right_sidebar_tab">
-            <li class="active" role="presentation"><a aria-expanded="false"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab" >Emails</a></li>
-            <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">Notification</a></li>
             <li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="true">Profile</a></li>
           </ul>
           <div class="tab-content" id="right_sidebar_content">
@@ -471,6 +473,7 @@
                 </div>
               </div>
             </div>
+
             <div  id="todo_tab" class="tab-pane fade" role="tabpanel">
               <div class="todo-box-wrap">
                 <div class="add-todo">
@@ -503,23 +506,80 @@
                                   <input class="upload" type="file">
                                 </div>
                               </div>
-                              <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">Kaone Rascon</h5>
-                              <h6 class="block capitalize-font pb-20">Client</h6>
+
+                              <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">${User_Info[0].first_name} ${User_Info[0].last_name} </h5>
+                              <a class="dropdown-toggle weight-500" id="examplePanelDropdown" data-toggle="dropdown" href="#" aria-expanded="false" role="button">
+                                <c:if test="${add_Roles.current==null}">
+                                  <h6 class="block capitalize-font pb-20">${User_Info[0].user_type}</h6>
+                                </c:if>
+                                <c:if test="${add_Roles.current!=null}">
+                                  <h6 class="block capitalize-font pb-20">${add_Roles.current}</h6>
+                                  <i class=" icon-user-follow inline-block mr-5"></i>
+                                </c:if>
+
+                              </a>
+                              <c:if test="${add_Roles.current!=null}">
+                                <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
+                                  <li onclick="document.getElementById('${add_Roles.og}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>${add_Roles.og}</a></li>
+                                  <c:if test="${add_Roles.co!='Nothing'}">
+                                    <li onclick="document.getElementById('${add_Roles.co}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>${add_Roles.co}</a></li>
+                                  </c:if>
+                                  <c:if test="${add_Roles.wmo!='Nothing'}">
+                                    <li onclick="document.getElementById('${add_Roles.wmo}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>${add_Roles.wmo}</a></li>
+                                  </c:if>
+                                  <c:if test="${add_Roles.rc!='Nothing'}">
+                                    <li  role="presentation"><a onclick="document.getElementById('${add_Roles.rc}').submit()" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>${add_Roles.rc}</a></li>
+                                  </c:if>
+                                  <c:if test="${add_Roles.wmoch!='Nothing'}">
+                                    <li onclick="document.getElementById('${add_Roles.wmoch}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>${add_Roles.wmoch}</a></li>
+                                  </c:if>
+                                  <c:if test="${add_Roles.hdh!='Nothing'}">
+                                    <li onclick="document.getElementById('${add_Roles.hdh}').submit()" role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>${add_Roles.hdh}</a></li>
+                                  </c:if>
+                                </ul>
+                              </c:if>
+
+                              <form method="post" id="${add_Roles.og}" action="ServletDwmpc">
+                                <input type="hidden" name="command" value="Switch User">
+                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                <input type="hidden" name="userType" value="${add_Roles.og}">
+                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                              </form>
+
+                              <form method="post" id="${add_Roles.co}" action="ServletDwmpc">
+                                <input type="hidden" name="command" value="Switch User">
+                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                <input type="hidden" name="userType" value="${add_Roles.co}">
+                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                              </form>
+                              <form method="post" id="${add_Roles.rc}" action="ServletDwmpc">
+                                <input type="hidden" name="command" value="Switch User">
+                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                <input type="hidden" name="userType" value="${add_Roles.rc}">
+                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                              </form>
+                              <form method="post" id="${add_Roles.wmoch}" action="ServletDwmpc">
+                                <input type="hidden" name="command" value="Switch User">
+                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                <input type="hidden" name="userType" value="${add_Roles.wmoch}">
+                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                              </form>
+                              <form method="post" id="${add_Roles.wmo}" action="ServletDwmpc">
+                                <input type="hidden" name="command" value="Switch User">
+                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                <input type="hidden" name="userType" value="${add_Roles.wmo}">
+                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                              </form>
+                              <form method="post" id="${add_Roles.hdh}" action="ServletDwmpc">
+                                <input type="hidden" name="command" value="Switch User">
+                                <input type="hidden" name="userId" value="${User_Info[0].user_Id}">
+                                <input type="hidden" name="userType" value="${add_Roles.hdh}">
+                                <input type="hidden" name="branch" value="${User_Info[0].location}">
+                              </form>
+
                             </div>
                             <div class="social-info">
                               <div class="row">
-                                <div class="col-xs-4 text-center">
-                                  <span class="counts block head-font"><span class="counter-anim">45</span></span>
-                                  <span class="counts-text block">Companies</span>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                  <span class="counts block head-font"><span class="counter-anim">206</span></span>
-                                  <span class="counts-text block">Employees</span>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                  <span class="counts block head-font"><span class="counter-anim">118</span></span>
-                                  <span class="counts-text block">Vechiles</span>
-                                </div>
                               </div>
                               <button class="btn btn-gold btn-block  btn-anim mt-40" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
                             </div>
@@ -545,216 +605,129 @@
       <!-- Title -->
       <div class="row heading-bg">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-          <h5 class="txt-dark"></h5>
+          <h5 class="txt-dark">Export</h5>
         </div>
         <!-- Breadcrumb -->
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
           <ol class="breadcrumb">
-            <li><a href="${pageContext.request.contextPath}/Officer-Home.jsp">Home</a></li>
-            <li><a href="Admin-Table.jsp">Officer's Detail Table</a></li>
-            <li class="active"><span>Officer Registration Form</span></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#"><span>table</span></a></li>
+            <li class="active"><span>Export</span></li>
           </ol>
         </div>
         <!-- /Breadcrumb -->
-        <!-- Row -->
-
       </div>
       <!-- /Title -->
+
+      <!-- Row -->
       <div class="row">
         <div class="col-sm-12">
-          <div class="panel panel-warning card-view">
-            <div class="panel-heading">
-              <div class="pull-left">
-                <h6 class="panel-title txt-light">Officer Registration</h6>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-
+          <div class="panel panel-default card-view">
             <div class="panel-wrapper collapse in">
               <div class="panel-body">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-wrap">
-                      <form data-toggle="validator" role="form" action="ServletDwmpc" method="post">
-                        <div class="form-group">
-                          <div class="row">
-                            <input type="hidden" name="command" value="Registering_User">
-                            <input type="hidden" name="action" value="Registration_Officer">
-                            <input type="hidden" name="email2" value="${User_Info[0].email}">
-                            <input type="hidden" name="password" value="2021">
-                            <div class="col-md-6 col-xs-12 mt-40">
-                              <label class="control-label mb-10" for="First_Name"> First Name(required):</label>
-                              <input type="text" id="First_Name" name="first_name"  class="form-control required" value="${ErrorEmail.first_name}"   required/>
-                            </div>
-                            <div class="span1"></div>
-                            <div class="col-md-6 col-xs-12 mt-40">
-                              <label class="control-label mb-10" for="Last_Name"> Last Name(required):</label>
-                              <input type="text" id="Last_Name" name="last_name"  class="form-control required"  value="${ErrorEmail.last_name}"  required/>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                              <label class="control-label mb-10" for="Email"> Email(required):</label>
-                              <input type="email" id="Email" name="email"  class="form-control required" value="${ErrorEmail.email}"   required/>
-                            </div>
-                            <div class="span1"></div>
-                            <div class="col-md-6 col-xs-12">
-                              <label class="control-label mb-10"  for="Occupation"> Occupation(required):</label>
-                              <select id="Occupation" name="User_Type" class="selectpicker"  data-style="form-control btn-default btn-outline">
-                                <option value="Compliance Officer">Compliance Officer</option>
-                                <option value="Waste Management Officer">Waste Management Officer</option>
-                                <option value="Regional Coordinate">Regional Coordinate</option>
-                                <option value="Waste Management Officer Compliance Headquarters">Waste Management Officer Compliance Headquarters</option>
-                                <option value="Head of Division Headquarters">Head of Division Headquarters</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <div class="row">
-                            <div class="col-md-6 col-xs-12">
-                              <label class="control-label mb-10" for="Omang"> Omang(required):</label>
-                              <input type="text" id="Omang" name="Omang_code" data-mask="999999999"  value="${ErrorEmail.omang}" class="form-control required"  required/>
-                            </div>
-                            <div class="span1"></div>
-                            <div class="col-md-6 col-xs-12">
-                              <label class="control-label mb-10" for="Contact">Contact(required):</label>
-                              <input type="tel" id="Contact" data-mask="+267 99 999 999" name="phone_number"  value="${ErrorEmail.contact}" class="form-control required"  required/>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="control-label mb-10" for="Branch_Location"> Branch Location (required):</label>
-                          <select id="Branch_Location" name="location" class="selectpicker" data-style="form-control btn-default btn-outline"  >
-                            <option value="Francistown Branch">Francistown Branch</option>
-                            <option value="Gaborone Branch">Gaborone Branch</option>
-                            <option value="Chobe Branch">Chobe Branch</option>
-                            <option value="kgalagadi Branch">kgalagadi Branch</option>
-                          </select>
-                        </div>
-                        <div class="form-group mb-0" style="float: right">
-                          <button type="submit" class="btn btn-primary btn-anim btn-rounded"><i class="ti-save"></i><span class="btn-text">submit</span></button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                <div class="table-wrap">
+                  <div class="table-responsive">
+                    <table id="example" class="table table-hover display  pb-30" >
+                      <thead>
+                      <tr>
+                        <th>Company Name</th>
+                        <th>License Number</th>
+                        <th>License Type</th>
+                        <th>Start date</th>
+                        <th>Exp Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <c:set var="countRows_Licence" value="0" scope="page"/>
+                      <c:forEach var="Licence_Table" items="${Licence_Table}">
+                        <c:set var="countRows_Licence" value="${countRows_Licence+1}" scope="page"/>
 
-          </div>
+                        <tr>
+                          <td>${Licence_Table.company_Name}</td>
+                          <td>${Licence_Table.carrier_Number}</td>
+                          <td>${Licence_Table.licence_type}</td>
+                          <td>${Licence_Table.start_date}</td>
+                          <td>${Licence_Table.end_date}</td>
+                          <td>${Licence_Table.status}</td>
+                          <td class="text-nowrap">
+                            <a data-toggle="modal" data-target="#Revoking${countRows_Licence}" class="mr-25"  data-original-title="Revoke"> <i class="zmdi zmdi-flag text-danger m-r-10"></i> </a>
+                            <a data-toggle="modal" data-target="#Revoking${countRows_Licence}" class="mr-25"  data-original-title="Revoke"> <i class="zmdi zmdi-flag text-warning m-r-10"></i> </a>
+                          </td>
 
-        </div>
-        <!-- form -->
-        <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h5 class="modal-title" id="myModalLabel">Edit Profile</h5>
-              </div>
-              <div class="modal-body">
-                <!-- Row -->
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="">
-                      <div class="panel-wrapper collapse in">
-                        <div class="panel-body pa-0">
-                          <div class="col-sm-12 col-xs-12">
-                            <div class="form-wrap">
-                              <form action="#">
-                                <div class="form-body overflow-hide">
-                                  <div class="form-group">
-                                    <label class="control-label mb-10" for="exampleInputuname_1">Name</label>
-                                    <div class="input-group">
-                                      <div class="input-group-addon"><i class="icon-user"></i></div>
-                                      <input type="text" class="form-control" id="exampleInputuname_1" placeholder="willard bryant">
-                                    </div>
-                                  </div>
-                                  <div class="form-group">
-                                    <label class="control-label mb-10" for="exampleInputEmail_1">Email address</label>
-                                    <div class="input-group">
-                                      <div class="input-group-addon"><i class="icon-envelope-open"></i></div>
-                                      <input type="email" class="form-control" id="exampleInputEmail_1" placeholder="xyz@gmail.com">
-                                    </div>
-                                  </div>
-                                  <div class="form-group">
-                                    <label class="control-label mb-10" for="exampleInputContact_1">Contact number</label>
-                                    <div class="input-group">
-                                      <div class="input-group-addon"><i class="icon-phone"></i></div>
-                                      <input type="email" class="form-control" id="exampleInputContact_1" placeholder="+102 9388333">
-                                    </div>
-                                  </div>
-                                  <div class="form-group">
-                                    <label class="control-label mb-10" for="exampleInputpwd_1">Password</label>
-                                    <div class="input-group">
-                                      <div class="input-group-addon"><i class="icon-lock"></i></div>
-                                      <input type="password" class="form-control" id="exampleInputpwd_1" placeholder="Enter pwd" value="password">
-                                    </div>
-                                  </div>
-                                  <div class="form-group">
-                                    <label class="control-label mb-10">Gender</label>
-                                    <div>
-                                      <div class="radio">
-                                        <input type="radio" name="radio1" id="radio_1" value="option1" checked="">
-                                        <label for="radio_1">
-                                          M
-                                        </label>
-                                      </div>
-                                      <div class="radio">
-                                        <input type="radio" name="radio1" id="radio_2" value="option2">
-                                        <label for="radio_2">
-                                          F
-                                        </label>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="form-group">
-                                    <label class="control-label mb-10">Country</label>
-                                    <select class="form-control" data-placeholder="Choose a Category" tabindex="1">
-                                      <option value="Category 1">USA</option>
-                                      <option value="Category 2">Austrailia</option>
-                                      <option value="Category 3">India</option>
-                                      <option value="Category 4">UK</option>
-                                    </select>
+
+                        </tr>
+
+                        <form method="post" id="Revoking${countRows_Licence}" action="ServletDwmpc">
+
+                        </form>
+
+                        <div class="modal fade" id="Revoking${countRows_Licence}" tabindex="-1" role="dialog">
+                          <div class="modal-dialog" >
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h5 class="modal-title" id="">Revoking Vehicle ${Licence_Table.carrier_Number}</h5>
+                              </div>
+                              <form method="post" action="ServletDwmpc">
+                                <div class="modal-body">
+                                  <div class="form-group" >
+                                    <label for="message-text" class="control-label mb-10">Reason for The Revoking Licence:</label>
+                                    <textarea class="form-control" name="reason" id="message-text"></textarea>
+                                    <input type="hidden" name="command" value="Officers Action">
+                                    <input type="hidden" name="action" value="Revoke">
+                                    <input type="hidden" name="Apply_id" value="${Licence_Table.applyId}">
+                                    <input type="hidden" name="User Id" value="${User_Info[0].user_Id}">
+                                    <input type="hidden" name="UserType" value="${add_Roles.current}">
+                                    <input type="hidden" name="User_Type" value="${add_Roles.current}">
+                                    <input type="hidden" name="company_id" value="${Licence_Table.companyId}">
+                                    <input type="hidden" name="company_email" value="${Licence_Table.companyEmail}">
+                                    <input type="hidden" name="company_phone" value="${Licence_Table.companyPhoneNumber}">
+                                    <input type="hidden" name="license_Number" value="${Licence_Table.licence_number}">
+
                                   </div>
                                 </div>
-                                <div class="form-actions mt-10">
-                                  <button type="submit" class="btn btn-success mr-10 mb-30">Update profile</button>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-default btn-anim btn-rounded" data-dismiss="modal"><i class="fa  fa-times"></i><span class="btn-text">Close</span></button>
+                                  <button type="submit"  class="btn btn-danger btn-anim btn-rounded"><i class="zmdi zmdi-flag m-r-10"></i><span class="btn-text">Decline</span></button>
                                 </div>
                               </form>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
+
+                      </c:forEach>
+                      </tbody>
+
+                    </table>
+
                   </div>
                 </div>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-success waves-effect" data-dismiss="modal">Save</button>
-                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
-              </div>
             </div>
-            <!-- /.modal-content -->
           </div>
-          <!-- /.modal-dialog -->
         </div>
-        <!-- /form -->
-
       </div>
-      <!-- Footer -->
-      <footer class="footer container-fluid pl-30 pr-30">
-        <div class="row">
-          <div class="col-sm-12">
-            <p>2021 &copy; DWMPC. Created by Next-gen</p>
-          </div>
-        </div>
-      </footer>
-      <!-- /Footer -->
+
+      <!-- /Row -->
+      <Form method="post" id="Licence_Vehicle" action="ServletDwmpc">
+        <input name="command" type="hidden" value="getAllLicenceVehicle">
+        <input name="User_Type" type="hidden" value="${User_Info[0].user_type}">
+      </Form>
+
     </div>
+
+    <!-- Footer -->
+    <footer class="footer container-fluid pl-30 pr-30">
+      <div class="row">
+        <div class="col-sm-12">
+          <p>2021 &copy; DWMPC. Created by Next-gen</p>
+        </div>
+      </div>
+    </footer>
+    <!-- /Footer -->
+
   </div>
   <!-- /Main Content -->
 
@@ -762,15 +735,6 @@
 <!-- /#wrapper -->
 
 <!-- JavaScript -->
-<button style="display: block" id="Error-Email" alt="alert" >testing</button>
-
-<c:if test="${ErrorEmail!=null}">
-  <script>
-    window.onload = function() {
-      document.getElementById("Error-Email").click();
-    }
-  </script>
-</c:if>
 
 <form method="post" id="LogOut_Session" action="ServletDwmpc">
   <input type="hidden" name="command" value="LogOut Session">
@@ -782,43 +746,75 @@
   }
 </script>
 
-
 <!-- jQuery -->
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
 <script src="vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
+<script src="vendors/bower_components/bootstrap-validator/dist/validator.min.js"></script>
+<script src="dist/js/modal-data.js"></script>
+
+<!-- Bootstrap Touchspin JavaScript -->
+<script src="vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+
+
+<!-- Data table JavaScript -->
+<script src="vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="vendors/bower_components/jszip/dist/jszip.min.js"></script>
+<script src="vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
+<script src="vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
+
+<script src="vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="dist/js/export-table-data.js"></script>
 
 <!-- Slimscroll JavaScript -->
 <script src="dist/js/jquery.slimscroll.js"></script>
 
+<!-- EChartJS JavaScript -->
+<script src="vendors/bower_components/echarts/dist/echarts-en.min.js"></script>
+<script src="vendors/echarts-liquidfill.min.js"></script>
+<script src="vendors/ecStat.min.js"></script>
+
+<!-- Toast JavaScript -->
+<script src="vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+
+<!-- Progressbar Animation JavaScript -->
+<script src="vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
+
 <!-- Fancy Dropdown JS -->
 <script src="dist/js/dropdown-bootstrap-extended.js"></script>
+
+<!-- Sparkline JavaScript -->
+<script src="vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
 
 <!-- Owl JavaScript -->
 <script src="vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 
+<!-- Calender JavaScripts -->
+<script src="vendors/bower_components/moment/min/moment.min.js"></script>
+<script src="vendors/jquery-ui.min.js"></script>
+<script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<script src="dist/js/fullcalendar-data.js"></script>
+
 <!-- Switchery JavaScript -->
 <script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
+
+<!-- Bootstrap Select JavaScript -->
+<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 
 <!-- Init JavaScript -->
 <script src="dist/js/init.js"></script>
 <script src="dist/js/toast-data.js"></script>
 
-<!-- Bootstrap Select JavaScript -->
-<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js" defer></script>
-
-<!-- Bootstrap Daterangepicker JavaScript -->
-<script src="vendors/bower_components/dropify/dist/js/dropify.min.js"></script>
-
 <!-- Sweet-Alert  -->
 <script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <script src="dist/js/sweetalert-data.js"></script>
 
-<!-- Form Flie Upload Data JavaScript -->
-<script src="dist/js/form-file-upload-data.js"></script>
 </body>
 
 </html>

@@ -41,7 +41,7 @@
         <div class="mobile-only-brand pull-left">
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
-                    <a href="${pageContext.request.contextPath}/Home.jsp">
+                    <a href="${pageContext.request.contextPath}/Admin-Table.jsp">
                         <img class="brand-img" src="img/logo2.png" alt="brand"/>
                     </a>
                 </div>
@@ -64,7 +64,7 @@
                     <a class="tst2" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
                 </li>
                 <li class="dropdown app-drp">
-                    <a href="#" class="dropdown-toggle tst2" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
+                    <a href="#" class="tst2" class="dropdown-toggle tst2" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
                     <ul class="dropdown-menu app-dropdown" data-dropdown-in="slideInRight" data-dropdown-out="flipOutX">
                         <li>
                             <div class="app-box-bottom-wrap">
@@ -75,15 +75,15 @@
                     </ul>
                 </li>
                 <li class="dropdown full-width-drp">
-                    <a href="#"  class="dropdown-toggle tst2" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
+                    <a href="#" class="tst2" class="dropdown-toggle tst2" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
                     <ul class="dropdown-menu mega-menu pa-0" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                     </ul>
                 </li>
                 <li class="dropdown alert-drp">
-                    <a href="#" class="dropdown-toggle tst2" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
+                    <a href="#" class="tst2" class="dropdown-toggle tst2" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0 tst2" data-toggle="dropdown"><img src="img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
+                    <a href="#" class="tst2" data-toggle="dropdown"><img src="img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
                 </li>
             </ul>
         </div>
@@ -101,7 +101,7 @@
                 <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a id="open_right_sidebar" href="javascript:document.getElementById('todo_tab_btn').click();" onclick="" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -109,10 +109,10 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-file-text mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="javascript:document.getElementById('Licence_Vehicle').submit();" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-file-text mr-20"></i><span class="right-nav-text">Licensed Vehicle</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="${pageContext.request.contextPath}/Report_officer.jsp" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="Contact-us.jsp"><div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">About Us</span></div><div class="clearfix"></div></a>
@@ -130,8 +130,6 @@
             <li>
                 <div  class="tab-struct custom-tab-1">
                     <ul role="tablist" class="nav nav-tabs" id="right_sidebar_tab">
-                        <li class="active" role="presentation"><a aria-expanded="false"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab" class="tst2">Emails</a></li>
-                        <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false" class="tst2">Notification</a></li>
                         <li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="true">Profile</a></li>
                     </ul>
                     <div class="tab-content" id="right_sidebar_content">
@@ -500,7 +498,8 @@
                                                                     <input class="upload" type="file">
                                                                 </div>
                                                             </div>
-                                                            <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">${User_Info[0].first_name} ${User_Info[0].last_name}</h5>
+
+                                                            <h5 class="block mt-10 mb-5 weight-500 capitalize-font txt-gold">${User_Info[0].first_name} ${User_Info[0].last_name} </h5>
                                                             <a class="dropdown-toggle weight-500" id="examplePanelDropdown" data-toggle="dropdown" href="#" aria-expanded="false" role="button">
                                                                 <c:if test="${add_Roles.current==null}">
                                                                     <h6 class="block capitalize-font pb-20">${User_Info[0].user_type}</h6>
@@ -573,23 +572,10 @@
                                                         </div>
                                                         <div class="social-info">
                                                             <div class="row">
-                                                                <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">${GeneralCount.company}</span></span>
-                                                                    <span class="counts-text block">Companies</span>
-                                                                </div>
-                                                                <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">${GeneralCount.employee}</span></span>
-                                                                    <span class="counts-text block">Employees</span>
-                                                                </div>
-                                                                <div class="col-xs-4 text-center">
-                                                                    <span class="counts block head-font"><span class="counter-anim">${GeneralCount.vehicle}</span></span>
-                                                                    <span class="counts-text block">Vehicles</span>
-                                                                </div>
                                                             </div>
                                                             <button class="btn btn-gold btn-block  btn-anim mt-40" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil"></i><span class="btn-text">edit profile</span></button>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -949,6 +935,10 @@
                 <!-- /form -->
 
             </div>
+            <Form method="post" id="Licence_Vehicle" action="ServletDwmpc">
+                <input name="command" type="hidden" value="getAllLicenceVehicle">
+                <input name="User_Type" type="hidden" value="${User_Info[0].user_type}">
+            </Form>
 
             <!-- Footer -->
             <footer class="footer container-fluid pl-30 pr-30">

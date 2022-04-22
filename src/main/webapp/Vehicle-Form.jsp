@@ -104,7 +104,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">${CompanyName}</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-truck mr-20"></i><span class="right-nav-text">${CompanyName}</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
                 <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
                     <li class="active" role="presentation">
                         <a onclick="document.getElementById('Company_information').submit()" data-toggle="tab"  role="tab" aria-expanded="true">Information</a>
@@ -118,7 +118,7 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-file mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li><hr class="light-grey-hr mb-10"/></li>
             <li class="navigation-header">
@@ -646,6 +646,11 @@
                     <!-- /.modal-dialog -->
                 </div>
                 <!-- /form -->
+            <form id="bbb" method="post" action="ServletDwmpc">
+                <input type="hidden" name="command" value="testing">
+                <input type="text" name="test_name">
+                <button type="submit">tt</button>
+            </form>
 
             </div>
             <!-- Footer -->
@@ -660,6 +665,27 @@
         </div>
     </div>
     <!-- /Main Content -->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <script type="text/javascript">
+        var form = $('#bbb');
+        form.submit(function () {
+
+            alert("this ")
+            $.ajax({
+                type: form.attr('method'),
+                url: form.attr('action'),
+                data: form.serialize(),
+                fail: function (data){
+                },
+                success: function (data) {
+                    alert("this data :"+data)
+                }
+            });
+
+            return false;
+        });
+    </script>
 
 </div>
 <!-- /#wrapper -->

@@ -55,6 +55,7 @@
         .Yellow{
             background-color: #FBDE11;
         }
+        .pointer {cursor: pointer;}
     </style>
 </head>
 
@@ -71,7 +72,7 @@
         <div class="mobile-only-brand pull-left">
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
-                    <a href="${pageContext.request.contextPath}/Home.jsp">
+                    <a href="${pageContext.request.contextPath}/Officer-Home.jsp">
                         <img class="brand-img" src="img/logo2.png" alt="brand"/>
                     </a>
                 </div>
@@ -120,7 +121,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
+                <a class="active" href="${pageContext.request.contextPath}/Officer-Home.jsp" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i>Home<span class="right-nav-text"></span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
             </li>
             <li>
                 <a href="" id="open_profile" onclick="document.getElementById('todo_tab_btn').click();" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-account mr-20"></i><span class="right-nav-text">Profile</span></div><div class="pull-right"><i class=""></i></div><div class="clearfix"></div></a>
@@ -620,8 +621,6 @@
     </div>
     <!-- /Right Sidebar Menu -->
 
-
-
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container">
@@ -647,41 +646,25 @@
                         <c:param name="delay"  value=""/>
                     </c:url>
                     <c:set value="${countDate+1}" scope="page" var="countDate"/>
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                        <div id="element${countDate}" class="panel panel-warning contact-card card-view">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 ">
+                        <div id="element${countDate}" class="panel panel-warning contact-card card-view ">
                             <div class="panel-heading">
                                 <div class="pull-left">
                                     <div class="pull-left user-img-wrap mr-15">
                                         <img class="card-user-img img-circle pull-left" src="img/user.png" alt="user"/>
                                     </div>
-                                    <div class="pull-left user-detail-wrap">
-											<span class="block card-user-name">
+                                    <div class="pull-left user-detail-wrap" onclick="Submit${countDate}() ">
+											<span class="block card-user-name pointer">
                                                     ${tempCompany.company_Name}
                                             </span>
-                                        <span class="block card-user-desn">
+                                        <span class="block card-user-desn pointer">
                                                 ${tempCompany.company_Status}
                                         </span>
                                     </div>
                                 </div>
-                                <div class="pull-right">
-                                    <a class="pull-left inline-block mr-15" href="#">
-                                        <i class="zmdi zmdi-edit txt-light"></i>
-                                    </a>
-                                    <a class="pull-left inline-block mr-15" href="#">
-                                        <i class="zmdi zmdi-delete txt-light"></i>
-                                    </a>
-                                    <div class="pull-left inline-block dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="zmdi zmdi-more-vert txt-light"></i></a>
-                                        <ul class="dropdown-menu bullet dropdown-menu-right"  role="menu">
-                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-reply" aria-hidden="true"></i>Full Info</a></li>
-                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>Send Message</a></li>
-                                            <li role="presentation"><a href="javascript:void(0)" role="menuitem"><i class="icon wb-trash" aria-hidden="true"></i>Follow</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
                                 <div class="clearfix"></div>
                             </div>
-                            <div class="panel-wrapper collapse in" onclick="Submit${countDate}() ">
+                            <div class="panel-wrapper collapse in pointer" onclick="Submit${countDate}() ">
                                 <div class="panel-body row">
                                     <div class="user-others-details pl-15 pr-15">
                                         <div class="mb-15">
